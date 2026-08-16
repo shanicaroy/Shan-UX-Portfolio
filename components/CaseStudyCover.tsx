@@ -33,7 +33,7 @@ export default function CaseStudyCover({ variant, className = "" }: CoverProps) 
         )}
 
         {variant === "grid" && (
-          <g stroke="#FBFAF6" strokeOpacity="0.5">
+          <g fill="none" stroke="#FBFAF6" strokeOpacity="0.5">
             {[0, 1, 2, 3].map((row) =>
               [0, 1, 2, 3, 4].map((col) => {
                 const isAccent = (row === 1 && col === 2) || (row === 2 && col === 3);
