@@ -25,6 +25,26 @@ Case study cover images are abstract SVG patterns generated in
 Drop your resume PDF at `public/resume.pdf` (the About page links to it via
 `site.resumeHref`).
 
+## "Ask Shan" chat widget
+
+There's a chat widget (bottom-right, on every page) that answers visitor
+questions about your work, powered by the Claude API. It's grounded in the
+same `content/site.ts` / `content/projects.ts` files as the rest of the site —
+no separate content to maintain, and it won't invent facts you haven't
+entered there (see the system prompt in `lib/anthropic.ts`).
+
+**Setup:**
+
+1. Get an API key at [console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys).
+2. Locally: copy `.env.example` to `.env.local` and paste the key into `ANTHROPIC_API_KEY`.
+3. On Vercel: add `ANTHROPIC_API_KEY` under the project's **Settings → Environment Variables**.
+
+Without a key, the widget shows a friendly "not configured yet" message
+instead of erroring. The route (`app/api/chat/route.ts`) uses Claude Opus 5,
+streams responses, and caps message length and per-IP request rate — see the
+comments there before scaling up traffic (the rate limiter is in-memory and
+resets on redeploy, fine for a personal site, not a production safeguard).
+
 ## Run locally
 
 ```bash
@@ -38,7 +58,7 @@ Visit http://localhost:3000.
 
 1. Push this repository to GitHub (already done if you're reading this from the repo).
 2. Go to [vercel.com/new](https://vercel.com/new) and import the repository.
-3. Vercel auto-detects Next.js — no config needed. Click **Deploy**.
+3. Vercel auto-detects Next.js — no config needed. Add `ANTHROPIC_API_KEY` under **Environment Variables** if you want the chat widget live. Click **Deploy**.
 4. Once live, add your custom domain under the project's **Settings → Domains**.
 
 Every push to the connected branch will auto-deploy.
@@ -51,8 +71,10 @@ app/                  Routes (App Router)
   work/page.tsx        Work index
   work/[slug]/page.tsx  Case study detail
   about/page.tsx        About
-components/           Shared UI (Nav, Footer, ProjectCard, InspectFrame, ...)
+  api/chat/route.ts     "Ask Shan" chat endpoint (streaming)
+components/           Shared UI (Nav, Footer, ProjectCard, InspectFrame, ChatWidget, ...)
 content/               Editable copy (site.ts, projects.ts)
+lib/anthropic.ts       Claude API client + system prompt builder for the chat widget
 public/fonts/          Self-hosted Space Grotesk, Inter, IBM Plex Mono
 ```
 
@@ -61,5 +83,6 @@ public/fonts/          Self-hosted Space Grotesk, Inter, IBM Plex Mono
 - Next.js 16 (App Router, TypeScript)
 - Tailwind CSS
 - Framer Motion (subtle hover/scroll interactions)
+- Claude API (`@anthropic-ai/sdk`) for the chat widget
 - Fonts are self-hosted (`public/fonts`) rather than loaded from Google's CDN at
   runtime, for reliability and performance.
