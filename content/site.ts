@@ -10,11 +10,16 @@ export const site = {
   location: "Open to remote", // PLACEHOLDER
   email: "hello@yourdomain.com", // PLACEHOLDER — replace with your real email
   resumeHref: "/resume.pdf", // PLACEHOLDER — drop your resume in /public/resume.pdf
-  social: {
-    linkedin: "#", // PLACEHOLDER
-    behance: "#", // PLACEHOLDER
-    dribbble: "#", // PLACEHOLDER
-  },
+  // PLACEHOLDER — swap "#" for your real profile URLs.
+  social: [
+    { label: "Behance", href: "#" },
+    { label: "YouTube", href: "#" },
+    { label: "LinkedIn", href: "#" },
+    { label: "Medium", href: "#" },
+    { label: "Instagram", href: "#" },
+    { label: "Spotify", href: "#" },
+  ],
+  outro: "That's about it",
   nav: [
     { href: "/", label: "Home", glyph: "⌘" },
     { href: "/work", label: "UX in Action", glyph: "✦" },

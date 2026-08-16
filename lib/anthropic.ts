@@ -18,9 +18,9 @@ export function buildSystemPrompt(): string {
   const projectSummaries = projects
     .map((p) => {
       const metrics = p.metrics.map((m) => `${m.label}: ${m.value}`).join(", ");
-      return `- "${p.title}" (${p.year}, ${p.role}, ${p.duration}). ${p.summary} Tags: ${p.tags.join(
+      return `- "${p.title}" — ${p.client} (${p.year}), ${p.discipline}. ${p.summary} Tags: ${p.tags.join(
         ", "
-      )}. Outcome: ${metrics}.`;
+      )}. ${metrics}.`;
     })
     .join("\n");
 

@@ -1,11 +1,5 @@
 import { site } from "@/content/site";
 
-const socialLinks = [
-  { label: "LinkedIn", href: site.social.linkedin },
-  { label: "Behance", href: site.social.behance },
-  { label: "Dribbble", href: site.social.dribbble },
-];
-
 export default function Footer() {
   return (
     <footer id="contact" className="border-t border-white/10 bg-void">
@@ -27,14 +21,20 @@ export default function Footer() {
           <span aria-hidden>&rarr;</span>
         </a>
 
-        <div className="mt-20 flex flex-col gap-6 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-ash">
-            {socialLinks.map((link) => (
-              <a key={link.label} href={link.href} className="transition-colors hover:text-neon">
-                {link.label}
-              </a>
-            ))}
-          </div>
+        <div className="mt-24 flex flex-wrap gap-x-10 gap-y-6 border-t border-white/10 pt-10">
+          {site.social.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="font-display text-base text-chalk transition-colors hover:text-neon"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-16 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <span className="text-sm text-ash">{site.outro}</span>
           <span className="font-mono text-xs text-ash/60">
             &copy; {new Date().getFullYear()} {site.fullName}
           </span>
