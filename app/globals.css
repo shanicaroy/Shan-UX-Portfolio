@@ -3,16 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Space Grotesk";
-  src: url("/fonts/space-grotesk-variable.woff2") format("woff2");
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/inter-variable.woff2") format("woff2");
+  font-family: "Outfit";
+  src: url("/fonts/outfit-variable.woff2") format("woff2");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
@@ -35,10 +27,9 @@
 }
 
 :root {
-  --font-display: "Space Grotesk", sans-serif;
-  --font-body: "Inter", sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Outfit", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
-  --grid-line: rgba(20, 33, 61, 0.08);
 }
 
 * {
@@ -47,21 +38,30 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #000000;
 }
 
 body {
-  background-color: #fbfaf6;
-  color: #14213d;
+  background-color: #000000;
+  color: #ededed;
 }
 
 ::selection {
-  background-color: #ff4e1f;
-  color: #fbfaf6;
+  background-color: #c6f73c;
+  color: #000000;
 }
 
 :focus-visible {
-  outline: 2px solid #ff4e1f;
+  outline: 2px solid #c6f73c;
   outline-offset: 3px;
+}
+
+/* The glow behind accented words in the hero — matches the Webflow site. */
+.neon-glow {
+  color: #c6f73c;
+  text-shadow:
+    0 0 18px rgba(198, 247, 60, 0.55),
+    0 0 48px rgba(198, 247, 60, 0.3);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -74,33 +74,5 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
-}
-
-.blueprint-grid {
-  background-image: var(--tw-bg-blueprint, linear-gradient(to right, var(--grid-line) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px));
-  background-size: 48px 48px;
-}
-
-.tick-edge {
-  position: relative;
-}
-
-.tick-edge::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--grid-line) 0,
-    var(--grid-line) 1px,
-    transparent 1px,
-    transparent 48px
-  );
-  background-position: 0 0;
-  background-size: 48px 8px;
-  background-repeat: repeat-x;
-  opacity: 0.6;
 }

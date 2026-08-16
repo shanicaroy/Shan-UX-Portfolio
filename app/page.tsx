@@ -1,92 +1,69 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 import { projects } from "@/content/projects";
-import GridBackdrop from "@/components/GridBackdrop";
-import SectionLabel from "@/components/SectionLabel";
-import CoordinateReadout from "@/components/CoordinateReadout";
-import InspectFrame from "@/components/InspectFrame";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectGrid from "@/components/ProjectGrid";
 
 export default function Home() {
   return (
     <>
-      {/* Hero — FIG. 00 */}
-      <section className="relative overflow-hidden bg-ink text-paper">
-        <GridBackdrop variant="ink" />
-        <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-between px-6 pb-12 pt-10 sm:px-10">
-          <div className="flex items-center justify-between">
-            <SectionLabel tone="paper">{site.hero.eyebrow}</SectionLabel>
-            <CoordinateReadout />
-          </div>
+      {/* Hero — centred, mirroring the Webflow site */}
+      <section className="px-6 pb-28 pt-20 text-center sm:px-10 sm:pb-36 sm:pt-28">
+        <p className="font-display text-3xl font-medium tracking-tight text-chalk sm:text-5xl">
+          {site.hero.greeting}
+        </p>
+        <h1 className="mx-auto mt-4 max-w-5xl font-display text-3xl font-medium leading-[1.15] tracking-tight text-chalk sm:text-5xl lg:text-6xl">
+          {site.hero.headlineBefore}
+          <span className="neon-glow">{site.hero.headlineAccent}</span>
+          {site.hero.headlineAfter}
+        </h1>
 
-          <div className="max-w-3xl py-16">
-            <InspectFrame tone="paper" label={site.role} className="inline-block">
-              <h1 className="font-display text-4xl font-medium leading-[1.08] tracking-tight sm:text-6xl">
-                {site.hero.headline}
-              </h1>
-            </InspectFrame>
-            <p className="mt-8 max-w-xl text-lg text-paper/70">{site.hero.subhead}</p>
+        <p className="mx-auto mt-10 max-w-2xl text-base text-ash sm:text-lg">
+          {site.hero.subhead}
+        </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a
-                href="#work"
-                className="border border-paper px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] transition-colors hover:border-signal hover:text-signal"
-              >
-                View work
-              </a>
-              <a
-                href="#contact"
-                className="px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-paper/60 transition-colors hover:text-signal"
-              >
-                Get in touch &rarr;
-              </a>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between font-mono text-xs text-paper/40">
-            <span>{site.location}</span>
-            <span>SCROLL — FIG. 01</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Selected work — FIG. 01 */}
-      <section id="work" className="mx-auto max-w-6xl px-6 py-24 sm:px-10">
-        <SectionLabel>Work — FIG. 01</SectionLabel>
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <h2 className="max-w-lg font-display text-3xl leading-tight text-ink sm:text-4xl">
-            Selected work
-          </h2>
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="#contact"
+            className="rounded-lg bg-surface px-8 py-4 text-base text-chalk transition-colors hover:bg-surface-hi"
+          >
+            {site.hero.ctaPrimary}
+          </Link>
           <Link
             href="/work"
-            className="font-mono text-xs uppercase tracking-[0.14em] text-ink-soft transition-colors hover:text-signal"
+            className="rounded-lg border border-neon px-8 py-4 text-base text-chalk shadow-neon-sm transition-shadow hover:shadow-neon"
           >
-            Full index &rarr;
+            See the work
           </Link>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 gap-16 sm:grid-cols-2">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
-          ))}
         </div>
       </section>
 
-      {/* About teaser — FIG. 04 */}
-      <section className="border-t border-ink/10 bg-paper">
-        <div className="mx-auto max-w-6xl px-6 py-24 sm:px-10">
-          <SectionLabel>{site.about.eyebrow}</SectionLabel>
-          <div className="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
-            <h2 className="max-w-lg font-display text-3xl leading-tight text-ink sm:text-4xl">
-              {site.about.body[0]}
-            </h2>
-            <Link
-              href="/about"
-              className="shrink-0 font-mono text-xs uppercase tracking-[0.14em] text-ink-soft transition-colors hover:text-signal"
-            >
-              More about me &rarr;
-            </Link>
-          </div>
+      {/* Selected work — full-bleed staggered grid */}
+      <section id="work" className="px-6 pb-32 sm:px-8">
+        <p className="mb-16 text-center font-mono text-xs uppercase tracking-[0.35em] text-chalk">
+          <span aria-hidden className="mr-4 text-neon">
+            ✦
+          </span>
+          {site.workLabel}
+          <span aria-hidden className="ml-4 text-neon">
+            ✦
+          </span>
+        </p>
+
+        <ProjectGrid projects={projects} />
+      </section>
+
+      {/* About teaser */}
+      <section className="border-t border-white/10 px-6 py-24 sm:px-10">
+        <div className="mx-auto flex max-w-6xl flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
+          <h2 className="max-w-2xl font-display text-2xl font-medium leading-snug tracking-tight text-chalk sm:text-3xl">
+            {site.about.body[1]}
+          </h2>
+          <Link
+            href="/about"
+            className="shrink-0 text-base text-ash transition-colors hover:text-neon"
+          >
+            {site.about.heading} &rarr;
+          </Link>
         </div>
       </section>
     </>

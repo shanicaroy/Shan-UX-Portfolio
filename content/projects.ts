@@ -1,13 +1,21 @@
 // ---------------------------------------------------------------------------
-// PROJECT / CASE STUDY CONTENT — placeholder data.
-// Replace each entry with a real project. `cover` picks one of the abstract
-// schematic patterns in components/CaseStudyCover.tsx — swap for a real
-// screenshot by rendering an <img> instead once you have artwork.
+// PROJECTS — names and metadata taken from shans-ux-folio.webflow.io.
+// Case-study body copy is still PLACEHOLDER; replace `sections` and `metrics`
+// with the real write-ups. Covers are generated SVGs (components/
+// CaseStudyCover.tsx) until real artwork is dropped in.
 // ---------------------------------------------------------------------------
 
 export type Project = {
   slug: string;
+  /** Full case-study heading, used on the grid and the detail page. */
   title: string;
+  /** Client / product line shown under the title. */
+  client: string;
+  /** Discipline chip, e.g. "UX Design & Research". */
+  discipline: string;
+  status: "Shipped" | "Concept" | "Ongoing";
+  /** Cover aspect ratio — varying these staggers the grid. */
+  aspect: "16/9" | "3/2" | "4/3" | "1/1";
   summary: string;
   role: string;
   duration: string;
@@ -23,134 +31,76 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "checkout-redesign",
-    title: "Redesigning checkout for a retail app",
-    summary:
-      "Cut checkout abandonment by simplifying a five-step flow into two decisions, without removing any of the options finance needed to keep.",
-    role: "Lead Product Designer",
-    duration: "6 weeks",
-    year: "2024",
-    tags: ["Mobile", "E-commerce", "Research"],
-    cover: "flow",
-    metrics: [
-      { label: "Checkout completion", value: "+18%" },
-      { label: "Time to purchase", value: "-41%" },
-      { label: "Support tickets", value: "-27%" },
-    ],
-    sections: [
-      {
-        heading: "The constraint",
-        body: [
-          "Checkout had grown one field at a time over three years — every team had a reason to add a step. The real constraint wasn't visual clutter, it was that finance, fraud, and marketing all owned pieces of the same screen and none of them wanted to lose their field.",
-          "The brief wasn't 'simplify checkout.' It was 'simplify checkout without a single stakeholder feeling like they lost.'",
-        ],
-      },
-      {
-        heading: "Process",
-        body: [
-          "I mapped every field on the flow to the team that requested it and the data it fed, then sat with each stakeholder to ask what would break if it moved, not if it disappeared.",
-          "That reframing turned an ownership fight into a sequencing problem — most fields didn't need to be seen, they needed to be collected at the right moment.",
-        ],
-      },
-      {
-        heading: "Solution",
-        body: [
-          "Two screens instead of five: a single review-and-pay step for returning customers, and a progressive step for new customers that only asked for what was needed to authorize the card in front of them.",
-          "Fields that existed for internal reasons (fraud scoring, attribution) moved server-side or into passive capture, invisible to the user but intact for every team that depended on them.",
-        ],
-      },
-      {
-        heading: "Outcome",
-        body: [
-          "Shipped to 100% of traffic after a four-week A/B test. Checkout completion improved most for first-time mobile buyers, the segment with the highest historical drop-off.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "design-system-rollout",
-    title: "Rolling out a design system across three product teams",
-    summary:
-      "Took a component library from one designer's Figma file to the shared source of truth for three teams shipping on different release cadences.",
-    role: "Design Systems Lead",
-    duration: "4 months",
-    year: "2023",
-    tags: ["Design Systems", "Cross-functional", "Documentation"],
+    slug: "uniskai-finops-platform",
+    title: "AI based Multi Cloud FinOps & DevOps SaaS Platform",
+    client: "Uniskai by Profisea Labs",
+    discipline: "UX Design & Research",
+    status: "Shipped",
+    aspect: "4/3",
+    year: "2021 – 2023",
+    role: "UX Designer",
+    duration: "2 years",
+    tags: ["SaaS", "FinOps", "Research"],
     cover: "grid",
+    summary:
+      "A multi-cloud cost and operations platform that turns sprawling AWS, Azure and GCP billing data into decisions a DevOps team can act on.",
     metrics: [
-      { label: "Design-to-dev handoff time", value: "-35%" },
-      { label: "Components adopted", value: "94%" },
-      { label: "Teams onboarded", value: "3" },
+      { label: "Cloud providers unified", value: "3" },
+      { label: "Time on platform", value: "2 years" },
+      { label: "Role", value: "UX + Research" },
     ],
     sections: [
       {
         heading: "The constraint",
         body: [
-          "The existing component library was accurate but unowned — no one had the authority to say no to a one-off variant, so every team had quietly forked it. Adoption wasn't a design problem, it was a governance problem.",
+          "PLACEHOLDER — replace with the real write-up. Describe the problem Uniskai was solving and the constraint that shaped the design.",
         ],
       },
       {
         heading: "Process",
         body: [
-          "I audited every live product surface against the library, categorizing drift as 'missing capability' (the system's fault) versus 'unnecessary variant' (a process failure), which gave the rollout a legitimate, shared starting point.",
-          "Each team nominated a design-systems contact who reviewed proposed additions with me weekly — small enough to move fast, visible enough that decisions stuck.",
-        ],
-      },
-      {
-        heading: "Solution",
-        body: [
-          "Rebuilt the library around documented usage rules, not just components — when to use which button variant, what spacing tokens meant, and what required a system-team review before shipping.",
-          "Paired every component with a living code example so engineers could verify behavior without asking a designer.",
+          "PLACEHOLDER — how you approached the research and design work.",
         ],
       },
       {
         heading: "Outcome",
-        body: [
-          "Within two quarters, 94% of new screens used system components without modification, and design QA time on handoff dropped by over a third.",
-        ],
+        body: ["PLACEHOLDER — what shipped and what changed as a result."],
       },
     ],
   },
   {
-    slug: "onboarding-activation",
-    title: "Fixing a broken first-run experience",
+    slug: "virtubox-kiosk",
+    title: "VirtuBox Kiosk Design",
+    client: "Uniskai by Profisea Labs",
+    discipline: "PX Design",
+    status: "Shipped",
+    aspect: "3/2",
+    year: "2021 – 2023",
+    role: "Product Experience Designer",
+    duration: "—",
+    tags: ["Kiosk", "PX Design", "Hardware"],
+    cover: "flow",
     summary:
-      "Diagnosed why 60% of new signups never reached the app's core action, and rebuilt onboarding around the one thing that predicted retention.",
-    role: "Product Designer",
-    duration: "8 weeks",
-    year: "2022",
-    tags: ["Onboarding", "Activation", "Data-informed"],
-    cover: "signal",
+      "A self-service kiosk experience designed for first-time users — where every interaction has to work without a manual, a login, or a second attempt.",
     metrics: [
-      { label: "Day-1 activation", value: "+52%" },
-      { label: "7-day retention", value: "+19%" },
-      { label: "Onboarding steps", value: "9 → 4" },
+      { label: "Surface", value: "Kiosk" },
+      { label: "Discipline", value: "PX Design" },
+      { label: "Year", value: "2021 – 2023" },
     ],
     sections: [
       {
         heading: "The constraint",
         body: [
-          "Onboarding had nine steps because product, growth, and legal each needed something confirmed early. But the data showed only one action — creating a first project — actually predicted whether a user stuck around.",
+          "PLACEHOLDER — replace with the real write-up for VirtuBox.",
         ],
       },
       {
         heading: "Process",
-        body: [
-          "I ran a cohort analysis against activation events to find which single action correlated most with 7-day retention, then watched ten first-run sessions to see exactly where people gave up before reaching it.",
-          "Most drop-off wasn't confusion — it was users being asked to make five decisions before they'd seen any value.",
-        ],
-      },
-      {
-        heading: "Solution",
-        body: [
-          "Rebuilt onboarding around a single goal: get to a first project as fast as possible, with everything else — profile details, preferences, legal confirmations — deferred to contextual moments after activation.",
-        ],
+        body: ["PLACEHOLDER — your approach to the kiosk design."],
       },
       {
         heading: "Outcome",
-        body: [
-          "Day-1 activation rose 52% and stayed stable over the following two quarters, with no measurable increase in downstream support or compliance issues from the deferred steps.",
-        ],
+        body: ["PLACEHOLDER — what shipped and how it performed."],
       },
     ],
   },

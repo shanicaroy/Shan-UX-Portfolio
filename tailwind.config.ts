@@ -9,40 +9,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#FBFAF6",
-        ink: "#14213D",
-        "ink-soft": "#3C4A68",
-        signal: "#FF4E1F",
-        teal: "#38B6A6",
-        grid: "#C7CAD1",
-        "grid-dark": "#2A3A5C",
+        // Palette lifted from shans-ux-folio.webflow.io
+        void: "#000000", // page background
+        surface: "#141414", // cards, buttons, inset panels
+        "surface-hi": "#1E1E1E", // hover state for surfaces
+        chalk: "#EDEDED", // primary text
+        ash: "#9A9A9A", // secondary / muted text
+        neon: "#C6F73C", // accent — the lime glow
+        "neon-dim": "#8FB32B",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
-      backgroundImage: {
-        blueprint:
-          "linear-gradient(to right, var(--grid-line) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px)",
-      },
-      backgroundSize: {
-        grid: "48px 48px",
-        "grid-sm": "24px 24px",
+      boxShadow: {
+        neon: "0 0 24px rgba(198, 247, 60, 0.45)",
+        "neon-sm": "0 0 12px rgba(198, 247, 60, 0.35)",
       },
       keyframes: {
         "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(12px)" },
+          "0%": { opacity: "0", transform: "translateY(14px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "draw-line": {
-          "0%": { transform: "scaleX(0)" },
-          "100%": { transform: "scaleX(1)" },
         },
       },
       animation: {
-        "fade-up": "fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "draw-line": "draw-line 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "fade-up": "fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       },
     },
   },

@@ -1,49 +1,59 @@
 // ---------------------------------------------------------------------------
-// SITE CONTENT — edit everything in this file with your real details.
-// Nothing here is fetched from anywhere; it's the single source of truth
-// for copy that appears across the site (nav, hero, about, contact, footer).
+// SITE CONTENT — sourced from shans-ux-folio.webflow.io.
+// Items marked PLACEHOLDER still need real values.
 // ---------------------------------------------------------------------------
 
 export const site = {
-  name: "Shan", // PLACEHOLDER — replace with your full name
-  role: "Product & UX Designer",
-  location: "Based in — / Open to remote",
-  email: "hello@yourdomain.com", // PLACEHOLDER
+  name: "Shanica",
+  fullName: "Shanica Roy",
+  role: "Product Designer",
+  location: "Open to remote", // PLACEHOLDER
+  email: "hello@yourdomain.com", // PLACEHOLDER — replace with your real email
   resumeHref: "/resume.pdf", // PLACEHOLDER — drop your resume in /public/resume.pdf
   social: {
     linkedin: "#", // PLACEHOLDER
+    behance: "#", // PLACEHOLDER
     dribbble: "#", // PLACEHOLDER
-    github: "#", // PLACEHOLDER
   },
+  nav: [
+    { href: "/", label: "Home", glyph: "⌘" },
+    { href: "/work", label: "UX in Action", glyph: "✦" },
+    { href: "/about", label: "Who's She ?", glyph: "" },
+    { href: "#contact", label: "Say Hi", glyph: "↗" },
+  ],
   hero: {
-    eyebrow: "Portfolio — FIG. 00",
-    headline: "I design the parts of the product people don't notice are working.",
+    greeting: "Hi this is Shanica",
+    // The words wrapped in the accent colour, matched against `headline`.
+    headlineBefore: "I ",
+    headlineAccent: "design PX",
+    headlineAfter: " you'd actually wanna use",
     subhead:
-      "I'm Shan, a product designer who spends most of my time in the gap between what a system does and what a person expects it to do. Below is a set of measured, shipped work — not concepts.",
+      "Product Designer with 6 years of UX design experience, currently working for Salesforce at EY.",
+    ctaPrimary: "Let's connect?",
   },
+  workLabel: "Selected Work",
   about: {
-    eyebrow: "About — FIG. 04",
-    heading: "How I work",
+    heading: "Who's She ?",
     body: [
-      "I start every project by finding the constraint that actually matters — the one piece of technical debt, business pressure, or user habit that will decide whether the design succeeds. Everything downstream gets measured against it.",
-      "I prototype in the fidelity that answers the question in front of me: sometimes that's a paper sketch, sometimes it's production-quality code. I'd rather be wrong fast than polished slow.",
+      "Product Designer with 6 years of UX design experience, currently working for Salesforce at EY.",
+      // PLACEHOLDER — add the rest of your About copy from the Webflow site
+      "I work across research and interface design, most often on complex B2B products where the hard part is making an intricate system feel obvious to the person using it.",
       "I write down decisions, not just deliverables — so the team inherits the reasoning, not just the Figma file.",
     ],
     skills: [
-      { label: "Research", items: ["Usability testing", "Diary studies", "Stakeholder interviews", "Journey mapping"] },
-      { label: "Design", items: ["Interaction design", "Design systems", "Prototyping", "Accessibility (WCAG 2.2)"] },
-      { label: "Craft", items: ["Figma", "Framer", "HTML / CSS", "Motion & micro-interaction"] },
-      { label: "Practice", items: ["Product strategy", "Cross-functional facilitation", "Design critique", "Metrics & experimentation"] },
+      { label: "Research", items: ["Usability testing", "User interviews", "Journey mapping", "Competitive analysis"] },
+      { label: "Design", items: ["Interaction design", "Design systems", "Prototyping", "Accessibility"] },
+      { label: "Craft", items: ["Figma", "Webflow", "HTML / CSS", "Motion & micro-interaction"] },
+      { label: "Practice", items: ["Product strategy", "Cross-functional facilitation", "Design critique", "Workshop facilitation"] },
     ],
     experience: [
-      { period: "2023 — Present", role: "Senior Product Designer", org: "Company Name" }, // PLACEHOLDER
-      { period: "2021 — 2023", role: "Product Designer", org: "Company Name" }, // PLACEHOLDER
-      { period: "2019 — 2021", role: "UX Designer", org: "Company Name" }, // PLACEHOLDER
+      { period: "Present", role: "Product Designer — Salesforce", org: "EY" },
+      { period: "2021 — 2023", role: "UX Designer", org: "Profisea Labs" },
     ],
   },
   contact: {
-    eyebrow: "Contact — FIG. 05",
-    heading: "Let's talk about your product.",
-    body: "Open to full-time roles and select freelance case work. Fastest way to reach me is email — I read everything.",
+    eyebrow: "Say Hi",
+    heading: "Let's build something people actually want to use.",
+    body: "Open to full-time roles and select freelance work. Fastest way to reach me is email — I read everything.",
   },
 } as const;
