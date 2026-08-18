@@ -1,19 +1,19 @@
 import Link from "next/link";
+import Shell from "@/components/Shell";
 
 export default function NotFound() {
   return (
-    <section className="mx-auto flex min-h-[60vh] max-w-6xl flex-col items-start justify-center px-6 sm:px-10">
-      <span className="font-mono text-xs uppercase tracking-wide text-signal">Error — FIG. 404</span>
-      <h1 className="mt-4 font-display text-4xl text-ink sm:text-5xl">Page not found</h1>
-      <p className="mt-4 max-w-md text-ink-soft">
-        This coordinate doesn&apos;t map to anything. The page may have moved or never existed.
-      </p>
+    <Shell as="section" className="flex min-h-[60vh] flex-col justify-center py-24">
+      <p className="font-sans text-xs uppercase tracking-label text-muted">404</p>
+      <h1 className="mt-6 max-w-[16ch] font-serif text-[2.5rem] leading-[1.08] text-ink sm:text-5xl">
+        This page doesn&rsquo;t exist.
+      </h1>
       <Link
         href="/"
-        className="mt-8 inline-flex items-center gap-3 border border-ink px-6 py-3 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-colors hover:border-signal hover:text-signal"
+        className="mt-10 font-sans text-xs uppercase tracking-label text-muted transition-colors duration-200 hover:text-ink"
       >
-        Back home
+        &larr; Back home
       </Link>
-    </section>
+    </Shell>
   );
 }

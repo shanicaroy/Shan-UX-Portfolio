@@ -1,45 +1,27 @@
-import { site } from "@/content/site";
+import { siteConfig, socialLinks } from "@/content/config";
+import Shell from "./Shell";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="border-t border-white/10 bg-void">
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:px-10 sm:py-32">
-        <span className="font-mono text-xs uppercase tracking-[0.2em] text-neon">
-          {site.contact.eyebrow}
-        </span>
+    <footer className="border-t border-rule">
+      <Shell className="flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between sm:py-14">
+        <p className="font-sans text-xs text-muted">{siteConfig.footer.signature}</p>
 
-        <h2 className="mt-6 max-w-3xl font-display text-3xl font-medium leading-[1.15] tracking-tight text-chalk sm:text-5xl">
-          {site.contact.heading}
-        </h2>
-        <p className="mt-6 max-w-md text-ash">{site.contact.body}</p>
-
-        <a
-          href={`mailto:${site.email}`}
-          className="mt-10 inline-flex items-center gap-3 rounded-lg border border-neon px-6 py-4 text-base text-chalk shadow-neon-sm transition-shadow hover:shadow-neon"
-        >
-          {site.email}
-          <span aria-hidden>&rarr;</span>
-        </a>
-
-        <div className="mt-24 flex flex-wrap gap-x-10 gap-y-6 border-t border-white/10 pt-10">
-          {site.social.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="font-display text-base text-chalk transition-colors hover:text-neon"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        <div className="mt-16 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <span className="text-sm text-ash">{site.outro}</span>
-          <span className="font-mono text-xs text-ash/60">
-            &copy; {new Date().getFullYear()} {site.fullName}
-          </span>
-        </div>
-      </div>
+        <nav aria-label="Social">
+          <ul className="flex flex-wrap gap-x-8 gap-y-3">
+            {socialLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="font-sans text-xs text-muted underline-offset-4 transition-colors duration-200 hover:text-ink hover:underline"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </Shell>
     </footer>
   );
 }

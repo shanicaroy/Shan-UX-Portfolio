@@ -1,137 +1,87 @@
 // ---------------------------------------------------------------------------
-// PROJECTS — names, clients and disciplines taken from
-// shans-ux-folio.webflow.io. Case-study body copy (`sections`) and `metrics`
-// are still PLACEHOLDER; replace with the real write-ups. Covers are generated
-// SVGs (components/CaseStudyCover.tsx) until real artwork is dropped in.
+// PROJECTS
+// Titles, clients, disciplines and years are real — taken from the existing
+// Webflow portfolio. Case-study body copy is PLACEHOLDER until the real
+// write-ups are supplied.
+//
+// `layout` drives the editorial composition on the homepage:
+//   featured  — full width, widest crop, opens the section
+//   standard  — 8 of 12 columns, left-aligned
+//   offset    — 8 of 12 columns, pushed right
+//   wide      — full width, cinematic crop
+//
+// `image` points at /public/projects/*. When a file is missing the card falls
+// back to a clearly-marked placeholder rather than inventing artwork.
 // ---------------------------------------------------------------------------
+
+export type ProjectLayout = "featured" | "standard" | "offset" | "wide";
 
 export type Project = {
   slug: string;
-  /** Full case-study heading, used on the grid and the detail page. */
   title: string;
-  /** Client / product line shown under the title. */
-  client: string;
-  /** Discipline chip, e.g. "UX Design & Research". */
-  discipline: string;
-  /** Cover aspect ratio — varying these staggers the grid. */
-  aspect: "16/9" | "3/2" | "4/3" | "1/1";
-  summary: string;
-  role: string;
+  description: string;
+  category: string;
   year: string;
-  tags: string[];
-  cover: "flow" | "grid" | "signal";
-  metrics: { label: string; value: string }[];
-  sections: {
-    heading: string;
-    body: string[];
-  }[];
+  client?: string;
+  image: string;
+  layout: ProjectLayout;
 };
-
-const placeholderSections = (name: string) => [
-  {
-    heading: "The constraint",
-    body: [`PLACEHOLDER — the problem ${name} set out to solve, and the constraint that shaped the design.`],
-  },
-  {
-    heading: "Process",
-    body: ["PLACEHOLDER — how you approached the research and design work."],
-  },
-  {
-    heading: "Outcome",
-    body: ["PLACEHOLDER — what shipped, and what changed as a result."],
-  },
-];
 
 export const projects: Project[] = [
   {
-    slug: "uniskai-finops-platform",
+    slug: "multi-cloud-finops-platform",
     title: "AI based Multi Cloud FinOps & DevOps SaaS Platform",
+    description:
+      "Turning sprawling multi-cloud billing data into decisions a DevOps team can act on.",
+    category: "Product Design · UX Research",
+    year: "2023",
     client: "Uniskai by Profisea Labs",
-    discipline: "UX Design & Research",
-    aspect: "4/3",
-    year: "2021 – 2023",
-    role: "UX Design & Research",
-    tags: ["SaaS", "FinOps", "Research"],
-    cover: "grid",
-    summary:
-      "A multi-cloud cost and operations platform that turns sprawling AWS, Azure and GCP billing data into decisions a DevOps team can act on.",
-    metrics: [
-      { label: "Client", value: "Profisea Labs" },
-      { label: "Discipline", value: "UX + Research" },
-    ],
-    sections: placeholderSections("Uniskai"),
-  },
-  {
-    slug: "virtubox-kiosk",
-    title: "VirtuBox Kiosk Design",
-    client: "Uniskai by Profisea Labs",
-    discipline: "PX Design",
-    aspect: "3/2",
-    year: "2021 – 2023",
-    role: "PX Design",
-    tags: ["Kiosk", "PX Design", "Hardware"],
-    cover: "flow",
-    summary:
-      "A self-service kiosk experience designed for first-time users — where every interaction has to work without a manual, a login, or a second attempt.",
-    metrics: [
-      { label: "Surface", value: "Kiosk" },
-      { label: "Discipline", value: "PX Design" },
-    ],
-    sections: placeholderSections("VirtuBox"),
+    image: "/projects/multi-cloud-finops-platform.jpg",
+    layout: "featured",
   },
   {
     slug: "customer-lifecycle-management",
     title: "Customer Lifecycle Management SaaS Web Tool",
+    description:
+      "One view of every account, replacing three dashboards the team was stitching together by hand.",
+    category: "UX Design · Research",
+    year: "2023",
     client: "Bhanzu",
-    discipline: "UX Design & Research",
-    aspect: "16/9",
-    year: "2021 – 2023",
-    role: "UX Design & Research",
-    tags: ["SaaS", "CRM", "Research"],
-    cover: "signal",
-    summary:
-      "A web tool for managing the full customer lifecycle — built so the team could see where every account stood without stitching together three dashboards.",
-    metrics: [
-      { label: "Client", value: "Bhanzu" },
-      { label: "Discipline", value: "UX + Research" },
-    ],
-    sections: placeholderSections("the Bhanzu CLM tool"),
+    image: "/projects/customer-lifecycle-management.jpg",
+    layout: "standard",
+  },
+  {
+    slug: "virtubox-kiosk",
+    title: "VirtuBox Kiosk Design",
+    description:
+      "A self-service kiosk for first-time users — no manual, no login, no second attempt.",
+    category: "PX Design",
+    year: "2022",
+    client: "Profisea Labs",
+    image: "/projects/virtubox-kiosk.jpg",
+    layout: "offset",
   },
   {
     slug: "fintech-mobile-app",
     title: "Fintech Mobile App Design",
-    client: "Uniskai by Profisea Labs",
-    discipline: "UX Research",
-    aspect: "1/1",
-    year: "2021 – 2023",
-    role: "UX Research",
-    tags: ["Fintech", "Mobile", "Research"],
-    cover: "flow",
-    summary:
-      "Research-led design for a fintech mobile app, where trust and clarity matter more than any individual screen.",
-    metrics: [
-      { label: "Surface", value: "Mobile" },
-      { label: "Discipline", value: "UX Research" },
-    ],
-    sections: placeholderSections("the fintech app"),
+    description:
+      "Research-led design for a fintech app, where trust matters more than any single screen.",
+    category: "UX Research",
+    year: "2022",
+    client: "Profisea Labs",
+    image: "/projects/fintech-mobile-app.jpg",
+    layout: "wide",
   },
   {
     slug: "design-system-1-0",
     title: "Design System 1.0",
-    client: "Uniskai by Profisea Labs",
-    discipline: "Design System Design",
-    aspect: "3/2",
-    year: "2021 – 2023",
-    role: "Design System Design",
-    tags: ["Design Systems", "Components", "Documentation"],
-    cover: "grid",
-    summary:
-      "The first version of a shared component library — built to be the source of truth rather than one more file teams quietly fork.",
-    metrics: [
-      { label: "Version", value: "1.0" },
-      { label: "Discipline", value: "Design Systems" },
-    ],
-    sections: placeholderSections("Design System 1.0"),
+    description:
+      "A shared component library built to be the source of truth, not one more file teams quietly fork.",
+    category: "Design Systems",
+    year: "2022",
+    client: "Profisea Labs",
+    image: "/projects/design-system-1-0.jpg",
+    layout: "standard",
   },
 ];
 

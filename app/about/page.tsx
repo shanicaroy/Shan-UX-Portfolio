@@ -1,67 +1,77 @@
 import type { Metadata } from "next";
-import { site } from "@/content/site";
+import { siteConfig } from "@/content/config";
+import Shell from "@/components/Shell";
 
 export const metadata: Metadata = {
-  title: `${site.about.heading} — ${site.fullName}`,
+  title: "About",
+  description: siteConfig.metaDescription,
 };
 
-export default function About() {
+/**
+ * PLACEHOLDER COPY. Each block below is a prompt for real content — replace the
+ * body text, keep the structure. Nothing here should be published as-is.
+ */
+const sections = [
+  {
+    heading: "Introduction",
+    body: "Placeholder — a short introduction in Shanica's own voice. Who she is, and how she thinks about the work.",
+  },
+  {
+    heading: "Background",
+    body: "Placeholder — professional background: the arc of the career so far, the kinds of teams and products worked on.",
+  },
+  {
+    heading: "Design philosophy",
+    body: "Placeholder — how design decisions get made. What she optimises for, and what she is willing to trade away.",
+  },
+  {
+    heading: "Areas of expertise",
+    body: "Placeholder — the disciplines she works across, e.g. product design, UX research, design systems, design leadership.",
+  },
+  {
+    heading: "Current work",
+    body: "Placeholder — what she is working on now, and what kind of problems she is drawn to.",
+  },
+  {
+    heading: "Speaking",
+    body: "Placeholder — talks, panels or workshops. Remove this section if not applicable.",
+  },
+  {
+    heading: "Mentoring",
+    body: "Placeholder — mentoring and community work. Remove this section if not applicable.",
+  },
+  {
+    heading: "Writing",
+    body: "Placeholder — what she writes about and where it is published.",
+  },
+];
+
+export default function AboutPage() {
   return (
-    <section className="mx-auto max-w-6xl px-6 pb-32 pt-20 sm:px-10 sm:pt-28">
-      <h1 className="font-display text-4xl font-medium leading-[1.15] tracking-tight text-chalk sm:text-6xl">
-        Who&rsquo;s <span className="neon-glow">She</span> ?
+    <Shell as="section" className="py-24 sm:py-32">
+      <h1 className="max-w-[18ch] font-serif text-[2.5rem] leading-[1.05] text-ink sm:text-6xl">
+        {siteConfig.hero.headline}
       </h1>
+      <p className="mt-8 max-w-xl font-sans text-base leading-relaxed text-muted sm:text-lg">
+        {siteConfig.hero.statement}
+      </p>
 
-      <div className="mt-16 grid grid-cols-1 gap-16 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <div>
-          <div className="flex max-w-2xl flex-col gap-6 text-lg text-ash">
-            {site.about.body.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
-          </div>
-
-          <a
-            href={site.resumeHref}
-            className="mt-12 inline-flex items-center gap-3 rounded-lg border border-neon px-6 py-4 text-base text-chalk shadow-neon-sm transition-shadow hover:shadow-neon"
-          >
-            Download resume
-            <span aria-hidden>&darr;</span>
-          </a>
-
-          <div className="mt-24">
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-neon">Toolkit</span>
-            <div className="mt-8 grid grid-cols-1 gap-10 sm:grid-cols-2">
-              {site.about.skills.map((group) => (
-                <div key={group.label}>
-                  <h2 className="font-display text-xl font-medium text-chalk">{group.label}</h2>
-                  <ul className="mt-4 flex flex-col gap-2">
-                    {group.items.map((item) => (
-                      <li key={item} className="text-base text-ash">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <aside className="h-fit rounded-xl bg-surface p-8">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-neon">Experience</span>
-          <ol className="mt-8 flex flex-col gap-8">
-            {site.about.experience.map((entry) => (
-              <li key={`${entry.period}-${entry.role}`}>
-                <span className="block font-mono text-xs text-ash">{entry.period}</span>
-                <span className="mt-2 block font-display text-lg font-medium text-chalk">
-                  {entry.role}
-                </span>
-                <span className="block text-sm text-ash">{entry.org}</span>
-              </li>
-            ))}
-          </ol>
-        </aside>
+      <div className="mt-24 grid grid-cols-1 gap-x-16 gap-y-14 lg:grid-cols-2">
+        {sections.map((section) => (
+          <section key={section.heading}>
+            <h2 className="border-t border-rule pt-5 font-sans text-xs uppercase tracking-label text-muted">
+              {section.heading}
+            </h2>
+            <p className="mt-5 max-w-prose font-sans text-base leading-relaxed text-ink/85">
+              {section.body}
+            </p>
+          </section>
+        ))}
       </div>
-    </section>
+
+      <p className="mt-20 font-sans text-xs text-muted/60">
+        Placeholder copy — replace it in <code>app/about/page.tsx</code>.
+      </p>
+    </Shell>
   );
 }
