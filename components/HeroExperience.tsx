@@ -4,8 +4,9 @@ import Shell from "./Shell";
 
 /**
  * Hero and experience share one row on desktop: the headline holds the left
- * seven columns, the experience list sits in the right four. They only stack
- * below `lg` — the side-by-side relationship is the point of the composition.
+ * eight columns, the experience list sits in the right three. They stack below
+ * `xl` — narrower than that the headline would crowd the list — but the
+ * side-by-side relationship is the point of the composition on desktop.
  */
 export default function HeroExperience() {
   return (
