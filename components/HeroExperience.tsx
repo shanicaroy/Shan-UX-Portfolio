@@ -11,7 +11,7 @@ import Shell from "./Shell";
  */
 export default function HeroExperience() {
   return (
-    <Shell as="section" className="grid grid-cols-12 items-start gap-x-8 gap-y-16 pb-14 pt-28 sm:pt-36 lg:pb-16 lg:pt-48 xl:pt-56">
+    <Shell as="section" className="grid grid-cols-12 items-start gap-x-8 gap-y-12 pb-12 pt-20 sm:pt-24 lg:pb-14 lg:pt-32 xl:pt-36">
       {/* Left — headline. From `sm` up, line one is held on a single line so the
           break before the emphasised close is the only one; on the narrowest
           screens it wraps naturally rather than overflowing. */}

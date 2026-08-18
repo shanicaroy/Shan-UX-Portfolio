@@ -15,12 +15,12 @@ export default function WorkSection() {
   ];
 
   return (
-    <Shell as="section" id="work" className="scroll-mt-16 pb-20 lg:pb-28">
+    <Shell as="section" id="work" className="scroll-mt-16 pb-16 lg:pb-20">
       <h2 className="sr-only">Selected Work</h2>
 
-      <div className="grid grid-cols-1 gap-x-8 gap-y-12 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-2">
         {columns.map((column, col) => (
-          <div key={col} className="flex flex-col gap-12 lg:gap-14">
+          <div key={col} className="flex flex-col gap-10 lg:gap-12">
             {column.map((project) => (
               <ProjectCard
                 key={project.slug}

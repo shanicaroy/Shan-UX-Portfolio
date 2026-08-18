@@ -4,7 +4,7 @@ import Shell from "./Shell";
 export default function Footer() {
   return (
     <footer className="border-t border-rule">
-      <Shell className="flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between lg:py-14">
+      <Shell className="flex flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between lg:py-12">
         <p className="text-base text-muted sm:text-[17px]">{siteConfig.footer.signature}</p>
 
         <nav aria-label="Social">

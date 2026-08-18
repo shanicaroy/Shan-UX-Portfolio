@@ -3,12 +3,12 @@ import Shell from "./Shell";
 
 export default function WritingSection() {
   return (
-    <Shell as="section" id="writing" className="scroll-mt-16 pb-20 lg:pb-28">
+    <Shell as="section" id="writing" className="scroll-mt-16 pb-16 lg:pb-20">
       <h2 className="border-t border-rule pt-5 font-mono text-[13px] uppercase tracking-label text-muted">
         Writing
       </h2>
 
-      <div className="mt-8 grid grid-cols-12 gap-x-8">
+      <div className="mt-6 grid grid-cols-12 gap-x-8">
         <p className="col-span-12 max-w-xl text-lg leading-relaxed text-muted lg:col-span-7">
           Notes on UX and product design, and on the psychology and behaviour underneath
           them.
@@ -16,11 +16,11 @@ export default function WritingSection() {
       </div>
 
       {writing.length === 0 ? (
-        <p className="mt-10 border-t border-rule pt-6 text-base text-muted">
+        <p className="mt-8 border-t border-rule pt-5 text-base text-muted">
           Pieces in progress.
         </p>
       ) : (
-      <ul className="mt-10 border-t border-rule">
+      <ul className="mt-8 border-t border-rule">
         {writing.map((article, i) => (
           <li key={`${article.year}-${i}`}>
             <a
