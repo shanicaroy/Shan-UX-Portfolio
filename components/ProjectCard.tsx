@@ -2,54 +2,49 @@ import Link from "next/link";
 import type { Project } from "@/content/projects";
 import ProjectCanvas from "./ProjectCanvas";
 
+const ASPECT: Record<Project["aspect"], string> = {
+  "16/9": "aspect-[16/9]",
+  "3/2": "aspect-[3/2]",
+  "4/3": "aspect-[4/3]",
+  "1/1": "aspect-square",
+};
+
 /**
- * One editorial project feature: a cover that fills the content width at large
- * vertical scale, then a metadata row — title and description left, category /
- * year / company right.
+ * One project in the two-column grid: a cover filling the column, then a
+ * caption whose first line puts the title left and the metadata right — the
+ * description sits beneath, where a long title has room to breathe.
  */
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article>
       <Link href={`/work/${project.slug}`} className="group block">
-        {/* Cover — spans the full content width; tall enough to dominate the viewport */}
-        <div className="w-full overflow-hidden border border-rule aspect-[4/3] sm:aspect-[3/2] lg:aspect-[16/10]">
+        <div className={`w-full overflow-hidden border border-rule ${ASPECT[project.aspect]}`}>
           <ProjectCanvas index={index} alt={`${project.title} — case study cover`} />
         </div>
 
-        <div className="mt-8 grid grid-cols-12 gap-x-8 gap-y-5">
-          <div className="col-span-12 lg:col-span-7">
-            <h3 className="display max-w-3xl text-2xl font-medium leading-[1.15] text-ink sm:text-3xl lg:text-[2.5rem]">
-              {project.title}
-            </h3>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
-              {project.description}
-            </p>
-          </div>
-
-          <div className="col-span-12 lg:col-span-4 lg:col-start-9 lg:text-right">
-            <p className="text-[11px] uppercase tracking-label text-muted">
-              {project.category}
-              <span aria-hidden className="mx-2 text-rule">
-                ·
-              </span>
-              {project.year}
-            </p>
-            {project.company && (
-              <p className="mt-2 text-[11px] uppercase tracking-label text-muted/60">
-                {project.company}
-              </p>
-            )}
-            <span className="mt-5 inline-block text-[11px] uppercase tracking-label text-muted transition-colors duration-200 group-hover:text-ink">
-              View case study
-              <span
-                aria-hidden
-                className="ml-2 inline-block transition-transform duration-300 ease-editorial group-hover:translate-x-1"
-              >
-                &rarr;
-              </span>
+        {/* Title and metadata only share a baseline once the column is wide
+            enough for it; below `xl` the metadata drops beneath so long titles
+            aren't squeezed into a narrow measure. */}
+        <div className="mt-6 flex flex-col gap-x-8 gap-y-3 xl:flex-row xl:items-baseline xl:justify-between">
+          <h3 className="display max-w-xl text-xl font-medium leading-[1.2] text-ink transition-opacity duration-200 group-hover:opacity-70 sm:text-2xl">
+            {project.title}
+          </h3>
+          <p className="shrink-0 text-[11px] uppercase tracking-label text-muted xl:text-right">
+            {project.category}
+            <span aria-hidden className="mx-2 text-rule">
+              ·
             </span>
-          </div>
+            {project.year}
+          </p>
         </div>
+
+        <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">{project.description}</p>
+
+        {project.company && (
+          <p className="mt-3 text-[11px] uppercase tracking-label text-muted/55">
+            {project.company}
+          </p>
+        )}
       </Link>
     </article>
   );

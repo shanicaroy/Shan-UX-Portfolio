@@ -16,6 +16,11 @@ export type Project = {
   year: string;
   company?: string;
   image: string;
+  /**
+   * Cover crop. The two columns start level, so varying these is what makes
+   * the grid stagger — keep a mix of tall and wide when adding projects.
+   */
+  aspect: "16/9" | "3/2" | "4/3" | "1/1";
 };
 
 export const projects: Project[] = [
@@ -28,6 +33,7 @@ export const projects: Project[] = [
     year: "2023",
     company: "Uniskai by Profisea Labs",
     image: "/projects/project-01.jpg",
+    aspect: "16/9",
   },
   {
     slug: "customer-lifecycle-management",
@@ -38,6 +44,7 @@ export const projects: Project[] = [
     year: "2023",
     company: "Bhanzu",
     image: "/projects/project-02.jpg",
+    aspect: "3/2",
   },
   {
     slug: "virtubox-kiosk",
@@ -48,6 +55,7 @@ export const projects: Project[] = [
     year: "2022",
     company: "Profisea Labs",
     image: "/projects/project-03.jpg",
+    aspect: "4/3",
   },
   {
     slug: "fintech-mobile-app",
@@ -58,6 +66,7 @@ export const projects: Project[] = [
     year: "2022",
     company: "Profisea Labs",
     image: "/projects/project-04.jpg",
+    aspect: "16/9",
   },
   {
     slug: "design-system-1-0",
@@ -68,6 +77,7 @@ export const projects: Project[] = [
     year: "2022",
     company: "Profisea Labs",
     image: "/projects/project-05.jpg",
+    aspect: "3/2",
   },
 ];
 
