@@ -11,7 +11,7 @@ import Shell from "./Shell";
  */
 export default function HeroExperience() {
   return (
-    <Shell as="section" className="grid grid-cols-12 gap-x-8 gap-y-20 pb-28 pt-28 sm:pt-36 lg:pb-40 lg:pt-44">
+    <Shell as="section" className="grid grid-cols-12 gap-x-8 gap-y-12 pb-14 pt-16 sm:pt-20 lg:pb-20 lg:pt-24">
       {/* Left — headline. From `sm` up, line one is held on a single line so the
           break before "who develops." is the only one; on the narrowest screens
           it wraps naturally rather than overflowing. Sizes step so that line
@@ -22,22 +22,22 @@ export default function HeroExperience() {
           <span className="block">{siteConfig.hero.headlineLineTwo}</span>
         </h1>
 
-        <p className="mt-10 text-[11px] uppercase tracking-label text-muted">{siteConfig.role}</p>
+        <p className="mt-6 text-[13px] uppercase tracking-label text-muted">{siteConfig.role}</p>
 
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+        <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
           {siteConfig.hero.statement}
         </p>
       </div>
 
       {/* Right — experience */}
       <div className="col-span-12 lg:col-span-3 lg:col-start-10">
-        <h2 className="text-[11px] uppercase tracking-label text-muted">Experience</h2>
+        <h2 className="text-[13px] uppercase tracking-label text-muted">Experience</h2>
 
-        <ul className="mt-8 border-t border-rule">
+        <ul className="mt-5 border-t border-rule">
           {experience.map((entry) => (
             <li
               key={`${entry.year}-${entry.company}`}
-              className="grid grid-cols-[3.5rem_1fr] items-baseline gap-x-4 gap-y-1 border-b border-rule py-4"
+              className="grid grid-cols-[3.5rem_1fr] items-baseline gap-x-4 gap-y-1 border-b border-rule py-3.5"
             >
               <span className="text-[11px] uppercase tracking-label text-muted tabular-nums">
                 {entry.year}

@@ -15,14 +15,14 @@ export default function WorkSection() {
   ];
 
   return (
-    <Shell as="section" id="work" className="scroll-mt-16 pb-32 lg:pb-44">
-      <h2 className="border-t border-rule pt-6 text-[11px] uppercase tracking-label text-muted">
+    <Shell as="section" id="work" className="scroll-mt-16 pb-20 lg:pb-28">
+      <h2 className="border-t border-rule pt-5 text-[13px] uppercase tracking-label text-muted">
         Selected Work
       </h2>
 
-      <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-24 lg:mt-20 lg:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-12 lg:mt-10 lg:grid-cols-2">
         {columns.map((column, col) => (
-          <div key={col} className="flex flex-col gap-24 lg:gap-32">
+          <div key={col} className="flex flex-col gap-12 lg:gap-14">
             {column.map((project) => (
               <ProjectCard
                 key={project.slug}
