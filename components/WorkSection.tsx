@@ -16,11 +16,9 @@ export default function WorkSection() {
 
   return (
     <Shell as="section" id="work" className="scroll-mt-16 pb-20 lg:pb-28">
-      <h2 className="border-t border-rule pt-5 text-[13px] uppercase tracking-label text-muted">
-        Selected Work
-      </h2>
+      <h2 className="sr-only">Selected Work</h2>
 
-      <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-12 lg:mt-10 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-12 lg:grid-cols-2">
         {columns.map((column, col) => (
           <div key={col} className="flex flex-col gap-12 lg:gap-14">
             {column.map((project) => (

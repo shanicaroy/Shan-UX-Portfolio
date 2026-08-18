@@ -19,6 +19,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+        serif: ["var(--font-serif)", "Times New Roman", "Times", "serif"],
       },
       maxWidth: {
         shell: "1440px",

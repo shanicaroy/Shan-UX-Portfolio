@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* A single contemporary grotesk carries the whole site. Personality comes
-   from scale and spacing, not from a decorative face. */
+/* Three voices: Inter for body text, IBM Plex Mono for the small caps UI
+   layer, and Times for display headings only. */
 @font-face {
   font-family: "Inter";
   src: url("/fonts/inter-variable.woff2") format("woff2");
@@ -12,8 +12,26 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/plex-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/plex-mono-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-serif: "Times New Roman", Times, Georgia, serif;
 }
 
 * {
@@ -45,11 +63,11 @@ body {
   outline-offset: 4px;
 }
 
-/* Display sizes need tighter tracking than Inter's default to read as a
-   grotesk rather than as UI text set large. */
+/* Display headings are the one place the serif appears. */
 .display {
-  letter-spacing: -0.03em;
-  font-feature-settings: "cv11";
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
 @media (prefers-reduced-motion: reduce) {

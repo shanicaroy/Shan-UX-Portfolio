@@ -3,47 +3,43 @@ import { experience } from "@/content/experience";
 import Shell from "./Shell";
 
 /**
- * Hero and experience share one row from `lg` up: the headline holds the left
- * eight columns, the experience list the right three. The side-by-side
- * relationship is the point of the composition, so the headline steps down a
- * size at `lg` to keep its first line inside its own column rather than
- * letting the split break.
+ * Hero and experience share one row from `lg` up: the serif headline holds the
+ * left seven columns, the experience list the right five, both starting level.
+ * The reference composition is exactly these two blocks — no role line, no
+ * statement, no visible "Experience" heading — with the work grid beginning
+ * just below.
  */
 export default function HeroExperience() {
   return (
-    <Shell as="section" className="grid grid-cols-12 gap-x-8 gap-y-12 pb-14 pt-16 sm:pt-20 lg:pb-20 lg:pt-24">
+    <Shell as="section" className="grid grid-cols-12 items-start gap-x-8 gap-y-16 pb-14 pt-28 sm:pt-36 lg:pb-16 lg:pt-48 xl:pt-56">
       {/* Left — headline. From `sm` up, line one is held on a single line so the
-          break before "who develops." is the only one; on the narrowest screens
-          it wraps naturally rather than overflowing. Sizes step so that line
-          never outgrows its column once the split kicks in at `lg`. */}
-      <div className="col-span-12 lg:col-span-8">
-        <h1 className="display text-[2.25rem] font-medium leading-[1.04] text-ink sm:text-[2.75rem] lg:text-[2.875rem] xl:text-[4rem]">
+          break before the emphasised close is the only one; on the narrowest
+          screens it wraps naturally rather than overflowing. */}
+      <div className="col-span-12 lg:col-span-7">
+        <h1 className="display text-[2.5rem] leading-[1.08] text-ink sm:text-[3rem] xl:text-[4rem]">
           <span className="block sm:whitespace-nowrap">{siteConfig.hero.headlineLineOne}</span>
-          <span className="block">{siteConfig.hero.headlineLineTwo}</span>
+          <span className="block">
+            {siteConfig.hero.headlineLineTwo}{" "}
+            <em>{siteConfig.hero.headlineEmphasis}</em>
+          </span>
         </h1>
-
-        <p className="mt-6 text-[13px] uppercase tracking-label text-muted">{siteConfig.role}</p>
-
-        <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-          {siteConfig.hero.statement}
-        </p>
       </div>
 
-      {/* Right — experience */}
-      <div className="col-span-12 lg:col-span-3 lg:col-start-10">
-        <h2 className="text-[13px] uppercase tracking-label text-muted">Experience</h2>
+      {/* Right — experience, a quiet unruled table of year / company / role */}
+      <div className="col-span-12 lg:col-span-5 lg:col-start-8 lg:pt-3">
+        <h2 className="sr-only">Experience</h2>
 
-        <ul className="mt-5 border-t border-rule">
+        <ul>
           {experience.map((entry) => (
             <li
               key={`${entry.year}-${entry.company}`}
-              className="grid grid-cols-[3.5rem_1fr] items-baseline gap-x-4 gap-y-1 border-b border-rule py-3.5"
+              className="grid grid-cols-[3.5rem_1fr] items-baseline gap-x-4 gap-y-0.5 py-2 sm:grid-cols-[4.5rem_1.1fr_1fr] sm:gap-x-6"
             >
-              <span className="text-[11px] uppercase tracking-label text-muted tabular-nums">
+              <span className="font-mono text-[12px] uppercase tracking-label text-muted tabular-nums">
                 {entry.year}
               </span>
-              <span className="text-base text-ink">{entry.company}</span>
-              <span className="col-start-2 text-sm text-muted">{entry.role}</span>
+              <span className="text-[15px] font-medium text-ink">{entry.company}</span>
+              <span className="col-start-2 text-sm text-muted sm:col-start-3">{entry.role}</span>
             </li>
           ))}
         </ul>

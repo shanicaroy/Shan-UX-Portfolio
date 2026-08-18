@@ -4,7 +4,7 @@ import Shell from "./Shell";
 export default function AboutSection() {
   return (
     <Shell as="section" id="about" className="scroll-mt-16 pb-20 lg:pb-28">
-      <h2 className="border-t border-rule pt-5 text-[13px] uppercase tracking-label text-muted">
+      <h2 className="border-t border-rule pt-5 font-mono text-[13px] uppercase tracking-label text-muted">
         About
       </h2>
 

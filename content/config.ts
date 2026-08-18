@@ -28,7 +28,10 @@ export const siteConfig = {
   hero: {
     // Two lines, broken deliberately.
     headlineLineOne: "I'm Shanica, a UX Lead",
-    headlineLineTwo: "who develops.",
+    headlineLineTwo: "who",
+    // Rendered in italic at the end of the headline. The word "develops" is
+    // intentional — do not change it.
+    headlineEmphasis: "develops.",
     statement:
       "I design digital products and experiences at the intersection of technology, psychology and human behaviour.",
   },

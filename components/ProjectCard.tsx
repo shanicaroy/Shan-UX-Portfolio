@@ -18,11 +18,11 @@ export default function ProjectCard({ project, index }: { project: Project; inde
   return (
     <article>
       <Link href={`/work/${project.slug}`} className="group block">
-        <div className={`w-full overflow-hidden border border-rule ${ASPECT[project.aspect]}`}>
+        <div className={`w-full overflow-hidden ${ASPECT[project.aspect]}`}>
           <ProjectCanvas index={index} alt={`${project.title} — case study cover`} />
         </div>
 
-        <h3 className="mt-4 text-base leading-snug text-ink transition-opacity duration-200 group-hover:opacity-70 sm:text-lg">
+        <h3 className="mt-4 font-mono text-[13px] font-medium uppercase leading-snug tracking-label text-ink transition-opacity duration-200 group-hover:opacity-70">
           {project.title}
         </h3>
       </Link>

@@ -6,7 +6,7 @@ import { siteConfig, navigation } from "@/content/config";
 import Shell from "./Shell";
 
 const linkClass =
-  "text-[12px] uppercase tracking-label text-muted transition-colors duration-200 hover:text-ink";
+  "font-mono text-[12px] uppercase tracking-label text-muted transition-colors duration-200 hover:text-ink";
 
 /**
  * Three-zone header matching the reference: identity on the left, section
@@ -46,9 +46,11 @@ export default function Header() {
     <header className="relative z-40">
       <Shell className="grid grid-cols-[1fr_auto] items-start gap-8 pt-8 sm:pt-10 md:grid-cols-[1fr_auto_1fr]">
         {/* Identity — name over designation, top-left */}
-        <Link href="/" className="flex flex-col gap-1.5">
-          <span className="text-[13px] uppercase tracking-label text-ink">{siteConfig.name}</span>
-          <span className="text-[11px] uppercase tracking-label text-muted">
+        <Link href="/" className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+          <span className="font-mono text-[13px] font-medium uppercase tracking-label text-ink">
+            {siteConfig.name}
+          </span>
+          <span className="hidden font-mono text-[12px] uppercase tracking-label text-muted sm:inline">
             {siteConfig.title}
           </span>
         </Link>
