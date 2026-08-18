@@ -15,8 +15,16 @@
  *
  * The surrounding frame and aspect ratio stay the same, so no layout changes.
  */
-export default function ProjectCanvas({ index, alt }: { index: number; alt: string }) {
-  const variant = index % 4;
+export default function ProjectCanvas({
+  index,
+  alt,
+  locked,
+}: {
+  index: number;
+  alt: string;
+  locked?: boolean;
+}) {
+  const variant = locked ? -1 : index % 4;
 
   return (
     <div
@@ -32,6 +40,13 @@ export default function ProjectCanvas({ index, alt }: { index: number; alt: stri
         focusable="false"
       >
         <rect width="1600" height="900" fill="#171715" />
+
+        {locked && (
+          <g stroke="#9A9891" strokeWidth="6" fill="none" opacity="0.8">
+            <rect x="742" y="432" width="116" height="92" rx="10" />
+            <path d="M766 432v-26a34 34 0 0 1 68 0v26" />
+          </g>
+        )}
 
         {variant === 0 && (
           <g>

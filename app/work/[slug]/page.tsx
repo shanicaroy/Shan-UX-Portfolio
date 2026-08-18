@@ -5,8 +5,10 @@ import { projects, getProject } from "@/content/projects";
 import Shell from "@/components/Shell";
 import ProjectCanvas from "@/components/ProjectCanvas";
 
+const openProjects = projects.filter((p) => !p.locked);
+
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return openProjects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -26,10 +28,11 @@ const SECTIONS = ["Context", "Problem", "Approach", "Outcome"] as const;
 export default async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = getProject(slug);
-  if (!project) notFound();
+  if (!project || project.locked) notFound();
 
   const index = projects.findIndex((p) => p.slug === project.slug);
-  const next = projects[(index + 1) % projects.length];
+  const openIndex = openProjects.findIndex((p) => p.slug === project.slug);
+  const next = openProjects[(openIndex + 1) % openProjects.length];
 
   return (
     <article>
@@ -91,7 +94,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         </div>
       </Shell>
 
-      {projects.length > 1 && (
+      {openProjects.length > 1 && (
         <div className="border-t border-rule">
           <Shell>
             <Link

@@ -35,7 +35,7 @@ export default function HeroExperience() {
               key={`${entry.year}-${entry.company}`}
               className="grid grid-cols-[3.5rem_1fr] items-baseline gap-x-4 gap-y-0.5 py-2 sm:grid-cols-[4.5rem_1.1fr_1fr] sm:gap-x-6"
             >
-              <span className="font-mono text-[12px] uppercase tracking-label text-muted tabular-nums">
+              <span className="font-mono text-[13px] uppercase tracking-label text-muted tabular-nums">
                 {entry.year}
               </span>
               <span className="text-[15px] font-medium text-ink">{entry.company}</span>

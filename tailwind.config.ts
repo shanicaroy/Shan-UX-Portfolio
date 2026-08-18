@@ -26,7 +26,7 @@ const config: Config = {
         shell: "1440px",
       },
       letterSpacing: {
-        label: "0.12em",
+        label: "0.08em",
       },
       transitionTimingFunction: {
         editorial: "cubic-bezier(0.22, 1, 0.36, 1)",

@@ -21,6 +21,8 @@ export type Project = {
    * the grid stagger — keep a mix of tall and wide when adding projects.
    */
   aspect: "16/9" | "3/2" | "4/3" | "1/1";
+  /** NDA work: rendered as a non-clickable card with a lock, no case study. */
+  locked?: boolean;
 };
 
 export const projects: Project[] = [
@@ -78,6 +80,17 @@ export const projects: Project[] = [
     company: "Profisea Labs",
     image: "/projects/project-05.jpg",
     aspect: "3/2",
+  },
+  {
+    slug: "ey-client-work",
+    title: "EY & EY Client Work",
+    description: "A combined body of work for EY and EY clients — under NDA.",
+    category: "Client Engagements",
+    year: "Present",
+    company: "EY",
+    image: "/projects/project-06.jpg",
+    aspect: "3/2",
+    locked: true,
   },
 ];
 

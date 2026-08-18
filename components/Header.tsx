@@ -6,7 +6,7 @@ import { siteConfig, navigation } from "@/content/config";
 import Shell from "./Shell";
 
 const linkClass =
-  "font-mono text-[12px] uppercase tracking-label text-muted transition-colors duration-200 hover:text-ink";
+  "font-mono text-[13px] uppercase tracking-label text-muted transition-colors duration-200 hover:text-ink";
 
 /**
  * Three-zone header matching the reference: identity on the left, section
@@ -43,32 +43,32 @@ export default function Header() {
   );
 
   return (
-    <header className="relative z-40">
-      <Shell className="grid grid-cols-[1fr_auto] items-start gap-8 pt-8 sm:pt-10 md:grid-cols-[1fr_auto_1fr]">
+    <header className="relative z-40 border-b border-rule">
+      <Shell className="grid grid-cols-[1fr_auto] items-baseline gap-8 py-5 md:grid-cols-[1fr_auto_1fr] md:py-6">
         {/* Identity — name over designation, top-left */}
         <Link href="/" className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
-          <span className="font-mono text-[13px] font-medium uppercase tracking-label text-ink">
+          <span className="font-mono text-[15px] font-bold uppercase tracking-label text-ink">
             {siteConfig.name}
           </span>
-          <span className="hidden font-mono text-[12px] uppercase tracking-label text-muted sm:inline">
+          <span className="hidden font-mono text-[13px] uppercase tracking-label text-muted sm:inline">
             {siteConfig.title}
           </span>
         </Link>
 
         {/* Centre — section links */}
-        <nav aria-label="Main" className="hidden items-center gap-10 pt-0.5 md:flex">
+        <nav aria-label="Main" className="hidden items-baseline gap-10 md:flex">
           {sectionLinks}
         </nav>
 
         {/* Right — resume */}
-        <div className="hidden justify-end pt-0.5 md:flex">{resumeLink}</div>
+        <div className="hidden justify-end md:flex">{resumeLink}</div>
 
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          className={`${linkClass} justify-self-end pt-0.5 md:hidden`}
+          className={`${linkClass} justify-self-end md:hidden`}
         >
           {open ? "Close" : "Menu"}
         </button>
@@ -76,7 +76,7 @@ export default function Header() {
 
       {open && (
         <nav id="mobile-nav" aria-label="Main" className="md:hidden">
-          <Shell className="flex flex-col gap-5 pb-2 pt-8">
+          <Shell className="flex flex-col gap-5 pb-6 pt-2">
             {sectionLinks}
             {resumeLink}
           </Shell>
