@@ -9,35 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Dark editorial palette. Warm charcoal ground, warm off-white type,
-        // muted copper reserved for small indicators only.
-        ground: "#111210",
-        ink: "#F2F0EA",
-        muted: "#96978F",
-        rule: "#2A2B27",
-        copper: "#B96F52",
+        // Warm off-black editorial palette. No accent colour by design —
+        // hierarchy comes from scale, spacing and contrast alone.
+        ground: "#11110F",
+        surface: "#171715",
+        ink: "#EAE7DF",
+        muted: "#9A9891",
+        rule: "#292925",
       },
       fontFamily: {
-        serif: ["var(--font-serif)", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
       },
       maxWidth: {
         shell: "1440px",
       },
       letterSpacing: {
-        label: "0.14em",
+        label: "0.12em",
       },
       transitionTimingFunction: {
         editorial: "cubic-bezier(0.22, 1, 0.36, 1)",
-      },
-      keyframes: {
-        enter: {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-      },
-      animation: {
-        enter: "enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
       },
     },
   },

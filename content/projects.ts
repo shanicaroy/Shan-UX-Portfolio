@@ -1,20 +1,12 @@
 // ---------------------------------------------------------------------------
 // PROJECTS
 // Titles, clients, disciplines and years are real — taken from the existing
-// Webflow portfolio. Case-study body copy is PLACEHOLDER until the real
-// write-ups are supplied.
+// portfolio. Case-study body copy is PLACEHOLDER until real write-ups exist.
 //
-// `layout` drives the editorial composition on the homepage:
-//   featured  — full width, widest crop, opens the section
-//   standard  — 8 of 12 columns, left-aligned
-//   offset    — 8 of 12 columns, pushed right
-//   wide      — full width, cinematic crop
-//
-// `image` points at /public/projects/*. When a file is missing the card falls
-// back to a clearly-marked placeholder rather than inventing artwork.
+// `image` points at /public/projects/*. Until those files are added, a designed
+// canvas stands in — the layout does not change when real images land, so
+// dropping the files in is the only step required.
 // ---------------------------------------------------------------------------
-
-export type ProjectLayout = "featured" | "standard" | "offset" | "wide";
 
 export type Project = {
   slug: string;
@@ -22,9 +14,8 @@ export type Project = {
   description: string;
   category: string;
   year: string;
-  client?: string;
+  company?: string;
   image: string;
-  layout: ProjectLayout;
 };
 
 export const projects: Project[] = [
@@ -35,9 +26,8 @@ export const projects: Project[] = [
       "Turning sprawling multi-cloud billing data into decisions a DevOps team can act on.",
     category: "Product Design · UX Research",
     year: "2023",
-    client: "Uniskai by Profisea Labs",
-    image: "/projects/multi-cloud-finops-platform.jpg",
-    layout: "featured",
+    company: "Uniskai by Profisea Labs",
+    image: "/projects/project-01.jpg",
   },
   {
     slug: "customer-lifecycle-management",
@@ -46,9 +36,8 @@ export const projects: Project[] = [
       "One view of every account, replacing three dashboards the team was stitching together by hand.",
     category: "UX Design · Research",
     year: "2023",
-    client: "Bhanzu",
-    image: "/projects/customer-lifecycle-management.jpg",
-    layout: "standard",
+    company: "Bhanzu",
+    image: "/projects/project-02.jpg",
   },
   {
     slug: "virtubox-kiosk",
@@ -57,9 +46,8 @@ export const projects: Project[] = [
       "A self-service kiosk for first-time users — no manual, no login, no second attempt.",
     category: "PX Design",
     year: "2022",
-    client: "Profisea Labs",
-    image: "/projects/virtubox-kiosk.jpg",
-    layout: "offset",
+    company: "Profisea Labs",
+    image: "/projects/project-03.jpg",
   },
   {
     slug: "fintech-mobile-app",
@@ -68,9 +56,8 @@ export const projects: Project[] = [
       "Research-led design for a fintech app, where trust matters more than any single screen.",
     category: "UX Research",
     year: "2022",
-    client: "Profisea Labs",
-    image: "/projects/fintech-mobile-app.jpg",
-    layout: "wide",
+    company: "Profisea Labs",
+    image: "/projects/project-04.jpg",
   },
   {
     slug: "design-system-1-0",
@@ -79,9 +66,8 @@ export const projects: Project[] = [
       "A shared component library built to be the source of truth, not one more file teams quietly fork.",
     category: "Design Systems",
     year: "2022",
-    client: "Profisea Labs",
-    image: "/projects/design-system-1-0.jpg",
-    layout: "standard",
+    company: "Profisea Labs",
+    image: "/projects/project-05.jpg",
   },
 ];
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects, getProject } from "@/content/projects";
 import Shell from "@/components/Shell";
-import ProjectMedia from "@/components/ProjectMedia";
+import ProjectCanvas from "@/components/ProjectCanvas";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -20,11 +20,8 @@ export async function generateMetadata({
   return { title: project.title, description: project.description };
 }
 
-/**
- * Reusable case-study shell. The section headings below are the structure real
- * write-ups will slot into — no case-study claims are invented here.
- */
-const CASE_STUDY_SECTIONS = ["Context", "Problem", "Approach", "Outcome"] as const;
+/** Section scaffold real write-ups slot into — no claims are invented here. */
+const SECTIONS = ["Context", "Problem", "Approach", "Outcome"] as const;
 
 export default async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -36,79 +33,80 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
   return (
     <article>
-      <Shell className="py-16 sm:py-24">
+      <Shell className="pb-20 pt-24 lg:pt-28">
         <Link
           href="/#work"
-          className="font-sans text-xs uppercase tracking-label text-muted transition-colors duration-200 hover:text-ink"
+          className="text-[11px] uppercase tracking-label text-muted transition-colors duration-200 hover:text-ink"
         >
           &larr; Selected Work
         </Link>
 
-        <h1 className="mt-12 max-w-[20ch] font-serif text-[2.25rem] leading-[1.08] text-ink sm:text-5xl lg:text-6xl">
-          {project.title}
-        </h1>
-        <p className="mt-6 max-w-xl font-sans text-base leading-relaxed text-muted sm:text-lg">
-          {project.description}
-        </p>
+        <div className="mt-14 grid grid-cols-12 gap-x-8 gap-y-10">
+          <div className="col-span-12 lg:col-span-7">
+            <h1 className="display text-[2.25rem] font-medium leading-[1.06] text-ink sm:text-5xl lg:text-[3.75rem]">
+              {project.title}
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+              {project.description}
+            </p>
+          </div>
 
-        <dl className="mt-12 grid grid-cols-2 gap-8 border-t border-rule pt-8 sm:grid-cols-3">
-          <div>
-            <dt className="font-sans text-[11px] uppercase tracking-label text-muted">Category</dt>
-            <dd className="mt-2 font-sans text-sm text-ink">{project.category}</dd>
-          </div>
-          <div>
-            <dt className="font-sans text-[11px] uppercase tracking-label text-muted">Year</dt>
-            <dd className="mt-2 font-sans text-sm text-ink">{project.year}</dd>
-          </div>
-          {project.client && (
+          <dl className="col-span-12 grid grid-cols-2 gap-8 self-end lg:col-span-4 lg:col-start-9 lg:grid-cols-1 lg:gap-6 lg:text-right">
             <div>
-              <dt className="font-sans text-[11px] uppercase tracking-label text-muted">Client</dt>
-              <dd className="mt-2 font-sans text-sm text-ink">{project.client}</dd>
+              <dt className="text-[11px] uppercase tracking-label text-muted">Category</dt>
+              <dd className="mt-2 text-base text-ink">{project.category}</dd>
             </div>
-          )}
-        </dl>
-      </Shell>
-
-      <Shell>
-        <div className="aspect-[16/9] w-full overflow-hidden border border-rule">
-          <ProjectMedia src={project.image} alt={`${project.title} — case study cover`} />
+            <div>
+              <dt className="text-[11px] uppercase tracking-label text-muted">Year</dt>
+              <dd className="mt-2 text-base text-ink">{project.year}</dd>
+            </div>
+            {project.company && (
+              <div>
+                <dt className="text-[11px] uppercase tracking-label text-muted">Company</dt>
+                <dd className="mt-2 text-base text-ink">{project.company}</dd>
+              </div>
+            )}
+          </dl>
         </div>
       </Shell>
 
-      <Shell className="py-24 sm:py-32">
-        <div className="grid grid-cols-1 gap-x-16 gap-y-14 lg:grid-cols-2">
-          {CASE_STUDY_SECTIONS.map((heading) => (
-            <section key={heading}>
-              <h2 className="border-t border-rule pt-5 font-sans text-xs uppercase tracking-label text-muted">
+      <Shell>
+        <div className="w-full overflow-hidden border border-rule aspect-[4/3] sm:aspect-[3/2] lg:aspect-[16/10]">
+          <ProjectCanvas index={index} alt={`${project.title} — case study cover`} />
+        </div>
+      </Shell>
+
+      <Shell className="py-28 lg:py-36">
+        <div className="grid grid-cols-12 gap-x-8 gap-y-14">
+          {SECTIONS.map((heading) => (
+            <section key={heading} className="col-span-12 lg:col-span-5 lg:even:col-start-8">
+              <h2 className="border-t border-rule pt-5 text-[11px] uppercase tracking-label text-muted">
                 {heading}
               </h2>
-              <p className="mt-5 max-w-prose font-sans text-base leading-relaxed text-ink/85">
-                Placeholder — the {heading.toLowerCase()} section of this case study.
+              <p className="mt-5 max-w-prose text-lg leading-relaxed text-ink/85">
+                This section is awaiting its write-up.
               </p>
             </section>
           ))}
         </div>
-
-        <p className="mt-16 font-sans text-xs text-muted/60">
-          Placeholder copy — replace it in <code>app/work/[slug]/page.tsx</code>.
-        </p>
       </Shell>
 
       {projects.length > 1 && (
         <div className="border-t border-rule">
           <Shell>
-            <Link href={`/work/${next.slug}`} className="group flex items-baseline justify-between gap-8 py-14">
+            <Link
+              href={`/work/${next.slug}`}
+              className="group flex items-baseline justify-between gap-10 py-20"
+            >
               <div>
-                <span className="font-sans text-xs uppercase tracking-label text-muted">
-                  Next project
-                </span>
-                <h2 className="mt-3 max-w-2xl font-serif text-2xl leading-snug text-ink transition-colors duration-200 group-hover:text-copper sm:text-3xl">
+                <span className="text-[11px] uppercase tracking-label text-muted">Next project</span>
+                <h2 className="display mt-4 max-w-3xl text-2xl font-medium leading-[1.15] text-ink transition-opacity duration-200 group-hover:opacity-60 sm:text-3xl">
                   {next.title}
                 </h2>
               </div>
               <span
                 aria-hidden
-                className="shrink-0 font-serif text-2xl text-muted transition-all duration-300 ease-editorial group-hover:translate-x-1 group-hover:text-copper"
+                className="shrink-0 text-2xl text-muted transition-transform duration-300 ease-editorial group-hover:translate-x-1"
               >
                 &rarr;
               </span>

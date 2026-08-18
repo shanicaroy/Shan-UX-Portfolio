@@ -7,14 +7,16 @@ import type { ReactNode } from "react";
 export default function Shell({
   children,
   className = "",
+  id,
   as: Tag = "div",
 }: {
   children: ReactNode;
   className?: string;
+  id?: string;
   as?: "div" | "section" | "header" | "footer" | "main" | "nav";
 }) {
   return (
-    <Tag className={`mx-auto w-full max-w-shell px-6 sm:px-12 lg:px-16 ${className}`}>
+    <Tag id={id} className={`mx-auto w-full max-w-shell px-6 sm:px-12 lg:px-16 ${className}`}>
       {children}
     </Tag>
   );

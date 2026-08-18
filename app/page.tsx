@@ -1,13 +1,15 @@
-import Hero from "@/components/Hero";
-import Experience from "@/components/Experience";
+import HeroExperience from "@/components/HeroExperience";
 import WorkSection from "@/components/WorkSection";
+import WritingSection from "@/components/WritingSection";
+import AboutSection from "@/components/AboutSection";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Experience />
+      <HeroExperience />
       <WorkSection />
+      <WritingSection />
+      <AboutSection />
     </>
   );
 }

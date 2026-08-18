@@ -2,24 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Display — Instrument Serif */
-@font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/instrument-serif-regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/instrument-serif-italic.woff2") format("woff2");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* UI / body — Inter */
+/* A single contemporary grotesk carries the whole site. Personality comes
+   from scale and spacing, not from a decorative face. */
 @font-face {
   font-family: "Inter";
   src: url("/fonts/inter-variable.woff2") format("woff2");
@@ -29,8 +13,7 @@
 }
 
 :root {
-  --font-serif: "Instrument Serif", Georgia, serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -39,28 +22,34 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #111210;
+  background-color: #11110f;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  background-color: #111210;
-  color: #f2f0ea;
+  background-color: #11110f;
+  color: #eae7df;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #b96f52;
-  color: #f2f0ea;
+  background-color: #eae7df;
+  color: #11110f;
 }
 
 :focus-visible {
-  outline: 2px solid #b96f52;
-  outline-offset: 3px;
-  border-radius: 2px;
+  outline: 1px solid #eae7df;
+  outline-offset: 4px;
+}
+
+/* Display sizes need tighter tracking than Inter's default to read as a
+   grotesk rather than as UI text set large. */
+.display {
+  letter-spacing: -0.03em;
+  font-feature-settings: "cv11";
 }
 
 @media (prefers-reduced-motion: reduce) {

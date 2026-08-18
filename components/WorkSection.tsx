@@ -1,17 +1,17 @@
 import { projects } from "@/content/projects";
 import Shell from "./Shell";
-import SectionHeading from "./SectionHeading";
 import ProjectCard from "./ProjectCard";
 
 export default function WorkSection() {
   return (
-    <Shell as="section" className="scroll-mt-24 pb-24 sm:pb-32">
-      <div id="work" className="scroll-mt-24" />
-      <SectionHeading>Selected Work</SectionHeading>
+    <Shell as="section" id="work" className="scroll-mt-16 pb-32 lg:pb-44">
+      <h2 className="border-t border-rule pt-6 text-[11px] uppercase tracking-label text-muted">
+        Selected Work
+      </h2>
 
-      <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-24 sm:gap-y-32">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+      <div className="mt-16 flex flex-col gap-32 lg:mt-20 lg:gap-44">
+        {projects.map((project, i) => (
+          <ProjectCard key={project.slug} project={project} index={i} />
         ))}
       </div>
     </Shell>

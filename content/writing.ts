@@ -1,11 +1,11 @@
 // ---------------------------------------------------------------------------
 // WRITING
-// PLACEHOLDER DATA — no real article titles have been supplied, so none are
-// invented here. Replace each entry with a real piece; delete any that remain
-// unused before the page goes public.
+// Bracketed rows are PLACEHOLDERS — no article titles have been invented.
+// Replace them with real pieces, or empty the array to hide the list entirely
+// (the section renders a quiet note in that case).
 //
-// Categories the page is designed to carry: UX, Product Design, Psychology,
-// Neuroscience, AI, Design Leadership, Career, Technology.
+// Topics the section is built to carry: UX, product design, psychology,
+// neuroscience, human behaviour, technology, design leadership.
 // ---------------------------------------------------------------------------
 
 export type Article = {
@@ -16,8 +16,8 @@ export type Article = {
 };
 
 export const writing: Article[] = [
-  { year: "2026", title: "Article title placeholder", category: "Design Leadership", href: "#" },
-  { year: "2025", title: "Article title placeholder", category: "Product Design", href: "#" },
-  { year: "2025", title: "Article title placeholder", category: "Psychology", href: "#" },
-  { year: "2024", title: "Article title placeholder", category: "AI", href: "#" },
+  { year: "2026", title: "[Article title]", category: "Design Leadership", href: "#" },
+  { year: "2025", title: "[Article title]", category: "Product Design", href: "#" },
+  { year: "2025", title: "[Article title]", category: "Psychology", href: "#" },
+  { year: "2024", title: "[Article title]", category: "Technology", href: "#" },
 ];

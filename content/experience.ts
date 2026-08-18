@@ -1,8 +1,7 @@
 // ---------------------------------------------------------------------------
 // EXPERIENCE
-// PLACEHOLDER DATA. Only the EY entry is real (taken from the existing Webflow
-// site); every "Company Name" row is a placeholder to be replaced. Years are
-// illustrative — nothing here should be treated as a verified employment record.
+// Bracketed rows are PLACEHOLDERS — no companies, dates or titles have been
+// invented. Replace them, or delete rows you don't need.
 // ---------------------------------------------------------------------------
 
 export type ExperienceEntry = {
@@ -12,8 +11,8 @@ export type ExperienceEntry = {
 };
 
 export const experience: ExperienceEntry[] = [
-  { year: "Present", company: "EY", role: "Product Designer, Salesforce" },
-  { year: "2025", company: "Company Name", role: "Product Designer" }, // PLACEHOLDER
-  { year: "2024", company: "Company Name", role: "Senior UX Designer" }, // PLACEHOLDER
-  { year: "2021", company: "Profisea Labs", role: "UX Designer" },
+  { year: "Present", company: "EY", role: "UX Lead" },
+  { year: "2025", company: "[Company Name]", role: "[Designation]" },
+  { year: "2024", company: "[Company Name]", role: "[Designation]" },
+  { year: "2021", company: "[Company Name]", role: "[Designation]" },
 ];
