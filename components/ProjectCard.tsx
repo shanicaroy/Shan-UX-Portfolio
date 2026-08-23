@@ -19,15 +19,28 @@ export default function ProjectCard({ project, index }: { project: Project; inde
   const card = (
     <>
       <div className={`w-full overflow-hidden border border-rule ${ASPECT[project.aspect]}`}>
-        <ProjectCanvas
-          index={index}
-          locked={project.locked}
-          alt={
-            project.locked
-              ? `${project.title} — locked, under NDA`
-              : `${project.title} — case study cover`
-          }
-        />
+        {project.video ? (
+          <video
+            src={project.video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={`${project.title} — case study cover`}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <ProjectCanvas
+            index={index}
+            locked={project.locked}
+            alt={
+              project.locked
+                ? `${project.title} — locked, under NDA`
+                : `${project.title} — case study cover`
+            }
+          />
+        )}
       </div>
 
       <h3 className="mt-4 flex items-baseline gap-3 font-mono text-[13px] font-normal uppercase leading-snug tracking-label text-ink transition-opacity duration-200 group-hover:opacity-70">

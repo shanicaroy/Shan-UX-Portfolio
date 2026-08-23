@@ -23,6 +23,8 @@ export type Project = {
   aspect: "16/9" | "3/2" | "4/3" | "1/1";
   /** NDA work: rendered as a non-clickable card with a lock, no case study. */
   locked?: boolean;
+  /** Optional looping cover video; when set it replaces the cover art. */
+  video?: string;
 };
 
 export const projects: Project[] = [
@@ -35,6 +37,7 @@ export const projects: Project[] = [
     year: "2023",
     company: "VMware",
     image: "/projects/project-01.jpg",
+    video: "/projects/vmware.mp4",
     aspect: "16/9",
   },
   {
