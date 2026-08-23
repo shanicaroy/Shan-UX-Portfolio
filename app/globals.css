@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Three voices: Inter for body text, IBM Plex Mono for the small caps UI
-   layer, and Times for display headings only. */
+/* Two voices: Inter for body text and the small-caps UI layer, and Times
+   for display headings only. */
 @font-face {
   font-family: "Inter";
   src: url("/fonts/inter-variable.woff2") format("woff2");
@@ -12,25 +12,9 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Space Mono";
-  src: url("/fonts/space-mono-400.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Space Mono";
-  src: url("/fonts/space-mono-700.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-mono: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-serif: "Times New Roman", Times, Georgia, serif;
 }
 
