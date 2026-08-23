@@ -39,10 +39,10 @@ export default function ProjectCanvas({
         aria-hidden="true"
         focusable="false"
       >
-        <rect width="1600" height="900" fill="#171715" />
+        <rect width="1600" height="900" fill="#FFFFFF" />
 
         {locked && (
-          <g stroke="#9A9891" strokeWidth="6" fill="none" opacity="0.8">
+          <g stroke="#5C5C55" strokeWidth="6" fill="none" opacity="0.8">
             <rect x="742" y="432" width="116" height="92" rx="10" />
             <path d="M766 432v-26a34 34 0 0 1 68 0v26" />
           </g>
@@ -50,31 +50,31 @@ export default function ProjectCanvas({
 
         {variant === 0 && (
           <g>
-            <rect x="200" y="150" width="1200" height="600" fill="#1C1C19" />
-            <rect x="200" y="150" width="1200" height="1" fill="#292925" />
-            <rect x="640" y="150" width="1" height="600" fill="#232320" />
+            <rect x="200" y="150" width="1200" height="600" fill="#F5F3EE" />
+            <rect x="200" y="150" width="1200" height="1" fill="#E3E1DB" />
+            <rect x="640" y="150" width="1" height="600" fill="#EAE8E1" />
           </g>
         )}
 
         {variant === 1 && (
           <g>
-            <rect x="120" y="120" width="760" height="660" fill="#1C1C19" />
-            <rect x="940" y="300" width="540" height="300" fill="#1F1F1B" />
-            <rect x="120" y="780" width="1360" height="1" fill="#292925" />
+            <rect x="120" y="120" width="760" height="660" fill="#F5F3EE" />
+            <rect x="940" y="300" width="540" height="300" fill="#F1EFE9" />
+            <rect x="120" y="780" width="1360" height="1" fill="#E3E1DB" />
           </g>
         )}
 
         {variant === 2 && (
           <g>
-            <rect x="0" y="240" width="1600" height="420" fill="#1C1C19" />
-            <rect x="380" y="240" width="1" height="420" fill="#242421" />
-            <rect x="1220" y="240" width="1" height="420" fill="#242421" />
+            <rect x="0" y="240" width="1600" height="420" fill="#F5F3EE" />
+            <rect x="380" y="240" width="1" height="420" fill="#EAE8E1" />
+            <rect x="1220" y="240" width="1" height="420" fill="#EAE8E1" />
           </g>
         )}
 
         {variant === 3 && (
           <g>
-            <rect x="260" y="90" width="1080" height="720" fill="#1C1C19" />
+            <rect x="260" y="90" width="1080" height="720" fill="#F5F3EE" />
             <rect x="260" y="450" width="1080" height="1" fill="#282825" />
             <rect x="800" y="90" width="1" height="720" fill="#222220" />
           </g>

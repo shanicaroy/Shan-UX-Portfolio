@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 /**
  * Standalone case-study document. It lives outside the (site) group on
  * purpose: the page defines its own light palette and type system end to end,
- * so the dark site header and footer are not rendered around it. Newsreader
- * and JetBrains Mono come from Google Fonts (Inter is already self-hosted).
+ * so the site header and footer are not rendered around it. Newsreader comes
+ * from Google Fonts (Inter is already self-hosted).
  */
 export default function VmwareCaseStudy() {
   return (
@@ -21,7 +21,7 @@ export default function VmwareCaseStudy() {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
       />
       <style dangerouslySetInnerHTML={{ __html: vmwareCaseStyles }} />
       <div className="vmw" id="main">

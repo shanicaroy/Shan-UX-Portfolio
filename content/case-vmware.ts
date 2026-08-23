@@ -3,8 +3,8 @@
 //
 // This document arrived as a complete designed HTML page and is preserved as
 // one, rather than being decomposed into site components: it deliberately uses
-// its own light "paper" palette and type system (Newsreader / Inter /
-// JetBrains Mono), separate from the portfolio shell. Selectors are scoped
+// its own light "paper" palette and type system (Newsreader / Inter),
+// separate from the portfolio shell. Selectors are scoped
 // under `.vmw` so nothing leaks into the rest of the site. The scroll-spy
 // behaviour lives in components/VmwareToc.tsx.
 // ---------------------------------------------------------------------------
@@ -40,8 +40,8 @@ export const vmwareCaseStyles = `
   /* sticky section nav */
   .vmw aside{position:sticky;top:0;align-self:start;height:100vh;padding:40px 0;display:flex;flex-direction:column}
   @media(max-width:900px){.vmw aside{position:static;height:auto;padding:24px 0;border-bottom:1px solid var(--line)}}
-  .vmw .backlink{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin-bottom:14px;display:block}
-  .vmw .kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:26px}
+  .vmw .backlink{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin-bottom:14px;display:block}
+  .vmw .kicker{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:26px}
   .vmw .toc{list-style:none;display:flex;flex-direction:column;gap:2px}
   @media(max-width:900px){.vmw .toc{flex-flow:row wrap;gap:6px 16px;margin-top:8px}}
   .vmw .toc a{
@@ -56,7 +56,7 @@ export const vmwareCaseStyles = `
   .vmw main{padding:56px 0 120px;max-width:680px}
 
   /* hero */
-  .vmw .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin-bottom:20px}
+  .vmw .eyebrow{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin-bottom:20px}
   .vmw h1{font-weight:500;font-size:clamp(34px,5vw,52px);line-height:1.1;letter-spacing:-.015em;margin-bottom:22px;font-family:'Newsreader',Georgia,serif;color:var(--vink)}
   .vmw .standfirst{font-size:22px;color:#33332E;line-height:1.55;margin-bottom:30px}
   .vmw .factline{
@@ -88,17 +88,17 @@ export const vmwareCaseStyles = `
     border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
     font-size:19px;line-height:1.55;color:#2C2C27;
   }
-  .vmw blockquote .src{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--sub);display:block;margin-top:12px;letter-spacing:.02em}
+  .vmw blockquote .src{font-family:'Inter',sans-serif;font-size:11.5px;color:var(--sub);display:block;margin-top:12px;letter-spacing:.02em}
 
   /* figure / diagram */
   .vmw figure{margin:34px 0}
   .vmw .diagram{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:30px 26px}
   .vmw figcaption{font-family:'Inter',sans-serif;font-size:13px;color:var(--sub);margin-top:12px;line-height:1.5}
   .vmw figcaption b{color:var(--vink);font-weight:600}
-  .vmw .mono{font-family:'JetBrains Mono',monospace}
+  .vmw .mono{font-family:'Inter',sans-serif}
 
   /* nested-table failure diagram */
-  .vmw .nest{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--vink)}
+  .vmw .nest{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--vink)}
   .vmw .nest .row{border:1px solid var(--line2);border-radius:6px;padding:9px 12px;margin-bottom:7px;background:var(--paper)}
   .vmw .nest .d1{margin-left:0}
   .vmw .nest .d2{margin-left:22px;background:#F3F1EC}
@@ -107,24 +107,24 @@ export const vmwareCaseStyles = `
 
   /* compose diagram */
   .vmw .compose{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
-  .vmw .chip{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--accent-soft);border:1px solid #B9D8D5;color:#0A5350;padding:8px 12px;border-radius:6px;text-align:center;line-height:1.3}
-  .vmw .plus{font-family:'JetBrains Mono',monospace;color:var(--sub);font-size:18px}
-  .vmw .arrow{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:20px;width:100%;text-align:center;margin:6px 0}
-  .vmw .result{font-family:'JetBrains Mono',monospace;font-size:12.5px;background:var(--vink);color:#fff;padding:12px 18px;border-radius:8px;text-align:center}
+  .vmw .chip{font-family:'Inter',sans-serif;font-size:12px;background:var(--accent-soft);border:1px solid #B9D8D5;color:#0A5350;padding:8px 12px;border-radius:6px;text-align:center;line-height:1.3}
+  .vmw .plus{font-family:'Inter',sans-serif;color:var(--sub);font-size:18px}
+  .vmw .arrow{font-family:'Inter',sans-serif;color:var(--accent);font-size:20px;width:100%;text-align:center;margin:6px 0}
+  .vmw .result{font-family:'Inter',sans-serif;font-size:12.5px;background:var(--vink);color:#fff;padding:12px 18px;border-radius:8px;text-align:center}
 
   /* responsive diagram */
   .vmw .resp{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media(max-width:560px){.vmw .resp{grid-template-columns:1fr}}
   .vmw .frame{border:1px solid var(--line2);border-radius:8px;overflow:hidden;background:var(--paper)}
-  .vmw .frame .bar{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--sub);padding:6px 10px;border-bottom:1px solid var(--line);background:var(--card)}
+  .vmw .frame .bar{font-family:'Inter',sans-serif;font-size:10.5px;color:var(--sub);padding:6px 10px;border-bottom:1px solid var(--line);background:var(--card)}
   .vmw .frame .body{padding:10px}
   .vmw .band{height:11px;border-radius:3px;margin-bottom:6px;background:#DCD9D2}
   .vmw .band.cost{background:#CFE4E2}
   .vmw .band.tall{height:22px}
   .vmw .band.table{background:#E7C9A9;height:34px;border-radius:4px}
   .vmw .frame.bad .band.table{opacity:.35}
-  .vmw .push{font-family:'JetBrains Mono',monospace;font-size:10px;color:#B0651F;text-align:center;margin-top:4px}
-  .vmw .ok{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);text-align:center;margin-top:4px}
+  .vmw .push{font-family:'Inter',sans-serif;font-size:10px;color:#B0651F;text-align:center;margin-top:4px}
+  .vmw .ok{font-family:'Inter',sans-serif;font-size:10px;color:var(--accent);text-align:center;margin-top:4px}
 
   .vmw .warnbox{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:8px;padding:16px 20px;font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.55;color:#6B4526;margin:26px 0}
   .vmw .warnbox b{color:#5A3416}

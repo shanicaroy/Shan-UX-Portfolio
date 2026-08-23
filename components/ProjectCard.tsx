@@ -18,7 +18,7 @@ const ASPECT: Record<Project["aspect"], string> = {
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
   const card = (
     <>
-      <div className={`w-full overflow-hidden ${ASPECT[project.aspect]}`}>
+      <div className={`w-full overflow-hidden border border-rule ${ASPECT[project.aspect]}`}>
         <ProjectCanvas
           index={index}
           locked={project.locked}

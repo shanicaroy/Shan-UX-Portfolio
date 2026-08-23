@@ -40,26 +40,26 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #11110f;
+  background-color: #fbfaf8;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  background-color: #11110f;
-  color: #eae7df;
+  background-color: #fbfaf8;
+  color: #1a1a17;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #eae7df;
-  color: #11110f;
+  background-color: #1a1a17;
+  color: #fbfaf8;
 }
 
 :focus-visible {
-  outline: 1px solid #eae7df;
+  outline: 1px solid #1a1a17;
   outline-offset: 4px;
 }
 

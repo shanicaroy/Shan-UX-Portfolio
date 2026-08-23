@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm off-black editorial palette. No accent colour by design —
+        // Light paper palette, taken from the case-study document —
         // hierarchy comes from scale, spacing and contrast alone.
-        ground: "#11110F",
-        surface: "#171715",
-        ink: "#EAE7DF",
-        muted: "#9A9891",
-        rule: "#292925",
+        ground: "#FBFAF8",
+        surface: "#FFFFFF",
+        ink: "#1A1A17",
+        muted: "#5C5C55",
+        rule: "#E3E1DB",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
