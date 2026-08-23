@@ -27,13 +27,13 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "multi-cloud-finops-platform",
-    title: "AI based Multi Cloud FinOps & DevOps SaaS Platform",
+    slug: "vmware-cloud-provider-portal",
+    title: "VMware Cloud Provider Portal",
     description:
-      "Turning sprawling multi-cloud billing data into decisions a DevOps team can act on.",
-    category: "Product Design · UX Research",
+      "Redesigning VMware's Cloud Provider purchasing portals in Clarity — understanding the platform before touching a screen.",
+    category: "Product Design · Enterprise Cloud",
     year: "2023",
-    company: "Uniskai by Profisea Labs",
+    company: "VMware",
     image: "/projects/project-01.jpg",
     aspect: "16/9",
   },

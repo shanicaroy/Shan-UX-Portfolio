@@ -5,7 +5,11 @@ import { projects, getProject } from "@/content/projects";
 import Shell from "@/components/Shell";
 import ProjectCanvas from "@/components/ProjectCanvas";
 
-const openProjects = projects.filter((p) => !p.locked);
+// VMware has a bespoke standalone page at app/work/vmware-cloud-provider-portal.
+const SCAFFOLDED = (p: (typeof projects)[number]) =>
+  !p.locked && p.slug !== "vmware-cloud-provider-portal";
+
+const openProjects = projects.filter(SCAFFOLDED);
 
 export function generateStaticParams() {
   return openProjects.map((p) => ({ slug: p.slug }));
@@ -28,7 +32,7 @@ const SECTIONS = ["Context", "Problem", "Approach", "Outcome"] as const;
 export default async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = getProject(slug);
-  if (!project || project.locked) notFound();
+  if (!project || !SCAFFOLDED(project)) notFound();
 
   const index = projects.findIndex((p) => p.slug === project.slug);
   const openIndex = openProjects.findIndex((p) => p.slug === project.slug);
