@@ -26,18 +26,18 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               loop
               playsInline
               preload="metadata"
-              aria-label={`${project.title} — case study cover`}
+              aria-label={`${project.title}, case study cover`}
               className="h-full w-full object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.01]"
             />
           ) : project.photo ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={project.photo}
-              alt={`${project.title} — case study cover`}
+              alt={`${project.title}, case study cover`}
               className="h-full w-full object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.01]"
             />
           ) : (
-            <ProjectCanvas index={index} alt={`${project.title} — case study cover`} />
+            <ProjectCanvas index={index} alt={`${project.title}, case study cover`} />
           )}
         </div>
 

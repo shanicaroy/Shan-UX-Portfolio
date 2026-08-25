@@ -194,7 +194,7 @@ export const vmwareCaseBody = `
             <span class="chip">+ add-on ×3</span><span class="chip">Service term</span><span class="chip">Cloud type</span><span class="chip">Currency</span>
           </div>
         </div>
-        <figcaption><b>The buyer's mental load, abstracted.</b> One purchasable line, eight simultaneous variables, before a decision could be made. No VMware data — a schematic of the problem shape.</figcaption>
+        <figcaption><b>The buyer's mental load, abstracted.</b> One purchasable line, eight simultaneous variables, before a decision could be made. No VMware data, only a schematic of the problem shape.</figcaption>
       </figure>
     </section>
 
@@ -205,20 +205,20 @@ export const vmwareCaseBody = `
       <p>The engineering manager brought it to me and asked which way I wanted to go. My first instinct wasn't to invent something. It was to check what we already had. We went through Clarity together. His read was blunt: no equivalent component, and no alternative inside Clarity either.</p>
       <p>He was right, and I can prove it, because Clarity's own team wrote down exactly why this pattern is a trap. Their public design-system wiki says the nested-datagrid approach:</p>
       <blockquote>
-        confused hierarchy instead of reinforcing it, and was prone to abuse — datagrids nested within datagrids until it became easy to lose one's focus.
-        <span class="src">— Clarity Design System wiki, "Hierarchical datagrid" (public, MIT)</span>
+        confused hierarchy instead of reinforcing it, and was prone to abuse: datagrids nested within datagrids until it became easy to lose one's focus.
+        <span class="src">Clarity Design System wiki, "Hierarchical datagrid" (public, MIT)</span>
       </blockquote>
-      <p>And on the exact failure I was worried about — the child table swallowing its parent:</p>
+      <p>And on the exact failure I was worried about, the child table swallowing its parent:</p>
       <blockquote>
         a nested datagrid would commonly take up the full height of its parent, obscuring the parent's rows; teams nesting three to four deep meant you'd go down a couple of levels and have to scroll to find where you started.
-        <span class="src">— Clarity Design System wiki, "Hierarchical datagrid"</span>
+        <span class="src">Clarity Design System wiki, "Hierarchical datagrid"</span>
       </blockquote>
       <figure>
         <div class="diagram">
           <div class="nest" aria-hidden="true">
-            <div class="row d1">▸ State — parent row</div>
-            <div class="row d2">▸ Products in state — nested table</div>
-            <div class="row d3">▸ Purchase detail — nested table <span class="warn">← focus lost, parent obscured</span></div>
+            <div class="row d1">▸ State · parent row</div>
+            <div class="row d2">▸ Products in state · nested table</div>
+            <div class="row d3">▸ Purchase detail · nested table <span class="warn">← focus lost, parent obscured</span></div>
           </div>
         </div>
         <figcaption><b>The pattern the brief implied, and why Clarity warned against it.</b> Redrawn from Clarity's public documentation, not from VMware UI.</figcaption>
@@ -241,9 +241,9 @@ export const vmwareCaseBody = `
             <span class="chip">Detail-pane<br>pattern</span>
           </div>
           <div class="arrow">↓</div>
-          <div class="compose"><span class="result">One composed component — still 100% Clarity</span></div>
+          <div class="compose"><span class="result">One composed component, still 100% Clarity</span></div>
         </div>
-        <figcaption><b>The move, abstracted.</b> Clarity's own recommended alternatives — expandable rows, the detail pane, a dedicated detail view — became the primitives I combined, instead of a custom build. Conceptual only.</figcaption>
+        <figcaption><b>The move, abstracted.</b> Clarity's own recommended alternatives (expandable rows, the detail pane, a dedicated detail view) became the primitives I combined, instead of a custom build. Conceptual only.</figcaption>
       </figure>
       <p>The agreement we reached in the room was clean: same Clarity look and feel, colours mapped to Clarity equivalents, and engineering would decide whether to combine the existing components or formalise the grouped one. The system stayed intact. The problem still got solved.</p>
     </section>
@@ -251,7 +251,7 @@ export const vmwareCaseBody = `
     <section id="responsive">
       <h2>Designing for the floor</h2>
       <h3>The design that mattered was the one at minimum width.</h3>
-      <p>The service page had a cost summary that grew with the user's choices. Default state, it showed one thing. Select a quantity in the table below and it filled in — one-time, monthly, whatever applied. Pick one type, one card. Pick several, several cards.</p>
+      <p>The service page had a cost summary that grew with the user's choices. Default state, it showed one thing. Select a quantity in the table below and it filled in: one-time, monthly, whatever applied. Pick one type, one card. Pick several, several cards.</p>
       <p>That growth was the problem, and it only showed up if you were looking in the right place. I do detailed design at 1920, because that's where the fine decisions get made. But the developer kept pulling me back to the minimum width, and he was right to. A page has to hold together at the smallest size it will ever run at, not the size it looks best at.</p>
       <figure>
         <div class="resp">
@@ -273,33 +273,33 @@ export const vmwareCaseBody = `
             </div>
           </div>
         </div>
-        <figcaption><b>The hierarchy failure hiding in a responsive detail.</b> At minimum width, a third cost card wrapped to a second line, pushing the table — the page's whole purpose — out of view. Schematic, not VMware UI.</figcaption>
+        <figcaption><b>The hierarchy failure hiding in a responsive detail.</b> At minimum width, a third cost card wrapped to a second line, pushing the table, the page's whole purpose, out of view. Schematic, not VMware UI.</figcaption>
       </figure>
       <p>Roughly 72 to 80 extra pixels in one block. Small on its own. But it pushed the table down, and if you push it far enough the user lands on the page and can't see the thing they came to do. That's not a styling nitpick. That's the page failing at its one job.</p>
-      <p>So I pushed on it. Not because the developer was careless — he wasn't, and his point that the user was still on the same page was fair. But "on the same page" and "can actually see the table" are two different bars, and I wanted the higher one. The honest hard part: this constraint had no clean win. Even at large sizes, fully expanded, the table was tight. Some of that was just how much this page had to show at once. What I held onto is the bar we were arguing about, because it's the same bar I hold today — the page's one job stays visible without scrolling, and everything else negotiates around that.</p>
+      <p>So I pushed on it. Not because the developer was careless; he wasn't, and his point that the user was still on the same page was fair. But "on the same page" and "can actually see the table" are two different bars, and I wanted the higher one. The honest hard part: this constraint had no clean win. Even at large sizes, fully expanded, the table was tight. Some of that was just how much this page had to show at once. What I held onto is the bar we were arguing about, because it's the same bar I hold today: the page's one job stays visible without scrolling, and everything else negotiates around that.</p>
     </section>
 
     <section id="leadership">
       <h2>Working with the team</h2>
       <h3>Most of this project was a conversation.</h3>
       <p>Two things are true about the decisions above, and both matter more than the pixels. First, I didn't make either call alone or by authority. I made them by walking into engineering conversations with a point of view, holding it against real pushback, and landing on something we both trusted. The composed-component decision came out of a back-and-forth with the engineering manager. The responsive decision came out of not backing down to a developer who had a fair counter-argument.</p>
-      <p>Second, I worked close to the build the whole way — often directly in the live product with the browser's dev tools open, checking how shipped screens matched the design and adjusting in place. A lot of the real finishing happened in the build, not in the file. That closeness is why the Clarity mapping actually held instead of drifting the moment it hit code.</p>
-      <div class="warnbox"><b>On honesty:</b> when a question came up about adding search to one of these flows, I validated it with a product owner on the backend team — not with an actual business user. I knew at the time it was a shortcut. Naming it here is deliberate; it's the thing I'd change, and it leads directly into the next section.</div>
+      <p>Second, I worked close to the build the whole way, often directly in the live product with the browser's dev tools open, checking how shipped screens matched the design and adjusting in place. A lot of the real finishing happened in the build, not in the file. That closeness is why the Clarity mapping actually held instead of drifting the moment it hit code.</p>
+      <div class="warnbox"><b>On honesty:</b> when a question came up about adding search to one of these flows, I validated it with a product owner on the backend team, not with an actual business user. I knew at the time it was a shortcut. Naming it here is deliberate; it's the thing I'd change, and it leads directly into the next section.</div>
     </section>
 
     <section id="outcome">
       <h2>Where it landed</h2>
       <h3>What I have, and what I don't.</h3>
       <p>The redesign covered the Cloud Provider portal and the service portals connected to it, all rebuilt in Clarity, worked shoulder-to-shoulder with engineering through to the build.</p>
-      <p>I don't have outcome metrics from this work, and I'm not going to invent any. What I have is the work itself and the decisions inside it — which, for a project like this, is the honest and the useful thing to show. If you want to test how I think, the decisions are where to look.</p>
+      <p>I don't have outcome metrics from this work, and I'm not going to invent any. What I have is the work itself and the decisions inside it, which, for a project like this, is the honest and the useful thing to show. If you want to test how I think, the decisions are where to look.</p>
     </section>
 
     <section id="reflection">
       <h2>What I'd do differently</h2>
       <h3>Three things, honestly.</h3>
-      <p><strong>Who I asked.</strong> A product owner can tell you how the system works. Only the real user can tell you whether a feature helps at the moment they're stuck. The closer I get to leading design, the more I see that protecting that difference — and fighting for access to the real user even when the nearest person is easier to reach — is the job.</p>
+      <p><strong>Who I asked.</strong> A product owner can tell you how the system works. Only the real user can tell you whether a feature helps at the moment they're stuck. The closer I get to leading design, the more I see that protecting that difference, and fighting for access to the real user even when the nearest person is easier to reach, is the job.</p>
       <p><strong>When I spoke up.</strong> So much of this portal's difficulty came from the thing being sold, not the screen selling it. Eight kinds of cost on one line is a commercial-model problem before it's an interface problem. Three levels of nested tables exist because the model underneath is that layered. Back then I took the model as fixed and built the best portal I could on top of it. Now I'd want to be in the room earlier, when the model is still being shaped, asking whether the product could be simpler to <em>buy</em>, not just simpler to look at. Design is most useful upstream. I learned that here by feeling its absence.</p>
-      <p><strong>Who owned my understanding.</strong> All that platform comprehension I did at the start, I did silently, in my own head. Today I'd make it visible and shared — a map the whole team could point at — so my understanding became the team's. That's the difference between doing the work and leading it, and this project is where I started to see it.</p>
+      <p><strong>Who owned my understanding.</strong> All that platform comprehension I did at the start, I did silently, in my own head. Today I'd make it visible and shared, a map the whole team could point at, so my understanding became the team's. That's the difference between doing the work and leading it, and this project is where I started to see it.</p>
     </section>
 
     <hr>

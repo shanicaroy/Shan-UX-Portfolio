@@ -15,9 +15,31 @@ export type Article = {
   href: string;
 };
 
+// Topic-driven titles set by Shanica; link each to the real piece when it
+// publishes.
 export const writing: Article[] = [
-  { year: "2026", title: "[Article title]", category: "Design Leadership", href: "#" },
-  { year: "2025", title: "[Article title]", category: "Product Design", href: "#" },
-  { year: "2025", title: "[Article title]", category: "Psychology", href: "#" },
-  { year: "2024", title: "[Article title]", category: "Technology", href: "#" },
+  {
+    year: "2026",
+    title: "Leading design without stepping away from the craft",
+    category: "Design Leadership",
+    href: "#",
+  },
+  {
+    year: "2025",
+    title: "Influencing product direction before the first screen",
+    category: "Product Strategy",
+    href: "#",
+  },
+  {
+    year: "2025",
+    title: "Designing for how people actually decide",
+    category: "UX · Human Behavior",
+    href: "#",
+  },
+  {
+    year: "2024",
+    title: "Designing AI features people can trust",
+    category: "AI · Technology",
+    href: "#",
+  },
 ];

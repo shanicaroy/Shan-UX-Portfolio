@@ -85,18 +85,18 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
               muted
               loop
               playsInline
-              aria-label={`${project.title} — case study cover`}
+              aria-label={`${project.title}, case study cover`}
               className="h-full w-full object-cover"
             />
           ) : project.photo ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={project.photo}
-              alt={`${project.title} — case study cover`}
+              alt={`${project.title}, case study cover`}
               className="h-full w-full object-cover"
             />
           ) : (
-            <ProjectCanvas index={index} alt={`${project.title} — case study cover`} />
+            <ProjectCanvas index={index} alt={`${project.title}, case study cover`} />
           )}
         </div>
       </Shell>

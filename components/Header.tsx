@@ -44,7 +44,7 @@ export default function Header() {
 
 
   return (
-    <header className="relative z-40 border-b border-rule">
+    <header className="sticky top-0 z-40 border-b border-rule bg-ground">
       <Shell className="grid grid-cols-[1fr_auto] items-baseline gap-8 py-5 md:grid-cols-[1fr_auto_1fr] md:py-6">
         {/* Identity — name over designation, top-left */}
         <Link href="/" className="flex items-baseline">
