@@ -2,7 +2,7 @@ import Hero from "@/components/Hero";
 import HowIWork from "@/components/HowIWork";
 import WorkSection from "@/components/WorkSection";
 import PeopleDevelopment from "@/components/PeopleDevelopment";
-import BeyondTheProduct from "@/components/BeyondTheProduct";
+import WritingSection from "@/components/WritingSection";
 import Testimonials from "@/components/Testimonials";
 import FinalCta from "@/components/FinalCta";
 
@@ -13,7 +13,7 @@ export default function Home() {
       <HowIWork />
       <WorkSection />
       <PeopleDevelopment />
-      <BeyondTheProduct />
+      <WritingSection />
       <Testimonials />
       <FinalCta />
     </>
