@@ -2,16 +2,12 @@ import Link from "next/link";
 import type { Project } from "@/content/projects";
 import ProjectCanvas from "./ProjectCanvas";
 
-const ASPECT: Record<Project["aspect"], string> = {
-  "16/9": "aspect-[16/9]",
-  "3/2": "aspect-[3/2]",
-  "4/3": "aspect-[4/3]",
-  "1/1": "aspect-square",
-};
+/** Facts shown on homepage rows — the case pages carry the full details. */
+const ROW_FACTS = ["Role", "Team", "Scope", "Outcome"];
 
 function Cover({ project, index }: { project: Project; index: number }) {
   return (
-    <div className={`w-full overflow-hidden border border-rule ${ASPECT[project.aspect]}`}>
+    <div className="aspect-[4/3] w-full overflow-hidden border border-rule">
       {project.video ? (
         <video
           src={project.video}
@@ -37,59 +33,10 @@ function Cover({ project, index }: { project: Project; index: number }) {
   );
 }
 
-function Details({ project, large }: { project: Project; large: boolean }) {
-  return (
-    <>
-      {project.confidential && (
-        <p className="text-[12px] uppercase tracking-label text-muted">
-          {project.confidentialLabel}
-        </p>
-      )}
-      <h3
-        className={`display leading-[1.1] text-ink ${project.confidential ? "mt-4" : ""} ${
-          large ? "text-[2rem] sm:text-[2.5rem] lg:text-[2.75rem]" : "text-[1.75rem] sm:text-[2rem]"
-        }`}
-      >
-        <Link
-          href={`/work/${project.slug}`}
-          className="transition-opacity duration-200 hover:opacity-70"
-        >
-          {project.title}
-        </Link>
-      </h3>
-      <p className="mt-3 text-[12px] uppercase tracking-label text-muted">{project.positioning}</p>
-      <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-[17px]">
-        {project.description}
-      </p>
-    </>
-  );
-}
-
-function Facts({ project }: { project: Project }) {
-  return (
-    <div className="flex flex-col gap-6">
-      <dl className="flex flex-col gap-4">
-        {project.details.map((d) => (
-          <div key={d.label}>
-            <dt className="text-[12px] uppercase tracking-label text-muted">{d.label}</dt>
-            <dd className="mt-1 text-sm leading-relaxed text-ink/80">{d.value}</dd>
-          </div>
-        ))}
-      </dl>
-      <Link
-        href={`/work/${project.slug}`}
-        className="text-sm text-ink underline-offset-4 transition-colors duration-200 hover:underline"
-      >
-        {project.cta} <span aria-hidden>↗</span>
-      </Link>
-    </div>
-  );
-}
-
 /**
- * One project in the editorial work list. Large rows lead with a full-width
- * cover, then split title/description from metadata. Medium rows sit the
- * cover beside the text, alternating sides.
+ * The single master project template: details on one side, cover on the
+ * other, identical proportions and hierarchy for every project. Rows
+ * alternate sides down the page — text left first, then flipped.
  */
 export default function ProjectRow({
   project,
@@ -100,40 +47,49 @@ export default function ProjectRow({
   index: number;
   flip: boolean;
 }) {
-  if (project.size === "large") {
-    return (
-      <article className="group">
-        <Link href={`/work/${project.slug}`} className="block" tabIndex={-1} aria-hidden>
-          <Cover project={project} index={index} />
-        </Link>
-        <div className="mt-8 grid grid-cols-12 gap-x-8 gap-y-8">
-          <div className="col-span-12 lg:col-span-7">
-            <Details project={project} large />
-          </div>
-          <div className="col-span-12 lg:col-span-4 lg:col-start-9">
-            <Facts project={project} />
-          </div>
-        </div>
-      </article>
-    );
-  }
+  const facts = project.details.filter((d) => ROW_FACTS.includes(d.label));
 
   return (
-    <article className="group grid grid-cols-12 items-start gap-x-8 gap-y-8">
+    <article className="group grid grid-cols-12 items-center gap-x-8 gap-y-8">
+      <div className={`col-span-12 lg:col-span-4 ${flip ? "lg:order-2 lg:col-start-9" : "lg:col-start-1"}`}>
+        <p className="text-[12px] uppercase tracking-label text-muted">
+          {project.confidential ? project.confidentialLabel : project.positioning}
+        </p>
+        <h3 className="display mt-4 text-[1.75rem] leading-[1.1] text-ink sm:text-[2rem]">
+          <Link
+            href={`/work/${project.slug}`}
+            className="transition-opacity duration-200 hover:opacity-70"
+          >
+            {project.title}
+          </Link>
+        </h3>
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">{project.description}</p>
+
+        <dl className="mt-6 flex flex-col gap-3">
+          {facts.map((d) => (
+            <div key={d.label}>
+              <dt className="text-[12px] uppercase tracking-label text-muted">{d.label}</dt>
+              <dd className="mt-0.5 text-sm leading-relaxed text-ink/80">{d.value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <Link
+          href={`/work/${project.slug}`}
+          className="mt-7 inline-block text-sm text-ink underline-offset-4 transition-colors duration-200 hover:underline"
+        >
+          {project.cta} <span aria-hidden>↗</span>
+        </Link>
+      </div>
+
       <Link
         href={`/work/${project.slug}`}
-        className={`col-span-12 block lg:col-span-7 ${flip ? "lg:order-2 lg:col-start-6" : ""}`}
+        className={`col-span-12 block lg:col-span-7 ${flip ? "lg:order-1 lg:col-start-1" : "lg:col-start-6"}`}
         tabIndex={-1}
         aria-hidden
       >
         <Cover project={project} index={index} />
       </Link>
-      <div className={`col-span-12 lg:col-span-4 ${flip ? "lg:order-1 lg:col-start-1" : "lg:col-start-9"}`}>
-        <Details project={project} large={false} />
-        <div className="mt-6">
-          <Facts project={project} />
-        </div>
-      </div>
     </article>
   );
 }

@@ -35,9 +35,35 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "dell-portal-redesign",
+    title: "Dell Portal Redesign",
+    positioning: "Enterprise product · Information architecture",
+    description:
+      "Reframing a complex enterprise portal around clearer information architecture, workflows, and user decision-making.",
+    details: [
+      { label: "Role", value: "Senior UX Designer" },
+      { label: "Team", value: "[X]" },
+      { label: "Scope", value: "[X]" },
+      {
+        label: "My contribution",
+        value:
+          "User research, design, and delivery to engineering for a C2C logistics template-builder platform.",
+      },
+      { label: "My leadership", value: "[X]" },
+      { label: "Outcome", value: "[X] — [verified result]" },
+    ],
+    confidential: true,
+    confidentialLabel: "Confidential · Enterprise Product",
+    size: "medium",
+    cta: "View confidential case study",
+    image: "/projects/project-05.jpg",
+    video: "/projects/dell.mp4",
+    aspect: "4/3",
+  },
+  {
     slug: "vmware-cloud-provider-portal",
     title: "VMware Cloud Provider Portal",
-    positioning: "Enterprise SaaS · UX Leadership · Product Strategy",
+    positioning: "Enterprise · SaaS · Cloud",
     description:
       "Leading UX across a complex cloud platform where multiple users, workflows, and technical constraints had to work as one coherent experience.",
     details: [
@@ -65,7 +91,7 @@ export const projects: Project[] = [
   {
     slug: "virtubox-kiosk",
     title: "VirtuBox Kiosk Design",
-    positioning: "0→1 · Service Experience · Interaction Design",
+    positioning: "0→1 · Service Experience",
     description:
       "Designing a physical-digital experience where usability, operational constraints, business requirements, and real-world behavior had to converge.",
     details: [
@@ -104,38 +130,12 @@ export const projects: Project[] = [
       { label: "Outcome", value: "[X] — [verified result]" },
     ],
     confidential: true,
-    confidentialLabel: "Confidential · Enterprise",
+    confidentialLabel: "Confidential · Enterprise SaaS",
     size: "large",
     cta: "View confidential case study",
     image: "/projects/project-02.jpg",
     photo: "/projects/clm.svg",
     aspect: "3/2",
-  },
-  {
-    slug: "dell-portal-redesign",
-    title: "Dell Portal Redesign",
-    positioning: "Enterprise product · Information architecture",
-    description:
-      "Reframing a complex enterprise portal around clearer information architecture, workflows, and user decision-making.",
-    details: [
-      { label: "Role", value: "Senior UX Designer" },
-      { label: "Team", value: "[X]" },
-      { label: "Scope", value: "[X]" },
-      {
-        label: "My contribution",
-        value:
-          "User research, design, and delivery to engineering for a C2C logistics template-builder platform.",
-      },
-      { label: "My leadership", value: "[X]" },
-      { label: "Outcome", value: "[X] — [verified result]" },
-    ],
-    confidential: true,
-    confidentialLabel: "Confidential · Enterprise Product",
-    size: "medium",
-    cta: "View confidential case study",
-    image: "/projects/project-05.jpg",
-    video: "/projects/dell.mp4",
-    aspect: "4/3",
   },
 ];
 

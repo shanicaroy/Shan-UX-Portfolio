@@ -26,14 +26,9 @@ export const siteConfig = {
   },
 
   hero: {
-    headline: "I'm Shanica, a UX & Product Design Leader.",
+    headline: "Hi, I'm Shanica, and I lead UX and product design.",
     support:
-      "I lead complex product experiences from ambiguity to clarity — combining hands-on UX, product strategy, research, and design leadership to help teams build better products.",
-    // The conceptual anchor of the portfolio — prominent, but smaller than the H1.
-    positioning:
-      "Hands-on when it matters. Strategic when it counts. Leadership wherever it creates leverage.",
-    // Credential strip. "8+ years" is verified from the resume.
-    credentials: ["8+ years in UX", "UX Lead at EY", "B2B · SaaS · Enterprise", "Product Strategy", "Design Leadership"],
+      "I design and lead complex product experiences across B2B, SaaS, and enterprise environments — connecting user needs, product strategy, and design execution.",
   },
 
   about: {
@@ -50,10 +45,10 @@ export const siteConfig = {
 } as const;
 
 export const navigation = [
-  { label: "Work", href: "#work" },
-  { label: "Leadership", href: "#leadership" },
-  { label: "About", href: "#about" },
-  { label: "Writing", href: "#writing" },
+  { label: "Work", href: "/#work" },
+  { label: "Leadership", href: "/leadership" },
+  { label: "About", href: "/about" },
+  { label: "Writing", href: "/writing" },
 ] as const;
 
 export const socialLinks = [

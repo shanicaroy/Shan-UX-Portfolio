@@ -42,11 +42,6 @@ export default function Header() {
     </a>
   );
 
-  const talkLink = (
-    <a href={siteConfig.social.email} onClick={() => setOpen(false)} className={`${linkClass} text-ink`}>
-      Let&rsquo;s talk <span aria-hidden>&#8599;</span>
-    </a>
-  );
 
   return (
     <header className="relative z-40 border-b border-rule">
@@ -66,11 +61,8 @@ export default function Header() {
           {sectionLinks}
         </nav>
 
-        {/* Right — resume + understated CTA */}
-        <div className="hidden items-baseline justify-end gap-10 md:flex">
-          {resumeLink}
-          {talkLink}
-        </div>
+        {/* Right — resume */}
+        <div className="hidden justify-end md:flex">{resumeLink}</div>
 
         <button
           type="button"
@@ -88,7 +80,6 @@ export default function Header() {
           <Shell className="flex flex-col gap-5 pb-6 pt-2">
             {sectionLinks}
             {resumeLink}
-            {talkLink}
           </Shell>
         </nav>
       )}

@@ -1,5 +1,6 @@
 import { beyondTheProduct } from "@/content/leadership";
 import { writing } from "@/content/writing";
+import Link from "next/link";
 import Shell from "./Shell";
 import SectionIntro from "./SectionIntro";
 
@@ -23,6 +24,13 @@ export default function BeyondTheProduct() {
           </li>
         ))}
       </ul>
+
+      <Link
+        href="/writing"
+        className="mt-10 inline-block text-sm text-ink underline-offset-4 transition-colors duration-200 hover:underline"
+      >
+        Read all <span aria-hidden>↗</span>
+      </Link>
 
       {writing.length > 0 && (
         <ul className="mt-10 border-t border-rule">

@@ -5,6 +5,44 @@
 // does not change.
 // ---------------------------------------------------------------------------
 
+/** Homepage — How I work: the only leadership-oriented section on the home page. */
+export const howIWork = {
+  heading: "How I work.",
+  support:
+    "I stay close to the problem, the product, and the people doing the work — moving between strategy, design, and leadership depending on what the team needs.",
+  principles: [
+    {
+      title: "Understand before solving.",
+      body: "I start with the problem, the people experiencing it, and the context around it before jumping into solutions.",
+    },
+    {
+      title: "Create clarity.",
+      body: "I turn ambiguity into a shared understanding of what we're solving, why it matters, and what success looks like.",
+    },
+    {
+      title: "Stay close to the work.",
+      body: "I believe strong leadership requires enough proximity to the work to challenge decisions, raise the bar, and understand the details.",
+    },
+    {
+      title: "Give people ownership.",
+      body: "I provide context and direction while giving designers the autonomy to make meaningful decisions.",
+    },
+    {
+      title: "Connect design to outcomes.",
+      body: "I care about the experience, but also what the experience enables for customers, the product, and the business.",
+    },
+  ],
+} as const;
+
+/** Leadership page hero. */
+export const leadershipHero = {
+  heading: "I lead design by making people, products, and decisions better.",
+  support:
+    "My approach to leadership sits at the intersection of design craft, product thinking, team development, and organizational impact.",
+  belief:
+    "I believe strong design leadership isn't about moving away from the work. It's about creating the clarity, context, and conditions that allow people and products to do better work.",
+} as const;
+
 /** 04 — Where I operate: the three pillars. */
 export const whereIOperate = {
   label: "Positioning / 01",
