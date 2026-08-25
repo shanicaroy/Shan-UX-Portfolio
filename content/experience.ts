@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
 // EXPERIENCE
-// Bracketed rows are PLACEHOLDERS — no companies, dates or titles have been
-// invented. Replace them, or delete rows you don't need.
+// Taken from Shanica's resume. Each row is the year a role began; EY appears
+// twice because of the June 2025 promotion from Senior UX Designer to UX Lead.
 // ---------------------------------------------------------------------------
 
 export type ExperienceEntry = {
@@ -11,8 +11,9 @@ export type ExperienceEntry = {
 };
 
 export const experience: ExperienceEntry[] = [
-  { year: "Present", company: "EY", role: "UX Lead" },
-  { year: "2025", company: "[Company Name]", role: "[Designation]" },
-  { year: "2024", company: "[Company Name]", role: "[Designation]" },
-  { year: "2021", company: "[Company Name]", role: "[Designation]" },
+  { year: "2025", company: "EY", role: "UX Lead" },
+  { year: "2023", company: "EY", role: "Senior UX Designer" },
+  { year: "2021", company: "Bhanzu", role: "UX Designer" },
+  { year: "2021", company: "VirtuBox Infotech", role: "UI/UX Designer" },
+  { year: "2019", company: "Unschool", role: "Senior Design Instructor" },
 ];
