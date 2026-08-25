@@ -15,13 +15,12 @@ export type Project = {
   /** Positioning line under the title, e.g. "Enterprise SaaS · UX Leadership". */
   positioning: string;
   description: string;
-  /** Metadata lines: role, team, timeline, scope. [X] until verified. */
-  meta: readonly string[];
-  /** Impact / outcome block. [X] until verified. */
-  impact?: {
-    label: string;
-    items: readonly string[];
-  };
+  /**
+   * Structured facts. "My contribution" is what Shanica personally did;
+   * "My leadership" is what she led, aligned, or enabled — every card must
+   * carry both so craft and leadership stay in balance. [X] until verified.
+   */
+  details: readonly { label: string; value: string }[];
   /** NDA work presented as a confidential preview. */
   confidential?: boolean;
   confidentialLabel?: string;
@@ -38,19 +37,25 @@ export const projects: Project[] = [
   {
     slug: "vmware-cloud-provider-portal",
     title: "VMware Cloud Provider Portal",
-    positioning: "Enterprise SaaS · Product Strategy · UX Leadership",
+    positioning: "Enterprise SaaS · UX Leadership · Product Strategy",
     description:
-      "Leading the experience across a complex cloud platform where multiple users, workflows, and technical constraints had to work as one coherent system.",
-    meta: [
-      "Role: Product / UX Designer",
-      "Team: [X]",
-      "Timeline: 2023",
-      "Scope: Cloud Provider portal + connected service portals",
+      "Leading UX across a complex cloud platform where multiple users, workflows, and technical constraints had to work as one coherent experience.",
+    details: [
+      { label: "Role", value: "Product / UX Designer" },
+      { label: "Team", value: "[X]" },
+      { label: "Scope", value: "Cloud Provider portal + connected service portals" },
+      {
+        label: "My contribution",
+        value:
+          "Platform research, portal redesign in Clarity, a composed component for three-level drill-down, responsive cost-summary design.",
+      },
+      {
+        label: "My leadership",
+        value:
+          "Aligned engineering on composing from existing Clarity parts instead of a custom build; held the quality bar at minimum widths.",
+      },
+      { label: "Outcome", value: "[X] — [verified result]" },
     ],
-    impact: {
-      label: "Impact",
-      items: ["[X]% — [verified outcome]", "[X] — [verified outcome]"],
-    },
     size: "large",
     cta: "Read case study",
     image: "/projects/project-01.jpg",
@@ -62,12 +67,18 @@ export const projects: Project[] = [
     title: "VirtuBox Kiosk Design",
     positioning: "0→1 · Service Experience · Interaction Design",
     description:
-      "Designing a physical-digital experience where usability, business requirements, operational constraints, and real-world behavior had to converge.",
-    meta: ["Role: UI/UX Designer", "Team: [X]", "Timeline: 2021"],
-    impact: {
-      label: "Outcome",
-      items: ["[X] — [verified outcome]"],
-    },
+      "Designing a physical-digital experience where usability, operational constraints, business requirements, and real-world behavior had to converge.",
+    details: [
+      { label: "Role", value: "UI/UX Designer" },
+      { label: "Team", value: "[X]" },
+      {
+        label: "My contribution",
+        value:
+          "Designed an interactive shopping kiosk and enterprise dashboard solutions for a SaaS kiosk-building platform.",
+      },
+      { label: "My leadership", value: "[X]" },
+      { label: "Outcome", value: "[X] — [verified result]" },
+    ],
     size: "medium",
     cta: "Read case study",
     image: "/projects/project-03.jpg",
@@ -79,14 +90,21 @@ export const projects: Project[] = [
     title: "Customer Lifecycle Management SaaS Web Tool",
     positioning: "Enterprise workflow · UX · Systems",
     description:
-      "Leading UX across a complex enterprise workflow involving multiple users, business rules, and operational constraints.",
-    meta: ["Role: UX Designer", "Team: [X]", "Scope: [X]", "Timeline: 2021 — 2023"],
-    impact: {
-      label: "Leadership scope",
-      items: ["[X] designers · [X] product partners · [X] engineers · [X] stakeholders"],
-    },
+      "A complex enterprise SaaS experience involving multiple users, workflows, business rules, and operational constraints.",
+    details: [
+      { label: "Role", value: "UX Designer" },
+      { label: "Team", value: "[X]" },
+      { label: "Scope", value: "[X]" },
+      {
+        label: "My contribution",
+        value:
+          "Designed the internal lifecycle tooling end to end — admin console, communication platform, batch allocation, dashboards.",
+      },
+      { label: "My leadership", value: "[X]" },
+      { label: "Outcome", value: "[X] — [verified result]" },
+    ],
     confidential: true,
-    confidentialLabel: "Confidential · Enterprise SaaS",
+    confidentialLabel: "Confidential · Enterprise",
     size: "large",
     cta: "View confidential case study",
     image: "/projects/project-02.jpg",
@@ -99,11 +117,18 @@ export const projects: Project[] = [
     positioning: "Enterprise product · Information architecture",
     description:
       "Reframing a complex enterprise portal around clearer information architecture, workflows, and user decision-making.",
-    meta: ["Role: Senior UX Designer", "Team: [X]", "Scope: [X]", "Timeline: [X]"],
-    impact: {
-      label: "Leadership scope",
-      items: ["[X] designers · [X] PMs · [X] engineers · [X] stakeholders"],
-    },
+    details: [
+      { label: "Role", value: "Senior UX Designer" },
+      { label: "Team", value: "[X]" },
+      { label: "Scope", value: "[X]" },
+      {
+        label: "My contribution",
+        value:
+          "User research, design, and delivery to engineering for a C2C logistics template-builder platform.",
+      },
+      { label: "My leadership", value: "[X]" },
+      { label: "Outcome", value: "[X] — [verified result]" },
+    ],
     confidential: true,
     confidentialLabel: "Confidential · Enterprise Product",
     size: "medium",

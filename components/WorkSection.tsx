@@ -14,8 +14,8 @@ export default function WorkSection() {
     <Shell as="section" id="work" className="scroll-mt-16 pt-20 lg:pt-28">
       <SectionIntro
         label="Selected Work"
-        heading="Leadership through the work."
-        support="The strongest design work is rarely about the interface alone. These projects show how I navigate ambiguity, lead teams, influence product direction, and turn complex systems into clearer experiences."
+        heading="Design leadership, through the work."
+        support="I stay close to the problem and the product while creating the clarity, alignment, and systems that help teams move forward."
       />
 
       <div className="mt-14 flex flex-col gap-24 lg:mt-20 lg:gap-32">

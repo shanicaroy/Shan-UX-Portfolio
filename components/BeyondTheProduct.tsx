@@ -11,7 +11,7 @@ export default function BeyondTheProduct() {
   return (
     <Shell as="section" id="writing" className="scroll-mt-16 pt-24 lg:pt-32">
       <SectionIntro
-        label="Beyond the product"
+        label="Writing"
         heading={beyondTheProduct.heading}
         support={beyondTheProduct.support}
       />
@@ -23,10 +23,6 @@ export default function BeyondTheProduct() {
           </li>
         ))}
       </ul>
-
-      <p className="mt-10 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-        {beyondTheProduct.writingIntro}
-      </p>
 
       {writing.length > 0 && (
         <ul className="mt-10 border-t border-rule">

@@ -1,151 +1,234 @@
 // ---------------------------------------------------------------------------
-// LEADERSHIP NARRATIVE
-// Every [X] is a deliberate placeholder — no metric here may be invented.
-// Replace each [X] with a verified figure; the layout does not change.
+// LEADERSHIP NARRATIVE — the UX Lead × Design Manager intersection.
+// Every [X] and [bracketed line] is a deliberate placeholder — no metric or
+// example here may be invented. Replace with verified content; the layout
+// does not change.
 // ---------------------------------------------------------------------------
 
-/** 04 — Leadership proof grid. */
-export const leadershipProof = {
-  label: "Leadership / 01",
-  heading: "The scope I bring to design leadership.",
+/** 04 — Where I operate: the three pillars. */
+export const whereIOperate = {
+  label: "Positioning / 01",
+  heading: "I operate where design, product, and people meet.",
   support:
-    "I work across people, product, design, and organizational problems — helping teams navigate ambiguity, make better decisions, and raise the quality of what they ship.",
-  columns: [
+    "My work sits between making the experience better, helping the team make better decisions, and making sure the product is solving the right problem in the first place.",
+  pillars: [
     {
-      label: "People",
-      metric: "[X]+",
-      metricNote: "designers mentored",
-      body: "Developing designers through critique, coaching, feedback, teaching, and career guidance.",
-    },
-    {
-      label: "Product",
-      metric: "[X]",
-      metricNote: "products / product areas",
-      body: "Leading UX and product strategy across complex B2B, SaaS, and enterprise experiences.",
-    },
-    {
-      label: "Scale",
-      metric: "[X]",
-      metricNote: "teams / stakeholders",
-      body: "Aligning Design, Product, Engineering, Research, Data, and business stakeholders.",
-    },
-    {
-      label: "Impact",
-      metric: "[X]",
-      metricNote: "measurable outcomes",
-      body: "Connecting design decisions to customer, product, business, and team outcomes.",
-    },
-  ],
-} as const;
-
-/** 05 — What I lead: 2×2 editorial grid. */
-export const whatILead = {
-  label: "Leadership / 02",
-  heading: "I lead beyond the interface.",
-  quadrants: [
-    {
-      title: "People",
-      body: "I help designers do their best work — through clarity, feedback, mentorship, critique, and meaningful ownership.",
-      list: ["Mentorship", "Coaching", "Hiring", "Career development", "Design critique"],
+      title: "Design",
+      body: "I stay close enough to the work to understand the details, challenge decisions, and maintain a high bar for UX quality.",
+      list: [
+        "Research",
+        "Interaction Design",
+        "Information Architecture",
+        "Prototyping",
+        "Accessibility",
+        "Design Systems",
+      ],
     },
     {
       title: "Product",
-      body: "I turn ambiguous customer and business problems into product direction, experience strategy, and actionable decisions.",
-      list: ["Product strategy", "Discovery", "Prioritization", "Roadmap influence", "Customer outcomes"],
-    },
-    {
-      title: "Design",
-      body: "I set the quality bar while creating the systems, principles, and practices that allow teams to design consistently at scale.",
-      list: ["UX strategy", "Design systems", "Accessibility", "Research", "Design quality"],
-    },
-    {
-      title: "Organization",
-      body: "I connect Design with Product, Engineering, Research, Data, and leadership to make better decisions across the organization.",
+      body: "I connect user needs with product and business priorities, turning ambiguous problems into clear direction and decisions.",
       list: [
-        "Stakeholder alignment",
-        "Executive communication",
-        "Design operations",
-        "Cross-team influence",
-        "Design maturity",
+        "Product Strategy",
+        "Discovery",
+        "Prioritization",
+        "Roadmap Influence",
+        "Customer Outcomes",
+        "Business Context",
+      ],
+    },
+    {
+      title: "Leadership",
+      body: "I create clarity for teams, develop designers, align stakeholders, and build ways of working that help good design scale.",
+      list: [
+        "Mentorship",
+        "Design Critique",
+        "Team Leadership",
+        "Stakeholder Alignment",
+        "Design Operations",
+        "Strategy",
       ],
     },
   ],
 } as const;
 
-/** 11 — How I lead: five principles. */
-export const howILead = {
-  label: "Leadership / 03",
-  heading: "How I lead.",
-  support:
-    "Good design leadership isn't about having the best answers. It's about creating the conditions for teams to find the right answers — and knowing when to challenge, decide, or get out of the way.",
-  principles: [
+/** 05 — My leadership model: the progression. */
+export const leadershipModel = {
+  label: "How I work",
+  heading: "Lead from the work. Scale through people.",
+  steps: [
+    "Hands-on craft",
+    "Design direction",
+    "Product influence",
+    "Team enablement",
+    "Organizational impact",
+  ],
+  footnote:
+    "I don't see hands-on design and leadership as opposites. The right level of involvement changes with the problem, the team, and the stage of the work.",
+} as const;
+
+/** 06 — Leadership scope proof grid. Metrics stay [X] until verified. */
+export const leadershipScope = {
+  label: "Positioning / 02",
+  heading: "The scope I bring to the table.",
+  columns: [
     {
-      title: "Create clarity before creating artifacts.",
-      body: "I help teams understand the problem, the constraints, and the decision we're actually trying to make before we start producing solutions.",
+      label: "Design",
+      metric: "[X]",
+      metricNote: "products / initiatives",
+      body: "Hands-on UX and design direction across complex product experiences.",
     },
     {
-      title: "Give teams context, not instructions.",
-      body: "Strong designers don't need every answer. They need enough context to make good decisions independently.",
+      label: "People",
+      metric: "[X]+",
+      metricNote: "designers mentored",
+      body: "Developing designers through critique, coaching, teaching, and feedback.",
     },
     {
-      title: "Make decisions explicit.",
-      body: "I write down decisions, not just deliverables, so teams inherit the reasoning rather than only the file.",
+      label: "Product",
+      metric: "[X]",
+      metricNote: "strategic initiatives",
+      body: "Translating customer problems into product and experience direction.",
     },
     {
-      title: "Raise the bar without becoming the bottleneck.",
-      body: "I care deeply about craft and quality, but leadership means building systems and developing people that make quality scalable.",
-    },
-    {
-      title: "Develop people while delivering outcomes.",
-      body: "The measure of a strong design leader isn't only what gets shipped. It's what the team becomes capable of shipping without you.",
+      label: "Collaboration",
+      metric: "[X]",
+      metricNote: "teams / stakeholders",
+      body: "Working across Product, Engineering, Research, Data, and business leadership.",
     },
   ],
 } as const;
 
-/** 13 — People development. The 5,000+ figure is verified from the resume. */
+/** 13 — How I lead design: four principles. */
+export const howILead = {
+  label: "Leadership / 03",
+  heading: "I lead design without stepping away from design.",
+  support:
+    "Leadership doesn't mean being furthest from the work. It means knowing where your involvement creates the most leverage.",
+  principles: [
+    {
+      kicker: "Set direction",
+      title: "Create clarity before creating artifacts.",
+      body: "I help teams understand the problem, constraints, users, and desired outcome before deciding what to build.",
+    },
+    {
+      kicker: "Raise the bar",
+      title: "Stay close enough to challenge the work.",
+      body: "I use critique, design reviews, and hands-on involvement to maintain quality without becoming the bottleneck.",
+    },
+    {
+      kicker: "Create ownership",
+      title: "Give designers context, autonomy, and accountability.",
+      body: "I don't believe strong teams need someone solving every design problem for them. They need the context and trust to solve problems well.",
+    },
+    {
+      kicker: "Scale through people",
+      title: "Make the team better, not just the output.",
+      body: "The strongest leadership outcome is a team that can make better decisions with increasing independence.",
+    },
+  ],
+} as const;
+
+/** 14 — The work I do as a leader: the lifecycle. */
+export const leaderLifecycle = {
+  label: "How I work",
+  heading: "The work I do as a leader.",
+  steps: [
+    { title: "Define", body: "Clarify the problem and opportunity." },
+    { title: "Discover", body: "Bring research and evidence into the decision." },
+    { title: "Direct", body: "Establish experience and product direction." },
+    { title: "Design", body: "Stay close to the craft where it matters." },
+    { title: "Align", body: "Bring Product, Engineering, Research, and business stakeholders together." },
+    { title: "Develop", body: "Coach designers and create stronger teams." },
+    { title: "Scale", body: "Turn good practices into repeatable systems." },
+  ],
+} as const;
+
+/** 18 — People development. The 5,000+ figure is verified from the resume. */
 export const peopleDevelopment = {
   label: "People / 01",
-  heading: "I develop designers, not just designs.",
+  heading: "I develop people as deliberately as I develop products.",
   support:
-    "Design leadership compounds when knowledge, judgment, and confidence move through the team — not just through the leader.",
+    "Design leadership compounds when knowledge, judgment, and confidence move through a team.",
   blocks: [
     {
       title: "Mentorship",
       metric: "[X]+",
-      metricNote: "designers / students mentored",
+      metricNote: "designers mentored",
       body: "Mentoring designers across UX craft, product thinking, portfolios, career decisions, and professional growth.",
     },
     {
       title: "Teaching",
       metric: "5,000+",
-      metricNote: "learners taught and mentored",
+      metricNote: "people taught",
       body: "Teaching design through structured programs, workshops, critique, and practical project work.",
     },
     {
       title: "Community",
       metric: "[X]+",
-      metricNote: "[verified community metric]",
+      metricNote: "people reached",
       body: "Building spaces where designers can learn from one another and develop stronger professional judgment.",
     },
   ],
 } as const;
 
-/** 14 — Organizational impact. Examples must come from Shanica — none invented. */
-export const orgImpact = {
-  label: "Organization / 01",
-  heading: "Making design work better at scale.",
+/** 19 — Product strategy. */
+export const productStrategy = {
+  label: "Product / 01",
+  heading: "I don't just solve the problem. I help define the problem worth solving.",
   support:
-    "My role doesn't stop at the product. I look for the systems around the work — how teams collaborate, how decisions get made, how quality is maintained, and how design can create more leverage.",
+    "My work begins before the interface — understanding customers, business priorities, constraints, and opportunities so design can influence product direction rather than simply respond to it.",
   areas: [
-    { title: "Design Operations", example: "[Problem → what changed → adoption → outcome]" },
-    { title: "Design Systems", example: "[Problem → what changed → adoption → outcome]" },
-    { title: "Research Practice", example: "[Problem → what changed → adoption → outcome]" },
-    { title: "Team Rituals", example: "[Problem → what changed → adoption → outcome]" },
+    "Discovery",
+    "Research",
+    "Opportunity framing",
+    "Prioritization",
+    "Product strategy",
+    "Roadmap influence",
+  ],
+} as const;
+
+/** 20 — Cross-functional leadership. */
+export const crossFunctional = {
+  label: "Collaboration / 01",
+  heading: "Design rarely succeeds in isolation.",
+  support:
+    "I work across Product, Engineering, Research, Data, and business teams to turn different perspectives into a shared direction.",
+  functions: ["Design", "Product", "Engineering", "Research", "Data", "Business"],
+  metrics: ["[X] stakeholders", "[X] teams", "[X] functions", "[X] business units"],
+} as const;
+
+/** 21 — Design quality: the craft side of the intersection. */
+export const designQuality = {
+  label: "Design / 01",
+  heading: "Leadership shouldn't come at the expense of craft.",
+  support:
+    "I stay close to interaction, information architecture, accessibility, systems, and the details that make complex products feel simple.",
+  areas: [
+    "Interaction",
+    "Information Architecture",
+    "Accessibility",
+    "Design Systems",
+    "Experience Quality",
+  ],
+} as const;
+
+/** 22 — Organizational impact. Examples must come from Shanica — none invented. */
+export const orgImpact = {
+  label: "Scale / 01",
+  heading: "Make good design repeatable.",
+  support:
+    "Beyond individual products, I look for ways to improve how design teams make decisions, collaborate, document work, and maintain quality.",
+  areas: [
+    { title: "Design Systems", example: "[Problem → intervention → outcome]" },
+    { title: "Design Operations", example: "[Problem → intervention → outcome]" },
+    { title: "Design Critique", example: "[Problem → intervention → outcome]" },
+    { title: "Documentation", example: "[Problem → intervention → outcome]" },
+    { title: "Research Practice", example: "[Problem → intervention → outcome]" },
   ],
 } as const;
 
 /**
- * 17 — Testimonials. Empty until real quotes arrive — the section renders only
+ * 24 — Testimonials. Empty until real quotes arrive — the section renders only
  * when this array has entries. Never populate with invented quotes.
  */
 export type Testimonial = {
@@ -157,19 +240,22 @@ export type Testimonial = {
 
 export const testimonials: Testimonial[] = [];
 
-/** 15 — Beyond the product strands. */
+export const testimonialsIntro = {
+  label: "People I've worked with",
+  heading: "The work is mine. The impact is shared.",
+} as const;
+
+/** 23 — Writing strands, in priority order. */
 export const beyondTheProduct = {
   heading: "Beyond the product.",
   support:
-    "I write and speak about the things underneath good product design: human behavior, decision-making, psychology, technology, and the way design teams work.",
-  strands: ["Writing", "Speaking", "Mentorship", "Community"],
-  writingIntro:
-    "I write about UX, product strategy, design leadership, human behavior, and the systems that shape how people make decisions.",
+    "I write about UX, product strategy, design leadership, human behavior, and the systems behind how people make decisions.",
+  strands: ["Design Leadership", "Product Strategy", "UX", "Psychology / Human Behavior", "AI / Technology"],
 } as const;
 
-/** 18 — Final CTA. */
+/** 25 — Final CTA. */
 export const finalCta = {
-  heading: "Building better products starts with building better clarity.",
+  heading: "Let's build something worth leading.",
   support:
-    "Whether the challenge is a complex product, a growing design team, or an organization trying to raise its design maturity, I'm interested in the problems worth solving.",
+    "I'm interested in complex products, ambitious teams, and the problems that sit between customer needs and business reality.",
 } as const;

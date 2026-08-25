@@ -2,7 +2,7 @@ import { howILead } from "@/content/leadership";
 import Shell from "./Shell";
 import SectionIntro from "./SectionIntro";
 
-/** Five leadership principles, numbered, vertical. */
+/** Four principles: direction, bar, ownership, scale. */
 export default function HowILead() {
   return (
     <Shell as="section" className="pt-24 lg:pt-32">
@@ -18,7 +18,8 @@ export default function HowILead() {
               {String(i + 1).padStart(2, "0")}
             </span>
             <div>
-              <h3 className="display text-xl leading-snug text-ink sm:text-2xl">{p.title}</h3>
+              <p className="text-[12px] uppercase tracking-label text-muted">{p.kicker}</p>
+              <h3 className="display mt-2 text-xl leading-snug text-ink sm:text-2xl">{p.title}</h3>
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">{p.body}</p>
             </div>
           </li>

@@ -68,25 +68,14 @@ function Details({ project, large }: { project: Project; large: boolean }) {
 function Facts({ project }: { project: Project }) {
   return (
     <div className="flex flex-col gap-6">
-      <ul className="flex flex-col gap-1.5">
-        {project.meta.map((line) => (
-          <li key={line} className="text-sm text-muted">
-            {line}
-          </li>
+      <dl className="flex flex-col gap-4">
+        {project.details.map((d) => (
+          <div key={d.label}>
+            <dt className="text-[12px] uppercase tracking-label text-muted">{d.label}</dt>
+            <dd className="mt-1 text-sm leading-relaxed text-ink/80">{d.value}</dd>
+          </div>
         ))}
-      </ul>
-      {project.impact && (
-        <div>
-          <p className="text-[12px] uppercase tracking-label text-muted">{project.impact.label}</p>
-          <ul className="mt-2 flex flex-col gap-1.5">
-            {project.impact.items.map((line) => (
-              <li key={line} className="text-sm text-ink/80">
-                {line}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      </dl>
       <Link
         href={`/work/${project.slug}`}
         className="text-sm text-ink underline-offset-4 transition-colors duration-200 hover:underline"

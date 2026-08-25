@@ -1,8 +1,8 @@
 // ---------------------------------------------------------------------------
 // EXPERIENCE
 // Taken from Shanica's resume. EY appears twice because of the June 2025
-// promotion from Senior UX Designer to UX Lead. Every [X] is a placeholder for
-// a verified figure — nothing here may be invented.
+// promotion from Senior UX Designer to UX Lead. Every [X] and [bracketed
+// line] is a placeholder for verified content — nothing here may be invented.
 // ---------------------------------------------------------------------------
 
 export type ExperienceEntry = {
@@ -11,8 +11,12 @@ export type ExperienceEntry = {
   period: string;
   tags: string;
   description: string;
-  /** Small verified metrics shown under senior roles. */
-  metrics?: readonly string[];
+  /** Only used when accurate — e.g. the EY promotion. */
+  note?: string;
+  /** Labelled facets showing the design × product × leadership intersection. */
+  facets?: readonly { label: string; value: string }[];
+  /** Compact scope line under senior roles. */
+  scopeLine?: string;
 };
 
 export const experience: ExperienceEntry[] = [
@@ -23,7 +27,13 @@ export const experience: ExperienceEntry[] = [
     tags: "UX Leadership · Enterprise Product Design · Strategy",
     description:
       "Leading product and UX work across complex enterprise systems, connecting customer needs, product strategy, design quality, and cross-functional execution.",
-    metrics: ["[X] designers", "[X] teams", "[X] stakeholders", "[X] products"],
+    facets: [
+      { label: "Design", value: "[Hands-on UX responsibilities]" },
+      { label: "Product", value: "[Product strategy / discovery / roadmap influence]" },
+      { label: "Leadership", value: "[Team leadership / mentorship / stakeholder leadership]" },
+      { label: "Scale", value: "[Systems / processes / design standards]" },
+    ],
+    scopeLine: "[X] designers · [X] teams · [X] products · [X] stakeholders",
   },
   {
     company: "EY",
@@ -31,7 +41,13 @@ export const experience: ExperienceEntry[] = [
     period: "2023 — 2025",
     tags: "Enterprise UX · Research · Product Design",
     description:
-      "Designing complex enterprise experiences while partnering closely with Product, Engineering, and business stakeholders.",
+      "Designing complex enterprise experiences for clients including VMware, P44 Logistics, and Dell, while partnering closely with Product, Engineering, and business stakeholders.",
+    note: "Progressed from hands-on enterprise UX execution into broader product and design leadership.",
+    facets: [
+      { label: "Design", value: "[X]" },
+      { label: "Product", value: "[X]" },
+      { label: "Influence", value: "[X]" },
+    ],
   },
   {
     company: "Bhanzu",
@@ -55,7 +71,7 @@ export const experience: ExperienceEntry[] = [
     period: "2019 — 2021",
     tags: "Mentorship · Teaching · Design Development",
     description:
-      "Teaching and mentoring emerging designers, developing practical design judgment through critique, structured feedback, and hands-on learning.",
-    metrics: ["5,000+ learners mentored"],
+      "Developed emerging designers through structured teaching, critique, feedback, and practical project work.",
+    facets: [{ label: "Teaching", value: "5,000+ people taught and mentored" }],
   },
 ];

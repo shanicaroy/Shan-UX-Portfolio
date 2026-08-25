@@ -6,12 +6,12 @@
 
 export const siteConfig = {
   name: "Shanica Roy",
-  title: "UX Design Leader",
+  title: "UX & Product Design Leader",
   role: "UX Lead · Enterprise Product Design",
 
-  metaTitle: "Shanica Roy — UX Design Leader",
+  metaTitle: "Shanica Roy — UX & Product Design Leader",
   metaDescription:
-    "Shanica Roy is a UX Design Leader shaping products, teams, and the systems behind them across complex B2B, SaaS, and enterprise products.",
+    "Shanica Roy is a UX and Product Design Leader combining hands-on UX, product strategy, research, and design leadership across complex B2B, SaaS, and enterprise products.",
   url: "https://shanicaroy.com", // PLACEHOLDER — set to the live domain
 
   // ⚠️ The file does not exist yet. Add the real PDF at
@@ -26,17 +26,14 @@ export const siteConfig = {
   },
 
   hero: {
-    headline:
-      "I'm Shanica, a UX Design Leader shaping products, teams, and the systems behind them.",
+    headline: "I'm Shanica, a UX & Product Design Leader.",
     support:
-      "I lead product and UX work across complex B2B, SaaS, and enterprise systems — turning ambiguous problems into clear product strategy, scalable experiences, and measurable outcomes.",
-    positioning: "Designing complex products. Developing people. Creating clarity.",
-    credibility: {
-      currently: ["UX Lead", "Enterprise Product Design", "Research · Strategy · Systems"],
-      focus: ["People", "Product", "Design", "Organization"],
-      // Verified: the resume states 8 years of hands-on UX experience.
-      experience: "8+ years in UX",
-    },
+      "I lead complex product experiences from ambiguity to clarity — combining hands-on UX, product strategy, research, and design leadership to help teams build better products.",
+    // The conceptual anchor of the portfolio — prominent, but smaller than the H1.
+    positioning:
+      "Hands-on when it matters. Strategic when it counts. Leadership wherever it creates leverage.",
+    // Credential strip. "8+ years" is verified from the resume.
+    credentials: ["8+ years in UX", "UX Lead at EY", "B2B · SaaS · Enterprise", "Product Strategy", "Design Leadership"],
   },
 
   about: {

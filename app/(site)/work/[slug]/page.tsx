@@ -65,29 +65,14 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             </p>
           </div>
 
-          <div className="col-span-12 flex flex-col gap-6 self-end lg:col-span-4 lg:col-start-9 lg:text-right">
-            <ul className="flex flex-col gap-1.5">
-              {project.meta.map((line) => (
-                <li key={line} className="text-sm text-muted">
-                  {line}
-                </li>
-              ))}
-            </ul>
-            {project.impact && (
-              <div>
-                <p className="text-[12px] uppercase tracking-label text-muted">
-                  {project.impact.label}
-                </p>
-                <ul className="mt-2 flex flex-col gap-1.5">
-                  {project.impact.items.map((line) => (
-                    <li key={line} className="text-sm text-ink/80">
-                      {line}
-                    </li>
-                  ))}
-                </ul>
+          <dl className="col-span-12 flex flex-col gap-4 self-end lg:col-span-4 lg:col-start-9">
+            {project.details.map((d) => (
+              <div key={d.label}>
+                <dt className="text-[12px] uppercase tracking-label text-muted">{d.label}</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-ink/80">{d.value}</dd>
               </div>
-            )}
-          </div>
+            ))}
+          </dl>
         </div>
       </Shell>
 

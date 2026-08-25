@@ -1,4 +1,4 @@
-import { testimonials } from "@/content/leadership";
+import { testimonials, testimonialsIntro } from "@/content/leadership";
 import Shell from "./Shell";
 import SectionIntro from "./SectionIntro";
 
@@ -8,10 +8,7 @@ export default function Testimonials() {
 
   return (
     <Shell as="section" className="pt-24 lg:pt-32">
-      <SectionIntro
-        label="What people say"
-        heading="Leadership is best understood through the people I've worked with."
-      />
+      <SectionIntro label={testimonialsIntro.label} heading={testimonialsIntro.heading} />
 
       <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 lg:mt-16 lg:grid-cols-3">
         {testimonials.map((t) => (
