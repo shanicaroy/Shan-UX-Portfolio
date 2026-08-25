@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 /** All writing lives here; the homepage shows the intro with a Read all link. */
 export default function WritingPage() {
   return (
-    <Shell as="section" className="pb-24 pt-20 sm:pt-24 lg:pb-32 lg:pt-28">
+    <Shell as="section" className="pb-16 pt-14 sm:pt-16 lg:pb-20 lg:pt-20">
       <p className="text-[12px] uppercase tracking-label text-muted">Writing</p>
-      <h1 className="display mt-8 max-w-3xl text-[2rem] leading-[1.12] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
+      <h1 className="display mt-6 max-w-3xl text-[2rem] leading-[1.12] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
         {beyondTheProduct.heading}
       </h1>
-      <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+      <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
         {beyondTheProduct.support}
       </p>
 

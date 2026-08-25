@@ -19,7 +19,7 @@ export default function WorkSection() {
   const columns = [ordered.filter((_, i) => i % 2 === 0), ordered.filter((_, i) => i % 2 === 1)];
 
   return (
-    <Shell as="section" id="work" className="scroll-mt-16 pt-20 lg:pt-28">
+    <Shell as="section" id="work" className="scroll-mt-16 pt-14 lg:pt-20">
       <h2 className="sr-only">Selected Work</h2>
 
       <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-2">

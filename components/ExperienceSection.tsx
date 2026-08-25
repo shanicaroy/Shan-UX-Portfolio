@@ -8,10 +8,10 @@ import SectionIntro from "./SectionIntro";
  */
 export default function ExperienceSection() {
   return (
-    <Shell as="section" className="pt-24 lg:pt-32">
+    <Shell as="section" className="pt-14 lg:pt-20">
       <SectionIntro label="Experience" heading="Where the judgment comes from." />
 
-      <ol className="mt-12 flex flex-col lg:mt-16">
+      <ol className="mt-8 flex flex-col lg:mt-10">
         {experience.map((entry) => (
           <li
             key={`${entry.period}-${entry.company}-${entry.role}`}

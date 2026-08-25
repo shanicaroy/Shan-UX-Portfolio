@@ -5,7 +5,7 @@ import SectionIntro from "./SectionIntro";
 /** The craft side of the intersection, stated plainly. */
 export default function DesignQuality() {
   return (
-    <Shell as="section" className="pt-24 lg:pt-32">
+    <Shell as="section" className="pt-14 lg:pt-20">
       <SectionIntro
         label={designQuality.label}
         heading={designQuality.heading}

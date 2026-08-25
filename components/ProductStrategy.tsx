@@ -4,7 +4,7 @@ import SectionIntro from "./SectionIntro";
 
 export default function ProductStrategy() {
   return (
-    <Shell as="section" className="pt-24 lg:pt-32">
+    <Shell as="section" className="pt-14 lg:pt-20">
       <SectionIntro
         label={productStrategy.label}
         heading={productStrategy.heading}

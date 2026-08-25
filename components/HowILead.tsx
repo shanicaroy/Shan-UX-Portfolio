@@ -5,10 +5,10 @@ import SectionIntro from "./SectionIntro";
 /** Four principles: direction, bar, ownership, scale. */
 export default function HowILead() {
   return (
-    <Shell as="section" className="pt-24 lg:pt-32">
+    <Shell as="section" className="pt-14 lg:pt-20">
       <SectionIntro label={howILead.label} heading={howILead.heading} support={howILead.support} />
 
-      <ol className="mt-12 flex max-w-3xl flex-col lg:mt-16">
+      <ol className="mt-8 flex max-w-3xl flex-col lg:mt-10">
         {howILead.principles.map((p, i) => (
           <li
             key={p.title}

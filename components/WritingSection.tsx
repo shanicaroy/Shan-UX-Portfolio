@@ -8,7 +8,7 @@ import Shell from "./Shell";
  */
 export default function WritingSection() {
   return (
-    <Shell as="section" id="writing" className="scroll-mt-16 pt-20 lg:pt-28">
+    <Shell as="section" id="writing" className="scroll-mt-16 pt-14 lg:pt-20">
       <h2 className="border-t border-rule pt-5 text-[13px] uppercase tracking-label text-muted">
         Writing
       </h2>

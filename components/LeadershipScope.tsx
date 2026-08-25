@@ -5,10 +5,10 @@ import SectionIntro from "./SectionIntro";
 /** Four-column scope grid. Metrics stay [X] until verified — never invented. */
 export default function LeadershipScope() {
   return (
-    <Shell as="section" className="pt-20 lg:pt-28">
+    <Shell as="section" className="pt-14 lg:pt-20">
       <SectionIntro label={leadershipScope.label} heading={leadershipScope.heading} />
 
-      <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+      <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:mt-10 lg:grid-cols-4">
         {leadershipScope.columns.map((col) => (
           <div key={col.label}>
             <p className="text-[12px] uppercase tracking-label text-muted">{col.label}</p>
