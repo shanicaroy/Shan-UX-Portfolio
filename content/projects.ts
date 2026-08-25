@@ -108,7 +108,7 @@ export const projects: Project[] = [
     size: "medium",
     cta: "Read case study",
     image: "/projects/project-03.jpg",
-    photo: "/projects/virtubox.svg",
+    video: "/projects/kiosk.mp4",
     aspect: "4/3",
   },
   {
@@ -134,7 +134,7 @@ export const projects: Project[] = [
     size: "large",
     cta: "View confidential case study",
     image: "/projects/project-02.jpg",
-    photo: "/projects/clm.svg",
+    video: "/projects/clm.mp4",
     aspect: "3/2",
   },
 ];
