@@ -1,34 +1,31 @@
 import { projects } from "@/content/projects";
 import Shell from "./Shell";
-import ProjectCard from "./ProjectCard";
+import SectionIntro from "./SectionIntro";
+import ProjectRow from "./ProjectRow";
 
 /**
- * Two-column project grid. Both columns begin at the same height and projects
- * alternate between them; the stagger comes entirely from covers of differing
- * aspect ratios, so each column packs to its own rhythm. Collapses to a single
- * column below `lg`.
+ * Editorial work list: large → medium → large → medium, with medium covers
+ * alternating sides. Not a card grid by design.
  */
 export default function WorkSection() {
-  const columns: (typeof projects)[] = [
-    projects.filter((_, i) => i % 2 === 0),
-    projects.filter((_, i) => i % 2 === 1),
-  ];
+  const mediums = projects.filter((p) => p.size === "medium");
 
   return (
-    <Shell as="section" id="work" className="scroll-mt-16 pb-16 lg:pb-20">
-      <h2 className="sr-only">Selected Work</h2>
+    <Shell as="section" id="work" className="scroll-mt-16 pt-20 lg:pt-28">
+      <SectionIntro
+        label="Selected Work"
+        heading="Leadership through the work."
+        support="The strongest design work is rarely about the interface alone. These projects show how I navigate ambiguity, lead teams, influence product direction, and turn complex systems into clearer experiences."
+      />
 
-      <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-2">
-        {columns.map((column, col) => (
-          <div key={col} className="flex flex-col gap-10 lg:gap-12">
-            {column.map((project) => (
-              <ProjectCard
-                key={project.slug}
-                project={project}
-                index={projects.indexOf(project)}
-              />
-            ))}
-          </div>
+      <div className="mt-14 flex flex-col gap-24 lg:mt-20 lg:gap-32">
+        {projects.map((project, i) => (
+          <ProjectRow
+            key={project.slug}
+            project={project}
+            index={i}
+            flip={project.size === "medium" && mediums.indexOf(project) % 2 === 1}
+          />
         ))}
       </div>
     </Shell>

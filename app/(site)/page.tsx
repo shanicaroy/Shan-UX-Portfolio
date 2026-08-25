@@ -1,15 +1,31 @@
-import HeroExperience from "@/components/HeroExperience";
+import Hero from "@/components/Hero";
+import LeadershipProof from "@/components/LeadershipProof";
+import WhatILead from "@/components/WhatILead";
 import WorkSection from "@/components/WorkSection";
-import WritingSection from "@/components/WritingSection";
+import HowILead from "@/components/HowILead";
+import ExperienceSection from "@/components/ExperienceSection";
+import PeopleDevelopment from "@/components/PeopleDevelopment";
+import OrgImpact from "@/components/OrgImpact";
 import AboutSection from "@/components/AboutSection";
+import BeyondTheProduct from "@/components/BeyondTheProduct";
+import Testimonials from "@/components/Testimonials";
+import FinalCta from "@/components/FinalCta";
 
 export default function Home() {
   return (
     <>
-      <HeroExperience />
+      <Hero />
+      <LeadershipProof />
+      <WhatILead />
       <WorkSection />
-      <WritingSection />
+      <HowILead />
+      <ExperienceSection />
+      <PeopleDevelopment />
+      <OrgImpact />
       <AboutSection />
+      <BeyondTheProduct />
+      <Testimonials />
+      <FinalCta />
     </>
   );
 }

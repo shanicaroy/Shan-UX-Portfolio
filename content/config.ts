@@ -6,12 +6,12 @@
 
 export const siteConfig = {
   name: "Shanica Roy",
-  title: "UX Lead + Product Designer",
-  role: "UX Lead · Product Designer",
+  title: "UX Design Leader",
+  role: "UX Lead · Enterprise Product Design",
 
-  metaTitle: "Shanica Roy — UX Lead & Product Designer",
+  metaTitle: "Shanica Roy — UX Design Leader",
   metaDescription:
-    "Shanica Roy is a UX Lead and Product Designer working at the intersection of technology, psychology and human behaviour.",
+    "Shanica Roy is a UX Design Leader shaping products, teams, and the systems behind them across complex B2B, SaaS, and enterprise products.",
   url: "https://shanicaroy.com", // PLACEHOLDER — set to the live domain
 
   // ⚠️ The file does not exist yet. Add the real PDF at
@@ -26,14 +26,17 @@ export const siteConfig = {
   },
 
   hero: {
-    // Two lines, broken deliberately.
-    headlineLineOne: "I'm Shanica, a UX Lead",
-    headlineLineTwo: "who",
-    // Rendered in italic at the end of the headline. The word "develops" is
-    // intentional — do not change it.
-    headlineEmphasis: "develops.",
-    statement:
-      "I design digital products and experiences at the intersection of technology, psychology and human behaviour.",
+    headline:
+      "I'm Shanica, a UX Design Leader shaping products, teams, and the systems behind them.",
+    support:
+      "I lead product and UX work across complex B2B, SaaS, and enterprise systems — turning ambiguous problems into clear product strategy, scalable experiences, and measurable outcomes.",
+    positioning: "Designing complex products. Developing people. Creating clarity.",
+    credibility: {
+      currently: ["UX Lead", "Enterprise Product Design", "Research · Strategy · Systems"],
+      focus: ["People", "Product", "Design", "Organization"],
+      // Verified: the resume states 8 years of hands-on UX experience.
+      experience: "8+ years in UX",
+    },
   },
 
   about: {
@@ -41,7 +44,6 @@ export const siteConfig = {
     body: [
       "I lead product and UX work on complex systems — the kind where the hard part is making an intricate thing feel obvious to the person using it.",
       "My work sits across research, interaction design and product strategy, drawing on psychology and human behaviour to understand why people do what they do, and on technology to know what is actually buildable.",
-      "I write down decisions, not just deliverables, so teams inherit the reasoning rather than only the file.",
     ],
   },
 
@@ -52,8 +54,9 @@ export const siteConfig = {
 
 export const navigation = [
   { label: "Work", href: "#work" },
-  { label: "Writing", href: "#writing" },
+  { label: "Leadership", href: "#leadership" },
   { label: "About", href: "#about" },
+  { label: "Writing", href: "#writing" },
 ] as const;
 
 export const socialLinks = [

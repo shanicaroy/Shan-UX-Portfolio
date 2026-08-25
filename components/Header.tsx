@@ -42,6 +42,12 @@ export default function Header() {
     </a>
   );
 
+  const talkLink = (
+    <a href={siteConfig.social.email} onClick={() => setOpen(false)} className={`${linkClass} text-ink`}>
+      Let&rsquo;s talk <span aria-hidden>&#8599;</span>
+    </a>
+  );
+
   return (
     <header className="relative z-40 border-b border-rule">
       <Shell className="grid grid-cols-[1fr_auto] items-baseline gap-8 py-5 md:grid-cols-[1fr_auto_1fr] md:py-6">
@@ -60,8 +66,11 @@ export default function Header() {
           {sectionLinks}
         </nav>
 
-        {/* Right — resume */}
-        <div className="hidden justify-end md:flex">{resumeLink}</div>
+        {/* Right — resume + understated CTA */}
+        <div className="hidden items-baseline justify-end gap-10 md:flex">
+          {resumeLink}
+          {talkLink}
+        </div>
 
         <button
           type="button"
@@ -79,6 +88,7 @@ export default function Header() {
           <Shell className="flex flex-col gap-5 pb-6 pt-2">
             {sectionLinks}
             {resumeLink}
+            {talkLink}
           </Shell>
         </nav>
       )}

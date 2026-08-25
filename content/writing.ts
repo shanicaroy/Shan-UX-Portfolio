@@ -15,9 +15,7 @@ export type Article = {
   href: string;
 };
 
-export const writing: Article[] = [
-  { year: "2026", title: "[Article title]", category: "Design Leadership", href: "#" },
-  { year: "2025", title: "[Article title]", category: "Product Design", href: "#" },
-  { year: "2025", title: "[Article title]", category: "Psychology", href: "#" },
-  { year: "2024", title: "[Article title]", category: "Technology", href: "#" },
-];
+// Empty until real articles exist — the homepage hides the list rather than
+// showing invented titles. Priority order when adding: Design Leadership,
+// Product Strategy, UX / Human Behavior, AI / Technology.
+export const writing: Article[] = [];
