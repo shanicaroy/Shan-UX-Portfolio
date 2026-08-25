@@ -25,6 +25,8 @@ export type Project = {
   locked?: boolean;
   /** Optional looping cover video; when set it replaces the cover art. */
   video?: string;
+  /** Optional cover image file; used when there is no video. */
+  photo?: string;
 };
 
 export const projects: Project[] = [
@@ -49,6 +51,7 @@ export const projects: Project[] = [
     year: "2023",
     company: "Bhanzu",
     image: "/projects/project-02.jpg",
+    photo: "/projects/clm.svg",
     aspect: "3/2",
   },
   {
@@ -60,18 +63,8 @@ export const projects: Project[] = [
     year: "2022",
     company: "Profisea Labs",
     image: "/projects/project-03.jpg",
+    photo: "/projects/virtubox.svg",
     aspect: "4/3",
-  },
-  {
-    slug: "fintech-mobile-app",
-    title: "Fintech Mobile App Design",
-    description:
-      "Research-led design for a fintech app, where trust matters more than any single screen.",
-    category: "UX Research",
-    year: "2022",
-    company: "Profisea Labs",
-    image: "/projects/project-04.jpg",
-    aspect: "16/9",
   },
   {
     slug: "dell-portal-redesign",

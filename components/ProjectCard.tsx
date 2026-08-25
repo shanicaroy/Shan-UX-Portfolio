@@ -30,6 +30,13 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             aria-label={`${project.title} — case study cover`}
             className="h-full w-full object-cover"
           />
+        ) : project.photo ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={project.photo}
+            alt={`${project.title} — case study cover`}
+            className="h-full w-full object-cover"
+          />
         ) : (
           <ProjectCanvas
             index={index}
