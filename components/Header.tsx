@@ -47,12 +47,9 @@ export default function Header() {
     <header className="relative z-40 border-b border-rule">
       <Shell className="grid grid-cols-[1fr_auto] items-baseline gap-8 py-5 md:grid-cols-[1fr_auto_1fr] md:py-6">
         {/* Identity — name over designation, top-left */}
-        <Link href="/" className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
+        <Link href="/" className="flex items-baseline">
           <span className="font-mono text-[15px] font-bold uppercase tracking-label text-ink">
             {siteConfig.name}
-          </span>
-          <span className="hidden font-mono text-[13px] uppercase tracking-label text-muted sm:inline">
-            {siteConfig.title}
           </span>
         </Link>
 

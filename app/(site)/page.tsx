@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import HowIWork from "@/components/HowIWork";
+import LeadershipModel from "@/components/LeadershipModel";
 import WorkSection from "@/components/WorkSection";
 import PeopleDevelopment from "@/components/PeopleDevelopment";
 import WritingSection from "@/components/WritingSection";
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <HowIWork />
+      <LeadershipModel />
       <WorkSection />
       <PeopleDevelopment />
       <WritingSection />

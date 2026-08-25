@@ -4,7 +4,6 @@ import Shell from "@/components/Shell";
 import WhereIOperate from "@/components/WhereIOperate";
 import LeadershipScope from "@/components/LeadershipScope";
 import HowILead from "@/components/HowILead";
-import LeadershipModel from "@/components/LeadershipModel";
 import LeaderLifecycle from "@/components/LeaderLifecycle";
 import ExperienceSection from "@/components/ExperienceSection";
 import ProductStrategy from "@/components/ProductStrategy";
@@ -37,7 +36,6 @@ export default function LeadershipPage() {
       <WhereIOperate />
       <LeadershipScope />
       <HowILead />
-      <LeadershipModel />
       <LeaderLifecycle />
       <ExperienceSection />
       <ProductStrategy />
