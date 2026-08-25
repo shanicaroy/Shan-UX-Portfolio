@@ -28,7 +28,7 @@ export const siteConfig = {
   hero: {
     headline: "Hi, I'm Shanica, and I lead UX and product design.",
     support:
-      "I design and lead complex product experiences across B2B, SaaS, and enterprise environments — connecting user needs, product strategy, and design execution.",
+      "I design and lead complex product experiences across B2B, SaaS, and enterprise environments, connecting user needs, product strategy, and design execution.",
   },
 
   about: {
