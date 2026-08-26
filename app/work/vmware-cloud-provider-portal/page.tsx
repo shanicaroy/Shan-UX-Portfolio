@@ -5,7 +5,7 @@ import VmwareToc from "@/components/VmwareToc";
 export const metadata: Metadata = {
   title: "VMware Cloud Provider Portal",
   description:
-    "Redesigning VMware's Cloud Provider purchasing portals in Clarity — a case study in understanding a platform before touching it.",
+    "Redesigning the purchasing portals inside VMware's Cloud Provider platform, in Clarity. A case study in understanding a platform before touching it.",
 };
 
 /**
