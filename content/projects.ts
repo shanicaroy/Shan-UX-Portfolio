@@ -24,6 +24,8 @@ export type Project = {
   /** NDA work presented as a confidential preview. */
   confidential?: boolean;
   confidentialLabel?: string;
+  /** Fully locked: card is not clickable and the case page is unreachable. */
+  locked?: boolean;
   /** Editorial rhythm: large rows breathe, medium rows sit beside their text. */
   size: "large" | "medium";
   cta: string;
@@ -82,6 +84,7 @@ export const projects: Project[] = [
       },
       { label: "Outcome", value: "[X] · [verified result]" },
     ],
+    locked: true,
     size: "large",
     cta: "Read case study",
     image: "/projects/project-01.jpg",
@@ -118,13 +121,13 @@ export const projects: Project[] = [
     description:
       "A complex enterprise SaaS experience involving multiple users, workflows, business rules, and operational constraints.",
     details: [
-      { label: "Role", value: "UX Designer" },
-      { label: "Team", value: "[X]" },
-      { label: "Scope", value: "[X]" },
+      { label: "Role", value: "Design Lead" },
+      { label: "Team", value: "[X] designers" },
+      { label: "Scope", value: "IVR routing, CLM ticket workspace, role-based dashboards" },
       {
         label: "My contribution",
         value:
-          "Designed the internal lifecycle tooling end to end: admin console, communication platform, batch allocation, dashboards.",
+          "Set the design direction for the internal lifecycle tooling: IVR routing, ticket workspace, batch allocation, dashboards.",
       },
       { label: "My leadership", value: "[X]" },
       { label: "Outcome", value: "[X] · [verified result]" },

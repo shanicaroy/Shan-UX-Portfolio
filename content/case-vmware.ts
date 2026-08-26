@@ -143,6 +143,14 @@ export const vmwareCaseStyles = `
   .vmw .warnbox{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:8px;padding:16px 20px;font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.55;color:#6B4526;margin:26px 0}
   .vmw .warnbox b{color:#5A3416}
 
+  /* editorial fill-in note: must be resolved before a page ships */
+  .vmw .todo{border:1px dashed var(--line2);border-radius:8px;padding:14px 18px;font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.55;color:var(--sub);margin:22px 0}
+  .vmw .todo b{color:var(--vink);font-weight:600}
+
+  /* inline media figure */
+  .vmw .media{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+  .vmw .media video{display:block;width:100%;height:auto}
+
   .vmw hr{border:none;border-top:1px solid var(--line);margin:56px 0 0}
 
   .vmw footer{max-width:680px;margin-top:20px;font-family:'Inter',sans-serif;font-size:14px;color:var(--sub)}

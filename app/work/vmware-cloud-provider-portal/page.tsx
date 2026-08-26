@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { vmwareCaseStyles, vmwareCaseBody } from "@/content/case-vmware";
 import VmwareToc from "@/components/VmwareToc";
 
@@ -14,7 +15,11 @@ export const metadata: Metadata = {
  * so the site header and footer are not rendered around it. Newsreader comes
  * from Google Fonts (Inter is already self-hosted).
  */
+// The VMware case study is locked for now. Flip to false to reopen it.
+const LOCKED = true;
+
 export default function VmwareCaseStudy() {
+  if (LOCKED) notFound();
   return (
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
