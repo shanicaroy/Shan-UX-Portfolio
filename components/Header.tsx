@@ -9,9 +9,11 @@ const linkClass =
   "font-mono text-[13px] uppercase tracking-label text-muted transition-colors duration-200 hover:text-ink";
 
 /**
- * Three-zone header matching the reference: identity on the left, section
- * links held at the centre of the page, Resume alone on the right. Below `md`
- * the two nav zones collapse into one toggled list.
+ * Fixed full-width bar: solid ground, 1px hairline underneath, no shadow or
+ * blur. Identity left, section links centre, Resume right. Height is
+ * --nav-height; the site layout pads the page by the same amount so nothing
+ * hides behind the bar. Below `md` the two nav zones collapse into one
+ * toggled list that drops below the bar.
  */
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -42,11 +44,10 @@ export default function Header() {
     </a>
   );
 
-
   return (
-    <header className="sticky top-0 z-40 border-b border-rule bg-ground">
-      <Shell className="grid grid-cols-[1fr_auto] items-baseline gap-8 py-5 md:grid-cols-[1fr_auto_1fr] md:py-6">
-        {/* Identity — name over designation, top-left */}
+    <header className="fixed inset-x-0 top-0 z-40 h-[var(--nav-height)] border-b border-rule bg-ground">
+      <Shell className="grid h-full grid-cols-[1fr_auto] items-center gap-8 md:grid-cols-[1fr_auto_1fr]">
+        {/* Identity — name, top-left */}
         <Link href="/" className="flex items-baseline">
           <span className="font-mono text-[15px] font-bold uppercase tracking-label text-ink">
             {siteConfig.name}
@@ -54,7 +55,7 @@ export default function Header() {
         </Link>
 
         {/* Centre — section links */}
-        <nav aria-label="Main" className="hidden items-baseline gap-10 md:flex">
+        <nav aria-label="Main" className="hidden items-baseline gap-8 md:flex lg:gap-10">
           {sectionLinks}
         </nav>
 
@@ -73,8 +74,12 @@ export default function Header() {
       </Shell>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Main" className="md:hidden">
-          <Shell className="flex flex-col gap-5 pb-6 pt-2">
+        <nav
+          id="mobile-nav"
+          aria-label="Main"
+          className="absolute inset-x-0 top-full border-b border-rule bg-ground md:hidden"
+        >
+          <Shell className="flex flex-col gap-5 pb-6 pt-4">
             {sectionLinks}
             {resumeLink}
           </Shell>

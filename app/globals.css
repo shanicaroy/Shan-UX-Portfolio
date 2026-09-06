@@ -16,6 +16,58 @@
   --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-serif: "Times New Roman", Times, Georgia, serif;
+
+  /* Color tokens — see DESIGN-TOKENS.md. Components never hard-code hex. */
+  --c-ground: #fbfaf8;
+  --c-ink: #1a1a17;
+  --c-charcoal: #1b1b18;
+  --c-navy: #0e1c2e;
+  --c-lime: #d8e75a;
+  --c-blue: #3d4ee1;
+  --c-muted: #5c5c55;
+  --c-muted-dark: #a5adb8;
+  --c-rule: #e3e1db;
+  --c-rule-dark: rgba(251, 250, 248, 0.16);
+
+  --nav-height: 4rem;
+}
+
+/* The redesign is square-cornered everywhere, by rule. Scoped to the site
+   chrome so the standalone case-study documents keep their own styles. */
+.site-square *,
+.site-square *::before,
+.site-square *::after {
+  border-radius: 0 !important;
+}
+
+/* Type scale tokens — sizes and tracking from DESIGN-TOKENS.md, faces ours. */
+.type-hero {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 5.6vw, 4.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+.type-section {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.type-statement {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+}
+.type-eyebrow {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 * {
