@@ -2,53 +2,47 @@ import Link from "next/link";
 import type { Project } from "@/content/projects";
 import ProjectCanvas from "./ProjectCanvas";
 
+const ASPECT: Record<Project["aspect"], string> = {
+  "16/9": "aspect-[16/9]",
+  "3/2": "aspect-[3/2]",
+  "4/3": "aspect-[4/3]",
+  "1/1": "aspect-square",
+};
+
 /**
- * One card component for all six projects: cover on top (looping video where
- * it exists, designed poster where it does not), then name with the arrow on
- * the same row, the one-line descriptor, and the company-or-type eyebrow.
- * Square corners by rule. Locked projects render unlinked with the lock tag
- * in place of the arrow.
+ * The published card treatment: a bordered cover at the project's own aspect
+ * ratio, then a single caption line — the project name alone.
  */
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const body = (
-    <>
-      <CoverBox project={project} index={index} />
-      <div className="mt-5 flex items-start justify-between gap-6">
-        <h3 className="text-[1.3rem] font-medium leading-[1.3] tracking-[-0.01em] text-ink transition-opacity duration-200 group-hover:opacity-70">
-          {project.title}
-        </h3>
-        {project.locked ? (
-          <span className="type-eyebrow inline-flex shrink-0 items-center gap-1.5 pt-1.5 text-muted">
-            <svg aria-hidden width="10" height="12" viewBox="0 0 10 12" className="shrink-0">
-              <rect x="0.5" y="4.5" width="9" height="7" fill="none" stroke="currentColor" />
-              <path d="M2.5 4.5V3a2.5 2.5 0 0 1 5 0v1.5" fill="none" stroke="currentColor" />
-            </svg>
-            Locked
-          </span>
-        ) : (
-          <span
-            aria-hidden
-            className="shrink-0 pt-1 text-xl leading-none text-muted transition-transform duration-300 ease-editorial group-hover:translate-x-1 group-hover:text-ink"
-          >
-            &rarr;
-          </span>
-        )}
-      </div>
-      <p className="mt-2 max-w-prose text-[15px] leading-relaxed text-muted">
-        {project.description}
-      </p>
-      <p className="type-eyebrow mt-3 text-muted">{project.positioning}</p>
-    </>
+  const caption = (
+    <h3 className="mt-4 flex items-baseline gap-3 text-[13px] font-normal uppercase leading-snug tracking-label text-ink transition-opacity duration-200 group-hover:opacity-70">
+      {project.title}
+      {project.locked && (
+        <span className="inline-flex items-center gap-1.5 text-muted">
+          <svg aria-hidden width="10" height="12" viewBox="0 0 10 12" className="shrink-0 translate-y-px">
+            <rect x="0.5" y="4.5" width="9" height="7" rx="1" fill="none" stroke="currentColor" />
+            <path d="M2.5 4.5V3a2.5 2.5 0 0 1 5 0v1.5" fill="none" stroke="currentColor" />
+          </svg>
+          Locked
+        </span>
+      )}
+    </h3>
   );
 
   if (project.locked) {
-    return <article aria-label={`${project.title} (locked)`}>{body}</article>;
+    return (
+      <article aria-label={`${project.title} (locked)`}>
+        <CoverBox project={project} index={index} />
+        {caption}
+      </article>
+    );
   }
 
   return (
     <article>
       <Link href={`/work/${project.slug}`} className="group block">
-        {body}
+        <CoverBox project={project} index={index} />
+        {caption}
       </Link>
     </article>
   );
@@ -56,7 +50,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
 
 function CoverBox({ project, index }: { project: Project; index: number }) {
   return (
-    <div className="aspect-[3/2] w-full overflow-hidden border border-rule">
+    <div className={`w-full overflow-hidden border border-rule ${ASPECT[project.aspect]}`}>
       {project.video ? (
         <video
           src={project.video}

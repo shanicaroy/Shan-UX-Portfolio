@@ -1,59 +1,57 @@
 import Link from "next/link";
-import { homeEssays } from "@/content/writing";
+import { writing } from "@/content/writing";
 import Shell from "./Shell";
 
 /**
- * The writing section as an editorial index: heading left, rationale right,
- * then numbered hairlined rows — index, category-and-read-time eyebrow, large
- * title, and a square outlined arrow button that turns lime on hover.
+ * The published writing treatment: label, lede, then the year / title /
+ * category list — plus a Read all link through to /writing.
  */
 export default function WritingSection() {
   return (
-    <Shell as="section" id="writing" className="scroll-mt-[var(--nav-height)] pt-20 lg:pt-28">
-      <p className="type-eyebrow text-muted">04 / My Writing</p>
+    <Shell as="section" id="writing" className="scroll-mt-16 pt-14 lg:pt-20">
+      <h2 className="border-t border-rule pt-5 text-[13px] uppercase tracking-label text-muted">
+        Writing
+      </h2>
 
-      <div className="mt-8 grid grid-cols-12 gap-y-6 lg:gap-x-8">
-        <h2 className="type-section col-span-12 text-ink lg:col-span-5">
-          Ideas I&rsquo;m working through
-        </h2>
-        <p className="col-span-12 self-end text-base leading-relaxed text-muted lg:col-span-6 lg:col-start-7">
-          For NDA-heavy work, original thinking becomes part of the evidence. These essays
-          should make a specific, technically credible argument, not repeat AI headlines.
+      <div className="mt-6 grid grid-cols-12 gap-x-8">
+        <p className="col-span-12 max-w-xl text-lg leading-relaxed text-muted lg:col-span-7">
+          Notes on UX and product design, and on the psychology and behaviour underneath
+          them.
         </p>
       </div>
 
-      <ul className="mt-12 border-t border-rule">
-        {homeEssays.map((essay, i) => (
-          <li key={essay.title}>
-            <a
-              href={essay.href}
-              className="group grid grid-cols-[3rem_1fr_auto] items-center gap-x-4 border-b border-rule py-7 sm:gap-x-8"
-            >
-              <span className="type-eyebrow self-start pt-1 text-muted tabular-nums">
-                0{i + 1}
-              </span>
-              <span>
-                <span className="type-eyebrow block text-muted">{essay.eyebrow}</span>
-                <span className="mt-2 block text-xl font-medium leading-snug text-ink transition-opacity duration-200 group-hover:opacity-70 sm:text-2xl">
-                  {essay.title}
-                </span>
-              </span>
-              <span
-                aria-hidden
-                className="flex h-11 w-11 items-center justify-center border border-rule text-lg text-ink transition-colors duration-200 group-hover:border-lime group-hover:bg-lime"
+      {writing.length === 0 ? (
+        <p className="mt-8 border-t border-rule pt-5 text-base text-muted">
+          Pieces in progress.
+        </p>
+      ) : (
+        <ul className="mt-8 border-t border-rule">
+          {writing.map((article, i) => (
+            <li key={`${article.year}-${i}`}>
+              <a
+                href={article.href}
+                className="group grid grid-cols-[4.5rem_1fr] items-baseline gap-x-6 gap-y-2 border-b border-rule py-5 sm:grid-cols-[7rem_1fr_12rem] sm:gap-x-10"
               >
-                &rarr;
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
+                <span className="text-[12px] uppercase tracking-label text-muted tabular-nums">
+                  {article.year}
+                </span>
+                <span className="text-lg text-ink transition-opacity duration-200 group-hover:opacity-60 sm:text-xl">
+                  {article.title}
+                </span>
+                <span className="col-start-2 text-[12px] uppercase tracking-label text-muted sm:col-start-3 sm:text-right">
+                  {article.category}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
 
       <Link
         href="/writing"
-        className="mt-10 inline-block text-[15px] font-medium text-ink underline-offset-4 transition-colors duration-200 hover:underline"
+        className="mt-8 inline-block text-sm text-ink underline-offset-4 transition-colors duration-200 hover:underline"
       >
-        Read all <span aria-hidden>&#8599;</span>
+        Read all <span aria-hidden>↗</span>
       </Link>
     </Shell>
   );

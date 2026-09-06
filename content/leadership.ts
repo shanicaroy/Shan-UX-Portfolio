@@ -104,17 +104,6 @@ export const leadershipModel = {
     "I don't see hands-on design and leadership as opposites. The right level of involvement changes with the problem, the team, and the stage of the work.",
 } as const;
 
-/** Home — the charcoal About block. Copy from the redesign brief, verbatim. */
-export const aboutDark = {
-  eyebrow: "03 / About",
-  heading: "How I lead",
-  support:
-    "My job is to make the consequential thing clearer, then build the judgment and systems that let a team carry it forward.",
-  statement:
-    "I move from model behavior to interface detail to product strategy without losing the thread: what should this system do for people, and how will we know?",
-  link: { label: "More about how I lead", href: "/leadership" },
-} as const;
-
 /** 06 — Leadership scope proof grid. Metrics stay [X] until verified. */
 export const leadershipScope = {
   label: "Positioning / 02",

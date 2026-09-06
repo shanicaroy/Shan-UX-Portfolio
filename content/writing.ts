@@ -15,34 +15,6 @@ export type Article = {
   href: string;
 };
 
-/**
- * Home page essay rows, from the redesign brief. Eyebrows carry category and
- * read time; [TODO] entries await Shanica's real values — only the first row's
- * eyebrow was given in the brief. Links point at the pieces when they publish.
- */
-export const homeEssays = [
-  {
-    title: "When products are used by people and agents",
-    eyebrow: "Agent Experience · 8 min",
-    href: "#",
-  },
-  {
-    title: "Evals are a design material, not a QA handoff",
-    eyebrow: "[TODO: category · read time]",
-    href: "#",
-  },
-  {
-    title: "Designing the permission boundary",
-    eyebrow: "[TODO: category · read time]",
-    href: "#",
-  },
-  {
-    title: "Designing AI features people can trust",
-    eyebrow: "AI · Technology · [TODO] min",
-    href: "#",
-  },
-] as const;
-
 // Topic-driven titles set by Shanica; link each to the real piece when it
 // publishes.
 export const writing: Article[] = [

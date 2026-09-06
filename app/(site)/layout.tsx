@@ -7,13 +7,10 @@ import Footer from "@/components/Footer";
  */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="site-square">
+    <>
       <Header />
-      {/* Top padding matches the fixed header's --nav-height. */}
-      <main id="main" className="pt-[var(--nav-height)]">
-        {children}
-      </main>
+      <main id="main">{children}</main>
       <Footer />
-    </div>
+    </>
   );
 }

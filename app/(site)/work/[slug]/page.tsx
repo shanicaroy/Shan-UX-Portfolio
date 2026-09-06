@@ -104,19 +104,14 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
       <Shell className="py-28 lg:py-36">
         <div className="grid grid-cols-12 gap-x-8 gap-y-14">
-          {(
-            project.sections ??
-            SECTIONS.map((heading) => ({ heading, body: null as readonly string[] | null }))
-          ).map(({ heading, body }) => (
+          {SECTIONS.map((heading) => (
             <section key={heading} className="col-span-12 lg:col-span-5 lg:even:col-start-8">
               <h2 className="border-t border-rule pt-5 text-[13px] uppercase tracking-label text-muted">
                 {heading}
               </h2>
-              {(body ?? ["This section is awaiting its write-up."]).map((paragraph) => (
-                <p key={paragraph} className="mt-5 max-w-prose text-lg leading-relaxed text-ink/85">
-                  {paragraph}
-                </p>
-              ))}
+              <p className="mt-5 max-w-prose text-lg leading-relaxed text-ink/85">
+                This section is awaiting its write-up.
+              </p>
             </section>
           ))}
         </div>

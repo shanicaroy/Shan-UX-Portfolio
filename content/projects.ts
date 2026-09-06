@@ -33,12 +33,6 @@ export type Project = {
   video?: string;
   photo?: string;
   aspect: "16/9" | "3/2" | "4/3" | "1/1";
-  /**
-   * Real case-study copy for the scaffolded template. When present the
-   * template renders these sections instead of its awaiting-write-up
-   * placeholders. Nothing here may be invented.
-   */
-  sections?: readonly { heading: string; body: readonly string[] }[];
 };
 
 export const projects: Project[] = [
@@ -145,80 +139,6 @@ export const projects: Project[] = [
     image: "/projects/project-02.jpg",
     video: "/projects/clm.mp4",
     aspect: "3/2",
-  },
-  {
-    // Placeholder case study — Shanica fills in the real content.
-    slug: "uxpective",
-    title: "UXPective",
-    positioning: "[Company or type, to fill]",
-    description: "[One-line descriptor, to fill]",
-    details: [
-      { label: "Role", value: "[X]" },
-      { label: "Team", value: "[X]" },
-      { label: "Scope", value: "[X]" },
-      { label: "My contribution", value: "[X]" },
-      { label: "My leadership", value: "[X]" },
-      { label: "Outcome", value: "[X] · [verified result]" },
-    ],
-    size: "medium",
-    cta: "Read case study",
-    image: "/projects/project-04.jpg",
-    aspect: "3/2",
-  },
-  {
-    // Seeded from the Applied AI section so the page is not empty; the copy
-    // below is the documented product/evaluation contract, not results.
-    slug: "case-check",
-    title: "Applied AI: Case Check",
-    positioning: "Applied AI · Portfolio-review agent",
-    description:
-      "A narrow portfolio-review agent that makes its plan, evidence, uncertainty, and limits visible.",
-    details: [
-      { label: "Status", value: "Build in progress" },
-      { label: "Product contract", value: "v0.1" },
-      { label: "Evaluation protocol", value: "Locked" },
-      { label: "Results", value: "Not yet published" },
-    ],
-    size: "medium",
-    cta: "Read the study",
-    image: "/projects/project-06.jpg",
-    aspect: "3/2",
-    sections: [
-      {
-        heading: "What it is",
-        body: [
-          "Case Check is a narrow portfolio-review agent that makes its plan, evidence, uncertainty, and limits visible. This page shows the decisions already documented, not invented performance.",
-          "The build is in progress. The product contract is at v0.1, the evaluation protocol is locked, and results are not yet published.",
-        ],
-      },
-      {
-        heading: "The product contract",
-        body: [
-          "Find the weakest part of one case study, and the report says what it could not judge.",
-          "It is for junior-to-mid UX designers preparing a portfolio. It is not for hiring decisions, deep visual critique, or accessibility and legal audits. The source of judgment is the UXPective case-study storytelling framework and my own review criteria.",
-        ],
-      },
-      {
-        heading: "The six-step review flow",
-        body: [
-          "Fetch reads the source. Classify resolves ambiguity. Plan shows checks first. Run checks combines text and vision. Self-verify rechecks every claim. Report returns one weakest part and one fix the designer can make.",
-          "The final output is structured into weakest part, why it matters, one concrete fix, confidence, and what could not be judged. Secondary notes remain visibly secondary.",
-        ],
-      },
-      {
-        heading: "The evaluation",
-        body: [
-          "The evaluation is defined before the first score: 40 permitted cases and problem inputs, 7 scored dimensions at 0 to 2 points each with 14 maximum, and 7 hard failures logged separately from the score. The evaluation has not been published.",
-          "No percentage will appear until the full run is graded. The write-up will include the distribution, disagreements, hard failures, the worst examples, the design change they caused, and the re-run.",
-        ],
-      },
-      {
-        heading: "Current limit",
-        body: [
-          "Case Check evaluates the narrative of a case study. It does not decide whether someone is hireable, and its first version will not claim deep visual-craft judgment. Full craft evaluation is deliberately deferred.",
-        ],
-      },
-    ],
   },
 ];
 
