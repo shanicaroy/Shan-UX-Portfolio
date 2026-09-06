@@ -34,3 +34,13 @@ else is assumed.
 Reason: this session only has access to `shanicaroy/shan-ux-portfolio`. The folder is
 self-contained (its own `package.json`) so it can be moved to its own repository under
 uxpective.com unchanged.
+
+## 2026-09-06 · Hosting (pending)
+
+**Case Check will be its own Vercel project, "case-check-agent", on the uxpective.com domain.**
+Not yet done: the build session has no Vercel access (no CLI, token or connector), so the project
+and domain are created in the Vercel dashboard by Shanica. Open question to settle first: apex
+`uxpective.com` currently serves the UXPective site, so Case Check most likely lives on a
+subdomain (e.g. `casecheck.uxpective.com`) or a path. Whichever is chosen, the reason goes here.
+Also note: as of slice one there is no web page to deploy; the pipeline runs from the terminal.
+The page arrives in a later slice.
