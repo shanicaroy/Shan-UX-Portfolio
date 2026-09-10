@@ -151,6 +151,21 @@ export const vmwareCaseStyles = `
   .vmw .media{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
   .vmw .media video{display:block;width:100%;height:auto}
 
+  /* ruled list for decisions and step-by-step reasoning */
+  .vmw .dlist{list-style:none;margin:26px 0;padding:0}
+  .vmw .dlist li{padding:14px 0;border-top:1px solid var(--line);font-size:16.5px;line-height:1.65}
+  .vmw .dlist li:last-child{border-bottom:1px solid var(--line)}
+  .vmw .dlist b{color:var(--vink);font-weight:600}
+
+  /* honest two-column split (mine vs the machine's) */
+  .vmw .split{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:26px 0}
+  .vmw .split>div{padding:22px 20px}
+  .vmw .split>div+div{border-left:1px solid var(--line)}
+  .vmw .split h4{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin:0 0 12px;font-weight:600}
+  .vmw .split ul{margin:0;padding-left:18px;font-size:15.5px;line-height:1.7}
+  .vmw .split li{margin:6px 0}
+  @media(max-width:700px){.vmw .split{grid-template-columns:1fr}.vmw .split>div+div{border-left:none;border-top:1px solid var(--line)}}
+
   .vmw hr{border:none;border-top:1px solid var(--line);margin:56px 0 0}
 
   .vmw footer{max-width:680px;margin-top:20px;font-family:'Inter',sans-serif;font-size:14px;color:var(--sub)}
