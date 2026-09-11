@@ -5,8 +5,12 @@ import { projects, getProject } from "@/content/projects";
 import Shell from "@/components/Shell";
 import ProjectCanvas from "@/components/ProjectCanvas";
 
-// VMware and CLM have bespoke standalone pages under app/work/*.
-const BESPOKE = ["vmware-cloud-provider-portal", "customer-lifecycle-management"];
+// VMware, CLM, and Case Check have bespoke standalone pages under app/work/*.
+const BESPOKE = [
+  "vmware-cloud-provider-portal",
+  "customer-lifecycle-management",
+  "case-check",
+];
 const SCAFFOLDED = (p: (typeof projects)[number]) => !BESPOKE.includes(p.slug);
 
 const openProjects = projects.filter(SCAFFOLDED);
