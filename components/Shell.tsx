@@ -16,7 +16,7 @@ export default function Shell({
   as?: "div" | "section" | "header" | "footer" | "main" | "nav";
 }) {
   return (
-    <Tag id={id} className={`mx-auto w-full max-w-shell px-4 sm:px-5 lg:px-6 ${className}`}>
+    <Tag id={id} className={`mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-10 ${className}`}>
       {children}
     </Tag>
   );
