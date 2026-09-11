@@ -1,18 +1,21 @@
 import Hero from "@/components/Hero";
-import LeadershipModel from "@/components/LeadershipModel";
 import WorkSection from "@/components/WorkSection";
+import AboutDark from "@/components/AboutDark";
+import AppliedAISection from "@/components/AppliedAISection";
 import WritingSection from "@/components/WritingSection";
-import Testimonials from "@/components/Testimonials";
 import FinalCta from "@/components/FinalCta";
 
+/** Section order from the redesign brief. */
 export default function Home() {
   return (
     <>
       <Hero />
-      <LeadershipModel />
       <WorkSection />
+      <div className="mt-20 lg:mt-28">
+        <AboutDark />
+      </div>
+      <AppliedAISection />
       <WritingSection />
-      <Testimonials />
       <FinalCta />
     </>
   );

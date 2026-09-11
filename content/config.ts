@@ -12,7 +12,7 @@ export const siteConfig = {
   metaTitle: "Shanica Roy — UX & Product Design Leader",
   metaDescription:
     "Shanica Roy is a UX and Product Design Leader combining hands-on UX, product strategy, research, and design leadership across complex B2B, SaaS, and enterprise products.",
-  url: "https://shanicaroy.com", // PLACEHOLDER — set to the live domain
+  url: "https://work.shanicaroy.com",
 
   // ⚠️ The file does not exist yet. Add the real PDF at
   // /public/Shanica-Roy-Resume.pdf or this link will 404.
@@ -26,9 +26,16 @@ export const siteConfig = {
   },
 
   hero: {
-    headline: "Hi, I'm Shanica, and I lead UX and product design.",
+    // Copy supplied verbatim in the redesign brief.
+    eyebrow: {
+      lead: "AI-native Product & UX Leader",
+      tail: "Enterprise to Frontier",
+    },
+    headline: "I design the behavior, systems and interfaces that make AI worth trusting.",
     support:
-      "I design and lead complex product experiences across B2B, SaaS, and enterprise environments, connecting user needs, product strategy, and design execution.",
+      "Previously at EY, Dell Technologies, VMware, and startups. I work where product strategy, human judgment, model behavior, and exacting craft meet.",
+    primaryCta: { label: "Explore selected work", href: "#work" },
+    secondaryCta: { label: "Enter the AI lab", href: "#applied-ai" },
   },
 
   about: {
@@ -46,6 +53,7 @@ export const siteConfig = {
 
 export const navigation = [
   { label: "Work", href: "/#work" },
+  { label: "Applied AI", href: "/#applied-ai" },
   { label: "Leadership", href: "/leadership" },
   { label: "About", href: "/about" },
   { label: "Writing", href: "/writing" },

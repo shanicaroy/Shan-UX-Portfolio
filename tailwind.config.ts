@@ -9,13 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Light paper palette, taken from the case-study document —
-        // hierarchy comes from scale, spacing and contrast alone.
-        ground: "#FBFAF8",
+        // All values live as CSS custom properties in globals.css — one
+        // source of truth (DESIGN-TOKENS.md), no hex in components.
+        ground: "var(--c-ground)",
         surface: "#FFFFFF",
-        ink: "#1A1A17",
-        muted: "#5C5C55",
-        rule: "#E3E1DB",
+        ink: "var(--c-ink)",
+        muted: "var(--c-muted)",
+        rule: "var(--c-rule)",
+        charcoal: "var(--c-charcoal)",
+        navy: "var(--c-navy)",
+        lime: "var(--c-lime)",
+        accent: "var(--c-blue)",
+        "muted-dark": "var(--c-muted-dark)",
+        "rule-dark": "var(--c-rule-dark)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
