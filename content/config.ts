@@ -9,7 +9,7 @@ export const siteConfig = {
   title: "UX & Product Design Leader",
   role: "UX Lead · Enterprise Product Design",
 
-  metaTitle: "Shanica Roy — UX & Product Design Leader",
+  metaTitle: "Shanica Roy - UX & Product Design Leadership",
   metaDescription:
     "Shanica Roy is a UX and Product Design Leader combining hands-on UX, product strategy, research, and design leadership across complex B2B, SaaS, and enterprise products.",
   url: "https://work.shanicaroy.com",
