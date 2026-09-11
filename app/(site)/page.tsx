@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 import WorkSection from "@/components/WorkSection";
 import AboutDark from "@/components/AboutDark";
-import AppliedAISection from "@/components/AppliedAISection";
+import AppliedAIPreview from "@/components/AppliedAIPreview";
 import WritingSection from "@/components/WritingSection";
 import FinalCta from "@/components/FinalCta";
 
@@ -14,7 +14,7 @@ export default function Home() {
       <div className="mt-20 lg:mt-28">
         <AboutDark />
       </div>
-      <AppliedAISection />
+      <AppliedAIPreview />
       <WritingSection />
       <FinalCta />
     </>

@@ -17,17 +17,21 @@
   --font-mono: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-serif: "Times New Roman", Times, Georgia, serif;
 
-  /* Color tokens — see DESIGN-TOKENS.md. Components never hard-code hex. */
-  --c-ground: #fbfaf8;
-  --c-ink: #1a1a17;
-  --c-charcoal: #1b1b18;
-  --c-navy: #0e1c2e;
-  --c-lime: #d8e75a;
-  --c-blue: #3d4ee1;
-  --c-muted: #5c5c55;
-  --c-muted-dark: #a5adb8;
-  --c-rule: #e3e1db;
-  --c-rule-dark: rgba(251, 250, 248, 0.16);
+  /* Color tokens — see DESIGN-TOKENS.md. Components never hard-code hex.
+     Palette set by Shanica: #7A5AB2 accent, #0C0C0C ink, #FFFFFF ground,
+     #797979 grey. Greys stay neutral (no warm cast). The dark sections and
+     the accent band both resolve into this palette; --c-lime carries a
+     lighter tint of the accent so small text stays readable on black. */
+  --c-ground: #ffffff;
+  --c-ink: #0c0c0c;
+  --c-charcoal: #0c0c0c;
+  --c-navy: #0c0c0c;
+  --c-lime: #a78bda;
+  --c-blue: #7a5ab2;
+  --c-muted: #797979;
+  --c-muted-dark: #a3a3a3;
+  --c-rule: #e5e5e5;
+  --c-rule-dark: rgba(255, 255, 255, 0.16);
 
   --nav-height: 4rem;
 }
@@ -76,26 +80,26 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #fbfaf8;
+  background-color: var(--c-ground);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  background-color: #fbfaf8;
-  color: #1a1a17;
+  background-color: var(--c-ground);
+  color: var(--c-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #1a1a17;
-  color: #fbfaf8;
+  background-color: var(--c-ink);
+  color: var(--c-ground);
 }
 
 :focus-visible {
-  outline: 1px solid #1a1a17;
+  outline: 1px solid var(--c-ink);
   outline-offset: 4px;
 }
 

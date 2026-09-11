@@ -32,20 +32,21 @@ export default function Header() {
     </Link>
   ));
 
+  // Resume is a solid button, pinned to the far right of the bar.
   const resumeLink = (
     <a
       href={siteConfig.resume}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => setOpen(false)}
-      className={linkClass}
+      className="inline-flex items-center bg-accent px-5 py-2 font-mono text-[13px] uppercase tracking-label text-ground transition-opacity duration-200 hover:opacity-85"
     >
       Resume
     </a>
   );
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 h-[var(--nav-height)] border-b border-rule bg-ground">
+    <header className="fixed inset-x-0 top-0 z-40 h-[var(--nav-height)] bg-ground">
       <Shell className="grid h-full grid-cols-[1fr_auto] items-center gap-8 md:grid-cols-[1fr_auto_1fr]">
         {/* Identity — name, top-left */}
         <Link href="/" className="flex items-baseline">

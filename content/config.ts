@@ -35,7 +35,7 @@ export const siteConfig = {
     support:
       "Previously at EY, Dell Technologies, VMware, and startups. I work where product strategy, human judgment, model behavior, and exacting craft meet.",
     primaryCta: { label: "Explore selected work", href: "#work" },
-    secondaryCta: { label: "Enter the AI lab", href: "#applied-ai" },
+    secondaryCta: { label: "Enter the AI lab", href: "/ai-lab" },
   },
 
   about: {
@@ -53,7 +53,7 @@ export const siteConfig = {
 
 export const navigation = [
   { label: "Work", href: "/#work" },
-  { label: "Applied AI", href: "/#applied-ai" },
+  { label: "Applied AI", href: "/ai-lab" },
   { label: "Leadership", href: "/leadership" },
   { label: "About", href: "/about" },
   { label: "Writing", href: "/writing" },

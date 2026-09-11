@@ -182,6 +182,7 @@ export const projects: Project[] = [
     size: "medium",
     cta: "Read the study",
     image: "/projects/project-06.jpg",
+    video: "/projects/casecheck.mp4",
     aspect: "3/2",
     sections: [
       {

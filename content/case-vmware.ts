@@ -13,15 +13,15 @@
 
 export const vmwareCaseStyles = `
   .vmw{
-    --paper:#FBFAF8;
-    --vink:#1A1A17;
-    --sub:#5C5C55;
-    --line:#E3E1DB;
-    --line2:#CFCcC4;
-    --accent:#0D4369;
-    --accent-soft:#E7EDF3;
-    --warn-bg:#FBF0E7;
-    --warn-line:#E4B78C;
+    --paper:#FFFFFF;
+    --vink:#0C0C0C;
+    --sub:#797979;
+    --line:#E5E5E5;
+    --line2:#CFCFCF;
+    --accent:#7A5AB2;
+    --accent-soft:#F1ECF9;
+    --warn-bg:#F5F5F5;
+    --warn-line:#CFCFCF;
     --card:#FFFFFF;
   }
   .vmw, .vmw *{margin:0;padding:0;box-sizing:border-box}
@@ -73,7 +73,7 @@ export const vmwareCaseStyles = `
   /* hero */
   .vmw .eyebrow{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin-bottom:20px}
   .vmw h1{font-weight:500;font-size:clamp(34px,5vw,52px);line-height:1.1;letter-spacing:-.015em;margin-bottom:22px;font-family:'Newsreader',Georgia,serif;color:var(--vink)}
-  .vmw .standfirst{font-size:22px;color:#33332E;line-height:1.55;margin-bottom:30px}
+  .vmw .standfirst{font-size:22px;color:#3A3A3A;line-height:1.55;margin-bottom:30px}
   .vmw .factline{
     font-family:'Inter',sans-serif;font-size:13px;color:var(--sub);
     display:flex;flex-wrap:wrap;gap:8px 20px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -86,7 +86,7 @@ export const vmwareCaseStyles = `
   .vmw h2{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
   .vmw h3{font-weight:500;font-size:28px;line-height:1.2;letter-spacing:-.01em;margin:0 0 18px;font-family:'Newsreader',Georgia,serif;color:var(--vink)}
   .vmw p{margin-bottom:20px}
-  .vmw .lede{font-size:21px;color:#33332E}
+  .vmw .lede{font-size:21px;color:#3A3A3A}
   .vmw strong{font-weight:600}
 
   /* pull stat row */
@@ -110,16 +110,16 @@ export const vmwareCaseStyles = `
   .vmw .dgroup{border:1px solid var(--line);border-radius:8px;padding:12px 14px}
   .vmw .dgroup .glabel{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--sub);margin-bottom:8px}
   .vmw .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .vmw .chip{font-family:'Inter',sans-serif;font-size:12px;background:var(--accent-soft);border:1px solid #BECBDA;color:var(--accent);padding:7px 11px;border-radius:6px;text-align:center;line-height:1.3}
+  .vmw .chip{font-family:'Inter',sans-serif;font-size:12px;background:var(--accent-soft);border:1px solid #D8CCEC;color:var(--accent);padding:7px 11px;border-radius:6px;text-align:center;line-height:1.3}
   .vmw .darrow{font-family:'Inter',sans-serif;color:var(--accent);font-size:20px;text-align:center;line-height:1}
 
   /* diagram 2: nested-datagrid trap */
   .vmw .nest{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--vink);overflow:hidden;border-radius:8px}
   .vmw .nest .row{border:1px solid var(--line2);border-radius:6px;padding:9px 12px;margin-bottom:7px;background:var(--paper)}
   .vmw .nest .d1{margin-top:-12px;opacity:.45}
-  .vmw .nest .d2{margin-left:22px;background:#F3F1EC}
-  .vmw .nest .d3{margin-left:44px;background:#EBE8E1}
-  .vmw .nest .warn{color:#B0651F}
+  .vmw .nest .d2{margin-left:22px;background:#F2F2F2}
+  .vmw .nest .d3{margin-left:44px;background:#E5E5E5}
+  .vmw .nest .warn{color:#7A5AB2}
 
   /* diagram 3: composing from primitives */
   .vmw .compose{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
@@ -132,16 +132,16 @@ export const vmwareCaseStyles = `
   .vmw .frame{border:1px solid var(--line2);border-radius:8px;overflow:hidden;background:var(--paper)}
   .vmw .frame .bar{font-family:'Inter',sans-serif;font-size:10.5px;color:var(--sub);padding:6px 10px;border-bottom:1px solid var(--line);background:var(--card)}
   .vmw .frame .body{padding:10px}
-  .vmw .band{height:11px;border-radius:3px;margin-bottom:6px;background:#DCD9D2}
-  .vmw .band.cost{background:#CFDAE4}
+  .vmw .band{height:11px;border-radius:3px;margin-bottom:6px;background:#DEDEDE}
+  .vmw .band.cost{background:#D8CCEC}
   .vmw .band.tall{height:22px}
-  .vmw .band.table{background:#E7C9A9;height:34px;border-radius:4px}
+  .vmw .band.table{background:#B49BE0;height:34px;border-radius:4px}
   .vmw .frame.bad .band.table{opacity:.35}
-  .vmw .push{font-family:'Inter',sans-serif;font-size:10px;color:#B0651F;text-align:center;margin-top:4px}
+  .vmw .push{font-family:'Inter',sans-serif;font-size:10px;color:#7A5AB2;text-align:center;margin-top:4px}
   .vmw .ok{font-family:'Inter',sans-serif;font-size:10px;color:var(--accent);text-align:center;margin-top:4px}
 
-  .vmw .warnbox{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:8px;padding:16px 20px;font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.55;color:#6B4526;margin:26px 0}
-  .vmw .warnbox b{color:#5A3416}
+  .vmw .warnbox{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:8px;padding:16px 20px;font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.55;color:#4A4A4A;margin:26px 0}
+  .vmw .warnbox b{color:#0C0C0C}
 
   /* editorial fill-in note: must be resolved before a page ships */
   .vmw .todo{border:1px dashed var(--line2);border-radius:8px;padding:14px 18px;font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.55;color:var(--sub);margin:22px 0}

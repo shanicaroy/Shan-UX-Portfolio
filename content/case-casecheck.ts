@@ -40,6 +40,13 @@ export const caseCheckBody = `
       <span class="nda"><b>Proof</b> &nbsp;Live at <a href="https://casecheck.uxpective.com" target="_blank" rel="noopener noreferrer">casecheck.uxpective.com</a> &nbsp;&middot;&nbsp; code at <a href="https://github.com/shanicaroy/casecheck" target="_blank" rel="noopener noreferrer">github.com/shanicaroy/casecheck</a></span>
     </div>
 
+    <figure>
+      <div class="media">
+        <video src="/projects/casecheck.mp4" autoplay muted loop playsinline aria-label="Case Check's interface: the review field and the floating mark on a white ground, with the brand gradient."></video>
+      </div>
+      <figcaption><b>Case Check.</b> The live product at casecheck.uxpective.com.</figcaption>
+    </figure>
+
     <section id="overview">
       <h2>Case Check</h2>
       <p class="lede">I am a product designer building AI-native products. I am not a software engineer, and this page does not pretend I am. The claim it makes is different, and I think stronger: I can take an AI product from nothing to a working, evaluated thing, own every decision in it, and understand every layer well enough to direct it and catch its mistakes.</p>

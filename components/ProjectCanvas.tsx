@@ -42,7 +42,7 @@ export default function ProjectCanvas({
         <rect width="1600" height="900" fill="#FFFFFF" />
 
         {locked && (
-          <g stroke="#5C5C55" strokeWidth="6" fill="none" opacity="0.8">
+          <g stroke="#797979" strokeWidth="6" fill="none" opacity="0.8">
             <rect x="742" y="432" width="116" height="92" rx="10" />
             <path d="M766 432v-26a34 34 0 0 1 68 0v26" />
           </g>
@@ -50,33 +50,33 @@ export default function ProjectCanvas({
 
         {variant === 0 && (
           <g>
-            <rect x="200" y="150" width="1200" height="600" fill="#F5F3EE" />
-            <rect x="200" y="150" width="1200" height="1" fill="#E3E1DB" />
-            <rect x="640" y="150" width="1" height="600" fill="#EAE8E1" />
+            <rect x="200" y="150" width="1200" height="600" fill="#F2F2F2" />
+            <rect x="200" y="150" width="1200" height="1" fill="#E5E5E5" />
+            <rect x="640" y="150" width="1" height="600" fill="#E0E0E0" />
           </g>
         )}
 
         {variant === 1 && (
           <g>
-            <rect x="120" y="120" width="760" height="660" fill="#F5F3EE" />
-            <rect x="940" y="300" width="540" height="300" fill="#F1EFE9" />
-            <rect x="120" y="780" width="1360" height="1" fill="#E3E1DB" />
+            <rect x="120" y="120" width="760" height="660" fill="#F2F2F2" />
+            <rect x="940" y="300" width="540" height="300" fill="#EBEBEB" />
+            <rect x="120" y="780" width="1360" height="1" fill="#E5E5E5" />
           </g>
         )}
 
         {variant === 2 && (
           <g>
-            <rect x="0" y="240" width="1600" height="420" fill="#F5F3EE" />
-            <rect x="380" y="240" width="1" height="420" fill="#EAE8E1" />
-            <rect x="1220" y="240" width="1" height="420" fill="#EAE8E1" />
+            <rect x="0" y="240" width="1600" height="420" fill="#F2F2F2" />
+            <rect x="380" y="240" width="1" height="420" fill="#E0E0E0" />
+            <rect x="1220" y="240" width="1" height="420" fill="#E0E0E0" />
           </g>
         )}
 
         {variant === 3 && (
           <g>
-            <rect x="260" y="90" width="1080" height="720" fill="#F5F3EE" />
-            <rect x="260" y="450" width="1080" height="1" fill="#282825" />
-            <rect x="800" y="90" width="1" height="720" fill="#222220" />
+            <rect x="260" y="90" width="1080" height="720" fill="#F2F2F2" />
+            <rect x="260" y="450" width="1080" height="1" fill="#0C0C0C" />
+            <rect x="800" y="90" width="1" height="720" fill="#0C0C0C" />
           </g>
         )}
       </svg>
