@@ -13,20 +13,20 @@ export default function FinalCta() {
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
           {finalCta.support}
         </p>
-        <div className="mt-9 flex flex-wrap gap-x-5 gap-y-4">
+        <div className="mt-9 flex flex-wrap gap-x-10 gap-y-4">
           <a
             href={siteConfig.resume}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-ink px-6 py-3.5 text-[15px] font-medium text-ground transition-opacity duration-200 hover:opacity-85"
+            className="text-[15px] font-medium text-ink underline underline-offset-4 transition-opacity duration-200 hover:opacity-70"
           >
-            View résumé <span aria-hidden>↗</span>
+            View résumé
           </a>
           <a
             href={siteConfig.social.email}
-            className="inline-flex items-center gap-3 border border-ink px-6 py-3.5 text-[15px] font-medium text-ink transition-colors duration-200 hover:bg-ink hover:text-ground"
+            className="text-[15px] font-medium text-ink underline underline-offset-4 transition-opacity duration-200 hover:opacity-70"
           >
-            Get in touch <span aria-hidden>↗</span>
+            Get in touch
           </a>
         </div>
       </div>

@@ -34,13 +34,13 @@ export default function WritingSection() {
               </span>
               <span>
                 <span className="type-eyebrow block text-muted">{essay.eyebrow}</span>
-                <span className="mt-2 block text-xl font-medium leading-snug text-ink transition-opacity duration-200 group-hover:opacity-70 sm:text-2xl">
+                <span className="mt-2 block text-xl font-medium leading-snug text-ink transition-colors duration-200 group-hover:text-accent sm:text-2xl">
                   {essay.title}
                 </span>
               </span>
               <span
                 aria-hidden
-                className="flex h-11 w-11 items-center justify-center border border-rule text-lg text-ink transition-colors duration-200 group-hover:border-lime group-hover:bg-lime"
+                className="text-lg text-muted transition-transform duration-300 ease-editorial group-hover:translate-x-1 group-hover:text-accent"
               >
                 &rarr;
               </span>
@@ -53,7 +53,7 @@ export default function WritingSection() {
         href="/writing"
         className="mt-10 inline-block text-[15px] font-medium text-ink underline-offset-4 transition-colors duration-200 hover:underline"
       >
-        Read all <span aria-hidden>&#8599;</span>
+        Read all <span aria-hidden>&rarr;</span>
       </Link>
     </Shell>
   );

@@ -26,6 +26,12 @@ export type Project = {
   confidentialLabel?: string;
   /** Fully locked: card is not clickable and the case page is unreachable. */
   locked?: boolean;
+  /**
+   * Password-gated: the card opens a password prompt instead of navigating.
+   * NOTE: this is a client-side curtain for casual visitors only — the page
+   * itself stays publicly reachable by URL. Do not rely on it for NDA content.
+   */
+  protected?: boolean;
   /** Editorial rhythm: large rows breathe, medium rows sit beside their text. */
   size: "large" | "medium";
   cta: string;
@@ -62,6 +68,7 @@ export const projects: Project[] = [
     ],
     confidential: true,
     confidentialLabel: "Confidential · Enterprise Product",
+    protected: true,
     size: "medium",
     cta: "View confidential case study",
     image: "/projects/project-05.jpg",
@@ -114,6 +121,7 @@ export const projects: Project[] = [
       { label: "My leadership", value: "[X]" },
       { label: "Outcome", value: "[X] · [verified result]" },
     ],
+    protected: true,
     size: "medium",
     cta: "Read case study",
     image: "/projects/project-03.jpg",
@@ -160,6 +168,7 @@ export const projects: Project[] = [
       { label: "My leadership", value: "[X]" },
       { label: "Outcome", value: "[X] · [verified result]" },
     ],
+    protected: true,
     size: "medium",
     cta: "Read case study",
     image: "/projects/project-04.jpg",

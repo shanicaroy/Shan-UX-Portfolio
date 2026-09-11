@@ -31,7 +31,7 @@ export default function SixStepFlow() {
   const step = steps[active];
 
   return (
-    <div className="grid grid-cols-1 border border-rule-dark lg:grid-cols-[2fr_3fr]">
+    <div className="grid grid-cols-1 border border-rule lg:grid-cols-[2fr_3fr]">
       <div
         role="tablist"
         aria-label="Review flow steps"
@@ -51,18 +51,18 @@ export default function SixStepFlow() {
             tabIndex={i === active ? 0 : -1}
             onClick={() => setActive(i)}
             onKeyDown={(e) => onKeyDown(e, i)}
-            className={`grid grid-cols-[3rem_1fr] items-baseline gap-x-4 border-b border-rule-dark px-5 py-5 text-left transition-colors duration-200 last:border-b-0 lg:px-6 lg:py-6 ${
+            className={`grid grid-cols-[3rem_1fr] items-baseline gap-x-4 border-b border-rule px-5 py-5 text-left transition-colors duration-200 last:border-b-0 lg:px-6 lg:py-6 ${
               i === active
-                ? "border-l-4 border-l-lime bg-ground/5"
-                : "border-l-4 border-l-transparent hover:bg-ground/5"
+                ? "border-l-4 border-l-accent"
+                : "border-l-4 border-l-transparent hover:border-l-rule"
             }`}
           >
-            <span className="type-eyebrow text-muted-dark tabular-nums">
+            <span className="type-eyebrow text-muted tabular-nums">
               0{i + 1}
             </span>
             <span>
-              <span className="block text-[17px] font-medium text-ground">{s.name}</span>
-              <span className="mt-1 block text-sm text-muted-dark">{s.short}</span>
+              <span className={`block text-[17px] font-medium ${i === active ? "text-accent" : "text-ink"}`}>{s.name}</span>
+              <span className="mt-1 block text-sm text-muted">{s.short}</span>
             </span>
           </button>
         ))}
@@ -72,7 +72,7 @@ export default function SixStepFlow() {
         role="tabpanel"
         id="flow-panel"
         aria-labelledby={`flow-tab-${active}`}
-        className="border-t border-rule-dark bg-ground px-6 py-10 lg:border-l lg:border-t-0 lg:px-12 lg:py-14"
+        className="border-t border-rule bg-ground px-6 py-10 lg:border-l lg:border-t-0 lg:px-12 lg:py-14"
       >
         <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="type-eyebrow text-muted">{step.label}</p>

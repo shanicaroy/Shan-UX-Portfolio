@@ -18,6 +18,11 @@ export const siteConfig = {
   // /public/Shanica-Roy-Resume.pdf or this link will 404.
   resume: "/Shanica-Roy-Resume.pdf",
 
+  // Password for the gated project cards. PLACEHOLDER — until Shanica sets a
+  // real one, every entry is rejected. This gate is client-side only: it
+  // deters casual visitors, it does not secure the pages.
+  projectPassword: "[SET_PASSWORD]",
+
   social: {
     linkedin: "[LINKEDIN_URL]", // PLACEHOLDER
     email: "mailto:[EMAIL_ADDRESS]", // PLACEHOLDER

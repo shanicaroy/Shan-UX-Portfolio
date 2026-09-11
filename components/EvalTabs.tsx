@@ -52,7 +52,7 @@ export default function EvalTabs() {
             onKeyDown={(e) => onKeyDown(e, i)}
             className={`border-b border-rule px-5 py-5 text-left text-[15px] font-medium transition-colors duration-200 lg:px-6 ${
               i === active
-                ? "border-l-4 border-l-ink bg-lime text-ink"
+                ? "border-l-4 border-l-accent text-accent"
                 : "border-l-4 border-l-transparent text-muted hover:text-ink"
             }`}
           >

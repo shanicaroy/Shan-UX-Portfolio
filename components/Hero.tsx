@@ -3,9 +3,9 @@ import { experience } from "@/content/experience";
 import Shell from "./Shell";
 
 /**
- * Hero: eyebrow with a lime separator dot, the four-line headline, the lead,
- * two CTAs — and the unchanged experience ladder on the right. Roughly 60/40
- * on desktop, stacked on mobile with the ladder below the CTAs.
+ * Hero, pared down by request: eyebrow with the accent separator dot and the
+ * headline on the left, the unchanged experience ladder on the right. No
+ * support paragraph, no CTAs.
  */
 export default function Hero() {
   const { hero } = siteConfig;
@@ -19,30 +19,12 @@ export default function Hero() {
       <div className="col-span-12 lg:col-span-7">
         <p className="type-eyebrow text-ink">
           {hero.eyebrow.lead}
-          <span aria-hidden className="mx-2 text-lime">
+          <span aria-hidden className="mx-2 text-accent">
             &bull;
           </span>
           {hero.eyebrow.tail}
         </p>
         <h1 className="type-hero mt-6 max-w-[17ch] text-ink">{hero.headline}</h1>
-        <p className="mt-7 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-          {hero.support}
-        </p>
-        <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <a
-            href={hero.primaryCta.href}
-            className="inline-flex items-center gap-3 bg-ink px-6 py-3.5 text-[15px] font-medium text-ground transition-opacity duration-200 hover:opacity-85"
-          >
-            {hero.primaryCta.label}
-            <span aria-hidden>&#8600;</span>
-          </a>
-          <a
-            href={hero.secondaryCta.href}
-            className="text-[15px] font-medium text-ink underline underline-offset-4 transition-opacity duration-200 hover:opacity-70"
-          >
-            {hero.secondaryCta.label} <span aria-hidden>&rarr;</span>
-          </a>
-        </div>
       </div>
 
       {/* Right — the experience ladder, content and layout unchanged */}
