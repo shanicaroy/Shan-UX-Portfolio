@@ -14,9 +14,9 @@ export const siteConfig = {
     "Shanica Roy is a UX and Product Design Leader combining hands-on UX, product strategy, research, and design leadership across complex B2B, SaaS, and enterprise products.",
   url: "https://work.shanicaroy.com",
 
-  // ⚠️ The file does not exist yet. Add the real PDF at
-  // /public/Shanica-Roy-Resume.pdf or this link will 404.
-  resume: "/Shanica-Roy-Resume.pdf",
+  // Shanica's resume on Google Drive; opens in a new tab from the nav button
+  // and the closing CTA.
+  resume: "https://drive.google.com/file/d/188gIggemonNBhwXutyOp0PTvHuFOhjOp/view",
 
   // Password for the gated project cards. PLACEHOLDER — until Shanica sets a
   // real one, every entry is rejected. This gate is client-side only: it
