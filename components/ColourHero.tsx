@@ -1,0 +1,233 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+/**
+ * Pixel-exact port of the locked Figma hero (frame 2197:15), rendered at the
+ * design's native 1728px canvas and scaled to the viewport. The band paints
+ * only on hover/drag with the design's predefined gradient; strokes hold then
+ * dissolve on a cycle. Everything is scoped under `.ch` so it cannot affect
+ * the rest of the site. This section is locked — do not alter its measurements.
+ */
+const CSS = `
+.ch{--ink:#080808;--text:#171714;--sub:#7c7c7c;--rule:#f0eeeb;--nav-ink:#151515;--accent:#7a5ab2;--serif:"Times New Roman",Times,Georgia,serif;--sora:"Sora","Helvetica Neue",Arial,sans-serif;--roboto:"Roboto","Helvetica Neue",Arial,sans-serif;--mono:"Roboto Mono",ui-monospace,monospace;--inter:"Inter","Helvetica Neue",Arial,sans-serif;position:relative;background:#fff;color:var(--text)}
+.ch *{box-sizing:border-box}
+.ch .scaleWrap{position:relative;width:100%;overflow:hidden;height:calc(100vw * 1640 / 1728)}
+.ch .frame{position:relative;left:0;width:1728px;height:1640px;transform-origin:top left;background:#fff}
+.ch .navlinks{position:absolute;top:88px;left:0;width:1728px;display:flex;justify-content:center;gap:60px;font-family:var(--sora);font-weight:600;font-size:19.5px;color:var(--nav-ink)}
+.ch .navlinks a{color:inherit;text-decoration:none}
+.ch .navlinks a.active{color:var(--accent)}
+.ch .resume{position:absolute;top:62px;left:1421px;display:inline-flex;align-items:center;gap:11.333px;background:var(--accent);color:#fff;font-family:var(--inter);font-weight:600;font-size:20.4px;line-height:20.4px;text-transform:uppercase;text-decoration:none;padding:18.7px 10.2px 19.833px 27.2px;border-radius:6.8px}
+.ch .resume svg{width:23.8px;height:21.5px;display:block}
+.ch .band{position:absolute;top:158px;left:0;width:1728px;height:197px;overflow:hidden}
+.ch #bandCanvas{position:absolute;inset:0;width:1728px;height:197px;display:block}
+.ch .hero{position:absolute;left:118px;top:267px;width:1517px;height:569.83px;display:flex;align-items:flex-end;gap:122px}
+.ch .hleft{width:718px;display:flex;flex-direction:column;gap:60px;align-items:flex-start}
+.ch .hgroup{display:flex;flex-direction:column;gap:41px;align-items:flex-start;width:100%}
+.ch .avatar{width:156px;height:156px;border-radius:50%;object-fit:cover;display:block}
+.ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:73.889px;line-height:.94;letter-spacing:-2.9556px;color:var(--ink);width:718px}
+.ch .sgroup{display:flex;flex-direction:column;gap:33.027px;align-items:flex-start}
+.ch .subline{margin:0;font-family:var(--roboto);font-size:24.794px;color:var(--text)}
+.ch .clients{display:flex;gap:13.262px;align-items:center;width:709px}
+.ch .client{display:flex;gap:7.862px;align-items:center;padding-left:1.632px}
+.ch .client img{display:block;flex:none}
+.ch .client span{font-family:var(--roboto);font-size:25.293px;color:var(--text);white-space:nowrap}
+.ch .client.vm{width:170px}.ch .client.vm img{width:40.806px;height:39.786px;border-radius:2.04px}
+.ch .client.dl{width:138.139px}.ch .client.dl img{width:43.8px;height:43.8px}
+.ch .client.or{width:157.231px}.ch .client.or img{width:41.554px;height:38.185px;border-radius:3.562px}
+.ch .client.bg{width:175.2px}.ch .client.bg img{width:42.677px;height:39.308px;border-radius:3px}
+.ch .hright{width:677px;display:flex;flex-direction:column;gap:29.985px}
+.ch .explabel{margin:0;font-family:var(--sora);font-weight:600;font-size:20.24px;line-height:26.987px;color:var(--sub);text-transform:uppercase}
+.ch .carhist{display:flex;flex-direction:column}
+.ch .exprow{display:grid;grid-template-columns:301.35px 304.39px 71.96px;align-items:center;height:73.26px;border-bottom:1.499px solid var(--rule)}
+.ch .exprow:last-child{border-bottom:none}
+.ch .expco{display:flex;align-items:center;gap:14.993px}
+.ch .expco img{object-fit:contain;flex:none}
+.ch .expco b{font-family:var(--roboto);font-weight:400;font-size:23.238px;color:var(--text);white-space:nowrap}
+.ch .exprole{font-family:var(--roboto);font-size:23.238px;color:var(--sub);white-space:nowrap}
+.ch .expyear{font-family:var(--roboto);font-size:23.238px;color:var(--sub);text-align:right;font-variant-numeric:tabular-nums}
+.ch .divider{position:absolute;left:118px;top:898px;width:1517px;height:1px;background:#e8e6e2}
+.ch .swhead{position:absolute;left:118px;top:945px;font-family:var(--serif);font-weight:400;font-size:41px;letter-spacing:-.01em;color:var(--ink);scroll-margin-top:40px}
+.ch .cards{position:absolute;left:118px;top:1046px;width:1516px;display:flex;gap:29px}
+.ch .cards .ph{width:743px;height:525px;background:#ededed;border-radius:12px;object-fit:cover;display:block}
+@keyframes ch-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.ch .anim{opacity:0;animation:ch-rise .66s cubic-bezier(.22,1,.36,1) both}
+.ch .d0{animation-delay:.02s}.ch .d1{animation-delay:.10s}.ch .d2{animation-delay:.18s}.ch .d3{animation-delay:.26s}.ch .d4{animation-delay:.36s}.ch .d5{animation-delay:.46s}
+@media (prefers-reduced-motion:reduce){.ch .anim{opacity:1;animation:none;transform:none}}
+`;
+
+const RESUME = "https://drive.google.com/file/d/1zGPlamzV_6P_B7D8OPNq-CXjuq-McGtJ/view";
+
+const HTML = `
+<div class="scaleWrap"><div class="frame">
+<nav class="navlinks anim d0" aria-label="Main"><a href="#work" class="active">WORK</a><a href="/ai-lab">APPLIED AI</a><a href="/leadership">LEADERSHIP</a><a href="/about">ABOUT</a><a href="/writing">WRITING</a></nav>
+<a class="resume anim d0" href="${RESUME}" target="_blank" rel="noopener noreferrer">Resume <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<div class="band" aria-hidden="true"><canvas id="bandCanvas" width="1728" height="197"></canvas></div>
+<div class="hero">
+  <div class="hleft">
+    <div class="hgroup">
+      <img class="avatar anim d1" src="/hero/shanica.png" alt="Shanica Roy">
+      <h1 class="anim d2">Hi, it&rsquo;s Shanica Roy. I design enterprise products &amp; build systems.</h1>
+    </div>
+    <div class="sgroup anim d3">
+      <p class="subline">Enterprise client work at EY, 2023 - 2025</p>
+      <div class="clients">
+        <span class="client vm"><img src="/hero/vmware.svg" alt=""><span>VMware</span></span>
+        <span class="client dl"><img src="/hero/dell.svg" alt=""><span>Dell</span></span>
+        <span class="client or"><img src="/hero/oracle.svg" alt=""><span>Oracle</span></span>
+        <span class="client bg"><img src="/hero/bunge.svg" alt=""><span>Bunge</span></span>
+      </div>
+    </div>
+  </div>
+  <div class="hright anim d3">
+    <p class="explabel">EXPERIENCE</p>
+    <div class="carhist">
+      <div class="exprow"><span class="expco"><img src="/hero/ey.svg" alt="" style="width:41.37px;height:41.769px"><b>Ernst &amp; Young</b></span><span class="exprole">UX Design Lead</span><span class="expyear">2025</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/ey.svg" alt="" style="width:41.37px;height:41.769px"><b>Ernst &amp; Young</b></span><span class="exprole">Senior UX Designer</span><span class="expyear">2023</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/bhanzu.svg" alt="" style="width:37.852px;height:37.852px;border-radius:4.921px"><b>Bhanzu</b></span><span class="exprole">UX Designer</span><span class="expyear">2021</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/virtubox.svg" alt="" style="width:43.337px;height:43.337px"><b>Virtubox Infotech</b></span><span class="exprole">UI/UX Designer</span><span class="expyear">2020</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/unschool.svg" alt="" style="width:40.242px;height:46.433px"><b>Unschool</b></span><span class="exprole">Senior Design Instructor</span><span class="expyear">2019</span></div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="swhead anim d4" id="work">Selected Work</div>
+<div class="cards anim d5"><video class="ph" src="/projects/vmware.mp4" autoplay muted loop playsinline></video><video class="ph" src="/projects/clm.mp4" autoplay muted loop playsinline></video></div>
+</div></div>
+`;
+
+export default function ColourHero() {
+  const root = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const host = root.current;
+    if (!host) return;
+    const frame = host.querySelector<HTMLDivElement>(".frame");
+    const wrap = host.querySelector<HTMLDivElement>(".scaleWrap");
+    const canvas = host.querySelector<HTMLCanvasElement>("#bandCanvas");
+    if (!frame || !wrap || !canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const Wd = 1728, Hd = 197;
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    canvas.width = Wd * dpr;
+    canvas.height = Hd * dpr;
+    ctx.scale(dpr, dpr);
+
+    const STOPS: [number, number[]][] = [
+      [0, [206, 223, 254]],
+      [0.4856, [238, 211, 255]],
+      [1, [255, 198, 198]],
+    ];
+    function sample(t: number) {
+      t = Math.max(0, Math.min(1, t));
+      for (let i = 1; i < STOPS.length; i++) {
+        if (t <= STOPS[i][0]) {
+          const a = STOPS[i - 1], b = STOPS[i], f = (t - a[0]) / (b[0] - a[0]);
+          return [a[1][0] + (b[1][0] - a[1][0]) * f, a[1][1] + (b[1][1] - a[1][1]) * f, a[1][2] + (b[1][2] - a[1][2]) * f];
+        }
+      }
+      return STOPS[2][1];
+    }
+
+    const R = 34, NS = 28, sprites: HTMLCanvasElement[] = [];
+    for (let s = 0; s < NS; s++) {
+      const c = sample(s / (NS - 1));
+      const cv = document.createElement("canvas");
+      cv.width = cv.height = R * 2;
+      const sc = cv.getContext("2d")!;
+      const g = sc.createRadialGradient(R, R, 0, R, R, R);
+      const rgb = Math.round(c[0]) + "," + Math.round(c[1]) + "," + Math.round(c[2]);
+      g.addColorStop(0, "rgba(" + rgb + ",0.85)");
+      g.addColorStop(0.55, "rgba(" + rgb + ",0.42)");
+      g.addColorStop(1, "rgba(" + rgb + ",0)");
+      sc.fillStyle = g;
+      sc.fillRect(0, 0, R * 2, R * 2);
+      sprites.push(cv);
+    }
+
+    type Dab = { x: number; y: number; s: number; t: number };
+    let dabs: Dab[] = [];
+    let last: { x: number; y: number } | null = null;
+    const MAX = 2600, HOLD = 4500, FADE = 3200;
+
+    function add(x: number, y: number) {
+      const idx = Math.min(NS - 1, Math.max(0, Math.round((x / Wd) * (NS - 1))));
+      dabs.push({ x, y, s: idx, t: performance.now() });
+      if (dabs.length > MAX) dabs.shift();
+    }
+    function paint(x: number, y: number) {
+      if (last) {
+        const dx = x - last.x, dy = y - last.y, d = Math.hypot(dx, dy), n = Math.max(1, Math.floor(d / 9));
+        for (let i = 0; i < n; i++) add(last.x + (dx * i) / n, last.y + (dy * i) / n);
+      } else add(x, y);
+      last = { x, y };
+    }
+    function toLocal(cx: number, cy: number): [number, number] | null {
+      const r = canvas!.getBoundingClientRect();
+      if (cx < r.left || cx > r.right || cy < r.top || cy > r.bottom) { last = null; return null; }
+      return [(cx - r.left) * (Wd / r.width), (cy - r.top) * (Hd / r.height)];
+    }
+
+    const onMove = (e: PointerEvent) => {
+      if (e.pointerType === "touch") return;
+      const p = toLocal(e.clientX, e.clientY);
+      if (p) paint(p[0], p[1]);
+    };
+    const onTouch = (e: TouchEvent) => {
+      const t = e.touches[0], p = toLocal(t.clientX, t.clientY);
+      if (p) { paint(p[0], p[1]); e.preventDefault(); }
+    };
+    const onTouchEnd = () => { last = null; };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    canvas.addEventListener("touchmove", onTouch, { passive: false });
+    canvas.addEventListener("touchend", onTouchEnd);
+
+    let raf = 0;
+    function render() {
+      const now = performance.now();
+      ctx!.clearRect(0, 0, Wd, Hd);
+      let write = 0;
+      for (let i = 0; i < dabs.length; i++) {
+        const d = dabs[i], age = now - d.t;
+        let a: number;
+        if (age < HOLD) a = 1;
+        else if (age < HOLD + FADE) a = 1 - (age - HOLD) / FADE;
+        else continue;
+        dabs[write++] = d;
+        ctx!.globalAlpha = a;
+        ctx!.drawImage(sprites[d.s], d.x - R, d.y - R);
+      }
+      dabs.length = write;
+      ctx!.globalAlpha = 1;
+      raf = requestAnimationFrame(render);
+    }
+    raf = requestAnimationFrame(render);
+
+    const fit = () => {
+      const vw = document.documentElement.clientWidth;
+      const sc = Math.min(1, vw / 1728);
+      const tx = (vw - 1728 * sc) / 2;
+      frame.style.transform = "translate(" + tx + "px,0) scale(" + sc + ")";
+      wrap.style.height = 1640 * sc + "px";
+    };
+    window.addEventListener("resize", fit);
+    fit();
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("resize", fit);
+      canvas.removeEventListener("touchmove", onTouch);
+      canvas.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
+
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
+      <div className="ch" ref={root} dangerouslySetInnerHTML={{ __html: HTML }} />
+    </>
+  );
+}
