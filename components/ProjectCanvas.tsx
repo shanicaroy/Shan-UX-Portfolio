@@ -75,8 +75,8 @@ export default function ProjectCanvas({
         {variant === 3 && (
           <g>
             <rect x="260" y="90" width="1080" height="720" fill="#F2F2F2" />
-            <rect x="260" y="450" width="1080" height="1" fill="#0C0C0C" />
-            <rect x="800" y="90" width="1" height="720" fill="#0C0C0C" />
+            <rect x="260" y="450" width="1080" height="1" fill="#1a1a1d" />
+            <rect x="800" y="90" width="1" height="720" fill="#1a1a1d" />
           </g>
         )}
       </svg>

@@ -18,14 +18,15 @@
   --font-serif: "Times New Roman", Times, Georgia, serif;
 
   /* Color tokens — see DESIGN-TOKENS.md. Components never hard-code hex.
-     Palette set by Shanica: #7A5AB2 accent, #0C0C0C ink, #FFFFFF ground,
+     Palette set by Shanica: #7A5AB2 accent, #1A1A1D ink (a soft off-black,
+     never a harsh pure black), #FFFFFF ground,
      #797979 grey. Greys stay neutral (no warm cast). The dark sections and
      the accent band both resolve into this palette; --c-lime carries a
      lighter tint of the accent so small text stays readable on black. */
   --c-ground: #ffffff;
-  --c-ink: #0c0c0c;
-  --c-charcoal: #0c0c0c;
-  --c-navy: #0c0c0c;
+  --c-ink: #1a1a1d;
+  --c-charcoal: #1a1a1d;
+  --c-navy: #1a1a1d;
   --c-lime: #a78bda;
   --c-blue: #7a5ab2;
   --c-muted: #797979;

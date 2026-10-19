@@ -14,7 +14,7 @@
 export const vmwareCaseStyles = `
   .vmw{
     --paper:#FFFFFF;
-    --vink:#0C0C0C;
+    --vink:#1a1a1d;
     --sub:#797979;
     --line:#E5E5E5;
     --line2:#CFCFCF;
@@ -141,7 +141,7 @@ export const vmwareCaseStyles = `
   .vmw .ok{font-family:'Inter',sans-serif;font-size:10px;color:var(--accent);text-align:center;margin-top:4px}
 
   .vmw .warnbox{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:8px;padding:16px 20px;font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.55;color:#4A4A4A;margin:26px 0}
-  .vmw .warnbox b{color:#0C0C0C}
+  .vmw .warnbox b{color:#1a1a1d}
 
   /* editorial fill-in note: must be resolved before a page ships */
   .vmw .todo{border:1px dashed var(--line2);border-radius:8px;padding:14px 18px;font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.55;color:var(--sub);margin:22px 0}

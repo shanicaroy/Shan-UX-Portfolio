@@ -43,15 +43,15 @@ export default function SelectedWork() {
       <div className="h-px w-full bg-[#e8e6e2]" />
       <h2
         id="selected-work-heading"
-        className="mt-10 font-serif font-normal tracking-[-0.01em] text-[#080808]"
+        className="mt-10 font-serif font-normal tracking-[-0.01em] text-[#1a1a1d]"
         style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(27px, 2.37vw, 41px)" }}
       >
         Selected Work
       </h2>
 
       <div
-        className="mt-10 grid grid-cols-1 lg:grid-cols-2"
-        style={{ columnGap: "min(1.68vw, 29px)", rowGap: "clamp(44px, 4.2vw, 72px)" }}
+        className="mt-10 grid grid-cols-1 md:grid-cols-2"
+        style={{ columnGap: "clamp(20px, 1.68vw, 29px)", rowGap: "clamp(44px, 4.2vw, 72px)" }}
       >
         {ordered.map((project, i) => (
           <WorkCard key={project.slug} project={project} index={i} onOpen={() => setActive(project)} />
@@ -103,14 +103,14 @@ function WorkCard({
 
       <div className="mt-6 flex items-start justify-between gap-6">
         <h3
-          className="text-[1.55rem] font-normal leading-[1.2] tracking-[-0.01em] text-[#080808] transition-opacity duration-200 group-hover:opacity-70"
+          className="text-[1.55rem] font-normal leading-[1.2] tracking-[-0.01em] text-[#1a1a1d] transition-opacity duration-200 group-hover:opacity-70"
           style={{ fontFamily: '"Times New Roman", Times, Georgia, serif' }}
         >
           {project.title}
         </h3>
         <span
           aria-hidden
-          className="shrink-0 pt-1.5 text-xl leading-none text-[#7c7c7c] transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-x-1 group-hover:text-[#080808]"
+          className="shrink-0 pt-1.5 text-xl leading-none text-[#7c7c7c] transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-x-1 group-hover:text-[#1a1a1d]"
         >
           &rarr;
         </span>
@@ -169,7 +169,7 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-5"
+      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto p-5"
       style={{ background: "rgba(20,20,20,0.35)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
       onClick={onClose}
     >
@@ -177,14 +177,14 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
         role="dialog"
         aria-modal="true"
         aria-label={`${project.title} is password protected`}
-        className="relative w-full max-w-[560px] rounded-[18px] bg-white px-8 py-11 text-center shadow-[0_30px_80px_-20px_rgba(20,20,20,0.35)] sm:px-14"
+        className="relative my-auto max-h-[92vh] w-full max-w-[560px] overflow-y-auto rounded-[18px] bg-white px-6 py-10 text-center shadow-[0_30px_80px_-20px_rgba(20,20,20,0.35)] sm:px-14 sm:py-11"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full text-[#6b6b6b] transition-colors hover:bg-[#f3f3f3] hover:text-[#080808]"
+          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full text-[#6b6b6b] transition-colors hover:bg-[#f3f3f3] hover:text-[#1a1a1d]"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
             <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
@@ -198,7 +198,7 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
         <p className="mt-3 text-[15px] font-semibold text-[#7a5ab2]">Password protected</p>
 
         <h3
-          className="mx-auto mt-5 max-w-[12ch] font-normal leading-[1.08] tracking-[-0.01em] text-[#101010]"
+          className="mx-auto mt-5 max-w-[12ch] font-normal leading-[1.08] tracking-[-0.01em] text-[#1a1a1d]"
           style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(34px, 5vw, 52px)" }}
         >
           {project.title}
@@ -221,14 +221,14 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
                 setValue(e.target.value);
                 setError(false);
               }}
-              className="w-full bg-transparent pb-2 pr-9 text-[17px] text-[#101010] outline-none focus:outline-none focus-visible:outline-none"
+              className="w-full bg-transparent pb-2 pr-9 text-[17px] text-[#1a1a1d] outline-none focus:outline-none focus-visible:outline-none"
               autoComplete="off"
             />
             <button
               type="button"
               onClick={() => setReveal((r) => !r)}
               aria-label={reveal ? "Hide password" : "Show password"}
-              className="absolute right-0 top-1/2 -translate-y-1/2 pb-2 text-[#6b6b6b] transition-colors hover:text-[#101010]"
+              className="absolute right-0 top-1/2 -translate-y-1/2 pb-2 text-[#6b6b6b] transition-colors hover:text-[#1a1a1d]"
             >
               {reveal ? (
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
