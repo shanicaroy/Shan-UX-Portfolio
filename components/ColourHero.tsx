@@ -9,16 +9,21 @@ import { useEffect, useRef } from "react";
  * dissolve on a cycle. Everything is scoped under `.ch` so it cannot affect
  * the rest of the site. This section is locked — do not alter its measurements.
  */
+// The scaled frame now holds only the locked hero (nav, band, headline,
+// clients, experience). Selected Work lives in its own responsive section
+// below, so the cards can carry real video, details, and the password dialog.
+const FRAME_H = 862;
+
 const CSS = `
 .ch{--ink:#080808;--text:#171714;--sub:#7c7c7c;--rule:#f0eeeb;--nav-ink:#151515;--accent:#7a5ab2;--serif:"Times New Roman",Times,Georgia,serif;--sora:"Sora","Helvetica Neue",Arial,sans-serif;--roboto:"Roboto","Helvetica Neue",Arial,sans-serif;--mono:"Roboto Mono",ui-monospace,monospace;--inter:"Inter","Helvetica Neue",Arial,sans-serif;position:relative;background:#fff;color:var(--text)}
 .ch *{box-sizing:border-box}
-.ch .scaleWrap{position:relative;width:100%;overflow:hidden;height:calc(100vw * 1640 / 1728)}
-.ch .frame{position:relative;left:0;width:1728px;height:1640px;transform-origin:top left;background:#fff}
-.ch .navlinks{position:absolute;top:88px;left:0;width:1728px;display:flex;justify-content:center;gap:60px;font-family:var(--sora);font-weight:600;font-size:19.5px;color:var(--nav-ink)}
-.ch .navlinks a{color:inherit;text-decoration:none}
+.ch .scaleWrap{position:relative;width:100%;overflow:hidden;height:calc(100vw * ${FRAME_H} / 1728)}
+.ch .frame{position:relative;left:0;width:1728px;height:${FRAME_H}px;transform-origin:top left;background:#fff}
+.ch .navlinks{position:absolute;top:76px;left:0;width:1728px;display:flex;justify-content:center;gap:60px;font-family:var(--sora);font-weight:600;font-size:19.5px;color:var(--nav-ink)}
+.ch .navlinks a{color:inherit;text-decoration:none;cursor:pointer}
 .ch .navlinks a.active{color:var(--accent)}
-.ch .resume{position:absolute;top:62px;left:1421px;display:inline-flex;align-items:center;gap:11.333px;background:var(--accent);color:#fff;font-family:var(--inter);font-weight:600;font-size:20.4px;line-height:20.4px;text-transform:uppercase;text-decoration:none;padding:18.7px 10.2px 19.833px 27.2px;border-radius:6.8px}
-.ch .resume svg{width:23.8px;height:21.5px;display:block}
+.ch .resume{position:absolute;top:51px;left:1384px;width:210px;height:66px;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:#fff;font-family:var(--inter);font-weight:600;font-size:19.5px;line-height:1;letter-spacing:.2px;text-transform:uppercase;text-decoration:none;border-radius:8px}
+.ch .resume svg{width:22px;height:22px;display:block}
 .ch .band{position:absolute;top:158px;left:0;width:1728px;height:197px;overflow:hidden}
 .ch #bandCanvas{position:absolute;inset:0;width:1728px;height:197px;display:block}
 .ch .hero{position:absolute;left:118px;top:267px;width:1517px;height:569.83px;display:flex;align-items:flex-end;gap:122px}
@@ -46,13 +51,9 @@ const CSS = `
 .ch .expco b{font-family:var(--roboto);font-weight:400;font-size:23.238px;color:var(--text);white-space:nowrap}
 .ch .exprole{font-family:var(--roboto);font-size:23.238px;color:var(--sub);white-space:nowrap}
 .ch .expyear{font-family:var(--roboto);font-size:23.238px;color:var(--sub);text-align:right;font-variant-numeric:tabular-nums}
-.ch .divider{position:absolute;left:118px;top:898px;width:1517px;height:1px;background:#e8e6e2}
-.ch .swhead{position:absolute;left:118px;top:945px;font-family:var(--serif);font-weight:400;font-size:41px;letter-spacing:-.01em;color:var(--ink);scroll-margin-top:40px}
-.ch .cards{position:absolute;left:118px;top:1046px;width:1516px;display:flex;gap:29px}
-.ch .cards .ph{width:743px;height:525px;background:#ededed;border-radius:12px;object-fit:cover;display:block}
-@keyframes ch-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-.ch .anim{opacity:0;animation:ch-rise .66s cubic-bezier(.22,1,.36,1) both}
-.ch .d0{animation-delay:.02s}.ch .d1{animation-delay:.10s}.ch .d2{animation-delay:.18s}.ch .d3{animation-delay:.26s}.ch .d4{animation-delay:.36s}.ch .d5{animation-delay:.46s}
+@keyframes ch-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.ch .anim{opacity:0;animation:ch-rise 1.05s cubic-bezier(.22,1,.36,1) both}
+.ch .d0{animation-delay:.08s}.ch .d1{animation-delay:.24s}.ch .d2{animation-delay:.40s}.ch .d3{animation-delay:.58s}
 @media (prefers-reduced-motion:reduce){.ch .anim{opacity:1;animation:none;transform:none}}
 `;
 
@@ -60,7 +61,7 @@ const RESUME = "https://drive.google.com/file/d/1zGPlamzV_6P_B7D8OPNq-CXjuq-McGt
 
 const HTML = `
 <div class="scaleWrap"><div class="frame">
-<nav class="navlinks anim d0" aria-label="Main"><a href="#work" class="active">WORK</a><a href="/ai-lab">APPLIED AI</a><a href="/leadership">LEADERSHIP</a><a href="/about">ABOUT</a><a href="/writing">WRITING</a></nav>
+<nav class="navlinks anim d0" aria-label="Main"><a href="/" class="worklink active" aria-current="page">WORK</a><a href="/ai-lab">APPLIED AI</a><a href="/leadership">LEADERSHIP</a><a href="/about">ABOUT</a><a href="/writing">WRITING</a></nav>
 <a class="resume anim d0" href="${RESUME}" target="_blank" rel="noopener noreferrer">Resume <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 <div class="band" aria-hidden="true"><canvas id="bandCanvas" width="1728" height="197"></canvas></div>
 <div class="hero">
@@ -90,9 +91,6 @@ const HTML = `
     </div>
   </div>
 </div>
-<div class="divider"></div>
-<div class="swhead anim d4" id="work">Selected Work</div>
-<div class="cards anim d5"><video class="ph" src="/projects/vmware.mp4" autoplay muted loop playsinline></video><video class="ph" src="/projects/clm.mp4" autoplay muted loop playsinline></video></div>
 </div></div>
 `;
 
@@ -210,10 +208,18 @@ export default function ColourHero() {
       const sc = Math.min(1, vw / 1728);
       const tx = (vw - 1728 * sc) / 2;
       frame.style.transform = "translate(" + tx + "px,0) scale(" + sc + ")";
-      wrap.style.height = 1640 * sc + "px";
+      wrap.style.height = FRAME_H * sc + "px";
     };
     window.addEventListener("resize", fit);
     fit();
+
+    // WORK is the home page itself, not a jump link: on the home page it must
+    // do nothing (no scroll, no reload) since we are already here.
+    const work = host.querySelector<HTMLAnchorElement>(".worklink");
+    const onWork = (e: MouseEvent) => {
+      if (window.location.pathname === "/") e.preventDefault();
+    };
+    work?.addEventListener("click", onWork);
 
     return () => {
       cancelAnimationFrame(raf);
@@ -221,6 +227,7 @@ export default function ColourHero() {
       window.removeEventListener("resize", fit);
       canvas.removeEventListener("touchmove", onTouch);
       canvas.removeEventListener("touchend", onTouchEnd);
+      work?.removeEventListener("click", onWork);
     };
   }, []);
 
