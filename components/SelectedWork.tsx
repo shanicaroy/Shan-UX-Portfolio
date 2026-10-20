@@ -27,11 +27,11 @@ const GRID_ORDER = [
 // line 1 is the client + year (grey), line 2 is the project title, with an
 // NDA lock badge on the confidential ones.
 const CARD: Record<string, { client: string; year: string; title: string; nda?: boolean }> = {
-  "vmware-cloud-provider-portal": { client: "VMware", year: "2023", title: "Cloud Service Provider Portal", nda: true },
-  "customer-lifecycle-management": { client: "Bhanzu", year: "2021", title: "Customer Lifecycle Management Web Tool" },
-  "virtubox-kiosk": { client: "VirtuBox Infotech", year: "2020 - 2021", title: "VirtuBox Kiosk UI/UX Design" },
-  "dell-portal-redesign": { client: "Dell Technologies", year: "2023", title: "Order & Inventory Logistics Suite", nda: true },
-  "ey-data-product-factory": { client: "EY", year: "2025", title: "Data Product Marketplace Revamp", nda: true },
+  "vmware-cloud-provider-portal": { client: "VMware", year: "2023", title: "Cloud Service Portal (Enterprise Saas)", nda: true },
+  "customer-lifecycle-management": { client: "Bhanzu", year: "2022", title: "Customer Lifecycle Management Saas Web Tool" },
+  "virtubox-kiosk": { client: "VirtuBox Infotech", year: "2020", title: "VirtuBox Kiosk UI/UX Design" },
+  "dell-portal-redesign": { client: "Dell Technologies", year: "2024", title: "Order & Inventory Logistics Suite", nda: true },
+  "ey-data-product-factory": { client: "Ernst & Young", year: "2025", title: "Data Product Marketplace Revamp", nda: true },
   "case-check": { client: "UXPective", year: "2026", title: "Applied AI Build : Case Check Tool" },
 };
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
@@ -58,13 +58,13 @@ export default function SelectedWork() {
       <div style={{ height: "1px", background: "#e8e6e2", marginInline: `calc(-1 * ${GUTTER})` }} />
       <h2
         id="selected-work-heading"
-        className="font-serif font-normal text-[#080808]"
+        className="font-serif font-normal text-[#42444d]"
         style={{
           fontFamily: '"Times New Roman", Times, Georgia, serif',
           fontSize: "clamp(34px, 3.47vw, 60px)",
           lineHeight: 0.94,
           letterSpacing: "-0.04em",
-          marginTop: "46px",
+          marginTop: "63px",
         }}
       >
         Selected Work
@@ -72,7 +72,7 @@ export default function SelectedWork() {
 
       <div
         className="grid grid-cols-1 md:grid-cols-2"
-        style={{ marginTop: "47px", columnGap: "clamp(18px, 1.79vw, 31px)", rowGap: "22px" }}
+        style={{ marginTop: "22px", columnGap: "clamp(18px, 1.79vw, 31px)", rowGap: "22px" }}
       >
         {ordered.map((project, i) => (
           <WorkCard key={project.slug} project={project} index={i} onOpen={() => setActive(project)} />
@@ -126,15 +126,15 @@ function WorkCard({
         const card = CARD[project.slug];
         if (!card) return null;
         return (
-          <div className="flex flex-col" style={{ marginTop: "20px", gap: "8px", fontFamily: ROBOTO }}>
-            <div className="flex items-baseline justify-between gap-4 text-[#828282]" style={{ fontSize: "clamp(16px, 1.46vw, 25.285px)" }}>
+          <div className="flex flex-col" style={{ marginTop: "20px", gap: "2px", fontFamily: ROBOTO }}>
+            <div className="flex items-center justify-between gap-4 text-[#828282]" style={{ fontSize: "clamp(16px, 1.46vw, 25.285px)" }}>
               <span>{card.client}</span>
               <span className="shrink-0 tabular-nums">{card.year}</span>
             </div>
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex items-end justify-between gap-4">
               <h3
-                className="min-w-0 font-medium leading-[1.2] text-[#42444d] transition-opacity duration-200 group-hover:opacity-70"
-                style={{ fontFamily: INTER, fontSize: "clamp(22px, 1.97vw, 34px)", letterSpacing: "-0.02em" }}
+                className="min-w-0 font-medium leading-[1.15] text-[#42444d]"
+                style={{ fontFamily: INTER, fontSize: "clamp(21px, 1.86vw, 32.149px)", letterSpacing: "-0.05em" }}
               >
                 {card.title}
               </h3>

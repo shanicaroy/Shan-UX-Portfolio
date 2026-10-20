@@ -1,14 +1,12 @@
 import ColourHero from "@/components/ColourHero";
 import SelectedWork from "@/components/SelectedWork";
 import WritingSection from "@/components/WritingSection";
-import FinalCta from "@/components/FinalCta";
 import Footer from "@/components/Footer";
 
 /**
- * Home page. The hero is the locked Figma design (ColourHero). Below it,
- * Selected Work shows the six real projects (video covers + details, each
- * gated behind the password dialog), then the Writing and closing sections.
- * The Applied AI / Case Check section and "How I lead" are removed.
+ * Home page, matching the Figma frame end to end: the locked hero, Selected
+ * Work, the Writing section with its essays, then a full-bleed line and the
+ * footer links. The old closing CTA is removed — the page ends at the links.
  */
 export default function Home() {
   return (
@@ -16,7 +14,6 @@ export default function Home() {
       <ColourHero />
       <SelectedWork />
       <WritingSection />
-      <FinalCta />
       <Footer />
     </main>
   );
