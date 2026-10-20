@@ -10,17 +10,17 @@ import Shell from "./Shell";
 export default function WritingSection() {
   return (
     <Shell as="section" id="writing" className="scroll-mt-[var(--nav-height)] pt-8 lg:pt-10">
-      <p className="type-eyebrow text-muted">04 / My Writing</p>
-
-      <div className="mt-8 grid grid-cols-12 gap-y-6 lg:gap-x-8">
-        <h2 className="type-section col-span-12 text-ink lg:col-span-5">
-          Ideas I&rsquo;m working through
-        </h2>
-        <p className="col-span-12 self-end text-base leading-relaxed text-muted lg:col-span-6 lg:col-start-7">
-          For NDA-heavy work, original thinking becomes part of the evidence. These essays
-          should make a specific, technically credible argument, not repeat AI headlines.
-        </p>
-      </div>
+      <h2
+        className="font-serif font-normal tracking-[-0.01em] text-[#1a1a1d]"
+        style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(28px, 2.67vw, 46px)" }}
+      >
+        Writing
+      </h2>
+      <p className="mt-5 max-w-[1000px] text-base leading-relaxed text-muted lg:text-[17px]">
+        If I weren&rsquo;t a designer, I would have been a writer. Writing is an essential part of my
+        design process and documentation. Most of my client work is under NDA. These essays are where
+        my thinking goes on the record.
+      </p>
 
       <ul className="mt-12 border-t border-rule">
         {homeEssays.map((essay, i) => (
