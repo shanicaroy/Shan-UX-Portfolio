@@ -40,7 +40,8 @@ export default function SelectedWork() {
       style={{ paddingInline: GUTTER }}
       className="scroll-mt-10 bg-white pb-8 pt-14 lg:pb-10"
     >
-      <div className="h-px w-full bg-[#e8e6e2]" />
+      {/* Divider runs full-bleed to the screen edges (breaks out of the gutter). */}
+      <div style={{ height: "1px", background: "#e8e6e2", marginInline: `calc(-1 * ${GUTTER})` }} />
       <h2
         id="selected-work-heading"
         className="mt-10 font-serif font-normal tracking-[-0.01em] text-[#1a1a1d]"
@@ -76,7 +77,7 @@ function WorkCard({
     <button type="button" onClick={onOpen} className="group block w-full text-left" aria-haspopup="dialog">
       <div
         className="w-full overflow-hidden border border-[#ededed] bg-[#ededed]"
-        style={{ aspectRatio: "743 / 525" }}
+        style={{ aspectRatio: "743 / 525", borderRadius: "1px" }}
       >
         {project.video ? (
           <video
