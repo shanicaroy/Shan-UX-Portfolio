@@ -11,12 +11,20 @@ export default function WritingSection() {
   return (
     <Shell as="section" id="writing" className="scroll-mt-[var(--nav-height)] pt-8 lg:pt-10">
       <h2
-        className="font-serif font-normal tracking-[-0.01em] text-[#1a1a1d]"
-        style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(28px, 2.67vw, 46px)" }}
+        className="font-serif font-normal text-[#080808]"
+        style={{
+          fontFamily: '"Times New Roman", Times, Georgia, serif',
+          fontSize: "clamp(34px, 3.47vw, 60px)",
+          lineHeight: 0.94,
+          letterSpacing: "-0.04em",
+        }}
       >
         Writing
       </h2>
-      <p className="mt-5 max-w-[1000px] text-base leading-relaxed text-muted lg:text-[17px]">
+      <p
+        className="mt-6 max-w-[1515px] text-[#171714]"
+        style={{ fontFamily: '"Roboto", "Helvetica Neue", Arial, sans-serif', fontSize: "clamp(17px, 1.44vw, 24.794px)", lineHeight: 1.41 }}
+      >
         If I weren&rsquo;t a designer, I would have been a writer. Writing is an essential part of my
         design process and documentation. Most of my client work is under NDA. These essays are where
         my thinking goes on the record.

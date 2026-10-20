@@ -29,7 +29,7 @@ const CSS = `
 .ch .hleft{width:718px;display:flex;flex-direction:column;gap:60px;align-items:flex-start}
 .ch .hgroup{display:flex;flex-direction:column;gap:41px;align-items:flex-start;width:100%}
 .ch .avatar{width:156px;height:156px;border-radius:50%;object-fit:cover;display:block}
-.ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:73.889px;line-height:.94;letter-spacing:-2.9556px;color:#42444d;width:718px}
+.ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:72px;line-height:.94;letter-spacing:-2.88px;color:#42444d;width:718px}
 .ch .sgroup{display:flex;flex-direction:column;gap:33.027px;align-items:flex-start}
 .ch .subline{margin:0;font-family:var(--roboto);font-size:24.794px;color:var(--text)}
 .ch .clients{display:flex;gap:13.262px;align-items:center;width:709px;margin-bottom:14.73px}
@@ -41,7 +41,7 @@ const CSS = `
 .ch .client.or{width:157.231px}.ch .client.or img{width:41.554px;height:38.185px;border-radius:3.562px}
 .ch .client.bg{width:175.2px}.ch .client.bg img{width:42.677px;height:39.308px;border-radius:3px}
 .ch .hright{width:677px;display:flex;flex-direction:column;gap:29.985px}
-.ch .explabel{margin:0;font-family:var(--sora);font-weight:600;font-size:20.24px;line-height:26.987px;color:var(--sub);text-transform:uppercase}
+.ch .explabel{margin:0;font-family:var(--sora);font-weight:600;font-size:20.24px;line-height:26.987px;color:#42444d;text-transform:uppercase}
 .ch .carhist{display:flex;flex-direction:column}
 .ch .exprow{display:grid;grid-template-columns:301.35px 304.39px 71.96px;align-items:center;height:73.26px;border-bottom:1.499px solid var(--rule)}
 .ch .exprow:last-child{border-bottom:none}
@@ -87,7 +87,7 @@ const CSS = `
 .ch .mclients .mcl img{width:26px;height:26px;object-fit:contain;flex:none}
 .ch .mclients .mcl span{font-family:var(--roboto);font-size:clamp(15px,4vw,18px);color:var(--text)}
 .ch .mexp{margin:36px 0 0}
-.ch .mexp .mlabel{margin:0 0 4px;font-family:var(--sora);font-weight:600;font-size:13px;letter-spacing:.04em;color:var(--sub);text-transform:uppercase}
+.ch .mexp .mlabel{margin:0 0 4px;font-family:var(--sora);font-weight:600;font-size:13px;letter-spacing:.04em;color:#42444d;text-transform:uppercase}
 .ch .mrow{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--rule)}
 .ch .mrow:last-child{border-bottom:none}
 .ch .mrow .mlg{width:34px;height:34px;object-fit:contain;flex:none}

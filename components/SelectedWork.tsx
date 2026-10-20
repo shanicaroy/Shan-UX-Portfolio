@@ -35,6 +35,7 @@ const CARD: Record<string, { client: string; year: string; title: string; nda?: 
   "case-check": { client: "UXPective", year: "2026", title: "Applied AI Build : Case Check Tool" },
 };
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
+const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
 
 // Keep the section's left/right edge aligned with the hero's 118px margin:
 // 118 / 1728 = 6.83vw below the design width, capped at 118px above it.
@@ -57,15 +58,21 @@ export default function SelectedWork() {
       <div style={{ height: "1px", background: "#e8e6e2", marginInline: `calc(-1 * ${GUTTER})` }} />
       <h2
         id="selected-work-heading"
-        className="mt-10 font-serif font-normal tracking-[-0.01em] text-[#1a1a1d]"
-        style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(28px, 2.67vw, 46px)" }}
+        className="font-serif font-normal text-[#080808]"
+        style={{
+          fontFamily: '"Times New Roman", Times, Georgia, serif',
+          fontSize: "clamp(34px, 3.47vw, 60px)",
+          lineHeight: 0.94,
+          letterSpacing: "-0.04em",
+          marginTop: "46px",
+        }}
       >
         Selected Work
       </h2>
 
       <div
-        className="mt-10 grid grid-cols-1 md:grid-cols-2"
-        style={{ columnGap: "clamp(20px, 1.68vw, 29px)", rowGap: "clamp(44px, 4.2vw, 72px)" }}
+        className="grid grid-cols-1 md:grid-cols-2"
+        style={{ marginTop: "47px", columnGap: "clamp(18px, 1.79vw, 31px)", rowGap: "22px" }}
       >
         {ordered.map((project, i) => (
           <WorkCard key={project.slug} project={project} index={i} onOpen={() => setActive(project)} />
@@ -119,29 +126,22 @@ function WorkCard({
         const card = CARD[project.slug];
         if (!card) return null;
         return (
-          <div className="flex flex-col gap-2" style={{ marginTop: "20px", fontFamily: ROBOTO }}>
-            <div className="flex items-baseline justify-between gap-4">
-              <span className="text-[#828282]" style={{ fontSize: "clamp(15px, 1.4vw, 21px)" }}>
-                {card.client}
-              </span>
-              <span
-                className="shrink-0 text-[#828282] tabular-nums"
-                style={{ fontSize: "clamp(15px, 1.4vw, 21px)" }}
-              >
-                {card.year}
-              </span>
+          <div className="flex flex-col" style={{ marginTop: "20px", gap: "8px", fontFamily: ROBOTO }}>
+            <div className="flex items-baseline justify-between gap-4 text-[#828282]" style={{ fontSize: "clamp(16px, 1.46vw, 25.285px)" }}>
+              <span>{card.client}</span>
+              <span className="shrink-0 tabular-nums">{card.year}</span>
             </div>
             <div className="flex items-center justify-between gap-4">
               <h3
                 className="min-w-0 font-medium leading-[1.2] text-[#42444d] transition-opacity duration-200 group-hover:opacity-70"
-                style={{ fontSize: "clamp(23px, 2.25vw, 34px)" }}
+                style={{ fontFamily: INTER, fontSize: "clamp(22px, 1.97vw, 34px)", letterSpacing: "-0.02em" }}
               >
                 {card.title}
               </h3>
               {card.nda && (
                 <span
-                  className="flex shrink-0 items-center gap-1.5 font-medium uppercase text-[#7a5ab2]"
-                  style={{ fontSize: "clamp(14px, 1.3vw, 20px)" }}
+                  className="flex shrink-0 items-center font-medium uppercase text-[#7a5ab2]"
+                  style={{ fontSize: "clamp(15px, 1.44vw, 24.794px)", gap: "9px" }}
                   aria-label="Under NDA"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden className="h-[1.05em] w-[1.05em]">
