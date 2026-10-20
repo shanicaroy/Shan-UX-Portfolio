@@ -1,4 +1,5 @@
 import ColourHero from "@/components/ColourHero";
+import StickyNav from "@/components/StickyNav";
 import SelectedWork from "@/components/SelectedWork";
 import WritingSection from "@/components/WritingSection";
 import Footer from "@/components/Footer";
@@ -11,6 +12,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main id="main">
+      <StickyNav />
       <ColourHero />
       <SelectedWork />
       <WritingSection />

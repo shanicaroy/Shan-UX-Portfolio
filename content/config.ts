@@ -28,6 +28,7 @@ export const siteConfig = {
     email: "mailto:[EMAIL_ADDRESS]", // PLACEHOLDER
     x: "[X_URL]", // PLACEHOLDER
     medium: "[MEDIUM_URL]", // PLACEHOLDER
+    github: "[GITHUB_URL]", // PLACEHOLDER
   },
 
   hero: {
@@ -69,4 +70,5 @@ export const socialLinks = [
   { label: "Email", href: siteConfig.social.email },
   { label: "X", href: siteConfig.social.x },
   { label: "Medium", href: siteConfig.social.medium },
+  { label: "Github", href: siteConfig.social.github },
 ] as const;

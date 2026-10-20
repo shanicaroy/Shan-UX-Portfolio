@@ -12,7 +12,7 @@ import { useEffect, useRef } from "react";
 // The scaled frame now holds only the locked hero (nav, band, headline,
 // clients, experience). Selected Work lives in its own responsive section
 // below, so the cards can carry real video, details, and the password dialog.
-const FRAME_H = 862;
+const FRAME_H = 834;
 
 const CSS = `
 .ch{--ink:#1a1a1d;--text:#171714;--sub:#7c7c7c;--rule:#f0eeeb;--nav-ink:#1a1a1d;--accent:#7a5ab2;--serif:"Times New Roman",Times,Georgia,serif;--sora:"Sora","Helvetica Neue",Arial,sans-serif;--roboto:"Roboto","Helvetica Neue",Arial,sans-serif;--mono:"Roboto Mono",ui-monospace,monospace;--inter:"Inter","Helvetica Neue",Arial,sans-serif;position:relative;background:#fff;color:var(--text)}
@@ -31,7 +31,7 @@ const CSS = `
 .ch .avatar{width:156px;height:156px;border-radius:50%;object-fit:cover;display:block}
 .ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:72px;line-height:.94;letter-spacing:-2.88px;color:#42444d;width:718px}
 .ch .sgroup{display:flex;flex-direction:column;gap:33.027px;align-items:flex-start}
-.ch .subline{margin:0;font-family:var(--roboto);font-size:24.794px;color:var(--text)}
+.ch .subline{margin:0;font-family:var(--roboto);font-size:24px;color:var(--text)}
 .ch .clients{display:flex;gap:13.262px;align-items:center;width:709px;margin-bottom:14.73px}
 .ch .client{display:flex;gap:7.862px;align-items:center;padding-left:1.632px}
 .ch .client img{display:block;flex:none}
@@ -103,7 +103,7 @@ const RESUME = "https://drive.google.com/file/d/1zGPlamzV_6P_B7D8OPNq-CXjuq-McGt
 
 const HTML = `
 <div class="scaleWrap"><div class="frame">
-<nav class="navlinks anim d0" aria-label="Main"><a href="/" class="worklink active" aria-current="page">WORK</a><a href="/ai-lab">APPLIED AI</a><a href="/leadership">LEADERSHIP</a><a href="/about">ABOUT</a><a href="/writing">WRITING</a></nav>
+<nav class="navlinks anim d0" aria-label="Main"><a href="/" class="worklink active" aria-current="page">WORK</a><a href="/ai-lab">APPLIED AI</a><a href="/about">ABOUT</a><a href="/writing">WRITING</a></nav>
 <a class="resume anim d0" href="${RESUME}" target="_blank" rel="noopener noreferrer">Resume</a>
 <div class="band" aria-hidden="true"><canvas id="bandCanvas" width="1728" height="227"></canvas></div>
 <div class="hero">
@@ -144,7 +144,6 @@ const HTML = `
     <nav aria-label="Mobile">
       <a href="/" class="worklink active" aria-current="page">Work</a>
       <a href="/ai-lab">Applied AI</a>
-      <a href="/leadership">Leadership</a>
       <a href="/about">About</a>
       <a href="/writing">Writing</a>
       <a class="mresume" href="${RESUME}" target="_blank" rel="noopener noreferrer">Resume <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>

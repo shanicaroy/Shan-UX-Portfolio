@@ -23,19 +23,26 @@ const GRID_ORDER = [
   "case-check",
 ];
 
-// Card captions, taken verbatim from the Figma Selected Work section:
-// line 1 is the client + year (grey), line 2 is the project title, with an
-// NDA lock badge on the confidential ones.
-const CARD: Record<string, { client: string; year: string; title: string; nda?: boolean }> = {
-  "vmware-cloud-provider-portal": { client: "VMware", year: "2023", title: "Cloud Service Portal (Enterprise Saas)", nda: true },
-  "customer-lifecycle-management": { client: "Bhanzu", year: "2022", title: "Customer Lifecycle Management Saas Web Tool" },
-  "virtubox-kiosk": { client: "VirtuBox Infotech", year: "2020", title: "VirtuBox Kiosk UI/UX Design" },
-  "dell-portal-redesign": { client: "Dell Technologies", year: "2024", title: "Order & Inventory Logistics Suite", nda: true },
-  "ey-data-product-factory": { client: "Ernst & Young", year: "2025", title: "Data Product Marketplace Revamp", nda: true },
-  "case-check": { client: "UXPective", year: "2026", title: "Applied AI Build : Case Check Tool" },
+// Card captions, taken verbatim from the Figma — including its per-card size
+// differences, which are reproduced exactly rather than normalised: line 1 is
+// "Client - Year" (grey), line 2 the project title, with an NDA lock on the
+// confidential ones. metaPx/titlePx/gapPx are the Figma values per card.
+const CARD: Record<
+  string,
+  { meta: string; metaPx: number; title: string; titlePx: number; gapPx: number; nda?: boolean }
+> = {
+  "vmware-cloud-provider-portal": { meta: "VMware - 2023", metaPx: 24, title: "Cloud Service Portal (Enterprise Saas)", titlePx: 30, gapPx: 2, nda: true },
+  "customer-lifecycle-management": { meta: "Bhanzu - 2022", metaPx: 24, title: "Customer Lifecycle Management Saas Web Tool", titlePx: 30, gapPx: 2 },
+  "virtubox-kiosk": { meta: "VirtuBox Infotech - 2020", metaPx: 24, title: "VirtuBox Kiosk UI/UX Design - Service Experience", titlePx: 30, gapPx: 3 },
+  "dell-portal-redesign": { meta: "Dell Technologies - 2024", metaPx: 25.285, title: "Order & Inventory Logistics Suite", titlePx: 30, gapPx: 3, nda: true },
+  "ey-data-product-factory": { meta: "Ernst & Young - 2025", metaPx: 25.285, title: "Data Product Marketplace Revamp", titlePx: 30, gapPx: 2, nda: true },
+  "case-check": { meta: "UXPective - 2026", metaPx: 25.285, title: "Applied AI Build : Case Check Tool", titlePx: 32.149, gapPx: 2 },
 };
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
+
+// Exact px at the 1728 design width, scaling down proportionally below it.
+const fluid = (px: number, min: number) => `clamp(${min}px, ${((px / 1728) * 100).toFixed(3)}vw, ${px}px)`;
 
 // Keep the section's left/right edge aligned with the hero's 118px margin:
 // 118 / 1728 = 6.83vw below the design width, capped at 118px above it.
@@ -51,20 +58,20 @@ export default function SelectedWork() {
     <section
       id="work"
       aria-labelledby="selected-work-heading"
-      style={{ paddingInline: GUTTER }}
-      className="scroll-mt-10 bg-white pb-8 pt-14 lg:pb-10"
+      style={{ paddingInline: GUTTER, paddingTop: "min(3.65vw, 63px)" }}
+      className="scroll-mt-10 bg-white pb-0"
     >
       {/* Divider runs full-bleed to the screen edges (breaks out of the gutter). */}
-      <div style={{ height: "1px", background: "#e8e6e2", marginInline: `calc(-1 * ${GUTTER})` }} />
+      <div style={{ height: "1px", background: "#e2e2e2", marginInline: `calc(-1 * ${GUTTER})` }} />
       <h2
         id="selected-work-heading"
         className="font-serif font-normal text-[#42444d]"
         style={{
           fontFamily: '"Times New Roman", Times, Georgia, serif',
-          fontSize: "clamp(34px, 3.47vw, 60px)",
+          fontSize: fluid(56, 32),
           lineHeight: 0.94,
           letterSpacing: "-0.04em",
-          marginTop: "63px",
+          marginTop: "min(2.83vw, 49px)",
         }}
       >
         Selected Work
@@ -72,7 +79,7 @@ export default function SelectedWork() {
 
       <div
         className="grid grid-cols-1 md:grid-cols-2"
-        style={{ marginTop: "22px", columnGap: "clamp(18px, 1.79vw, 31px)", rowGap: "22px" }}
+        style={{ marginTop: "min(1.33vw, 23px)", columnGap: fluid(31, 18), rowGap: "min(1.5vw, 26px)" }}
       >
         {ordered.map((project, i) => (
           <WorkCard key={project.slug} project={project} index={i} onOpen={() => setActive(project)} />
@@ -126,22 +133,21 @@ function WorkCard({
         const card = CARD[project.slug];
         if (!card) return null;
         return (
-          <div className="flex flex-col" style={{ marginTop: "20px", gap: "2px", fontFamily: ROBOTO }}>
-            <div className="flex items-center justify-between gap-4 text-[#828282]" style={{ fontSize: "clamp(16px, 1.46vw, 25.285px)" }}>
-              <span>{card.client}</span>
-              <span className="shrink-0 tabular-nums">{card.year}</span>
-            </div>
+          <div className="flex flex-col" style={{ marginTop: "8px", gap: `${card.gapPx}px`, fontFamily: ROBOTO }}>
+            <p className="text-[#828282]" style={{ fontSize: fluid(card.metaPx, 15) }}>
+              {card.meta}
+            </p>
             <div className="flex items-end justify-between gap-4">
               <h3
-                className="min-w-0 font-medium leading-[1.15] text-[#42444d]"
-                style={{ fontFamily: INTER, fontSize: "clamp(21px, 1.86vw, 32.149px)", letterSpacing: "-0.05em" }}
+                className="min-w-0 font-medium leading-[1.12] text-[#42444d]"
+                style={{ fontFamily: INTER, fontSize: fluid(card.titlePx, 19), letterSpacing: "-0.05em" }}
               >
                 {card.title}
               </h3>
               {card.nda && (
                 <span
                   className="flex shrink-0 items-center font-medium uppercase text-[#7a5ab2]"
-                  style={{ fontSize: "clamp(15px, 1.44vw, 24.794px)", gap: "9px" }}
+                  style={{ fontSize: fluid(24.794, 15), gap: "9px" }}
                   aria-label="Under NDA"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden className="h-[1.05em] w-[1.05em]">
@@ -211,7 +217,7 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
         role="dialog"
         aria-modal="true"
         aria-label={`${project.title} is password protected`}
-        className="relative my-auto max-h-[92vh] w-full max-w-[560px] overflow-y-auto rounded-[18px] bg-white px-6 py-10 text-center shadow-[0_30px_80px_-20px_rgba(20,20,20,0.35)] sm:px-14 sm:py-11"
+        className="relative my-auto max-h-[92vh] w-full max-w-[420px] overflow-y-auto rounded-[3px] bg-white px-8 py-9 text-center shadow-[0_24px_60px_-24px_rgba(20,20,20,0.3)]"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -225,23 +231,23 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
           </svg>
         </button>
 
-        <svg className="mx-auto" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <rect x="4.5" y="10.5" width="15" height="10" rx="2" stroke="#7a5ab2" strokeWidth="2" />
-          <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke="#7a5ab2" strokeWidth="2" strokeLinecap="round" />
+        <svg className="mx-auto" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <rect x="4.5" y="10.5" width="15" height="10" rx="1.6" stroke="#7a5ab2" strokeWidth="1.8" />
+          <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke="#7a5ab2" strokeWidth="1.8" strokeLinecap="round" />
         </svg>
-        <p className="mt-3 text-[15px] font-semibold text-[#7a5ab2]">Password protected</p>
+        <p className="mt-2.5 text-[12px] font-semibold uppercase tracking-[0.1em] text-[#7a5ab2]">Password protected</p>
 
         <h3
-          className="mx-auto mt-5 max-w-[12ch] font-normal leading-[1.08] tracking-[-0.01em] text-[#1a1a1d]"
-          style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(34px, 5vw, 52px)" }}
+          className="mx-auto mt-3 max-w-[18ch] font-normal leading-[1.1] tracking-[-0.02em] text-[#42444d]"
+          style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(21px, 2.3vw, 28px)" }}
         >
           {project.title}
         </h3>
-        <p className="mx-auto mt-5 max-w-[34ch] text-[16px] leading-relaxed text-[#6b6b6b]">
+        <p className="mx-auto mt-2.5 max-w-[34ch] text-[13.5px] leading-relaxed text-[#6b6b6b]">
           Enter the password from my resume or email to view this case study.
         </p>
 
-        <form onSubmit={submit} className="mt-9 text-left">
+        <form onSubmit={submit} className="mt-7 text-left">
           <label htmlFor="work-password" className="block text-[15px] font-medium text-[#3a3a3a]">
             Password
           </label>
@@ -285,13 +291,13 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
 
           <button
             type="submit"
-            className="mt-9 w-full rounded-[10px] bg-[#7a5ab2] py-4 text-[15px] font-semibold uppercase tracking-[0.1em] text-white transition-opacity duration-200 hover:opacity-90"
+            className="mt-7 w-full rounded-[2px] bg-[#7a5ab2] py-3.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-white transition-opacity duration-200 hover:opacity-90"
           >
             View case study
           </button>
         </form>
 
-        <p className="mt-6 text-[15px] text-[#6b6b6b]">
+        <p className="mt-5 text-[13.5px] text-[#6b6b6b]">
           No password?{" "}
           <a href={requestHref} className="font-medium text-[#7a5ab2] underline underline-offset-2 hover:opacity-80">
             Request access
