@@ -23,6 +23,19 @@ const GRID_ORDER = [
   "case-check",
 ];
 
+// Card captions, taken verbatim from the Figma Selected Work section:
+// line 1 is the client + year (grey), line 2 is the project title, with an
+// NDA lock badge on the confidential ones.
+const CARD: Record<string, { client: string; year: string; title: string; nda?: boolean }> = {
+  "vmware-cloud-provider-portal": { client: "VMware", year: "2023", title: "Cloud Service Provider Portal", nda: true },
+  "customer-lifecycle-management": { client: "Bhanzu", year: "2021", title: "Customer Lifecycle Management Web Tool" },
+  "virtubox-kiosk": { client: "VirtuBox Infotech", year: "2020 - 2021", title: "VirtuBox Kiosk UI/UX Design" },
+  "dell-portal-redesign": { client: "Dell Technologies", year: "2023", title: "Order & Inventory Logistics Suite", nda: true },
+  "ey-data-product-factory": { client: "EY", year: "2025", title: "Data Product Marketplace Revamp", nda: true },
+  "case-check": { client: "UXPective", year: "2026", title: "Applied AI Build : Case Check Tool" },
+};
+const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
+
 // Keep the section's left/right edge aligned with the hero's 118px margin:
 // 118 / 1728 = 6.83vw below the design width, capped at 118px above it.
 const GUTTER = "min(6.83vw, 118px)";
@@ -102,26 +115,46 @@ function WorkCard({
         )}
       </div>
 
-      <div className="mt-6 flex items-start justify-between gap-6">
-        <h3
-          className="text-[1.55rem] font-normal leading-[1.2] tracking-[-0.01em] text-[#1a1a1d] transition-opacity duration-200 group-hover:opacity-70"
-          style={{ fontFamily: '"Times New Roman", Times, Georgia, serif' }}
-        >
-          {project.title}
-        </h3>
-        <span
-          aria-hidden
-          className="shrink-0 pt-1.5 text-xl leading-none text-[#7c7c7c] transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-x-1 group-hover:text-[#1a1a1d]"
-        >
-          &rarr;
-        </span>
-      </div>
-      <p className="mt-2.5 max-w-prose text-[15px] leading-relaxed text-[#6b6b6b]">
-        {project.description}
-      </p>
-      <p className="mt-3 text-[12.5px] font-medium uppercase tracking-[0.12em] text-[#9a9a9a]">
-        {project.positioning}
-      </p>
+      {(() => {
+        const card = CARD[project.slug];
+        if (!card) return null;
+        return (
+          <div className="flex flex-col gap-2" style={{ marginTop: "20px", fontFamily: ROBOTO }}>
+            <div className="flex items-baseline justify-between gap-4">
+              <span className="text-[#828282]" style={{ fontSize: "clamp(15px, 1.4vw, 21px)" }}>
+                {card.client}
+              </span>
+              <span
+                className="shrink-0 text-[#828282] tabular-nums"
+                style={{ fontSize: "clamp(15px, 1.4vw, 21px)" }}
+              >
+                {card.year}
+              </span>
+            </div>
+            <div className="flex items-center justify-between gap-4">
+              <h3
+                className="min-w-0 font-medium leading-[1.2] text-[#42444d] transition-opacity duration-200 group-hover:opacity-70"
+                style={{ fontSize: "clamp(23px, 2.25vw, 34px)" }}
+              >
+                {card.title}
+              </h3>
+              {card.nda && (
+                <span
+                  className="flex shrink-0 items-center gap-1.5 font-medium uppercase text-[#7a5ab2]"
+                  style={{ fontSize: "clamp(14px, 1.3vw, 20px)" }}
+                  aria-label="Under NDA"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden className="h-[1.05em] w-[1.05em]">
+                    <rect x="4.5" y="10.5" width="15" height="10" rx="1.6" />
+                    <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" strokeLinecap="round" />
+                  </svg>
+                  NDA
+                </span>
+              )}
+            </div>
+          </div>
+        );
+      })()}
     </button>
   );
 }
