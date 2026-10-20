@@ -19,21 +19,20 @@ const CSS = `
 .ch *{box-sizing:border-box}
 .ch .scaleWrap{position:relative;width:100%;overflow:hidden;height:calc(100vw * ${FRAME_H} / 1728)}
 .ch .frame{position:relative;left:0;width:1728px;height:${FRAME_H}px;transform-origin:top left;background:#fff}
-.ch .navlinks{position:absolute;top:76px;left:0;width:1728px;display:flex;justify-content:center;gap:60px;font-family:var(--sora);font-weight:600;font-size:19.5px;color:var(--nav-ink)}
+.ch .navlinks{position:absolute;top:56px;left:0;width:1728px;display:flex;justify-content:center;gap:47px;font-family:var(--sora);font-weight:600;font-size:17px;color:#4f4f5d}
 .ch .navlinks a{color:inherit;text-decoration:none;cursor:pointer}
 .ch .navlinks a.active{color:var(--accent)}
-.ch .resume{position:absolute;top:51px;left:1384px;width:210px;height:66px;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:#fff;font-family:var(--inter);font-weight:600;font-size:19.5px;line-height:1;letter-spacing:.2px;text-transform:uppercase;text-decoration:none;border-radius:8px}
-.ch .resume svg{width:22px;height:22px;display:block}
-.ch .band{position:absolute;top:158px;left:0;width:1728px;height:197px;overflow:hidden}
-.ch #bandCanvas{position:absolute;inset:0;width:1728px;height:197px;display:block}
+.ch .resume{position:absolute;top:36px;left:1452px;width:182px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-family:var(--inter);font-weight:600;font-size:20.4px;line-height:1;text-transform:uppercase;text-decoration:none;border-radius:2px}
+.ch .band{position:absolute;top:128px;left:0;width:1728px;height:227px;overflow:hidden}
+.ch #bandCanvas{position:absolute;inset:0;width:1728px;height:227px;display:block}
 .ch .hero{position:absolute;left:118px;top:267px;width:1517px;height:569.83px;display:flex;align-items:flex-end;gap:122px}
 .ch .hleft{width:718px;display:flex;flex-direction:column;gap:60px;align-items:flex-start}
 .ch .hgroup{display:flex;flex-direction:column;gap:41px;align-items:flex-start;width:100%}
 .ch .avatar{width:156px;height:156px;border-radius:50%;object-fit:cover;display:block}
-.ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:73.889px;line-height:.94;letter-spacing:-2.9556px;color:var(--ink);width:718px}
+.ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:73.889px;line-height:.94;letter-spacing:-2.9556px;color:#42444d;width:718px}
 .ch .sgroup{display:flex;flex-direction:column;gap:33.027px;align-items:flex-start}
 .ch .subline{margin:0;font-family:var(--roboto);font-size:24.794px;color:var(--text)}
-.ch .clients{display:flex;gap:13.262px;align-items:center;width:709px}
+.ch .clients{display:flex;gap:13.262px;align-items:center;width:709px;margin-bottom:14.73px}
 .ch .client{display:flex;gap:7.862px;align-items:center;padding-left:1.632px}
 .ch .client img{display:block;flex:none}
 .ch .client span{font-family:var(--roboto);font-size:25.293px;color:var(--text);white-space:nowrap}
@@ -65,23 +64,23 @@ const CSS = `
   .ch .mhero{display:block;padding:0 clamp(20px,5.5vw,40px) 8px}
 }
 .ch .mtop{display:flex;align-items:center;justify-content:space-between;height:64px}
-.ch .brand{font-family:var(--serif);font-size:clamp(19px,5.4vw,23px);color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.ch .brand{font-family:var(--serif);font-size:clamp(19px,5.4vw,23px);color:#42444d;text-decoration:none;letter-spacing:-.01em}
 .ch .burger{appearance:none;-webkit-appearance:none;border:0;background:none;width:42px;height:42px;margin-right:-8px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;cursor:pointer;padding:0}
-.ch .burger span{display:block;height:2px;width:24px;background:var(--nav-ink);border-radius:2px;transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .2s}
+.ch .burger span{display:block;height:2px;width:24px;background:#4f4f5d;border-radius:2px;transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .2s}
 .ch .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .ch .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
 .ch .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .ch .mmenu{overflow:hidden;max-height:0;transition:max-height .42s cubic-bezier(.22,1,.36,1)}
 .ch .mmenu.open{max-height:520px}
 .ch .mmenu nav{display:flex;flex-direction:column;padding:4px 0 10px}
-.ch .mmenu a:not(.mresume){font-family:var(--sora);font-weight:600;font-size:16px;color:var(--nav-ink);text-decoration:none;padding:14px 2px;border-bottom:1px solid var(--rule)}
+.ch .mmenu a:not(.mresume){font-family:var(--sora);font-weight:600;font-size:16px;color:#4f4f5d;text-decoration:none;padding:14px 2px;border-bottom:1px solid var(--rule)}
 .ch .mmenu a.active{color:var(--accent)}
 .ch .mresume{margin-top:16px;display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--accent);color:#fff;font-family:var(--inter);font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.3px;padding:15px;border-radius:9px;text-decoration:none}
 .ch .mresume svg{width:19px;height:19px}
 .ch .mband{position:relative;margin-top:14px;width:100%;height:clamp(118px,33vw,180px);border-radius:14px;overflow:hidden;border:1px solid var(--rule)}
 .ch #bandCanvasM{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
 .ch .mavatar{width:clamp(84px,23vw,116px);height:clamp(84px,23vw,116px);border-radius:50%;object-fit:cover;display:block;margin-top:clamp(-52px,-13vw,-40px);border:4px solid #fff;position:relative;z-index:1}
-.ch .mh1{margin:20px 0 0;font-family:var(--serif);font-weight:400;font-size:clamp(31px,8.6vw,50px);line-height:1.02;letter-spacing:-.02em;color:var(--ink)}
+.ch .mh1{margin:20px 0 0;font-family:var(--serif);font-weight:400;font-size:clamp(31px,8.6vw,50px);line-height:1.02;letter-spacing:-.02em;color:#42444d}
 .ch .msub{margin:22px 0 0;font-family:var(--roboto);font-size:clamp(15px,4vw,18px);color:var(--text)}
 .ch .mclients{margin:16px 0 0;display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
 .ch .mclients .mcl{display:flex;gap:8px;align-items:center}
@@ -105,8 +104,8 @@ const RESUME = "https://drive.google.com/file/d/1zGPlamzV_6P_B7D8OPNq-CXjuq-McGt
 const HTML = `
 <div class="scaleWrap"><div class="frame">
 <nav class="navlinks anim d0" aria-label="Main"><a href="/" class="worklink active" aria-current="page">WORK</a><a href="/ai-lab">APPLIED AI</a><a href="/leadership">LEADERSHIP</a><a href="/about">ABOUT</a><a href="/writing">WRITING</a></nav>
-<a class="resume anim d0" href="${RESUME}" target="_blank" rel="noopener noreferrer">Resume <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<div class="band" aria-hidden="true"><canvas id="bandCanvas" width="1728" height="197"></canvas></div>
+<a class="resume anim d0" href="${RESUME}" target="_blank" rel="noopener noreferrer">Resume</a>
+<div class="band" aria-hidden="true"><canvas id="bandCanvas" width="1728" height="227"></canvas></div>
 <div class="hero">
   <div class="hleft">
     <div class="hgroup">
@@ -305,7 +304,7 @@ export default function ColourHero() {
 
     const cleanups: Array<() => void> = [];
     const canvasD = host.querySelector<HTMLCanvasElement>("#bandCanvas");
-    if (canvasD) cleanups.push(setupBand(canvasD, 34, { w: 1728, h: 197 }));
+    if (canvasD) cleanups.push(setupBand(canvasD, 34, { w: 1728, h: 227 }));
     const canvasM = host.querySelector<HTMLCanvasElement>("#bandCanvasM");
     if (canvasM) cleanups.push(setupBand(canvasM, 22));
 

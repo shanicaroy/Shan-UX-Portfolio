@@ -8,7 +8,7 @@ const GRID_ORDER = [
   "customer-lifecycle-management",
   "virtubox-kiosk",
   "dell-portal-redesign",
-  "uxpective",
+  "ey-data-product-factory",
   "case-check",
 ];
 

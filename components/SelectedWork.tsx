@@ -19,7 +19,7 @@ const GRID_ORDER = [
   "customer-lifecycle-management",
   "virtubox-kiosk",
   "dell-portal-redesign",
-  "uxpective",
+  "ey-data-product-factory",
   "case-check",
 ];
 
@@ -44,7 +44,7 @@ export default function SelectedWork() {
       <h2
         id="selected-work-heading"
         className="mt-10 font-serif font-normal tracking-[-0.01em] text-[#1a1a1d]"
-        style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(27px, 2.37vw, 41px)" }}
+        style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(28px, 2.67vw, 46px)" }}
       >
         Selected Work
       </h2>

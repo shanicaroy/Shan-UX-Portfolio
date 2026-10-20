@@ -155,23 +155,26 @@ export const projects: Project[] = [
     aspect: "3/2",
   },
   {
-    // Placeholder case study — Shanica fills in the real content.
-    slug: "uxpective",
-    title: "UXPective",
-    positioning: "[Company or type, to fill]",
-    description: "[One-line descriptor, to fill]",
+    slug: "ey-data-product-factory",
+    title: "EY Data Product Factory",
+    positioning: "Enterprise · Data Platform",
+    description:
+      "Designing the platform experience for building, cataloguing, and operating reusable data products at enterprise scale.",
     details: [
-      { label: "Role", value: "[X]" },
+      { label: "Role", value: "UX Design Lead" },
       { label: "Team", value: "[X]" },
       { label: "Scope", value: "[X]" },
       { label: "My contribution", value: "[X]" },
       { label: "My leadership", value: "[X]" },
       { label: "Outcome", value: "[X] · [verified result]" },
     ],
+    confidential: true,
+    confidentialLabel: "Confidential · Enterprise Data Platform",
     protected: true,
     size: "medium",
-    cta: "Read case study",
+    cta: "View confidential case study",
     image: "/projects/project-04.jpg",
+    video: "/projects/ey-data-product-factory.mp4",
     aspect: "3/2",
   },
   {
