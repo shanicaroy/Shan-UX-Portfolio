@@ -24,7 +24,7 @@ export default function WritingSection() {
     <section
       id="writing"
       className="scroll-mt-[var(--nav-height)]"
-      style={{ paddingInline: GUTTER, paddingTop: "min(4.05vw, 70px)", paddingBottom: "min(4.7vw, 80px)" }}
+      style={{ paddingInline: GUTTER, paddingTop: "min(5.38vw, 93px)", paddingBottom: "min(3.47vw, 60px)" }}
     >
       <h2
         className="font-normal text-[#323338]"
@@ -62,7 +62,7 @@ export default function WritingSection() {
                   </span>
                   <span
                     className="text-[#323338] transition-colors duration-200 group-hover:text-[#7a5ab2]"
-                    style={{ fontFamily: SERIF, fontSize: fluid(52, 26), lineHeight: 1.05, letterSpacing: "-0.02em" }}
+                    style={{ fontFamily: SERIF, fontSize: fluid(50, 26), lineHeight: 1.05, letterSpacing: "-0.02em" }}
                   >
                     {essay.title}
                   </span>

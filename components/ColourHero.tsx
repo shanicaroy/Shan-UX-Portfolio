@@ -12,27 +12,29 @@ import { useEffect, useRef } from "react";
 // The scaled frame now holds only the locked hero (nav, band, headline,
 // clients, experience). Selected Work lives in its own responsive section
 // below, so the cards can carry real video, details, and the password dialog.
-const FRAME_H = 834;
+const FRAME_H = 780;
 
 const CSS = `
 .ch{--ink:#1a1a1d;--text:#171714;--sub:#7c7c7c;--rule:#f0eeeb;--nav-ink:#1a1a1d;--accent:#7a5ab2;--serif:"Times New Roman",Times,Georgia,serif;--sora:"Sora","Helvetica Neue",Arial,sans-serif;--roboto:"Roboto","Helvetica Neue",Arial,sans-serif;--mono:"Roboto Mono",ui-monospace,monospace;--inter:"Inter","Helvetica Neue",Arial,sans-serif;position:relative;background:#fff;color:var(--text)}
 .ch *{box-sizing:border-box}
 .ch .scaleWrap{position:relative;width:100%;overflow:hidden;height:calc(100vw * ${FRAME_H} / 1728)}
 .ch .frame{position:relative;left:0;width:1728px;height:${FRAME_H}px;transform-origin:top left;background:#fff}
-.ch .navlinks{position:absolute;top:56px;left:0;width:1728px;display:flex;justify-content:center;gap:47px;font-family:var(--sora);font-weight:600;font-size:17px;color:#4f4f5d}
+.ch .navlinks{position:absolute;top:48px;left:0;width:1728px;display:flex;justify-content:center;gap:47px;font-family:var(--sora);font-weight:600;font-size:17px;color:#4f4f5d}
 .ch .navlinks a{color:inherit;text-decoration:none;cursor:pointer}
 .ch .navlinks a.active{color:var(--accent)}
-.ch .resume{position:absolute;top:36px;left:1452px;width:182px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-family:var(--inter);font-weight:600;font-size:20.4px;line-height:1;text-transform:uppercase;text-decoration:none;border-radius:2px}
-.ch .band{position:absolute;top:128px;left:0;width:1728px;height:227px;overflow:hidden}
-.ch #bandCanvas{position:absolute;inset:0;width:1728px;height:227px;display:block}
-.ch .hero{position:absolute;left:118px;top:267px;width:1517px;height:569.83px;display:flex;align-items:flex-end;gap:122px}
+.ch .resume{position:absolute;top:30px;left:1430px;width:204px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-family:var(--inter);font-weight:600;font-size:20.4px;line-height:1;text-transform:uppercase;text-decoration:none;border-radius:2px}
+.ch .resume::after{content:"Download";position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#1a1a1d;color:#fff;font-family:var(--inter);font-weight:500;font-size:12px;letter-spacing:.2px;text-transform:none;padding:6px 11px;border-radius:4px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.ch .resume:hover::after{opacity:1}
+.ch .band{position:absolute;top:114px;left:0;width:1728px;height:200px;overflow:hidden}
+.ch #bandCanvas{position:absolute;inset:0;width:1728px;height:200px;display:block}
+.ch .hero{position:absolute;left:118px;top:213px;width:1517px;height:566.83px;display:flex;align-items:flex-end;gap:122px}
 .ch .hleft{width:718px;display:flex;flex-direction:column;gap:60px;align-items:flex-start}
 .ch .hgroup{display:flex;flex-direction:column;gap:41px;align-items:flex-start;width:100%}
 .ch .avatar{width:156px;height:156px;border-radius:50%;object-fit:cover;display:block}
 .ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:72px;line-height:.94;letter-spacing:-2.88px;color:#42444d;width:718px}
 .ch .sgroup{display:flex;flex-direction:column;gap:33.027px;align-items:flex-start}
 .ch .subline{margin:0;font-family:var(--roboto);font-size:24px;color:var(--text)}
-.ch .clients{display:flex;gap:13.262px;align-items:center;width:709px;margin-bottom:14.73px}
+.ch .clients{display:flex;gap:7px;align-items:center;width:709px;margin-bottom:14.73px}
 .ch .client{display:flex;gap:7.862px;align-items:center;padding-left:1.632px}
 .ch .client img{display:block;flex:none}
 .ch .client span{font-family:var(--roboto);font-size:25.293px;color:var(--text);white-space:nowrap}
@@ -105,7 +107,7 @@ const HTML = `
 <div class="scaleWrap"><div class="frame">
 <nav class="navlinks anim d0" aria-label="Main"><a href="/" class="worklink active" aria-current="page">WORK</a><a href="/ai-lab">APPLIED AI</a><a href="/about">ABOUT</a><a href="/writing">WRITING</a></nav>
 <a class="resume anim d0" href="${RESUME}" target="_blank" rel="noopener noreferrer">Resume</a>
-<div class="band" aria-hidden="true"><canvas id="bandCanvas" width="1728" height="227"></canvas></div>
+<div class="band" aria-hidden="true"><canvas id="bandCanvas" width="1728" height="200"></canvas></div>
 <div class="hero">
   <div class="hleft">
     <div class="hgroup">
@@ -303,7 +305,7 @@ export default function ColourHero() {
 
     const cleanups: Array<() => void> = [];
     const canvasD = host.querySelector<HTMLCanvasElement>("#bandCanvas");
-    if (canvasD) cleanups.push(setupBand(canvasD, 46, { w: 1728, h: 227 }));
+    if (canvasD) cleanups.push(setupBand(canvasD, 46, { w: 1728, h: 200 }));
     const canvasM = host.querySelector<HTMLCanvasElement>("#bandCanvasM");
     if (canvasM) cleanups.push(setupBand(canvasM, 30));
 

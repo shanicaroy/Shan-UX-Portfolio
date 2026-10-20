@@ -75,15 +75,20 @@ export default function StickyNav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href={RESUME}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden items-center justify-center rounded-[2px] bg-accent px-5 py-2.5 text-[13px] font-semibold uppercase tracking-[0.04em] text-white transition-opacity hover:opacity-90 md:inline-flex"
-            style={{ fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif' }}
-          >
-            Resume
-          </a>
+          <span className="group/resume relative hidden md:inline-flex">
+            <a
+              href={RESUME}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-[2px] bg-accent px-5 py-2.5 text-[13px] font-semibold uppercase tracking-[0.04em] text-white transition-opacity hover:opacity-90"
+              style={{ fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif' }}
+            >
+              Resume
+            </a>
+            <span className="pointer-events-none absolute left-1/2 top-[calc(100%+8px)] -translate-x-1/2 whitespace-nowrap rounded-[4px] bg-[#1a1a1d] px-2.5 py-1.5 text-[12px] font-medium text-white opacity-0 transition-opacity duration-200 group-hover/resume:opacity-100">
+              Download
+            </span>
+          </span>
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}

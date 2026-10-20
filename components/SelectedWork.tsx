@@ -29,14 +29,14 @@ const GRID_ORDER = [
 // confidential ones. metaPx/titlePx/gapPx are the Figma values per card.
 const CARD: Record<
   string,
-  { meta: string; metaPx: number; title: string; titlePx: number; gapPx: number; nda?: boolean }
+  { meta: string; title: string; titlePx: number; coverGap: number; nda?: boolean }
 > = {
-  "vmware-cloud-provider-portal": { meta: "VMware - 2023", metaPx: 24, title: "Cloud Service Portal (Enterprise Saas)", titlePx: 30, gapPx: 2, nda: true },
-  "customer-lifecycle-management": { meta: "Bhanzu - 2022", metaPx: 24, title: "Customer Lifecycle Management Saas Web Tool", titlePx: 30, gapPx: 2 },
-  "virtubox-kiosk": { meta: "VirtuBox Infotech - 2020", metaPx: 24, title: "VirtuBox Kiosk UI/UX Design - Service Experience", titlePx: 30, gapPx: 3 },
-  "dell-portal-redesign": { meta: "Dell Technologies - 2024", metaPx: 25.285, title: "Order & Inventory Logistics Suite", titlePx: 30, gapPx: 3, nda: true },
-  "ey-data-product-factory": { meta: "Ernst & Young - 2025", metaPx: 25.285, title: "Data Product Marketplace Revamp", titlePx: 30, gapPx: 2, nda: true },
-  "case-check": { meta: "UXPective - 2026", metaPx: 25.285, title: "Applied AI Build : Case Check Tool", titlePx: 32.149, gapPx: 2 },
+  "vmware-cloud-provider-portal": { meta: "VMware - 2023", title: "Cloud Service Portal (Enterprise Saas)", titlePx: 28, coverGap: 10, nda: true },
+  "customer-lifecycle-management": { meta: "Bhanzu - 2022", title: "Customer Lifecycle Management Saas Web Tool", titlePx: 30, coverGap: 8 },
+  "virtubox-kiosk": { meta: "VirtuBox Infotech - 2020", title: "VirtuBox Kiosk UI/UX Design - Service Experience", titlePx: 30, coverGap: 8 },
+  "dell-portal-redesign": { meta: "Dell Technologies - 2024", title: "Order & Inventory Logistics Suite", titlePx: 30, coverGap: 8, nda: true },
+  "ey-data-product-factory": { meta: "Ernst & Young - 2025", title: "Data Product Marketplace Revamp", titlePx: 30, coverGap: 8, nda: true },
+  "case-check": { meta: "UXPective - 2026", title: "Applied AI Build : Case Check Tool", titlePx: 32.149, coverGap: 8 },
 };
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
@@ -58,11 +58,9 @@ export default function SelectedWork() {
     <section
       id="work"
       aria-labelledby="selected-work-heading"
-      style={{ paddingInline: GUTTER, paddingTop: "min(3.65vw, 63px)" }}
+      style={{ paddingInline: GUTTER, paddingTop: "min(4.75vw, 82px)" }}
       className="scroll-mt-10 bg-white pb-0"
     >
-      {/* Divider runs full-bleed to the screen edges (breaks out of the gutter). */}
-      <div style={{ height: "1px", background: "#e2e2e2", marginInline: `calc(-1 * ${GUTTER})` }} />
       <h2
         id="selected-work-heading"
         className="font-serif font-normal text-[#42444d]"
@@ -71,7 +69,6 @@ export default function SelectedWork() {
           fontSize: fluid(56, 32),
           lineHeight: 0.94,
           letterSpacing: "-0.04em",
-          marginTop: "min(2.83vw, 49px)",
         }}
       >
         Selected Work
@@ -79,7 +76,7 @@ export default function SelectedWork() {
 
       <div
         className="grid grid-cols-1 md:grid-cols-2"
-        style={{ marginTop: "min(1.33vw, 23px)", columnGap: fluid(31, 18), rowGap: "min(1.5vw, 26px)" }}
+        style={{ marginTop: "min(1.39vw, 24px)", columnGap: fluid(31, 18), rowGap: "min(1.62vw, 28px)" }}
       >
         {ordered.map((project, i) => (
           <WorkCard key={project.slug} project={project} index={i} onOpen={() => setActive(project)} />
@@ -133,14 +130,14 @@ function WorkCard({
         const card = CARD[project.slug];
         if (!card) return null;
         return (
-          <div className="flex flex-col" style={{ marginTop: "8px", gap: `${card.gapPx}px`, fontFamily: ROBOTO }}>
-            <p className="text-[#828282]" style={{ fontSize: fluid(card.metaPx, 15) }}>
+          <div className="flex flex-col" style={{ marginTop: `${card.coverGap}px`, gap: "4px", fontFamily: ROBOTO }}>
+            <p className="text-[#828282]" style={{ fontSize: fluid(20, 14) }}>
               {card.meta}
             </p>
             <div className="flex items-end justify-between gap-4">
               <h3
                 className="min-w-0 font-medium leading-[1.12] text-[#42444d]"
-                style={{ fontFamily: INTER, fontSize: fluid(card.titlePx, 19), letterSpacing: "-0.05em" }}
+                style={{ fontFamily: INTER, fontSize: fluid(card.titlePx, 19), letterSpacing: "-0.03em" }}
               >
                 {card.title}
               </h3>
@@ -181,7 +178,7 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
   const href = `/work/${project.slug}`;
   const requestHref =
     siteConfig.social.email && !siteConfig.social.email.includes("[")
-      ? `${siteConfig.social.email}?subject=${encodeURIComponent(`Access request: ${project.title}`)}`
+      ? `mailto:${siteConfig.social.email}?subject=${encodeURIComponent(`Access request: ${project.title}`)}`
       : siteConfig.resume;
 
   useEffect(() => {

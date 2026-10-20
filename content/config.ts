@@ -24,11 +24,11 @@ export const siteConfig = {
   projectPassword: "[SET_PASSWORD]",
 
   social: {
-    linkedin: "[LINKEDIN_URL]", // PLACEHOLDER
-    email: "mailto:[EMAIL_ADDRESS]", // PLACEHOLDER
-    x: "[X_URL]", // PLACEHOLDER
+    linkedin: "https://www.linkedin.com/in/shanica-roy-19a42814b/",
+    email: "shanicaroy22@gmail.com", // plain address — the footer copies it, never opens a mail client
+    x: "https://x.com/ShanicaRoy",
     medium: "[MEDIUM_URL]", // PLACEHOLDER
-    github: "[GITHUB_URL]", // PLACEHOLDER
+    github: "https://github.com/shanicaroy",
   },
 
   hero: {
