@@ -304,9 +304,9 @@ export default function ColourHero() {
 
     const cleanups: Array<() => void> = [];
     const canvasD = host.querySelector<HTMLCanvasElement>("#bandCanvas");
-    if (canvasD) cleanups.push(setupBand(canvasD, 34, { w: 1728, h: 227 }));
+    if (canvasD) cleanups.push(setupBand(canvasD, 46, { w: 1728, h: 227 }));
     const canvasM = host.querySelector<HTMLCanvasElement>("#bandCanvasM");
-    if (canvasM) cleanups.push(setupBand(canvasM, 22));
+    if (canvasM) cleanups.push(setupBand(canvasM, 30));
 
     // Scale the desktop frame to the viewport (capped at 1:1, centred).
     const frame = host.querySelector<HTMLDivElement>(".frame");

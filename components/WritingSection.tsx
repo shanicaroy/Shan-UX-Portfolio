@@ -9,7 +9,7 @@ import Shell from "./Shell";
  */
 export default function WritingSection() {
   return (
-    <Shell as="section" id="writing" className="scroll-mt-[var(--nav-height)] pt-20 lg:pt-28">
+    <Shell as="section" id="writing" className="scroll-mt-[var(--nav-height)] pt-8 lg:pt-10">
       <p className="type-eyebrow text-muted">04 / My Writing</p>
 
       <div className="mt-8 grid grid-cols-12 gap-y-6 lg:gap-x-8">

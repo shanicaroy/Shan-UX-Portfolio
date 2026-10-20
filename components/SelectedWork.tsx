@@ -38,7 +38,7 @@ export default function SelectedWork() {
       id="work"
       aria-labelledby="selected-work-heading"
       style={{ paddingInline: GUTTER }}
-      className="scroll-mt-10 bg-white pb-24 pt-14 lg:pb-32"
+      className="scroll-mt-10 bg-white pb-8 pt-14 lg:pb-10"
     >
       <div className="h-px w-full bg-[#e8e6e2]" />
       <h2
@@ -75,7 +75,7 @@ function WorkCard({
   return (
     <button type="button" onClick={onOpen} className="group block w-full text-left" aria-haspopup="dialog">
       <div
-        className="w-full overflow-hidden rounded-xl border border-[#ededed] bg-[#ededed]"
+        className="w-full overflow-hidden border border-[#ededed] bg-[#ededed]"
         style={{ aspectRatio: "743 / 525" }}
       >
         {project.video ? (
