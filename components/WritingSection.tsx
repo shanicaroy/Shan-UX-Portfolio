@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const SERIF = '"Times New Roman", Times, Georgia, serif';
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
@@ -26,28 +28,29 @@ export default function WritingSection() {
       className="scroll-mt-[var(--nav-height)]"
       style={{ paddingInline: GUTTER, paddingTop: "min(5.38vw, 93px)", paddingBottom: "min(3.47vw, 60px)" }}
     >
-      <h2
-        className="font-normal text-[#323338]"
-        style={{ fontFamily: SERIF, fontSize: fluid(70, 34), lineHeight: 0.94, letterSpacing: "-0.04em" }}
-      >
-        Writing my mind <span className="font-bold text-[#7a5ab2]">. . .</span>
-      </h2>
-      <p
-        className="mt-6 max-w-[1295px] text-[#323338]"
-        style={{ fontFamily: ROBOTO, fontSize: fluid(24.794, 17), lineHeight: 1.41 }}
-      >
-        If I weren&rsquo;t a designer, I would have been a writer. Writing is an essential part of my
-        work in general. Most of my client work is under NDA, these essays are where my thinking goes
-        on the record.
-      </p>
+      <Reveal>
+        <h2
+          className="font-normal text-[#323338]"
+          style={{ fontFamily: SERIF, fontSize: fluid(60, 32), lineHeight: 0.94, letterSpacing: "-0.04em" }}
+        >
+          Writing my mind <span className="font-bold text-[#7a5ab2]">. . .</span>
+        </h2>
+        <p
+          className="max-w-[1295px] text-[#323338]"
+          style={{ marginTop: "min(2.14vw, 37px)", fontFamily: ROBOTO, fontSize: fluid(24.794, 17), lineHeight: 1.41 }}
+        >
+          If I weren&rsquo;t a designer, I would have been a writer. Writing is an essential part of my
+          work in general. Most of my client work is under NDA, these essays are where my thinking goes
+          on the record.
+        </p>
+      </Reveal>
 
-      <ul className="mt-6">
+      <ul style={{ marginTop: "min(1.45vw, 25px)" }}>
         {ESSAYS.map((essay, i) => (
           <li key={i}>
-            <a
-              href={essay.href}
-              className={`group flex items-center gap-4 sm:gap-8 ${i > 0 ? "border-t border-[#e2e2e2]" : ""}`}
-              style={{ minHeight: "clamp(104px, 8.3vw, 144px)" }}
+            <Reveal as="a" delay={i * 70} href={essay.href}
+              className="group flex items-center gap-4 border-b border-[#dbdbdb] sm:gap-8"
+              style={{ minHeight: "clamp(108px, 8.68vw, 150px)" }}
             >
               <span
                 className="shrink-0 text-[#797979]"
@@ -62,7 +65,7 @@ export default function WritingSection() {
                   </span>
                   <span
                     className="text-[#323338] transition-colors duration-200 group-hover:text-[#7a5ab2]"
-                    style={{ fontFamily: SERIF, fontSize: fluid(50, 26), lineHeight: 1.05, letterSpacing: "-0.02em" }}
+                    style={{ fontFamily: INTER, fontSize: fluid(38, 22), lineHeight: 1.0, letterSpacing: "-0.03em" }}
                   >
                     {essay.title}
                   </span>
@@ -79,7 +82,7 @@ export default function WritingSection() {
                   <path d="M2 18.5H50M37 7l13 11.5L37 30" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
-            </a>
+            </Reveal>
           </li>
         ))}
       </ul>

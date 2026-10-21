@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AppliedAISection from "@/components/AppliedAISection";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "AI Lab",
@@ -9,5 +10,9 @@ export const metadata: Metadata = {
 
 /** The full Applied AI practice, moved off the home page. */
 export default function AiLabPage() {
-  return <AppliedAISection />;
+  return (
+    <Reveal>
+      <AppliedAISection />
+    </Reveal>
+  );
 }

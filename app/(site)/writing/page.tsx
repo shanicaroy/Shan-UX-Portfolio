@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { beyondTheProduct } from "@/content/leadership";
 import { writing } from "@/content/writing";
 import Shell from "@/components/Shell";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -12,20 +13,22 @@ export const metadata: Metadata = {
 export default function WritingPage() {
   return (
     <Shell as="section" className="pb-16 pt-14 sm:pt-16 lg:pb-20 lg:pt-20">
-      <p className="text-[12px] uppercase tracking-label text-muted">Writing</p>
-      <h1 className="display mt-6 max-w-3xl text-[2rem] leading-[1.12] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
-        {beyondTheProduct.heading}
-      </h1>
-      <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-        {beyondTheProduct.support}
-      </p>
+      <Reveal>
+        <p className="text-[12px] uppercase tracking-label text-muted">Writing</p>
+        <h1 className="display mt-6 max-w-3xl text-[2rem] leading-[1.12] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
+          {beyondTheProduct.heading}
+        </h1>
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+          {beyondTheProduct.support}
+        </p>
+      </Reveal>
 
       {writing.length === 0 ? (
-        <p className="mt-14 border-t border-rule pt-8 text-base text-muted">
+        <Reveal as="p" delay={80} className="mt-14 border-t border-rule pt-8 text-base text-muted">
           Pieces in progress — articles will appear here as they're published.
-        </p>
+        </Reveal>
       ) : (
-        <ul className="mt-14 border-t border-rule">
+        <Reveal as="ul" delay={80} className="mt-14 border-t border-rule">
           {writing.map((article, i) => (
             <li key={`${article.year}-${i}`}>
               <a
@@ -42,7 +45,7 @@ export default function WritingPage() {
               </a>
             </li>
           ))}
-        </ul>
+        </Reveal>
       )}
     </Shell>
   );

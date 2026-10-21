@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { projects, type Project } from "@/content/projects";
 import { siteConfig } from "@/content/config";
 import ProjectCanvas from "./ProjectCanvas";
+import Reveal from "./Reveal";
 
 /**
  * Selected Work — the six real projects, rendered below the locked hero in a
@@ -61,27 +62,29 @@ export default function SelectedWork() {
       style={{ paddingInline: GUTTER, paddingTop: "min(4.86vw, 84px)" }}
       className="scroll-mt-10 bg-white pb-0"
     >
-      <h2
+      <Reveal
+        as="h2"
         id="selected-work-heading"
         className="font-serif font-normal text-[#42444d]"
         style={{
           fontFamily: '"Times New Roman", Times, Georgia, serif',
-          fontSize: fluid(56, 32),
+          fontSize: fluid(50, 30),
           lineHeight: 0.94,
           letterSpacing: "-0.04em",
         }}
       >
         Selected Work
-      </h2>
+      </Reveal>
 
-      <div
+      <Reveal
+        delay={120}
         className="grid grid-cols-1 md:grid-cols-2"
-        style={{ marginTop: "min(1.39vw, 24px)", columnGap: fluid(31, 18), rowGap: "min(1.62vw, 28px)" }}
+        style={{ marginTop: "min(1.74vw, 30px)", columnGap: fluid(31, 18), rowGap: "min(1.62vw, 28px)" }}
       >
         {ordered.map((project, i) => (
           <WorkCard key={project.slug} project={project} index={i} onOpen={() => setActive(project)} />
         ))}
-      </div>
+      </Reveal>
 
       {active && <PasswordDialog project={active} onClose={() => setActive(null)} />}
     </section>
@@ -174,6 +177,7 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
   const [value, setValue] = useState("");
   const [reveal, setReveal] = useState(false);
   const [error, setError] = useState(false);
+  const [enter, setEnter] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const href = `/work/${project.slug}`;
   const requestHref =
@@ -183,6 +187,9 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
 
   useEffect(() => {
     inputRef.current?.focus();
+    // Play the entrance on the next frame so the transition runs from the
+    // hidden start state instead of snapping straight to visible.
+    const raf = requestAnimationFrame(() => setEnter(true));
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
@@ -190,6 +197,7 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
+      cancelAnimationFrame(raf);
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
     };
@@ -206,7 +214,9 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto p-5"
+      className={`fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto p-5 transition-opacity duration-300 ease-[cubic-bezier(.22,1,.36,1)] ${
+        enter ? "opacity-100" : "opacity-0"
+      }`}
       style={{ background: "rgba(20,20,20,0.35)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
       onClick={onClose}
     >
@@ -214,7 +224,9 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
         role="dialog"
         aria-modal="true"
         aria-label={`${project.title} is password protected`}
-        className="relative my-auto max-h-[92vh] w-full max-w-[420px] overflow-y-auto rounded-[3px] bg-white px-8 py-9 text-center shadow-[0_24px_60px_-24px_rgba(20,20,20,0.3)]"
+        className={`relative my-auto max-h-[92vh] w-full max-w-[760px] overflow-y-auto rounded-[3px] bg-white px-8 py-9 text-center shadow-[0_24px_60px_-24px_rgba(20,20,20,0.3)] transition-[transform,opacity] duration-[340ms] ease-[cubic-bezier(.22,1,.36,1)] sm:px-12 ${
+          enter ? "translate-y-0 scale-100 opacity-100" : "translate-y-3 scale-[0.98] opacity-0"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -235,8 +247,8 @@ function PasswordDialog({ project, onClose }: { project: Project; onClose: () =>
         <p className="mt-2.5 text-[12px] font-semibold uppercase tracking-[0.1em] text-[#7a5ab2]">Password protected</p>
 
         <h3
-          className="mx-auto mt-3 max-w-[18ch] font-normal leading-[1.1] tracking-[-0.02em] text-[#42444d]"
-          style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(21px, 2.3vw, 28px)" }}
+          className="mx-auto mt-3 font-normal leading-[1.14] tracking-[-0.02em] text-[#42444d] sm:whitespace-nowrap"
+          style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', fontSize: "clamp(19px, 1.9vw, 25px)" }}
         >
           {project.title}
         </h3>
