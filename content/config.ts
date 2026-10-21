@@ -58,9 +58,8 @@ export const siteConfig = {
 } as const;
 
 export const navigation = [
-  { label: "Work", href: "/#work" },
+  { label: "Work", href: "/" },
   { label: "Applied AI", href: "/ai-lab" },
-  { label: "Leadership", href: "/leadership" },
   { label: "About", href: "/about" },
   { label: "Writing", href: "/writing" },
 ] as const;

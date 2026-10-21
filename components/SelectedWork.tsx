@@ -58,7 +58,7 @@ export default function SelectedWork() {
     <section
       id="work"
       aria-labelledby="selected-work-heading"
-      style={{ paddingInline: GUTTER, paddingTop: "min(4.75vw, 82px)" }}
+      style={{ paddingInline: GUTTER, paddingTop: "min(4.86vw, 84px)" }}
       className="scroll-mt-10 bg-white pb-0"
     >
       <h2

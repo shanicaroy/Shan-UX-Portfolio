@@ -12,7 +12,7 @@ import { useEffect, useRef } from "react";
 // The scaled frame now holds only the locked hero (nav, band, headline,
 // clients, experience). Selected Work lives in its own responsive section
 // below, so the cards can carry real video, details, and the password dialog.
-const FRAME_H = 780;
+const FRAME_H = 761;
 
 const CSS = `
 .ch{--ink:#1a1a1d;--text:#171714;--sub:#7c7c7c;--rule:#f0eeeb;--nav-ink:#1a1a1d;--accent:#7a5ab2;--serif:"Times New Roman",Times,Georgia,serif;--sora:"Sora","Helvetica Neue",Arial,sans-serif;--roboto:"Roboto","Helvetica Neue",Arial,sans-serif;--mono:"Roboto Mono",ui-monospace,monospace;--inter:"Inter","Helvetica Neue",Arial,sans-serif;position:relative;background:#fff;color:var(--text)}
@@ -23,15 +23,17 @@ const CSS = `
 .ch .navlinks a{color:inherit;text-decoration:none;cursor:pointer}
 .ch .navlinks a.active{color:var(--accent)}
 .ch .resume{position:absolute;top:30px;left:1430px;width:204px;height:64px;display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-family:var(--inter);font-weight:600;font-size:20.4px;line-height:1;text-transform:uppercase;text-decoration:none;border-radius:2px}
-.ch .resume::after{content:"Download";position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#1a1a1d;color:#fff;font-family:var(--inter);font-weight:500;font-size:12px;letter-spacing:.2px;text-transform:none;padding:6px 11px;border-radius:4px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
-.ch .resume:hover::after{opacity:1}
+.ch .resume::after{content:"Download resume";position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(4px) scale(.96);background:var(--accent);color:#fff;font-family:var(--inter);font-weight:600;font-size:15px;letter-spacing:.2px;text-transform:none;padding:10px 16px;border-radius:10px;white-space:nowrap;opacity:0;pointer-events:none;box-shadow:0 12px 32px rgba(122,90,178,.34);transition:opacity .24s cubic-bezier(.22,1,.36,1),transform .24s cubic-bezier(.22,1,.36,1)}
+.ch .resume::before{content:"";position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) rotate(45deg);width:13px;height:13px;background:var(--accent);border-radius:3px;opacity:0;pointer-events:none;transition:opacity .24s cubic-bezier(.22,1,.36,1)}
+.ch .resume:hover::after{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
+.ch .resume:hover::before{opacity:1}
 .ch .band{position:absolute;top:114px;left:0;width:1728px;height:200px;overflow:hidden}
 .ch #bandCanvas{position:absolute;inset:0;width:1728px;height:200px;display:block}
-.ch .hero{position:absolute;left:118px;top:213px;width:1517px;height:566.83px;display:flex;align-items:flex-end;gap:122px}
-.ch .hleft{width:718px;display:flex;flex-direction:column;gap:60px;align-items:flex-start}
+.ch .hero{position:absolute;left:118px;top:213px;width:1517px;height:547.827px;display:flex;align-items:flex-end;gap:122px}
+.ch .hleft{width:718px;display:flex;flex-direction:column;gap:48px;align-items:flex-start}
 .ch .hgroup{display:flex;flex-direction:column;gap:41px;align-items:flex-start;width:100%}
 .ch .avatar{width:156px;height:156px;border-radius:50%;object-fit:cover;display:block}
-.ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:72px;line-height:.94;letter-spacing:-2.88px;color:#42444d;width:718px}
+.ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:70px;line-height:.94;letter-spacing:-2.8px;color:#42444d;width:718px}
 .ch .sgroup{display:flex;flex-direction:column;gap:33.027px;align-items:flex-start}
 .ch .subline{margin:0;font-family:var(--roboto);font-size:24px;color:var(--text)}
 .ch .clients{display:flex;gap:7px;align-items:center;width:709px;margin-bottom:14.73px}

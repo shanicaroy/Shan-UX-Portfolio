@@ -28,9 +28,9 @@ export default function WritingSection() {
     >
       <h2
         className="font-normal text-[#323338]"
-        style={{ fontFamily: SERIF, fontSize: fluid(72, 34), lineHeight: 0.94, letterSpacing: "-0.04em" }}
+        style={{ fontFamily: SERIF, fontSize: fluid(70, 34), lineHeight: 0.94, letterSpacing: "-0.04em" }}
       >
-        Writing my mind
+        Writing my mind <span className="font-bold text-[#7a5ab2]">. . .</span>
       </h2>
       <p
         className="mt-6 max-w-[1295px] text-[#323338]"
