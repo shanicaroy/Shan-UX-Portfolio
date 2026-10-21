@@ -233,6 +233,44 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "orbit-design-system",
+    title: "Orbit Design System",
+    positioning: "Design system · Foundations, components, adoption",
+    description:
+      "Standardizing UI through a design system — Orbit v1. The foundations, twelve components, and how it was adopted across a product.",
+    details: [
+      { label: "Role", value: "Design systems lead" },
+      { label: "Scope", value: "6 foundations, 12 components, adoption" },
+      { label: "My contribution", value: "Tokens, components, documentation, and migration." },
+      { label: "Outcome", value: "A single source of truth for UI." },
+    ],
+    confidential: true,
+    confidentialLabel: "Design System · Orbit v1",
+    size: "large",
+    cta: "Read the case study",
+    image: "/projects/project-07.jpg",
+    video: "/projects/orbit.mp4",
+    aspect: "16/9",
+  },
+  {
+    slug: "fintech-mobile-app",
+    title: "Fintech Mobile App",
+    positioning: "Fintract · Mobile product",
+    description:
+      "A consumer fintech mobile experience — onboarding, accounts, and money movement designed for trust and speed.",
+    details: [
+      { label: "Role", value: "Product Designer" },
+      { label: "Team", value: "[X]" },
+      { label: "My contribution", value: "[X]" },
+      { label: "Outcome", value: "[X] · [verified result]" },
+    ],
+    protected: true,
+    size: "medium",
+    cta: "Read case study",
+    image: "/projects/project-08.jpg",
+    aspect: "4/3",
+  },
 ];
 
 export function getProject(slug: string) {

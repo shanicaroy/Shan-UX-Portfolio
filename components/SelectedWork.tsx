@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { projects, type Project } from "@/content/projects";
 import { siteConfig } from "@/content/config";
@@ -22,6 +23,8 @@ const GRID_ORDER = [
   "dell-portal-redesign",
   "ey-data-product-factory",
   "case-check",
+  "orbit-design-system",
+  "fintech-mobile-app",
 ];
 
 // Card captions, taken verbatim from the Figma — including its per-card size
@@ -30,7 +33,7 @@ const GRID_ORDER = [
 // confidential ones. metaPx/titlePx/gapPx are the Figma values per card.
 const CARD: Record<
   string,
-  { meta: string; title: string; titlePx: number; coverGap: number; nda?: boolean }
+  { meta: string; title: string; titlePx: number; coverGap: number; nda?: boolean; href?: string }
 > = {
   "vmware-cloud-provider-portal": { meta: "VMware - 2023", title: "Cloud Service Portal (Enterprise Saas)", titlePx: 28, coverGap: 10, nda: true },
   "customer-lifecycle-management": { meta: "Bhanzu - 2022", title: "Customer Lifecycle Management Saas Web Tool", titlePx: 30, coverGap: 8 },
@@ -38,6 +41,8 @@ const CARD: Record<
   "dell-portal-redesign": { meta: "Dell Technologies - 2024", title: "Order & Inventory Logistics Suite", titlePx: 30, coverGap: 8, nda: true },
   "ey-data-product-factory": { meta: "Ernst & Young - 2025", title: "Data Product Marketplace Revamp", titlePx: 30, coverGap: 8, nda: true },
   "case-check": { meta: "UXPective - 2026", title: "Applied AI Build : Case Check Tool", titlePx: 32.149, coverGap: 8 },
+  "orbit-design-system": { meta: "UXPective - 2025", title: "Orbit Design System", titlePx: 30, coverGap: 8, nda: true, href: "/work/orbit-design-system" },
+  "fintech-mobile-app": { meta: "Fintract - 2023", title: "Fintech Mobile App", titlePx: 32.149, coverGap: 8 },
 };
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
@@ -100,8 +105,9 @@ function WorkCard({
   index: number;
   onOpen: () => void;
 }) {
-  return (
-    <button type="button" onClick={onOpen} className="group block w-full text-left" aria-haspopup="dialog">
+  const card = CARD[project.slug];
+  const inner = (
+    <>
       <div
         className="w-full overflow-hidden border border-[#ededed] bg-[#ededed]"
         style={{ aspectRatio: "743 / 525", borderRadius: "1px" }}
@@ -130,7 +136,6 @@ function WorkCard({
       </div>
 
       {(() => {
-        const card = CARD[project.slug];
         if (!card) return null;
         return (
           <div className="flex flex-col" style={{ marginTop: `${card.coverGap}px`, gap: "4px", fontFamily: ROBOTO }}>
@@ -161,6 +166,20 @@ function WorkCard({
           </div>
         );
       })()}
+    </>
+  );
+
+  // Orbit opens its case study directly; the rest open the password dialog.
+  if (card?.href) {
+    return (
+      <Link href={card.href} className="group block w-full text-left">
+        {inner}
+      </Link>
+    );
+  }
+  return (
+    <button type="button" onClick={onOpen} className="group block w-full text-left" aria-haspopup="dialog">
+      {inner}
     </button>
   );
 }

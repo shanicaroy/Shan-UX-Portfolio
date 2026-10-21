@@ -10,6 +10,7 @@ const BESPOKE = [
   "vmware-cloud-provider-portal",
   "customer-lifecycle-management",
   "case-check",
+  "orbit-design-system",
 ];
 const SCAFFOLDED = (p: (typeof projects)[number]) => !BESPOKE.includes(p.slug);
 
