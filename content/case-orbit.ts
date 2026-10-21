@@ -19,19 +19,22 @@ export const orbitCaseStyles = `.orbit, .orbit{ margin: 0; padding: 0; backgroun
 .orbit aside{position:sticky;top:0;align-self:start;height:100vh;padding:40px 0;display:flex;flex-direction:column;overflow-y:auto}
 .orbit aside::-webkit-scrollbar{width:0}
 @media(max-width:960px){.orbit aside{position:sticky;top:0;z-index:50;height:auto;padding:12px 0;background:#fff;border-bottom:1px solid var(--line);overflow:visible}}
-.orbit .backlink{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin-bottom:14px;display:block;text-decoration:none}
-.orbit .backlink:hover{color:var(--vink)}
-.orbit .kicker{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
-@media(max-width:960px){.orbit .backlink{display:inline;margin:0 16px 0 0}.orbit .kicker{display:inline;margin:0}}
+.orbit .crumb{display:flex;align-items:center;gap:9px;margin-bottom:26px;font-family:'Inter',"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1}
+.orbit .crumb a{color:var(--sub);text-decoration:none;transition:color .15s}
+.orbit .crumb a:hover{color:var(--vink)}
+.orbit .crumb .sep{color:#C9C9C9}
+.orbit .crumb .cur{color:var(--vink);font-weight:500}
+@media(max-width:960px){.orbit .crumb{margin-bottom:0}}
 .orbit .secnav summary{display:none;font-family:'Inter',sans-serif;font-size:13px;color:var(--vink);cursor:pointer;padding:8px 0;list-style:none}
 .orbit .secnav summary::-webkit-details-marker{display:none}
 @media(max-width:960px){.orbit .secnav summary{display:block}.orbit .secnav summary::after{content:" \\2193";color:var(--sub)}.orbit .secnav[open] summary::after{content:" \\2191"}}
 .orbit .toc{list-style:none;display:flex;flex-direction:column;gap:1px;margin:0;padding:0}
-.orbit .toc .grp{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#A9A9A9;margin:20px 0 7px;padding-left:14px}
+.orbit .toc .grp{font-family:'Inter',"Helvetica Neue",Arial,sans-serif;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#A9A9A9;margin:20px 0 7px;padding-left:18px}
 .orbit .toc .grp:first-child{margin-top:0}
-.orbit .toc a{font-family:'Inter',sans-serif;font-size:13px;color:var(--sub);display:block;padding:4px 0 4px 14px;border-left:2px solid transparent;margin-left:-2px;text-decoration:none;transition:color .15s,border-color .15s;line-height:1.3}
+.orbit .toc a{position:relative;font-family:'Inter',"Helvetica Neue",Arial,sans-serif;font-size:13px;color:var(--sub);display:block;padding:4px 0 4px 18px;text-decoration:none;transition:color .15s;line-height:1.3}
 .orbit .toc a:hover{color:var(--vink)}
-.orbit .toc a.active{color:var(--vink);border-color:var(--accent);font-weight:500}
+.orbit .toc a.active{color:var(--accent);font-weight:500}
+.orbit .toc a.active::before{content:"";position:absolute;left:2px;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:var(--accent)}
 .orbit main{padding:48px 0 120px;min-width:0;max-width:760px}
 @media(max-width:960px){.orbit main{padding-top:28px}}
 /* neutralize the document's full-bleed section chrome: white, left-aligned, no tint */
@@ -56,8 +59,11 @@ export const orbitCaseStyles = `.orbit, .orbit{ margin: 0; padding: 0; backgroun
 export const orbitCaseBody = `<div class="progress"></div>
 <div class="shellc">
   <aside>
-    <a class="backlink" href="/">← Selected Work</a>
-    <div class="kicker">Orbit Design System</div>
+    <div class="crumb">
+      <a href="/">← Work</a>
+      <span class="sep">/</span>
+      <span class="cur">Orbit Design System</span>
+    </div>
     <details class="secnav" open>
       <summary>Sections</summary>
       <nav class="toc" aria-label="Case study sections">
