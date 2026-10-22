@@ -24,7 +24,12 @@ export default function CaseToc({ scope = ".orbit" }: { scope?: string }) {
       },
       { rootMargin: "-18% 0px -72% 0px" }
     );
-    document.querySelectorAll(`${scope} main section[id]`).forEach((s) => obs.observe(s));
+    // Observe every element the nav points at — some targets are sections,
+    // others are sub-section headings (e.g. each foundation).
+    links.forEach((a) => {
+      const el = document.getElementById(a.getAttribute("href")!.slice(1));
+      if (el) obs.observe(el);
+    });
 
     const bar = document.querySelector<HTMLElement>(`${scope} .progress`);
     const onScroll = () => {

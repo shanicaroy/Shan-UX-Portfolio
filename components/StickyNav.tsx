@@ -59,17 +59,8 @@ export default function StickyNav({ solid = false }: { solid?: boolean }) {
       }`;
 
   return (
-    <div className={`z-50 border-b border-[#ececec] bg-white/95 backdrop-blur ${position}`}>
-      <div className="mx-auto flex h-[72px] w-full items-center justify-between px-5 sm:px-8 lg:px-[max(32px,min(6.83vw,118px))]">
-        <a
-          href="/"
-          onClick={onLink("/")}
-          className="shrink-0 text-[20px] text-[#42444d] sm:text-[22px]"
-          style={{ fontFamily: '"Times New Roman", Times, Georgia, serif', letterSpacing: "-0.01em" }}
-        >
-          Shanica Roy
-        </a>
-
+    <div className={`z-50 bg-white/95 backdrop-blur ${position}`}>
+      <div className="mx-auto flex h-[72px] w-full items-center justify-end px-5 sm:px-8 lg:px-[max(32px,min(6.83vw,118px))]">
         <nav
           aria-label="Primary"
           className="absolute left-1/2 hidden -translate-x-1/2 items-center md:flex"
