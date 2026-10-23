@@ -254,13 +254,13 @@ export const projects: Project[] = [
     aspect: "16/9",
   },
   {
-    slug: "fintech-mobile-app",
-    title: "Fintech Mobile App",
-    positioning: "Fintract · Mobile product",
+    slug: "bhanzu-parent-app",
+    title: "Native Parent Mobile App",
+    positioning: "Bhanzu · Native mobile product",
     description:
-      "A consumer fintech mobile experience — onboarding, accounts, and money movement designed for trust and speed.",
+      "A native parent app for Bhanzu — sessions, attendance, PTM feedback, and relationship-manager support in one place.",
     details: [
-      { label: "Role", value: "Product Designer" },
+      { label: "Role", value: "UX Designer" },
       { label: "Team", value: "[X]" },
       { label: "My contribution", value: "[X]" },
       { label: "Outcome", value: "[X] · [verified result]" },
@@ -268,7 +268,8 @@ export const projects: Project[] = [
     protected: true,
     size: "medium",
     cta: "Read case study",
-    image: "/projects/project-08.jpg",
+    image: "/projects/parent-app.jpg",
+    photo: "/projects/parent-app.jpg",
     aspect: "4/3",
   },
 ];

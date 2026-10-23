@@ -20,11 +20,11 @@ const GRID_ORDER = [
   "vmware-cloud-provider-portal",
   "customer-lifecycle-management",
   "virtubox-kiosk",
+  "orbit-design-system",
+  "case-check",
   "dell-portal-redesign",
   "ey-data-product-factory",
-  "case-check",
-  "orbit-design-system",
-  "fintech-mobile-app",
+  "bhanzu-parent-app",
 ];
 
 // Card captions, taken verbatim from the Figma — including its per-card size
@@ -38,11 +38,11 @@ const CARD: Record<
   "vmware-cloud-provider-portal": { meta: "VMware - 2023", title: "Cloud Service Portal (Enterprise Saas)", titlePx: 28, coverGap: 10, nda: true },
   "customer-lifecycle-management": { meta: "Bhanzu - 2022", title: "Customer Lifecycle Management Saas Web Tool", titlePx: 30, coverGap: 8 },
   "virtubox-kiosk": { meta: "VirtuBox Infotech - 2020", title: "VirtuBox Kiosk UI/UX Design - Service Experience", titlePx: 30, coverGap: 8 },
+  "orbit-design-system": { meta: "UXPective - 2025", title: "Orbit Design System", titlePx: 30, coverGap: 8, href: "/work/orbit-design-system" },
+  "case-check": { meta: "UXPective - 2026", title: "Applied AI Build : Case Check Tool", titlePx: 32.149, coverGap: 8 },
   "dell-portal-redesign": { meta: "Dell Technologies - 2024", title: "Order & Inventory Logistics Suite", titlePx: 30, coverGap: 8, nda: true },
   "ey-data-product-factory": { meta: "Ernst & Young - 2025", title: "Data Product Marketplace Revamp", titlePx: 30, coverGap: 8, nda: true },
-  "case-check": { meta: "UXPective - 2026", title: "Applied AI Build : Case Check Tool", titlePx: 32.149, coverGap: 8 },
-  "orbit-design-system": { meta: "UXPective - 2025", title: "Orbit Design System", titlePx: 30, coverGap: 8, nda: true, href: "/work/orbit-design-system" },
-  "fintech-mobile-app": { meta: "Fintract - 2023", title: "Fintech Mobile App", titlePx: 32.149, coverGap: 8 },
+  "bhanzu-parent-app": { meta: "Bhanzu - 2021", title: "Native Parent Mobile App", titlePx: 32.149, coverGap: 8 },
 };
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
@@ -64,8 +64,8 @@ export default function SelectedWork() {
     <section
       id="work"
       aria-labelledby="selected-work-heading"
-      style={{ paddingInline: GUTTER, paddingTop: "min(4.86vw, 84px)" }}
-      className="scroll-mt-10 bg-white pb-0"
+      style={{ paddingInline: GUTTER, paddingTop: "min(4.86vw, 84px)", paddingBottom: "min(7.5vw, 130px)" }}
+      className="scroll-mt-10 bg-white"
     >
       <Reveal
         as="h2"

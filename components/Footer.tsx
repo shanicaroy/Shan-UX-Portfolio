@@ -38,20 +38,21 @@ export default function Footer() {
   }
 
   return (
-    <footer className="border-t border-[#e2e2e2]" style={{ color: "#6d707c" }}>
+    <footer style={{ color: "#6d707c" }}>
       <div
         className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between"
         style={{
-          paddingInline: "clamp(20px, 2.95vw, 51px)",
+          paddingLeft: "clamp(20px, 2.6vw, 45px)",
+          paddingRight: "clamp(20px, 4.22vw, 73px)",
           paddingTop: "clamp(18px, 1.3vw, 22px)",
-          paddingBottom: "clamp(22px, 1.6vw, 28px)",
+          paddingBottom: "clamp(24px, 2vw, 34px)",
           fontFamily: ROBOTO,
         }}
       >
-        <p style={{ fontSize: fluid(24, 15) }}>&copy; Shanica Roy 2026</p>
+        <p style={{ fontSize: fluid(21, 14) }}>&copy; Shanica Roy 2026</p>
 
         <nav aria-label="Social">
-          <ul className="flex flex-wrap items-center" style={{ columnGap: "clamp(18px, 1.86vw, 32px)", rowGap: "10px", fontSize: fluid(24, 16) }}>
+          <ul className="flex flex-wrap items-center" style={{ columnGap: "clamp(18px, 1.91vw, 33px)", rowGap: "10px", fontSize: fluid(21, 15) }}>
             {LINKS.map((link) =>
               "email" in link ? (
                 <li key="Email" className="relative">
