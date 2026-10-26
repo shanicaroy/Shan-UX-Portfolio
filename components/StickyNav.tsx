@@ -29,7 +29,6 @@ const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
  */
 export default function StickyNav({ solid = false }: { solid?: boolean }) {
   const [shown, setShown] = useState(solid);
-  const [open, setOpen] = useState(false);
   const ticking = useRef(false);
   const pathname = usePathname();
 
@@ -53,7 +52,6 @@ export default function StickyNav({ solid = false }: { solid?: boolean }) {
 
   const onLink = (href: string) => (e: React.MouseEvent) => {
     if (href === "/" && pathname === "/") e.preventDefault();
-    setOpen(false);
   };
 
   const position = solid
@@ -63,7 +61,8 @@ export default function StickyNav({ solid = false }: { solid?: boolean }) {
       }`;
 
   return (
-    <div className={`z-50 bg-white/95 backdrop-blur ${position}`}>
+    // Desktop-only top nav. On mobile the bottom navigation bar takes over.
+    <div className={`hidden md:block z-50 bg-white/95 backdrop-blur ${position}`}>
       <div
         className="relative mx-auto flex w-full items-center justify-end"
         style={{
@@ -74,7 +73,7 @@ export default function StickyNav({ solid = false }: { solid?: boolean }) {
       >
         <nav
           aria-label="Primary"
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center md:flex"
+          className="absolute left-1/2 flex -translate-x-1/2 items-center"
           style={{ fontFamily: SORA, gap: fluid(47, 22) }}
         >
           {LINKS.map((l) => (
@@ -93,68 +92,23 @@ export default function StickyNav({ solid = false }: { solid?: boolean }) {
           ))}
         </nav>
 
-        <div className="flex items-center" style={{ gap: fluid(16, 10) }}>
-          <span className="group/resume relative hidden md:inline-flex">
-            <a
-              href={RESUME}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-[2px] bg-accent font-semibold uppercase tracking-[0.02em] text-white transition-opacity hover:opacity-90"
-              style={{
-                fontFamily: INTER,
-                width: fluid(204, 132),
-                height: fluid(64, 44),
-                fontSize: fluid(20.4, 14),
-              }}
-            >
-              Resume
-            </a>
-            <Tooltip label="Download resume" />
-          </span>
-          <button
-            type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            onClick={() => setOpen((o) => !o)}
-            className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
-          >
-            <span className={`h-[2px] w-6 bg-[#4f4f5d] transition-transform ${open ? "translate-y-[7px] rotate-45" : ""}`} />
-            <span className={`h-[2px] w-6 bg-[#4f4f5d] transition-opacity ${open ? "opacity-0" : ""}`} />
-            <span className={`h-[2px] w-6 bg-[#4f4f5d] transition-transform ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
-          </button>
-        </div>
-      </div>
-
-      <div
-        className={`overflow-hidden transition-[max-height] duration-300 ease-[cubic-bezier(.22,1,.36,1)] md:hidden ${
-          open ? "max-h-[360px]" : "max-h-0"
-        }`}
-      >
-        <nav aria-label="Mobile" className="flex flex-col px-5 pb-4 pt-1" style={{ fontFamily: SORA }}>
-          {LINKS.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              onClick={onLink(l.href)}
-              aria-current={isActive(l.href) ? "page" : undefined}
-              className={`border-b border-[#f0eeeb] py-3.5 text-[15px] font-semibold ${
-                isActive(l.href) ? "text-accent" : "text-[#4f4f5d]"
-              }`}
-            >
-              {l.label}
-            </a>
-          ))}
+        <span className="group/resume relative inline-flex">
           <a
             href={RESUME}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="mt-4 inline-flex items-center justify-center rounded-[2px] bg-accent px-5 py-3.5 text-[15px] font-semibold uppercase tracking-[0.02em] text-white"
-            style={{ fontFamily: INTER }}
+            className="inline-flex items-center justify-center rounded-[2px] bg-accent font-semibold uppercase tracking-[0.02em] text-white transition-opacity hover:opacity-90"
+            style={{
+              fontFamily: INTER,
+              width: fluid(204, 132),
+              height: fluid(64, 44),
+              fontSize: fluid(20.4, 14),
+            }}
           >
             Resume
           </a>
-        </nav>
+          <Tooltip label="Download resume" />
+        </span>
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ const CSS = `
 .ch .mhero{display:none}
 @media (max-width:899px){
   .ch .scaleWrap{display:none}
-  .ch .mhero{display:block;padding:0 clamp(20px,5.5vw,40px) 8px}
+  .ch .mhero{display:block;padding:clamp(26px,7vw,40px) clamp(20px,5.5vw,40px) 8px}
 }
 .ch .mtop{display:flex;align-items:center;justify-content:space-between;height:64px}
 .ch .brand{font-family:var(--serif);font-size:clamp(19px,5.4vw,23px);color:#42444d;text-decoration:none;letter-spacing:-.01em}
@@ -83,8 +83,8 @@ const CSS = `
 .ch .mresume svg{width:19px;height:19px}
 .ch .mband{position:relative;margin-top:14px;width:100%;height:clamp(118px,33vw,180px);border-radius:14px;overflow:hidden;border:1px solid var(--rule)}
 .ch #bandCanvasM{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
-.ch .mavatar{width:clamp(84px,23vw,116px);height:clamp(84px,23vw,116px);border-radius:50%;object-fit:cover;display:block;margin-top:clamp(-52px,-13vw,-40px);border:4px solid #fff;position:relative;z-index:1}
-.ch .mh1{margin:20px 0 0;font-family:var(--serif);font-weight:400;font-size:clamp(31px,8.6vw,50px);line-height:1.02;letter-spacing:-.02em;color:#42444d}
+.ch .mavatar{width:clamp(84px,23vw,116px);height:clamp(84px,23vw,116px);border-radius:50%;object-fit:cover;display:block;margin-top:0;border:4px solid #fff;position:relative;z-index:1}
+.ch .mh1{width:auto;max-width:100%;margin:20px 0 0;font-family:var(--serif);font-weight:400;font-size:clamp(31px,8.6vw,50px);line-height:1.02;letter-spacing:-.02em;color:#42444d}
 .ch .msub{margin:22px 0 0;font-family:var(--roboto);font-size:clamp(15px,4vw,18px);color:var(--text)}
 .ch .mclients{margin:16px 0 0;display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
 .ch .mclients .mcl{display:flex;gap:8px;align-items:center}
@@ -140,20 +140,6 @@ const HTML = `
 </div></div>
 
 <div class="mhero">
-  <div class="mtop">
-    <a class="brand worklink" href="/">Shanica Roy</a>
-    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="ch-mmenu"><span></span><span></span><span></span></button>
-  </div>
-  <div class="mmenu" id="ch-mmenu">
-    <nav aria-label="Mobile">
-      <a href="/" class="worklink active" aria-current="page">Work</a>
-      <a href="/ai-lab">Applied AI</a>
-      <a href="/about">About</a>
-      <a href="/writing">Writing</a>
-      <a class="mresume" href="${RESUME}" target="_blank" rel="noopener noreferrer">Resume <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </nav>
-  </div>
-  <div class="mband anim d0" aria-hidden="true"><canvas id="bandCanvasM"></canvas></div>
   <img class="mavatar anim d1" src="/hero/shanica.png" alt="Shanica Roy">
   <h1 class="mh1 anim d2">Hi, it&rsquo;s Shanica Roy. I design enterprise products &amp; build systems.</h1>
   <div class="anim d3">
@@ -308,8 +294,6 @@ export default function ColourHero() {
     const cleanups: Array<() => void> = [];
     const canvasD = host.querySelector<HTMLCanvasElement>("#bandCanvas");
     if (canvasD) cleanups.push(setupBand(canvasD, 46, { w: 1728, h: 200 }));
-    const canvasM = host.querySelector<HTMLCanvasElement>("#bandCanvasM");
-    if (canvasM) cleanups.push(setupBand(canvasM, 30));
 
     // Scale the desktop frame to the viewport (capped at 1:1, centred).
     const frame = host.querySelector<HTMLDivElement>(".frame");
@@ -334,26 +318,10 @@ export default function ColourHero() {
     };
     works.forEach((w) => w.addEventListener("click", onWork));
 
-    // Mobile hamburger menu.
-    const burger = host.querySelector<HTMLButtonElement>(".burger");
-    const menu = host.querySelector<HTMLDivElement>(".mmenu");
-    const setMenu = (open: boolean) => {
-      burger?.setAttribute("aria-expanded", String(open));
-      burger?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-      menu?.classList.toggle("open", open);
-    };
-    const onBurger = () => setMenu(burger?.getAttribute("aria-expanded") !== "true");
-    burger?.addEventListener("click", onBurger);
-    const menuLinks = menu ? Array.from(menu.querySelectorAll("a")) : [];
-    const onMenuLink = () => setMenu(false);
-    menuLinks.forEach((a) => a.addEventListener("click", onMenuLink));
-
     return () => {
       cleanups.forEach((fn) => fn());
       window.removeEventListener("resize", fit);
       works.forEach((w) => w.removeEventListener("click", onWork));
-      burger?.removeEventListener("click", onBurger);
-      menuLinks.forEach((a) => a.removeEventListener("click", onMenuLink));
     };
   }, []);
 

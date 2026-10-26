@@ -83,8 +83,8 @@ export default function SelectedWork() {
 
       <Reveal
         delay={120}
-        className="grid grid-cols-1 md:grid-cols-2"
-        style={{ marginTop: "min(1.74vw, 30px)", columnGap: fluid(31, 18), rowGap: "min(1.62vw, 28px)" }}
+        className="grid grid-cols-1 gap-y-9 md:grid-cols-2 md:gap-y-7"
+        style={{ marginTop: "min(1.74vw, 30px)", columnGap: fluid(31, 18) }}
       >
         {ordered.map((project, i) => (
           <WorkCard key={project.slug} project={project} index={i} onOpen={() => setActive(project)} />
@@ -139,20 +139,20 @@ function WorkCard({
         if (!card) return null;
         return (
           <div className="flex flex-col" style={{ marginTop: `${card.coverGap}px`, gap: "4px", fontFamily: ROBOTO }}>
-            <p className="text-[#828282]" style={{ fontSize: fluid(20, 14) }}>
+            <p className="text-[#828282]" style={{ fontSize: fluid(20, 12) }}>
               {card.meta}
             </p>
-            <div className="flex items-end justify-between gap-4">
+            <div className="flex items-end justify-between gap-3">
               <h3
                 className="min-w-0 font-medium leading-[1.12] text-[#42444d]"
-                style={{ fontFamily: INTER, fontSize: fluid(card.titlePx, 19), letterSpacing: "-0.03em" }}
+                style={{ fontFamily: INTER, fontSize: fluid(card.titlePx, 14), letterSpacing: "-0.03em" }}
               >
                 {card.title}
               </h3>
               {card.nda && (
                 <span
                   className="flex shrink-0 items-center font-medium uppercase text-[#7a5ab2]"
-                  style={{ fontSize: fluid(24.794, 15), gap: "9px" }}
+                  style={{ fontSize: fluid(24.794, 12), gap: "7px" }}
                   aria-label="Under NDA"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden className="h-[1.05em] w-[1.05em]">

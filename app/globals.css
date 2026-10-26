@@ -92,6 +92,11 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Hard guard against any element forcing a horizontal scroll on mobile.
+     `clip` (not `hidden`) does not create a scroll container, so it never
+     breaks `position: sticky` or smooth scrolling. */
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 ::selection {
