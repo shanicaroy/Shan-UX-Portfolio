@@ -119,21 +119,21 @@ const HTML = `
     <div class="sgroup anim d3">
       <p class="subline">Enterprise client work at EY, 2023 - 2025</p>
       <div class="clients">
-        <span class="client vm"><img src="/hero/vmware.svg" alt=""><span>VMware</span></span>
-        <span class="client dl"><img src="/hero/dell.svg" alt=""><span>Dell</span></span>
-        <span class="client or"><img src="/hero/oracle.svg" alt=""><span>Oracle</span></span>
-        <span class="client bg"><img src="/hero/bunge.svg" alt=""><span>Bunge</span></span>
+        <span class="client vm"><img src="/hero/vmware-v2.svg" alt=""><span>VMware</span></span>
+        <span class="client dl"><img src="/hero/dell-v2.svg" alt=""><span>Dell</span></span>
+        <span class="client or"><img src="/hero/oracle-v2.svg" alt=""><span>Oracle</span></span>
+        <span class="client bg"><img src="/hero/bunge-v2.svg" alt=""><span>Bunge</span></span>
       </div>
     </div>
   </div>
   <div class="hright anim d3">
     <p class="explabel">EXPERIENCE</p>
     <div class="carhist">
-      <div class="exprow"><span class="expco"><img src="/hero/ey.svg" alt="" style="width:38.478px;height:38.849px"><b>Ernst &amp; Young</b></span><span class="exprole">UX Design Lead</span><span class="expyear">2025</span></div>
-      <div class="exprow"><span class="expco"><img src="/hero/ey.svg" alt="" style="width:38.478px;height:38.849px"><b>Ernst &amp; Young</b></span><span class="exprole">Senior UX Designer</span><span class="expyear">2023</span></div>
-      <div class="exprow"><span class="expco"><img src="/hero/bhanzu.svg" alt="" style="width:35.206px;height:35.206px;border-radius:4.577px"><b>Bhanzu</b></span><span class="exprole">UX Designer</span><span class="expyear">2021</span></div>
-      <div class="exprow"><span class="expco"><img src="/hero/virtubox.svg" alt="" style="width:40.308px;height:40.308px"><b>Virtubox Infotech</b></span><span class="exprole">UI/UX Designer</span><span class="expyear">2020</span></div>
-      <div class="exprow"><span class="expco"><img src="/hero/unschool.svg" alt="" style="width:37.429px;height:43.187px"><b>Unschool</b></span><span class="exprole">Graphic Design Instructor</span><span class="expyear">2019</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/ey-v2.svg" alt="" style="width:38.478px;height:38.849px"><b>Ernst &amp; Young</b></span><span class="exprole">UX Design Lead</span><span class="expyear">2025</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/ey-v2.svg" alt="" style="width:38.478px;height:38.849px"><b>Ernst &amp; Young</b></span><span class="exprole">Senior UX Designer</span><span class="expyear">2023</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/bhanzu-v2.svg" alt="" style="width:35.206px;height:35.206px;border-radius:4.577px"><b>Bhanzu</b></span><span class="exprole">UX Designer</span><span class="expyear">2021</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/virtubox-v2.svg" alt="" style="width:40.308px;height:40.308px"><b>Virtubox Infotech</b></span><span class="exprole">UI/UX Designer</span><span class="expyear">2020</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/unschool-v2.svg" alt="" style="width:37.429px;height:43.187px"><b>Unschool</b></span><span class="exprole">Graphic Design Instructor</span><span class="expyear">2019</span></div>
     </div>
   </div>
 </div>
@@ -145,19 +145,19 @@ const HTML = `
   <div class="anim d3">
     <p class="msub">Enterprise client work at EY, 2023 - 2025</p>
     <div class="mclients">
-      <span class="mcl"><img src="/hero/vmware.svg" alt=""><span>VMware</span></span>
-      <span class="mcl"><img src="/hero/dell.svg" alt=""><span>Dell</span></span>
-      <span class="mcl"><img src="/hero/oracle.svg" alt=""><span>Oracle</span></span>
-      <span class="mcl"><img src="/hero/bunge.svg" alt=""><span>Bunge</span></span>
+      <span class="mcl"><img src="/hero/vmware-v2.svg" alt=""><span>VMware</span></span>
+      <span class="mcl"><img src="/hero/dell-v2.svg" alt=""><span>Dell</span></span>
+      <span class="mcl"><img src="/hero/oracle-v2.svg" alt=""><span>Oracle</span></span>
+      <span class="mcl"><img src="/hero/bunge-v2.svg" alt=""><span>Bunge</span></span>
     </div>
   </div>
   <div class="mexp anim d3">
     <p class="mlabel">Experience</p>
-    <div class="mrow"><img class="mlg" src="/hero/ey.svg" alt=""><div><div class="mco">Ernst &amp; Young</div><div class="mro">UX Design Lead</div></div><div class="myr">2025</div></div>
-    <div class="mrow"><img class="mlg" src="/hero/ey.svg" alt=""><div><div class="mco">Ernst &amp; Young</div><div class="mro">Senior UX Designer</div></div><div class="myr">2023</div></div>
-    <div class="mrow"><img class="mlg" src="/hero/bhanzu.svg" alt="" style="border-radius:6px"><div><div class="mco">Bhanzu</div><div class="mro">UX Designer</div></div><div class="myr">2021</div></div>
-    <div class="mrow"><img class="mlg" src="/hero/virtubox.svg" alt=""><div><div class="mco">Virtubox Infotech</div><div class="mro">UI/UX Designer</div></div><div class="myr">2020</div></div>
-    <div class="mrow"><img class="mlg" src="/hero/unschool.svg" alt=""><div><div class="mco">Unschool</div><div class="mro">Graphic Design Instructor</div></div><div class="myr">2019</div></div>
+    <div class="mrow"><img class="mlg" src="/hero/ey-v2.svg" alt=""><div><div class="mco">Ernst &amp; Young</div><div class="mro">UX Design Lead</div></div><div class="myr">2025</div></div>
+    <div class="mrow"><img class="mlg" src="/hero/ey-v2.svg" alt=""><div><div class="mco">Ernst &amp; Young</div><div class="mro">Senior UX Designer</div></div><div class="myr">2023</div></div>
+    <div class="mrow"><img class="mlg" src="/hero/bhanzu-v2.svg" alt="" style="border-radius:6px"><div><div class="mco">Bhanzu</div><div class="mro">UX Designer</div></div><div class="myr">2021</div></div>
+    <div class="mrow"><img class="mlg" src="/hero/virtubox-v2.svg" alt=""><div><div class="mco">Virtubox Infotech</div><div class="mro">UI/UX Designer</div></div><div class="myr">2020</div></div>
+    <div class="mrow"><img class="mlg" src="/hero/unschool-v2.svg" alt=""><div><div class="mco">Unschool</div><div class="mro">Graphic Design Instructor</div></div><div class="myr">2019</div></div>
   </div>
 </div>
 `;
