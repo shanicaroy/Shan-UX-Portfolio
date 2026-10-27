@@ -39,6 +39,17 @@ export const vmwareCaseStyles = `
   /* scroll progress */
   .vmw .progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:60}
 
+  /* case-study hero: the cover animation, then a confidential notice */
+  .vmw .vmwhero{max-width:1180px;margin:0 auto;padding:40px 24px 0}
+  .vmw .vmwhero .cover{position:relative;width:100%;aspect-ratio:1486/1050;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0b0b0d}
+  .vmw .vmwhero .cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .vmw .confnote{max-width:1180px;margin:18px auto 0;padding:0 24px}
+  .vmw .confnote .box{display:flex;gap:12px;align-items:flex-start;border:1px solid #E6DEF5;background:var(--accent-soft);border-radius:10px;padding:15px 18px}
+  .vmw .confnote .box .ic{flex:none;margin-top:1px;color:var(--accent)}
+  .vmw .confnote .box p{margin:0;font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.55;color:var(--vink)}
+  .vmw .confnote .box b{font-weight:600;color:var(--vink)}
+  @media(max-width:900px){.vmw .vmwhero{padding:22px 20px 0}.vmw .confnote{padding:0 20px}}
+
   /* layout */
   .vmw .shellc{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:210px 1fr;gap:56px}
   @media(max-width:900px){.vmw .shellc{grid-template-columns:1fr;gap:0}}

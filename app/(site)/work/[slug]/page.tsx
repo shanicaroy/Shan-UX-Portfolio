@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { projects, getProject } from "@/content/projects";
 import Shell from "@/components/Shell";
 import ProjectCanvas from "@/components/ProjectCanvas";
+import AutoVideo from "@/components/AutoVideo";
 
 // VMware, CLM, and Case Check have bespoke standalone pages under app/work/*.
 const BESPOKE = [
@@ -85,13 +86,9 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
       <Shell>
         <div className="w-full overflow-hidden border border-rule aspect-[4/3] sm:aspect-[3/2] lg:aspect-[16/10]">
           {project.video ? (
-            <video
+            <AutoVideo
               src={project.video}
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-label={`${project.title}, case study cover`}
+              ariaLabel={`${project.title}, case study cover`}
               className="h-full w-full object-cover"
             />
           ) : project.photo ? (

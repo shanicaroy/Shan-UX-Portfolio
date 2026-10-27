@@ -25,6 +25,39 @@ const FACTS = [
   { label: "Based in", value: "Dubai" },
 ];
 
+// Two-column collage from the Figma. `src` is left empty until the real photos
+// are supplied; each slot keeps its aspect ratio so the layout is final.
+const GALLERY_LEFT = [
+  { src: "", alt: "Shanica at an event", ratio: "805 / 566" },
+  { src: "", alt: "One-on-one session", ratio: "589 / 753" },
+  { src: "", alt: "Team group photo", ratio: "886 / 610" },
+];
+const GALLERY_RIGHT = [
+  { src: "", alt: "At the Maze booth", ratio: "656 / 682" },
+  { src: "", alt: "Workshop in progress", ratio: "823 / 599" },
+  { src: "", alt: "Design review at the desk", ratio: "559 / 639" },
+];
+
+function Photo({ src, alt, ratio }: { src: string; alt: string; ratio: string }) {
+  return (
+    <div
+      className="flex w-full items-center justify-center overflow-hidden rounded-[8px] bg-[#ececec] text-[#bdbdbd]"
+      style={{ aspectRatio: ratio }}
+    >
+      {src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={src} alt={alt} className="h-full w-full object-cover" />
+      ) : (
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <circle cx="8.5" cy="10" r="1.6" />
+          <path d="m4 17 5-4 4 3 3-2 4 3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )}
+    </div>
+  );
+}
+
 export default function AboutPage() {
   return (
     <div style={{ paddingInline: GUTTER }}>
@@ -76,70 +109,24 @@ export default function AboutPage() {
               style={{ aspectRatio: "682 / 732" }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/hero/shanica.png"
-                alt="Shanica Roy"
-                className="h-full w-full object-cover object-top"
-              />
+              <img src="/hero/shanica.png" alt="Shanica Roy" className="h-full w-full object-cover object-top" />
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* IN Perspective — the podcast */}
-      <Reveal as="section" className="mt-16 border-t border-[#ededed] pt-12 sm:mt-20 lg:mt-24 lg:pt-16">
-        <div className="grid grid-cols-1 gap-y-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-x-[min(5vw,80px)]">
-          <div
-            className="flex w-full items-center justify-center rounded-[4px] bg-[#ededed] text-[#9a9a9a]"
-            style={{ aspectRatio: "1 / 1" }}
-          >
-            <span className="inline-flex items-center gap-2" style={{ fontFamily: ROBOTO }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden>
-                <rect x="9" y="2.5" width="6" height="11" rx="3" />
-                <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6" />
-              </svg>
-              <span className="text-[15px]">Podcast cover art</span>
-            </span>
+      {/* Photo gallery — a two-column collage */}
+      <Reveal as="section" className="mt-14 pb-20 sm:mt-20 lg:mt-24">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
+          <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
+            {GALLERY_LEFT.map((p, i) => (
+              <Photo key={i} {...p} />
+            ))}
           </div>
-
-          <div>
-            <h2
-              className="font-normal text-[#1a1a1d]"
-              style={{ fontFamily: SERIF, fontSize: fluid(48, 32), lineHeight: 1.04, letterSpacing: "-0.02em" }}
-            >
-              IN Perspective
-            </h2>
-            <p className="mt-3 text-[#1a1a1d]" style={{ fontFamily: ROBOTO, fontSize: fluid(20, 16) }}>
-              Founder and host
-            </p>
-            <p
-              className="mt-5 max-w-[46ch] text-[#6d6d72]"
-              style={{ fontFamily: ROBOTO, fontSize: fluid(20, 16), lineHeight: 1.5 }}
-            >
-              Conversations with designers and product leaders about how they think, decide and build their
-              careers.
-            </p>
-            <a
-              href="#"
-              className="group mt-7 inline-flex items-center gap-2 border-b-2 border-[#1a1a1d] pb-1 font-semibold text-[#1a1a1d] transition-colors hover:border-accent hover:text-accent"
-              style={{ fontFamily: ROBOTO, fontSize: fluid(20, 16) }}
-            >
-              Listen to the podcast
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-                className="transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              >
-                <path d="M7 17 17 7M8 7h9v9" />
-              </svg>
-            </a>
+          <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
+            {GALLERY_RIGHT.map((p, i) => (
+              <Photo key={i} {...p} />
+            ))}
           </div>
         </div>
       </Reveal>

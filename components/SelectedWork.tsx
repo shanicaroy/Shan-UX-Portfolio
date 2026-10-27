@@ -7,6 +7,7 @@ import { projects, type Project } from "@/content/projects";
 import { siteConfig } from "@/content/config";
 import ProjectCanvas from "./ProjectCanvas";
 import Reveal from "./Reveal";
+import AutoVideo from "./AutoVideo";
 
 /**
  * Selected Work — the six real projects, rendered below the locked hero in a
@@ -24,7 +25,7 @@ const GRID_ORDER = [
   "case-check",
   "dell-portal-redesign",
   "ey-data-product-factory",
-  "bhanzu-parent-app",
+  "fintrack",
 ];
 
 // Card captions, taken verbatim from the Figma — including its per-card size
@@ -38,11 +39,11 @@ const CARD: Record<
   "vmware-cloud-provider-portal": { meta: "VMware - 2023", title: "Cloud Service Portal (Enterprise Saas)", titlePx: 28, coverGap: 10, nda: true },
   "customer-lifecycle-management": { meta: "Bhanzu - 2022", title: "Customer Lifecycle Management Saas Web Tool", titlePx: 30, coverGap: 8 },
   "virtubox-kiosk": { meta: "VirtuBox Infotech - 2020", title: "VirtuBox Kiosk UI/UX Design - Service Experience", titlePx: 30, coverGap: 8 },
-  "orbit-design-system": { meta: "UXPective - 2025", title: "Orbit Design System", titlePx: 30, coverGap: 8, href: "/work/orbit-design-system" },
+  "orbit-design-system": { meta: "UXPective - 2025", title: "Orbit Design System", titlePx: 30, coverGap: 8 },
   "case-check": { meta: "UXPective - 2026", title: "Applied AI Build : Case Check Tool", titlePx: 32.149, coverGap: 8 },
   "dell-portal-redesign": { meta: "Dell Technologies - 2024", title: "Order & Inventory Logistics Suite", titlePx: 30, coverGap: 8, nda: true },
   "ey-data-product-factory": { meta: "Ernst & Young - 2025", title: "Data Product Marketplace Revamp", titlePx: 30, coverGap: 8, nda: true },
-  "bhanzu-parent-app": { meta: "Bhanzu - 2021", title: "Native Parent Mobile App", titlePx: 32.149, coverGap: 8 },
+  "fintrack": { meta: "Fintrack - 2021 (Freelance)", title: "Finance Management Mobile App", titlePx: 26, coverGap: 8 },
 };
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
@@ -113,14 +114,9 @@ function WorkCard({
         style={{ aspectRatio: "743 / 525", borderRadius: "1px" }}
       >
         {project.video ? (
-          <video
+          <AutoVideo
             src={project.video}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label={`${project.title}, case study cover`}
+            ariaLabel={`${project.title}, case study cover`}
             className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.015]"
           />
         ) : project.photo ? (

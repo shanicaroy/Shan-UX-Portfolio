@@ -21,7 +21,7 @@ export const siteConfig = {
   // Password for the gated project cards. PLACEHOLDER — until Shanica sets a
   // real one, every entry is rejected. This gate is client-side only: it
   // deters casual visitors, it does not secure the pages.
-  projectPassword: "[SET_PASSWORD]",
+  projectPassword: "Shan2.0",
 
   social: {
     linkedin: "https://www.linkedin.com/in/shanica-roy-19a42814b/",

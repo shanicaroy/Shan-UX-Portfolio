@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { vmwareCaseStyles, vmwareCaseBody } from "@/content/case-vmware";
 import VmwareToc from "@/components/VmwareToc";
+import AutoVideo from "@/components/AutoVideo";
 
 export const metadata: Metadata = {
   title: "VMware Cloud Provider Portal",
@@ -15,11 +15,7 @@ export const metadata: Metadata = {
  * so the site header and footer are not rendered around it. Newsreader comes
  * from Google Fonts (Inter is already self-hosted).
  */
-// The VMware case study is locked for now. Flip to false to reopen it.
-const LOCKED = true;
-
 export default function VmwareCaseStudy() {
-  if (LOCKED) notFound();
   return (
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,6 +26,24 @@ export default function VmwareCaseStudy() {
       />
       <style dangerouslySetInnerHTML={{ __html: vmwareCaseStyles }} />
       <div className="vmw" id="main">
+        <section className="vmwhero">
+          <div className="cover">
+            <AutoVideo src="/projects/vmware-cloud-cover.mp4" ariaLabel="VMware Cloud Provider Portal — cover animation" />
+          </div>
+        </section>
+        <section className="confnote" aria-label="Confidentiality notice">
+          <div className="box">
+            <svg className="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+              <rect x="4.5" y="10.5" width="15" height="10" rx="1.6" />
+              <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" strokeLinecap="round" />
+            </svg>
+            <p>
+              <b>Confidential.</b> This case study is shared under NDA. Every visual is an original schematic
+              with placeholder data — no customer names, entitlement numbers, or account-tied figures appear.
+              Please don&rsquo;t redistribute.
+            </p>
+          </div>
+        </section>
         <div className="shellc" dangerouslySetInnerHTML={{ __html: vmwareCaseBody }} />
       </div>
       <VmwareToc />
