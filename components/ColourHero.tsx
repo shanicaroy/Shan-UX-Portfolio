@@ -17,7 +17,14 @@ const FRAME_H = 728;
 const CSS = `
 .ch{--ink:#1a1a1d;--text:#171714;--sub:#7c7c7c;--rule:#f0eeeb;--nav-ink:#1a1a1d;--accent:#7a5ab2;--serif:"Times New Roman",Times,Georgia,serif;--sora:"Sora","Helvetica Neue",Arial,sans-serif;--roboto:"Roboto","Helvetica Neue",Arial,sans-serif;--mono:"Roboto Mono",ui-monospace,monospace;--inter:"Inter","Helvetica Neue",Arial,sans-serif;position:relative;background:#fff;color:var(--text)}
 .ch *{box-sizing:border-box}
-.ch .scaleWrap{position:relative;width:100%;overflow:hidden;height:calc(100vw * ${FRAME_H} / 1728)}
+/* Clip horizontally only (keeps the 1728px frame from causing side-scroll),
+   but let the bottom breathe: the hero content is authored to fill exactly
+   ${FRAME_H}px and renders a hair taller under some font stacks, so a plain
+   overflow:hidden shaved the bottom off the client logos / last experience
+   row. overflow-x:clip + overflow-y:visible removes the vertical cut without
+   changing any measurement; the sub-pixel spill falls into Selected Work's
+   top padding and is invisible. */
+.ch .scaleWrap{position:relative;width:100%;overflow-x:clip;overflow-y:visible;height:calc(100vw * ${FRAME_H} / 1728)}
 .ch .frame{position:relative;left:0;width:1728px;height:${FRAME_H}px;transform-origin:top left;background:#fff}
 .ch .navlinks{position:absolute;top:48px;left:0;width:1728px;display:flex;justify-content:center;gap:47px;font-family:var(--sora);font-weight:600;font-size:17px;color:#4f4f5d}
 .ch .navlinks a{color:inherit;text-decoration:none;cursor:pointer}
