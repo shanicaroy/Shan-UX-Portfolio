@@ -12,7 +12,7 @@ import { useEffect, useRef } from "react";
 // The scaled frame now holds only the locked hero (nav, band, headline,
 // clients, experience). Selected Work lives in its own responsive section
 // below, so the cards can carry real video, details, and the password dialog.
-const FRAME_H = 761;
+const FRAME_H = 728;
 
 const CSS = `
 .ch{--ink:#1a1a1d;--text:#171714;--sub:#7c7c7c;--rule:#f0eeeb;--nav-ink:#1a1a1d;--accent:#7a5ab2;--serif:"Times New Roman",Times,Georgia,serif;--sora:"Sora","Helvetica Neue",Arial,sans-serif;--roboto:"Roboto","Helvetica Neue",Arial,sans-serif;--mono:"Roboto Mono",ui-monospace,monospace;--inter:"Inter","Helvetica Neue",Arial,sans-serif;position:relative;background:#fff;color:var(--text)}
@@ -29,31 +29,31 @@ const CSS = `
 .ch .resume:hover::before{opacity:1}
 .ch .band{position:absolute;top:114px;left:0;width:1728px;height:200px;overflow:hidden}
 .ch #bandCanvas{position:absolute;inset:0;width:1728px;height:200px;display:block}
-.ch .hero{position:absolute;left:118px;top:213px;width:1517px;height:547.827px;display:flex;align-items:flex-end;gap:122px}
-.ch .hleft{width:718px;display:flex;flex-direction:column;gap:48px;align-items:flex-start}
-.ch .hgroup{display:flex;flex-direction:column;gap:41px;align-items:flex-start;width:100%}
-.ch .avatar{width:156px;height:156px;border-radius:50%;object-fit:cover;display:block}
-.ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:70px;line-height:.94;letter-spacing:-2.8px;color:#42444d;width:718px}
-.ch .sgroup{display:flex;flex-direction:column;gap:33.027px;align-items:flex-start}
-.ch .subline{margin:0;font-family:var(--roboto);font-size:24px;color:var(--text)}
-.ch .clients{display:flex;gap:7px;align-items:center;width:709px;margin-bottom:14.73px}
-.ch .client{display:flex;gap:7.862px;align-items:center;padding-left:1.632px}
+.ch .hero{position:absolute;left:119px;top:239px;width:1497.12px;display:flex;align-items:flex-end;gap:87px}
+.ch .hleft{width:751.121px;display:flex;flex-direction:column;gap:37px;align-items:flex-start}
+.ch .hgroup{display:flex;flex-direction:column;gap:40px;align-items:flex-start;width:100%}
+.ch .avatar{width:146px;height:146px;border-radius:50%;object-fit:cover;display:block}
+.ch h1{margin:0;font-family:var(--serif);font-weight:400;font-size:61.875px;line-height:.94;letter-spacing:-2.475px;color:#42444d;width:751px}
+.ch .sgroup{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.ch .subline{margin:0;font-family:var(--roboto);font-size:25.107px;color:#464646}
+.ch .clients{display:flex;gap:6.842px;align-items:center;width:693px}
+.ch .client{display:flex;gap:7.684px;align-items:center;padding-left:1.595px}
 .ch .client img{display:block;flex:none}
-.ch .client span{font-family:var(--roboto);font-size:25.293px;color:var(--text);white-space:nowrap}
-.ch .client.vm{width:170px}.ch .client.vm img{width:40.806px;height:39.786px;border-radius:2.04px}
-.ch .client.dl{width:138.139px}.ch .client.dl img{width:43.8px;height:43.8px}
-.ch .client.or{width:157.231px}.ch .client.or img{width:41.554px;height:38.185px;border-radius:3.562px}
-.ch .client.bg{width:175.2px}.ch .client.bg img{width:42.677px;height:39.308px;border-radius:3px}
-.ch .hright{width:677px;display:flex;flex-direction:column;gap:29.985px}
-.ch .explabel{margin:0;font-family:var(--sora);font-weight:600;font-size:20.24px;line-height:26.987px;color:#42444d;text-transform:uppercase}
+.ch .client span{font-family:var(--roboto);font-size:24.723px;color:#464646;white-space:nowrap}
+.ch .client.vm{width:166.164px}.ch .client.vm img{width:39.885px;height:38.888px;border-radius:1.994px}
+.ch .client.dl{width:135.021px}.ch .client.dl img{width:42.812px;height:42.812px}
+.ch .client.or{width:153.683px}.ch .client.or img{width:40.616px;height:37.323px;border-radius:3.481px}
+.ch .client.bg{width:171.247px}.ch .client.bg img{width:41.714px;height:38.421px;border-radius:2.932px}
+.ch .hright{width:659px;display:flex;flex-direction:column;gap:20.593px}
+.ch .explabel{margin:0;font-family:var(--sora);font-weight:600;font-size:19.848px;line-height:26.463px;color:#42444d;text-transform:uppercase}
 .ch .carhist{display:flex;flex-direction:column}
-.ch .exprow{display:grid;grid-template-columns:301.35px 304.39px 71.96px;align-items:center;height:73.26px;border-bottom:1.499px solid var(--rule)}
+.ch .exprow{display:grid;grid-template-columns:280.284px 283.114px 66.934px;justify-content:start;align-items:center;height:68.3px;border-bottom:1.394px solid var(--rule)}
 .ch .exprow:last-child{border-bottom:none}
-.ch .expco{display:flex;align-items:center;gap:14.993px}
+.ch .expco{display:flex;align-items:center;gap:13.945px;padding-left:1.394px}
 .ch .expco img{object-fit:contain;flex:none}
-.ch .expco b{font-family:var(--roboto);font-weight:400;font-size:23.238px;color:var(--text);white-space:nowrap}
-.ch .exprole{font-family:var(--roboto);font-size:23.238px;color:var(--sub);white-space:nowrap}
-.ch .expyear{font-family:var(--roboto);font-size:23.238px;color:var(--sub);text-align:right;font-variant-numeric:tabular-nums}
+.ch .expco b{font-family:var(--roboto);font-weight:400;font-size:21.614px;color:#464646;white-space:nowrap}
+.ch .exprole{font-family:var(--roboto);font-size:21.614px;color:var(--sub);white-space:nowrap}
+.ch .expyear{font-family:var(--roboto);font-size:21.614px;color:var(--sub);text-align:right;font-variant-numeric:tabular-nums}
 @keyframes ch-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 .ch .anim{opacity:0;animation:ch-rise 1.05s cubic-bezier(.22,1,.36,1) both}
 .ch .d0{animation-delay:.08s}.ch .d1{animation-delay:.24s}.ch .d2{animation-delay:.40s}.ch .d3{animation-delay:.58s}
@@ -114,7 +114,7 @@ const HTML = `
   <div class="hleft">
     <div class="hgroup">
       <img class="avatar anim d1" src="/hero/shanica.png" alt="Shanica Roy">
-      <h1 class="anim d2">Hi, it&rsquo;s Shanica Roy. I design enterprise products &amp; build systems.</h1>
+      <h1 class="anim d2">Hi it&rsquo;s Shanica, I shape product direction and design experiences at scale.</h1>
     </div>
     <div class="sgroup anim d3">
       <p class="subline">Enterprise client work at EY, 2023 - 2025</p>
@@ -129,11 +129,11 @@ const HTML = `
   <div class="hright anim d3">
     <p class="explabel">EXPERIENCE</p>
     <div class="carhist">
-      <div class="exprow"><span class="expco"><img src="/hero/ey.svg" alt="" style="width:41.37px;height:41.769px"><b>Ernst &amp; Young</b></span><span class="exprole">UX Design Lead</span><span class="expyear">2025</span></div>
-      <div class="exprow"><span class="expco"><img src="/hero/ey.svg" alt="" style="width:41.37px;height:41.769px"><b>Ernst &amp; Young</b></span><span class="exprole">Senior UX Designer</span><span class="expyear">2023</span></div>
-      <div class="exprow"><span class="expco"><img src="/hero/bhanzu.svg" alt="" style="width:37.852px;height:37.852px;border-radius:4.921px"><b>Bhanzu</b></span><span class="exprole">UX Designer</span><span class="expyear">2021</span></div>
-      <div class="exprow"><span class="expco"><img src="/hero/virtubox.svg" alt="" style="width:43.337px;height:43.337px"><b>Virtubox Infotech</b></span><span class="exprole">UI/UX Designer</span><span class="expyear">2020</span></div>
-      <div class="exprow"><span class="expco"><img src="/hero/unschool.svg" alt="" style="width:40.242px;height:46.433px"><b>Unschool</b></span><span class="exprole">Senior Design Instructor</span><span class="expyear">2019</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/ey.svg" alt="" style="width:38.478px;height:38.849px"><b>Ernst &amp; Young</b></span><span class="exprole">UX Design Lead</span><span class="expyear">2025</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/ey.svg" alt="" style="width:38.478px;height:38.849px"><b>Ernst &amp; Young</b></span><span class="exprole">Senior UX Designer</span><span class="expyear">2023</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/bhanzu.svg" alt="" style="width:35.206px;height:35.206px;border-radius:4.577px"><b>Bhanzu</b></span><span class="exprole">UX Designer</span><span class="expyear">2021</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/virtubox.svg" alt="" style="width:40.308px;height:40.308px"><b>Virtubox Infotech</b></span><span class="exprole">UI/UX Designer</span><span class="expyear">2020</span></div>
+      <div class="exprow"><span class="expco"><img src="/hero/unschool.svg" alt="" style="width:37.429px;height:43.187px"><b>Unschool</b></span><span class="exprole">Graphic Design Instructor</span><span class="expyear">2019</span></div>
     </div>
   </div>
 </div>
@@ -141,7 +141,7 @@ const HTML = `
 
 <div class="mhero">
   <img class="mavatar anim d1" src="/hero/shanica.png" alt="Shanica Roy">
-  <h1 class="mh1 anim d2">Hi, it&rsquo;s Shanica Roy. I design enterprise products &amp; build systems.</h1>
+  <h1 class="mh1 anim d2">Hi it&rsquo;s Shanica, I shape product direction and design experiences at scale.</h1>
   <div class="anim d3">
     <p class="msub">Enterprise client work at EY, 2023 - 2025</p>
     <div class="mclients">
@@ -157,7 +157,7 @@ const HTML = `
     <div class="mrow"><img class="mlg" src="/hero/ey.svg" alt=""><div><div class="mco">Ernst &amp; Young</div><div class="mro">Senior UX Designer</div></div><div class="myr">2023</div></div>
     <div class="mrow"><img class="mlg" src="/hero/bhanzu.svg" alt="" style="border-radius:6px"><div><div class="mco">Bhanzu</div><div class="mro">UX Designer</div></div><div class="myr">2021</div></div>
     <div class="mrow"><img class="mlg" src="/hero/virtubox.svg" alt=""><div><div class="mco">Virtubox Infotech</div><div class="mro">UI/UX Designer</div></div><div class="myr">2020</div></div>
-    <div class="mrow"><img class="mlg" src="/hero/unschool.svg" alt=""><div><div class="mco">Unschool</div><div class="mro">Senior Design Instructor</div></div><div class="myr">2019</div></div>
+    <div class="mrow"><img class="mlg" src="/hero/unschool.svg" alt=""><div><div class="mco">Unschool</div><div class="mro">Graphic Design Instructor</div></div><div class="myr">2019</div></div>
   </div>
 </div>
 `;

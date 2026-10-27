@@ -36,14 +36,14 @@ const CARD: Record<
   string,
   { meta: string; title: string; titlePx: number; coverGap: number; nda?: boolean; href?: string }
 > = {
-  "vmware-cloud-provider-portal": { meta: "VMware - 2023", title: "Cloud Service Portal (Enterprise Saas)", titlePx: 28, coverGap: 10, nda: true },
-  "customer-lifecycle-management": { meta: "Bhanzu - 2022", title: "Customer Lifecycle Management Saas Web Tool", titlePx: 30, coverGap: 8 },
-  "virtubox-kiosk": { meta: "VirtuBox Infotech - 2020", title: "VirtuBox Kiosk UI/UX Design - Service Experience", titlePx: 30, coverGap: 8 },
-  "orbit-design-system": { meta: "UXPective - 2025", title: "Orbit Design System", titlePx: 30, coverGap: 8 },
-  "case-check": { meta: "UXPective - 2026", title: "Applied AI Build : Case Check Tool", titlePx: 32.149, coverGap: 8 },
-  "dell-portal-redesign": { meta: "Dell Technologies - 2024", title: "Order & Inventory Logistics Suite", titlePx: 30, coverGap: 8, nda: true },
-  "ey-data-product-factory": { meta: "Ernst & Young - 2025", title: "Data Product Marketplace Revamp", titlePx: 30, coverGap: 8, nda: true },
-  "fintrack": { meta: "Fintrack - 2021 (Freelance)", title: "Finance Management Mobile App", titlePx: 26, coverGap: 8 },
+  "vmware-cloud-provider-portal": { meta: "VMware - 2023", title: "Cloud Service Portal (Enterprise Saas Solution)", titlePx: 25.644, coverGap: 9.863, nda: true },
+  "customer-lifecycle-management": { meta: "Bhanzu - 2022", title: "Customer Lifecycle Management Saas Web Tool", titlePx: 25.644, coverGap: 7.89 },
+  "virtubox-kiosk": { meta: "VirtuBox Infotech - 2020", title: "VirtuBox Kiosk UI/UX Design - Service Experience", titlePx: 25.644, coverGap: 7.89 },
+  "orbit-design-system": { meta: "UXPective - 2025", title: "Orbit Design System - WCAG 2.1 AA Standard", titlePx: 25.644, coverGap: 7.89 },
+  "case-check": { meta: "UXPective - 2026", title: "Applied AI Build : Case Check Tool", titlePx: 25.644, coverGap: 7.89 },
+  "dell-portal-redesign": { meta: "Dell Technologies - 2024", title: "Order & Inventory Logistics Suite", titlePx: 25.644, coverGap: 7.89, nda: true },
+  "ey-data-product-factory": { meta: "Ernst & Young - 2025", title: "Data Product Marketplace Revamp", titlePx: 25.644, coverGap: 7.89, nda: true },
+  "fintrack": { meta: "Fintrack - 2021 (Freelance)", title: "Finance Management Mobile App", titlePx: 25.644, coverGap: 7.89 },
 };
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
@@ -74,7 +74,7 @@ export default function SelectedWork() {
         className="font-serif font-normal text-[#42444d]"
         style={{
           fontFamily: '"Times New Roman", Times, Georgia, serif',
-          fontSize: fluid(50, 30),
+          fontSize: fluid(42, 26),
           lineHeight: 0.94,
           letterSpacing: "-0.04em",
         }}
@@ -85,7 +85,7 @@ export default function SelectedWork() {
       <Reveal
         delay={120}
         className="grid grid-cols-1 gap-y-9 md:grid-cols-2 md:gap-y-7"
-        style={{ marginTop: "min(1.74vw, 30px)", columnGap: fluid(31, 18) }}
+        style={{ marginTop: "min(2.083vw, 36px)", columnGap: fluid(30.575, 18) }}
       >
         {ordered.map((project, i) => (
           <WorkCard key={project.slug} project={project} index={i} onOpen={() => setActive(project)} />
@@ -111,7 +111,7 @@ function WorkCard({
     <>
       <div
         className="w-full overflow-hidden border border-[#ededed] bg-[#ededed]"
-        style={{ aspectRatio: "743 / 525", borderRadius: "1px" }}
+        style={{ aspectRatio: "732.816 / 517.804", borderRadius: "1px" }}
       >
         {project.video ? (
           <AutoVideo
@@ -134,21 +134,21 @@ function WorkCard({
       {(() => {
         if (!card) return null;
         return (
-          <div className="flex flex-col" style={{ marginTop: `${card.coverGap}px`, gap: "4px", fontFamily: ROBOTO }}>
-            <p className="text-[#828282]" style={{ fontSize: fluid(20, 12) }}>
+          <div className="flex flex-col" style={{ marginTop: `${card.coverGap}px`, gap: "3.945px", fontFamily: ROBOTO }}>
+            <p className="text-[#828282]" style={{ fontSize: fluid(19.726, 12) }}>
               {card.meta}
             </p>
             <div className="flex items-end justify-between gap-3">
               <h3
                 className="min-w-0 font-medium leading-[1.12] text-[#42444d]"
-                style={{ fontFamily: INTER, fontSize: fluid(card.titlePx, 14), letterSpacing: "-0.03em" }}
+                style={{ fontFamily: INTER, fontSize: fluid(card.titlePx, 15), letterSpacing: "-0.03em" }}
               >
                 {card.title}
               </h3>
               {card.nda && (
                 <span
                   className="flex shrink-0 items-center font-medium uppercase text-[#7a5ab2]"
-                  style={{ fontSize: fluid(24.794, 12), gap: "7px" }}
+                  style={{ fontSize: fluid(24.454, 12), gap: "8.877px" }}
                   aria-label="Under NDA"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden className="h-[1.05em] w-[1.05em]">
