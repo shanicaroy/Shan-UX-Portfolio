@@ -277,25 +277,21 @@ export const orbitCaseStyles = `.orbit{
 .orbit aside{position:sticky;top:0;align-self:start;height:100vh;padding:40px 0;display:flex;flex-direction:column;overflow-y:auto}
 .orbit aside::-webkit-scrollbar{width:0}
 @media(max-width:960px){.orbit aside{position:sticky;top:0;z-index:50;height:auto;padding:12px 0;border-bottom:1px solid #e5e5e5;overflow:visible;background:#fff}}
-.orbit .crumb{display:flex;align-items:center;gap:9px;margin-bottom:24px;font-family:'Inter',"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1}
-.orbit .crumb a{color:#797979;text-decoration:none;transition:color .15s}
-.orbit .crumb a:hover{color:#1a1a1d}
-.orbit .crumb .sep{color:#c9c9c9}
-.orbit .crumb .cur{color:#1a1a1d;font-weight:500}
-@media(max-width:960px){.orbit .crumb{margin-bottom:0}}
+.orbit .backlink{font-family:'Inter',"Helvetica Neue",Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#797979;margin-bottom:14px;display:block;text-decoration:none;transition:color .15s}
+.orbit .backlink:hover{color:#1a1a1d}
+.orbit .kicker{font-family:'Inter',"Helvetica Neue",Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7a5ab2;margin-bottom:26px}
+@media(max-width:960px){.orbit .backlink{display:inline;margin:0 16px 0 0}.orbit .kicker{display:inline;margin:0}}
 .orbit .secnav{min-width:0}
 .orbit .secnav summary{display:none;font-family:'Inter',sans-serif;font-size:13px;color:#1a1a1d;cursor:pointer;padding:8px 0;list-style:none}
 .orbit .secnav summary::-webkit-details-marker{display:none}
 @media(max-width:960px){.orbit .secnav summary{display:block}.orbit .secnav summary::after{content:" \\2193";color:#797979}.orbit .secnav[open] summary::after{content:" \\2191"}}
 .orbit .toc{min-width:0}
 .orbit .toc ul{list-style:none;margin:0 0 2px;padding:0;display:flex;flex-direction:column;gap:1px}
-.orbit .toc .cs-toc__g{font-family:'Inter',"Helvetica Neue",Arial,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#a9a9a9;margin:20px 0 7px;padding-left:18px}
+.orbit .toc .cs-toc__g{font-family:'Inter',"Helvetica Neue",Arial,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#a9a9a9;margin:20px 0 7px;padding-left:14px}
 .orbit .toc .cs-toc__g:first-child{margin-top:0}
-.orbit .toc a{position:relative;font-family:'Inter',"Helvetica Neue",Arial,sans-serif;font-size:13px;color:#797979;display:block;padding:4px 0 4px 18px;text-decoration:none;transition:color .28s ease;line-height:1.3}
+.orbit .toc a{font-family:'Inter',"Helvetica Neue",Arial,sans-serif;font-size:13.5px;color:#797979;display:block;padding:5px 0;border-left:2px solid transparent;padding-left:14px;margin-left:-2px;text-decoration:none;transition:color .15s,border-color .15s;line-height:1.3}
 .orbit .toc a:hover{color:#1a1a1d}
-.orbit .toc a.active{color:#7a5ab2;font-weight:500}
-.orbit .toc a::before{content:"";position:absolute;left:2px;top:50%;width:5px;height:5px;border-radius:50%;background:#7a5ab2;opacity:0;transform:translateY(-50%) scale(.35);transition:opacity .3s ease,transform .34s cubic-bezier(.22,1,.36,1)}
-.orbit .toc a.active::before{opacity:1;transform:translateY(-50%) scale(1)}
+.orbit .toc a.active{color:#1a1a1d;border-color:#7a5ab2;font-weight:500}
 .orbit main{min-width:0;max-width:820px;padding:44px 0 120px}
 @media(max-width:960px){.orbit main{padding-top:28px}}
 .orbit main .cs-hero{max-width:none!important;margin:0!important;padding:0 0 8px!important}
@@ -311,7 +307,8 @@ export const orbitCaseStyles = `.orbit{
 export const orbitCaseBody = `<div class="progress" aria-hidden="true"></div>
 <div class="shellc">
   <aside>
-    <div class="crumb"><a href="/">← Work</a><span class="sep">/</span><span class="cur">Orbit Design System</span></div>
+    <a class="backlink" href="/#work">&larr; Selected Work</a>
+    <div class="kicker">Case Study</div>
     <details class="secnav" open>
       <summary>Sections</summary>
       <nav class="toc" aria-label="Case study sections"><p class="cs-toc__g">Why Orbit exists</p><ul><li><a href="#problem">The gradient problem</a></li><li><a href="#threshold">When to systematize</a></li><li><a href="#scope">Scope of the library</a></li><li><a href="#where">Architecture</a></li></ul><p class="cs-toc__g">Foundations</p><ul><li><a href="#f-tokens">Tokens</a></li><li><a href="#f-a11y">Accessibility</a></li><li><a href="#f-color">Color</a></li><li><a href="#f-type">Typography</a></li><li><a href="#f-space">Spacing</a></li><li><a href="#f-layout">Layout and direction</a></li><li><a href="#f-shape">Shape</a></li><li><a href="#f-elevation">Elevation and layers</a></li><li><a href="#f-motion">Motion</a></li><li><a href="#f-icons">Icons</a></li><li><a href="#f-writing">Writing</a></li></ul><p class="cs-toc__g">Components</p><ul><li><a href="#c-button">Button</a></li><li><a href="#c-link">Link</a></li><li><a href="#c-menu">Menu</a></li><li><a href="#c-tabs">Tabs</a></li><li><a href="#c-side-nav">Side nav</a></li><li><a href="#c-pagination">Pagination</a></li><li><a href="#c-language-switcher">Language switcher</a></li><li><a href="#c-text-field">Text field</a></li><li><a href="#c-select">Select</a></li><li><a href="#c-checkbox">Checkbox</a></li><li><a href="#c-radio-group">Radio group</a></li><li><a href="#c-switch">Switch</a></li><li><a href="#c-segmented-control">Segmented control</a></li><li><a href="#c-search">Search</a></li><li><a href="#c-banner">Banner</a></li><li><a href="#c-toast">Toast</a></li><li><a href="#c-badge">Badge</a></li><li><a href="#c-tooltip">Tooltip</a></li><li><a href="#c-card">Card</a></li><li><a href="#c-accordion">Accordion</a></li><li><a href="#c-modal">Modal</a></li><li><a href="#c-data-table">Data table</a></li></ul><p class="cs-toc__g">Governance</p><ul><li><a href="#gov-roles">Roles</a></li><li><a href="#gov-flow">Contribution process</a></li><li><a href="#gov-gates">Contribution criteria</a></li><li><a href="#gov-lifecycle">Component lifecycle</a></li><li><a href="#waitlist">Component backlog</a></li><li><a href="#gov-measure">Adoption metrics</a></li></ul><p class="cs-toc__g">Adoption and impact</p><ul><li><a href="#adoption">Adoption</a></li><li><a href="#changed">Impact</a></li><li><a href="#learned">Learnings</a></li><li><a href="#next">Roadmap</a></li></ul></nav>

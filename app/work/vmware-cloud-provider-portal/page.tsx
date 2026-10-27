@@ -26,6 +26,9 @@ export default function VmwareCaseStudy() {
       />
       <style dangerouslySetInnerHTML={{ __html: vmwareCaseStyles }} />
       <div className="vmw" id="main">
+        <div className="topnav">
+          <a className="backlink" href="/#work">&larr; Selected Work</a>
+        </div>
         <section className="vmwhero">
           <div className="cover">
             <AutoVideo src="/projects/vmware-cloud-cover.mp4" ariaLabel="VMware Cloud Provider Portal — cover animation" />

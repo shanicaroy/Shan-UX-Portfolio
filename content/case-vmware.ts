@@ -51,6 +51,9 @@ export const vmwareCaseStyles = `
   @media(max-width:900px){.vmw .vmwhero{padding:22px 20px 0}.vmw .confnote{padding:0 20px}}
 
   /* layout */
+  .vmw .topnav{max-width:1180px;margin:0 auto;padding:30px 24px 0}
+  .vmw .topnav .backlink{margin-bottom:0}
+  @media(max-width:900px){.vmw .topnav{padding:18px 20px 0}}
   .vmw .shellc{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:210px 1fr;gap:56px}
   @media(max-width:900px){.vmw .shellc{grid-template-columns:1fr;gap:0}}
 
@@ -190,7 +193,6 @@ export const vmwareCaseStyles = `
 export const vmwareCaseBody = `
   <div class="progress" aria-hidden="true"></div>
   <aside>
-    <a class="backlink" href="/">&larr; Shanica Roy</a>
     <div class="kicker">Case Study</div>
     <details class="secnav" open>
       <summary>Sections</summary>

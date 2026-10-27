@@ -9,7 +9,7 @@
 export const caseCheckBody = `
   <div class="progress" aria-hidden="true"></div>
   <aside>
-    <a class="backlink" href="/">&larr; Shanica Roy</a>
+    <a class="backlink" href="/#work">&larr; Selected Work</a>
     <div class="kicker">Case Study</div>
     <details class="secnav" open>
       <summary>Sections</summary>
