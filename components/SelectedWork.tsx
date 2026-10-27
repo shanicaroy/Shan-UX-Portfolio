@@ -39,7 +39,7 @@ const CARD: Record<
   "vmware-cloud-provider-portal": { meta: "VMware - 2023", title: "Cloud Service Portal (Enterprise Saas Solution)", titlePx: 25.644, coverGap: 9.863, nda: true },
   "customer-lifecycle-management": { meta: "Bhanzu - 2022", title: "Customer Lifecycle Management Saas Web Tool", titlePx: 25.644, coverGap: 7.89 },
   "virtubox-kiosk": { meta: "VirtuBox Infotech - 2020", title: "VirtuBox Kiosk UI/UX Design - Service Experience", titlePx: 25.644, coverGap: 7.89 },
-  "orbit-design-system": { meta: "UXPective - 2025", title: "Orbit Design System - WCAG 2.1 AA Standard", titlePx: 25.644, coverGap: 7.89 },
+  "orbit-design-system": { meta: "UXPective - 2025", title: "Orbit Design System - WCAG 2.1 AA Standard", titlePx: 25.644, coverGap: 7.89, href: "/work/orbit-design-system" },
   "case-check": { meta: "UXPective - 2026", title: "Applied AI Build : Case Check Tool", titlePx: 25.644, coverGap: 7.89 },
   "dell-portal-redesign": { meta: "Dell Technologies - 2024", title: "Order & Inventory Logistics Suite", titlePx: 25.644, coverGap: 7.89, nda: true },
   "ey-data-product-factory": { meta: "Ernst & Young - 2025", title: "Data Product Marketplace Revamp", titlePx: 25.644, coverGap: 7.89, nda: true },
@@ -48,12 +48,15 @@ const CARD: Record<
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
 
-// Exact px at the 1728 design width, scaling down proportionally below it.
-const fluid = (px: number, min: number) => `clamp(${min}px, ${((px / 1728) * 100).toFixed(3)}vw, ${px}px)`;
+// Exact px at the 1728 design width, scaling proportionally with the viewport
+// both below and above it (so the grid tracks the full-bleed hero on wide
+// screens). The upper bound is effectively uncapped for any real display.
+const fluid = (px: number, min: number) =>
+  `clamp(${min}px, ${((px / 1728) * 100).toFixed(3)}vw, ${(px * 4).toFixed(1)}px)`;
 
-// Keep the section's left/right edge aligned with the hero's 118px margin:
-// 118 / 1728 = 6.83vw below the design width, capped at 118px above it.
-const GUTTER = "min(6.83vw, 118px)";
+// Keep the section's left/right edge aligned with the hero's 119px margin at
+// every width: 119 / 1728 = 6.887vw, uncapped so it tracks the scaled hero.
+const GUTTER = "6.887vw";
 
 export default function SelectedWork() {
   const ordered = GRID_ORDER.map((slug) => projects.find((p) => p.slug === slug)).filter(
@@ -65,7 +68,7 @@ export default function SelectedWork() {
     <section
       id="work"
       aria-labelledby="selected-work-heading"
-      style={{ paddingInline: GUTTER, paddingTop: "min(4.86vw, 84px)", paddingBottom: "min(7.5vw, 130px)" }}
+      style={{ paddingInline: GUTTER, paddingTop: "4.86vw", paddingBottom: "7.5vw" }}
       className="scroll-mt-10 bg-white"
     >
       <Reveal
@@ -85,7 +88,7 @@ export default function SelectedWork() {
       <Reveal
         delay={120}
         className="grid grid-cols-1 gap-y-9 md:grid-cols-2 md:gap-y-7"
-        style={{ marginTop: "min(2.083vw, 36px)", columnGap: fluid(30.575, 18) }}
+        style={{ marginTop: "2.083vw", columnGap: fluid(30.575, 18) }}
       >
         {ordered.map((project, i) => (
           <WorkCard key={project.slug} project={project} index={i} onOpen={() => setActive(project)} />

@@ -295,15 +295,16 @@ export default function ColourHero() {
     const canvasD = host.querySelector<HTMLCanvasElement>("#bandCanvas");
     if (canvasD) cleanups.push(setupBand(canvasD, 46, { w: 1728, h: 200 }));
 
-    // Scale the desktop frame to the viewport (capped at 1:1, centred).
+    // Scale the whole 1728 design frame to fill the viewport width at every
+    // size (no 1:1 cap), so the gradient band is full-bleed and the hero
+    // tracks the rest of the page, which scales on the same 6.887vw rhythm.
     const frame = host.querySelector<HTMLDivElement>(".frame");
     const wrap = host.querySelector<HTMLDivElement>(".scaleWrap");
     const fit = () => {
       if (!frame || !wrap) return;
       const vw = document.documentElement.clientWidth;
-      const sc = Math.min(1, vw / 1728);
-      const tx = (vw - 1728 * sc) / 2;
-      frame.style.transform = "translate(" + tx + "px,0) scale(" + sc + ")";
+      const sc = vw / 1728;
+      frame.style.transform = "scale(" + sc + ")";
       wrap.style.height = FRAME_H * sc + "px";
     };
     window.addEventListener("resize", fit);

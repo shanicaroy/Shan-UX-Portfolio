@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { siteConfig } from "@/content/config";
 import Reveal from "@/components/Reveal";
 
@@ -10,11 +11,13 @@ export const metadata: Metadata = {
 const SERIF = '"Times New Roman", Times, Georgia, serif';
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
-const GUTTER = "min(6.83vw, 118px)";
+const GUTTER = "6.887vw";
 
-// Exact px at the 1728 design width, scaling down proportionally below it.
+// Exact px at the 1728 design width, scaling proportionally with the viewport
+// both below and above it, so the page tracks the full-bleed hero on wide
+// screens. The upper bound is effectively uncapped for any real display.
 const fluid = (px: number, min: number) =>
-  `clamp(${min}px, ${((px / 1728) * 100).toFixed(3)}vw, ${px}px)`;
+  `clamp(${min}px, ${((px / 1728) * 100).toFixed(3)}vw, ${(px * 4).toFixed(1)}px)`;
 
 const BODY = [
   "I am a lead product designer based in Dubai. I started my career in visual design, moved into UI/UX, and now I find myself exploring what it means to design experiences where AI agents act on our behalf. Through these shifts, “product designer” has felt like the most natural description of what I do.",
@@ -79,9 +82,9 @@ function Caption({ meta, title }: { meta: string; title: string }) {
   );
 }
 
-function Figure({ shot, className }: { shot: Shot; className?: string }) {
+function Figure({ shot }: { shot: Shot }) {
   return (
-    <div className={className}>
+    <div className="w-full lg:w-[var(--w)]" style={{ "--w": shot.w } as CSSProperties}>
       <div className="w-full overflow-hidden bg-[#ececec]" style={{ aspectRatio: shot.ratio }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={shot.src} alt={shot.title} className="h-full w-full object-cover" loading="lazy" />
@@ -155,8 +158,8 @@ export default function AboutPage() {
               row.align === "end" ? "lg:items-end" : "lg:items-start"
             }`}
           >
-            <Figure shot={row.left} className="w-full" />
-            <Figure shot={row.right} className="w-full" />
+            <Figure shot={row.left} />
+            <Figure shot={row.right} />
           </Reveal>
         ))}
       </section>
