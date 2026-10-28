@@ -7,9 +7,9 @@ import CaseMeta from "@/components/case/CaseMeta";
 import NextProjectCard from "@/components/case/NextProjectCard";
 
 export const metadata: Metadata = {
-  title: "Cloud Provider Portal — VMware",
+  title: "VMware Customer Connect Portal (VCCP)",
   description:
-    "Redesigning the VMware Cloud Provider (VCPP) purchasing portals in Clarity. An NDA case study shared as an approved overview.",
+    "VMware Customer Connect Portal (VCCP), a Clarity-based cloud purchasing platform revamp. An NDA case study shared as an approved overview.",
 };
 
 /**
@@ -30,7 +30,7 @@ const META = [
   {
     label: "Scope",
     value:
-      "The VCPP Configurator and its four purchasing flows (new, add-on, renewal, upgrade), plus the connected subscription service pages",
+      "The VCCP Configurator and its four purchasing flows (new, add-on, renewal, upgrade), plus the connected subscription service pages",
   },
   { label: "System", value: "Clarity (VMware, MIT-licensed)" },
 ] as const;
@@ -46,7 +46,7 @@ export default function VmwareCaseStudy() {
   return (
     <main id="main" className="min-h-screen bg-white">
       <div className="mx-auto max-w-[1200px] px-6 pt-8 md:px-12 md:pt-10">
-        <CaseBreadcrumb title="Cloud Provider Portal" />
+        <CaseBreadcrumb title="VMware Customer Connect Portal" />
       </div>
 
       {/* Generous gap between the breadcrumb and where the project begins,
@@ -59,9 +59,12 @@ export default function VmwareCaseStudy() {
         <article className="min-w-0">
           <img src="/hero/vmware-wordmark.png" alt="VMware" className="h-[28px] w-auto" />
 
-          <h1 className="mt-6 font-serif text-[clamp(2.3rem,5vw,3.5rem)] font-normal leading-[1.03] tracking-[-0.02em] text-[#42444d]">
-            Cloud Provider Portal
+          <h1 className="mt-6 font-serif text-[clamp(2rem,4.3vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em] text-[#42444d]">
+            VMware Customer Connect Portal (VCCP)
           </h1>
+          <p className="mt-3 font-serif text-[clamp(1.15rem,2vw,1.4rem)] leading-[1.3] text-muted">
+            Cloud Service Platform Revamp
+          </p>
 
           <div className="mt-8 aspect-[956/564] w-full overflow-hidden rounded-xl border border-rule bg-[#eef0f3]">
             <AutoVideo
