@@ -163,9 +163,9 @@ function WorkCard({
     </>
   );
 
-  // Orbit opens its case study directly; every other card goes to its
-  // dedicated password page (replaces the old modal).
-  const target = card?.href ?? `/unlock/${project.slug}`;
+  // Password gating is removed for now: every card links straight to its case
+  // study (Orbit keeps its explicit href, the rest go to /work/<slug>).
+  const target = card?.href ?? `/work/${project.slug}`;
   return (
     <Link href={target} className="group block w-full text-left">
       {inner}
