@@ -9,7 +9,7 @@
 export const howIWork = {
   heading: "How I work.",
   support:
-    "I stay close to the problem, the product, and the people doing the work — moving between strategy, design, and leadership depending on what the team needs.",
+    "I stay close to the problem, the product, and the people doing the work, moving between strategy, design, and leadership depending on what the team needs.",
   principles: [
     {
       title: "Understand before solving.",
@@ -225,7 +225,7 @@ export const productStrategy = {
   label: "Product / 01",
   heading: "I don't just solve the problem. I help define the problem worth solving.",
   support:
-    "My work begins before the interface — understanding customers, business priorities, constraints, and opportunities so design can influence product direction rather than simply respond to it.",
+    "My work begins before the interface: understanding customers, business priorities, constraints, and opportunities so design can influence product direction rather than simply respond to it.",
   areas: [
     "Discovery",
     "Research",

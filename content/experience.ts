@@ -23,7 +23,7 @@ export const experience: ExperienceEntry[] = [
   {
     company: "EY",
     role: "UX Lead",
-    period: "2025 — Present",
+    period: "2025 – Present",
     tags: "UX Leadership · Enterprise Product Design · Strategy",
     description:
       "Leading product and UX work across complex enterprise systems, connecting customer needs, product strategy, design quality, and cross-functional execution.",
@@ -38,7 +38,7 @@ export const experience: ExperienceEntry[] = [
   {
     company: "EY",
     role: "Senior UX Designer",
-    period: "2023 — 2025",
+    period: "2023 – 2025",
     tags: "Enterprise UX · Research · Product Design",
     description:
       "Designing complex enterprise experiences for clients including VMware, P44 Logistics, and Dell, while partnering closely with Product, Engineering, and business stakeholders.",
@@ -52,10 +52,10 @@ export const experience: ExperienceEntry[] = [
   {
     company: "Bhanzu",
     role: "UX Designer",
-    period: "2021 — 2023",
+    period: "2021 – 2023",
     tags: "Product Design · 0→1 · UX",
     description:
-      "Designing an end-to-end customer-facing app alongside the internal platforms behind it — admin console, communication tools, and operations dashboards.",
+      "Designing an end-to-end customer-facing app alongside the internal platforms behind it: admin console, communication tools, and operations dashboards.",
   },
   {
     company: "VirtuBox Infotech",
@@ -68,7 +68,7 @@ export const experience: ExperienceEntry[] = [
   {
     company: "Unschool",
     role: "Senior Design Instructor",
-    period: "2019 — 2021",
+    period: "2019 – 2021",
     tags: "Mentorship · Teaching · Design Development",
     description:
       "Developed emerging designers through structured teaching, critique, feedback, and practical project work.",

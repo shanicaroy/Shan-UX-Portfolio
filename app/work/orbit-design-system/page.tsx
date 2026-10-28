@@ -5,7 +5,7 @@ import CaseToc from "@/components/CaseToc";
 export const metadata: Metadata = {
   title: "Orbit Design System",
   description:
-    "Standardizing UI through a design system — Orbit v1. Foundations, twelve components, and how it was adopted. A case study.",
+    "Standardizing UI through a design system: Orbit v1. Foundations, twelve components, and how it was adopted. A case study.",
 };
 
 /**

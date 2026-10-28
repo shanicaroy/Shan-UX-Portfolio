@@ -140,7 +140,7 @@ export const appliedAI = {
       { value: "40", label: "Test set", note: "permitted cases and problem inputs" },
       { value: "7", label: "Scored dimensions", note: "0–2 points each; 14 maximum" },
       { value: "7", label: "Hard failures", note: "logged separately from the score" },
-      { value: "—", label: "Current result", note: "evaluation has not been published" },
+      { value: "N/A", label: "Current result", note: "evaluation has not been published" },
     ],
     tabs: [
       {

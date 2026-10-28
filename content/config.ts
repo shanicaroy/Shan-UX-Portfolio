@@ -47,7 +47,7 @@ export const siteConfig = {
   about: {
     // Concise by design — not an autobiography, not a résumé.
     body: [
-      "I lead product and UX work on complex systems — the kind where the hard part is making an intricate thing feel obvious to the person using it.",
+      "I lead product and UX work on complex systems, the kind where the hard part is making an intricate thing feel obvious to the person using it.",
       "My work sits across research, interaction design and product strategy, drawing on psychology and human behaviour to understand why people do what they do, and on technology to know what is actually buildable.",
     ],
   },

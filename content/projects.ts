@@ -238,7 +238,7 @@ export const projects: Project[] = [
     title: "Orbit Design System",
     positioning: "Design system · Foundations, components, adoption",
     description:
-      "Standardizing UI through a design system — Orbit v1. The foundations, twelve components, and how it was adopted across a product.",
+      "Standardizing UI through a design system: Orbit v1. The foundations, twelve components, and how it was adopted across a product.",
     details: [
       { label: "Role", value: "Design systems lead" },
       { label: "Scope", value: "6 foundations, 12 components, adoption" },
@@ -258,7 +258,7 @@ export const projects: Project[] = [
     title: "Finance Management Mobile App",
     positioning: "Fintrack · Freelance · Mobile product",
     description:
-      "A personal finance management mobile app — tracking transactions, reports, and spending insights with a clear, trustworthy UX.",
+      "A personal finance management mobile app: tracking transactions, reports, and spending insights with a clear, trustworthy UX.",
     details: [
       { label: "Role", value: "UX Research & Design" },
       { label: "Type", value: "Freelance" },

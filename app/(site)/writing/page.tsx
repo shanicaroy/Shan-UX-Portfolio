@@ -25,7 +25,7 @@ export default function WritingPage() {
 
       {writing.length === 0 ? (
         <Reveal as="p" delay={80} className="mt-14 border-t border-rule pt-8 text-base text-muted">
-          Pieces in progress — articles will appear here as they're published.
+          Pieces in progress. Articles will appear here as they're published.
         </Reveal>
       ) : (
         <Reveal as="ul" delay={80} className="mt-14 border-t border-rule">

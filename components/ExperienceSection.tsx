@@ -19,7 +19,7 @@ export default function ExperienceSection() {
           >
             <div className="col-span-12 lg:col-span-4">
               <h3 className="text-[17px] font-medium text-ink">
-                {entry.company} — {entry.role}
+                {entry.company} · {entry.role}
               </h3>
               <p className="mt-1.5 text-[13px] text-muted tabular-nums">{entry.period}</p>
               <p className="mt-3 text-[12px] uppercase tracking-label text-muted">{entry.tags}</p>
