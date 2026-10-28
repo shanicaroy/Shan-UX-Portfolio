@@ -14,6 +14,8 @@ const BESPOKE = [
   "orbit-design-system",
   "dell-portal-redesign",
   "ey-data-product-factory",
+  "virtubox-kiosk",
+  "fintrack",
 ];
 const SCAFFOLDED = (p: (typeof projects)[number]) => !BESPOKE.includes(p.slug);
 
