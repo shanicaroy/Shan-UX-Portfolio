@@ -7,18 +7,19 @@ import CaseMeta from "@/components/case/CaseMeta";
 import NextProjectCard from "@/components/case/NextProjectCard";
 
 export const metadata: Metadata = {
-  title: "VMware Cloud Provider Portal",
+  title: "Cloud Provider Portal — VMware",
   description:
-    "Redesigning the purchasing portals inside VMware's Cloud Provider platform, in Clarity. An NDA case study shared as an approved overview.",
+    "Redesigning the VMware Cloud Provider (VCPP) purchasing portals in Clarity. An NDA case study shared as an approved overview.",
 };
 
 /**
- * VMware Cloud Provider Portal — NDA case study, redesigned to the editorial
- * hierarchy: breadcrumb, company mark, project title (H1), contained hero
- * illustration, confidentiality notice, metadata, then the approved Overview.
- * NDA rule (Part 6): only the Overview is rendered; no detailed sections are
- * present in the page output, so no restricted narrative is delivered. Built
- * from the shared components in components/case/* in the site's own type system.
+ * VMware Cloud Provider Portal (VCPP) — NDA case study. Editorial hierarchy:
+ * generous top gap, breadcrumb, VMware wordmark, project title (H1, no
+ * "VMware" repeat since the wordmark carries it), a wide hero illustration
+ * (≈956/564, the ratio from the Figma overlay), a plain confidentiality
+ * notice (Ben Roach composition), Role/Timeline/Scope metadata, then the
+ * approved Overview. Reading content is set in the site serif (Times New
+ * Roman); small labels stay in Inter. NDA (Part 6): only the Overview renders.
  */
 
 const SECTIONS = [{ id: "overview", label: "Overview" }] as const;
@@ -44,40 +45,33 @@ const STATS = [
 export default function VmwareCaseStudy() {
   return (
     <main id="main" className="min-h-screen bg-white">
-      <div className="mx-auto max-w-[1180px] px-6 pt-8 md:px-10 md:pt-10">
-        <CaseBreadcrumb title="VMware Cloud Provider Portal" />
+      <div className="mx-auto max-w-[1200px] px-6 pt-8 md:px-12 md:pt-10">
+        <CaseBreadcrumb title="Cloud Provider Portal" />
       </div>
 
-      <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-y-10 px-6 pb-16 pt-9 md:px-10 lg:grid-cols-[170px_minmax(0,1fr)] lg:gap-x-16">
-        <div className="lg:pt-1">
+      {/* Generous gap between the breadcrumb and where the project begins,
+          echoing the homepage's nav-to-hero breathing room. */}
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-y-10 px-6 pb-16 pt-20 md:px-12 md:pt-28 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-x-14">
+        <div className="lg:pt-2">
           <CaseSideNav sections={SECTIONS} />
         </div>
 
-        <article className="min-w-0 max-w-[760px]">
-          <img
-            src="/hero/vmware-v2.svg"
-            alt="VMware"
-            width={44}
-            height={44}
-            className="h-11 w-11 rounded-[3px]"
-          />
-          <h1 className="mt-5 font-serif text-[clamp(2.1rem,4.6vw,3.1rem)] font-normal leading-[1.04] tracking-[-0.02em] text-[#42444d]">
-            VMware Cloud Provider Portal
-          </h1>
-          <p className="mt-5 font-sans text-[17px] leading-[1.6] text-muted">
-            Redesigning the purchasing portals inside VMware&rsquo;s Cloud Provider platform, in Clarity, the
-            design system whose own team had already documented the wall I was about to hit.
-          </p>
+        <article className="min-w-0">
+          <img src="/hero/vmware-wordmark.png" alt="VMware" className="h-[28px] w-auto" />
 
-          <div className="mt-8 overflow-hidden rounded-xl border border-rule bg-[#f4f5f7]">
+          <h1 className="mt-6 font-serif text-[clamp(2.3rem,5vw,3.5rem)] font-normal leading-[1.03] tracking-[-0.02em] text-[#42444d]">
+            Cloud Provider Portal
+          </h1>
+
+          <div className="mt-8 aspect-[956/564] w-full overflow-hidden rounded-xl border border-rule bg-[#eef0f3]">
             <AutoVideo
               src="/projects/vmware-cloud-cover.mp4"
               ariaLabel="VMware Cloud Provider Portal cover illustration"
-              className="block h-auto w-full"
+              className="h-full w-full object-cover"
             />
           </div>
 
-          <div className="mt-6">
+          <div className="mt-9">
             <ConfidentialityNotice>
               This case study is shared under NDA. Every visual is an original schematic with placeholder data:
               no customer names, entitlement numbers, or account-tied figures appear. Clarity&rsquo;s own
@@ -85,30 +79,32 @@ export default function VmwareCaseStudy() {
             </ConfidentialityNotice>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-9">
             <CaseMeta items={META} />
           </div>
 
-          <section id="overview" className="mt-10 scroll-mt-24">
-            <h2 className="font-serif text-[clamp(1.6rem,3vw,2.1rem)] font-normal tracking-[-0.01em] text-[#42444d]">
+          <section id="overview" className="mt-12 scroll-mt-24">
+            <h2 className="font-serif text-[clamp(1.8rem,3.2vw,2.4rem)] font-normal tracking-[-0.01em] text-[#42444d]">
               Overview
             </h2>
-            <p className="mt-4 font-sans text-[18px] leading-[1.7] text-ink">
-              I was asked to redesign the Cloud Provider purchasing portals and apply Clarity to them. On paper
-              that reads like a restyle. It was not.
-            </p>
-            <p className="mt-4 font-sans text-[16px] leading-[1.75] text-[#3a3a3a]">
-              The platform sold cloud infrastructure to businesses through one of the most layered commercial
-              models I have worked with. A single line item could carry eight kinds of cost at once, sit inside a
-              three-level nested table, and change behaviour by region and currency. The real work was
-              understanding that model before changing a single screen, then making design decisions that
-              protected the system instead of adding to its weight.
-            </p>
+            <div className="mt-5 max-w-[68ch] space-y-5 font-serif text-[19px] leading-[1.62] text-[#2b2b2e]">
+              <p>
+                I was asked to redesign the Cloud Provider purchasing portals and apply Clarity to them. On
+                paper that reads like a restyle. It was not.
+              </p>
+              <p>
+                The platform sold cloud infrastructure to businesses through one of the most layered commercial
+                models I have worked with. A single line item could carry eight kinds of cost at once, sit
+                inside a three-level nested table, and change behaviour by region and currency. The real work
+                was understanding that model before changing a single screen, then making design decisions that
+                protected the system instead of adding to its weight.
+              </p>
+            </div>
 
-            <dl className="mt-9 grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-4">
+            <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
               {STATS.map((s) => (
                 <div key={s.n + s.c}>
-                  <dt className="font-serif text-[2.4rem] leading-none text-[#42444d]">{s.n}</dt>
+                  <dt className="font-serif text-[2.6rem] leading-none text-[#42444d]">{s.n}</dt>
                   <dd className="mt-2 font-sans text-[13px] leading-[1.45] text-muted">{s.c}</dd>
                 </div>
               ))}
@@ -117,7 +113,7 @@ export default function VmwareCaseStudy() {
         </article>
       </div>
 
-      <div className="mx-auto max-w-[1180px] px-6 pb-24 md:px-10">
+      <div className="mx-auto max-w-[1200px] px-6 pb-24 md:px-12">
         <NextProjectCard
           href="/work/customer-lifecycle-management"
           meta="Bhanzu &middot; 2022"
