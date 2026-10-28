@@ -6,12 +6,14 @@ import Shell from "@/components/Shell";
 import ProjectCanvas from "@/components/ProjectCanvas";
 import AutoVideo from "@/components/AutoVideo";
 
-// VMware, CLM, and Case Check have bespoke standalone pages under app/work/*.
+// These projects have bespoke standalone pages under app/work/*.
 const BESPOKE = [
   "vmware-cloud-provider-portal",
   "customer-lifecycle-management",
   "case-check",
   "orbit-design-system",
+  "dell-portal-redesign",
+  "ey-data-product-factory",
 ];
 const SCAFFOLDED = (p: (typeof projects)[number]) => !BESPOKE.includes(p.slug);
 
