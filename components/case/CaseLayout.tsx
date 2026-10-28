@@ -13,17 +13,18 @@ import Link from "next/link";
  * The whole page is a fixed 1728px design frame with the frame's exact px
  * geometry and type; a scaler uniformly scales it by min(1, viewport/1728)
  * — pixel-exact at 1728, capped and centred above, proportionally smaller
- * below (the 1440/1280 behaviour). One layout for every case study: NDA
- * passes a `notice` and a single nav item; non-NDA omits the notice and lists
- * its sections. Fonts: Georgia (H1 / Overview heading / stat numbers), Times
- * New Roman (Overview body), Inter (breadcrumb / nav / notice / meta labels),
- * Roboto (meta values / stat captions). Gelasio + Tinos are metric-compatible
- * fallbacks so non-Georgia/Times environments still render the right metrics.
+ * below (the 1440/1280 behaviour). One layout for every case study: the left
+ * nav is built from the section list, so an Overview-only case passes a single
+ * section and a richer case passes several. NDA cases add a `notice`. Fonts:
+ * Georgia (H1 / section heading / stat numbers), Times New Roman (section
+ * body), Inter (breadcrumb / nav / notice / meta labels), Roboto (meta values
+ * / stat captions). Gelasio + Tinos are metric-compatible fallbacks so
+ * non-Georgia/Times environments still render the right metrics.
  */
 
-export type NavItem = { id: string; label: string };
 export type MetaItem = { label: string; value: string };
 export type StatItem = { n: string; c: string };
+export type Section = { id: string; label: string; heading: string; body: readonly string[] };
 
 const GEORGIA = "Georgia, Gelasio, 'Times New Roman', serif";
 const TIMES = "'Times New Roman', Tinos, Times, serif";
@@ -33,27 +34,25 @@ const DIVIDER = "#e4e4e4";
 
 export default function CaseLayout({
   breadcrumbTitle,
-  nav,
   logo,
   eyebrow,
   title,
   illustrationSrc,
+  heroVideo,
   notice,
   meta,
-  overviewHeading = "Overview",
-  overview,
+  sections,
   stats,
 }: {
   breadcrumbTitle: string;
-  nav: readonly NavItem[];
   logo?: { src: string; w: number; h: number };
   eyebrow?: string;
   title: string;
-  illustrationSrc: string;
+  illustrationSrc?: string;
+  heroVideo?: string;
   notice?: ReactNode;
   meta: readonly MetaItem[];
-  overviewHeading?: string;
-  overview: readonly string[];
+  sections: readonly Section[];
   stats?: readonly StatItem[];
 }) {
   const frameRef = useRef<HTMLDivElement>(null);
@@ -97,8 +96,8 @@ export default function CaseLayout({
           </div>
 
           {/* Left nav — left 103, top 337, 95 wide, Inter Medium 21px, 24px between links */}
-          <nav aria-label="Case study sections" style={{ position: "absolute", left: 103, top: 337, width: 95 }}>
-            {nav.map((n, i) => (
+          <nav aria-label="Case study sections" style={{ position: "absolute", left: 103, top: 337, width: 140 }}>
+            {sections.map((n, i) => (
               <a
                 key={n.id}
                 href={`#${n.id}`}
@@ -124,7 +123,7 @@ export default function CaseLayout({
               // eslint-disable-next-line @next/next/no-img-element
               <img src={logo.src} alt={breadcrumbTitle} width={logo.w} height={logo.h} style={{ display: "block", width: logo.w, height: logo.h }} />
             ) : eyebrow ? (
-              <p style={{ fontFamily: INTER, fontWeight: 500, fontSize: 17, letterSpacing: "0.87px", textTransform: "uppercase", color: "#969696", height: 16 }}>{eyebrow}</p>
+              <p style={{ margin: 0, fontFamily: INTER, fontWeight: 500, fontSize: 17, letterSpacing: "0.87px", textTransform: "uppercase", color: "#969696", lineHeight: "16px" }}>{eyebrow}</p>
             ) : null}
 
             {/* H1 — Georgia 70px / 1.13 / -1.4px / #42444d, 34px below logo */}
@@ -132,10 +131,23 @@ export default function CaseLayout({
               {title}
             </h1>
 
-            {/* Hero illustration 1058x607, 40px below H1 */}
+            {/* Hero 1058x607, 40px below H1 — video or still */}
             <div style={{ marginTop: 40, width: 1058, height: 607, overflow: "hidden" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={illustrationSrc} alt="" width={1058} height={607} style={{ display: "block", width: 1058, height: 607, objectFit: "cover" }} />
+              {heroVideo ? (
+                <video
+                  src={heroVideo}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  width={1058}
+                  height={607}
+                  style={{ display: "block", width: 1058, height: 607, objectFit: "cover" }}
+                />
+              ) : illustrationSrc ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={illustrationSrc} alt="" width={1058} height={607} style={{ display: "block", width: 1058, height: 607, objectFit: "cover" }} />
+              ) : null}
             </div>
 
             {notice ? (
@@ -165,15 +177,18 @@ export default function CaseLayout({
             {/* Divider, 44px below metadata */}
             <div style={{ marginTop: 44, height: 1, background: DIVIDER }} />
 
-            {/* Overview — heading Georgia 50px, 45px below divider; body Times 24px, 35px below heading */}
-            <section id="overview" style={{ marginTop: 45, scrollMarginTop: 24 }}>
-              <h2 style={{ margin: 0, fontFamily: GEORGIA, fontWeight: 400, fontSize: 50, lineHeight: 1.1, color: "#42444d" }}>{overviewHeading}</h2>
-              <div style={{ marginTop: 35, fontFamily: TIMES, fontSize: 24, lineHeight: "33px", color: "#464646" }}>
-                {overview.map((p, i) => (
-                  <p key={i} style={{ margin: i === 0 ? 0 : "20px 0 0" }}>{p}</p>
-                ))}
-              </div>
-            </section>
+            {/* Sections — heading Georgia 50px; body Times 24px. First 45px below
+                divider, each following section 52px below the previous. */}
+            {sections.map((s, i) => (
+              <section key={s.id} id={s.id} style={{ marginTop: i === 0 ? 45 : 52, scrollMarginTop: 24 }}>
+                <h2 style={{ margin: 0, fontFamily: GEORGIA, fontWeight: 400, fontSize: 50, lineHeight: 1.1, color: "#42444d" }}>{s.heading}</h2>
+                <div style={{ marginTop: 35, fontFamily: TIMES, fontSize: 24, lineHeight: "33px", color: "#464646" }}>
+                  {s.body.map((p, j) => (
+                    <p key={j} style={{ margin: j === 0 ? 0 : "20px 0 0" }}>{p}</p>
+                  ))}
+                </div>
+              </section>
+            ))}
 
             {stats && stats.length > 0 ? (
               <div style={{ marginTop: 52, display: "flex", gap: 31 }}>

@@ -30,3 +30,5 @@ next-env.d.ts
 
 # local dev handoff / context doc (not for the public repo)
 PROJECT-HANDOFF.md
+AGENTS.md
+CLAUDE.md

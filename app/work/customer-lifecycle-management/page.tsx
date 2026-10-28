@@ -1,32 +1,56 @@
 import type { Metadata } from "next";
-import { vmwareCaseStyles } from "@/content/case-vmware";
-import { clmCaseBody } from "@/content/case-clm";
-import VmwareToc from "@/components/VmwareToc";
+import CaseLayout from "@/components/case/CaseLayout";
+import CaseNotice from "@/components/case/CaseNotice";
 
 export const metadata: Metadata = {
-  title: "CLM Ticketing Platform",
+  title: "Customer Lifecycle Management SaaS Web Tool",
   description:
-    "Replacing the tool, not just the screens. Leading the design of Bhanzu's in-house ticketing system, from IVR routing to the CLM workspace and role-based dashboards.",
+    "Leading the design of Bhanzu's in-house lifecycle tooling, from IVR routing to the CLM ticket workspace and role-based dashboards. A confidential case study shared as an approved overview.",
 };
 
 /**
- * Standalone case-study document on the shared case template. DRAFT: the
- * dashed fill-in notes inside must be resolved before this page ships.
+ * Customer Lifecycle Management (Bhanzu) — confidential case study on the
+ * shared CaseLayout (pixel-exact port of Figma frame 2606:1537). The notice is
+ * kept and the left nav is Overview. Approved copy only; the full write-up is
+ * retained in content/case-clm.ts for a later detailed version.
  */
+
+const META = [
+  { label: "Role", value: "Design Lead" },
+  { label: "Timeline", value: "2022" },
+  { label: "Client", value: "Bhanzu" },
+  { label: "Scope", value: "IVR routing, CLM ticket workspace, role-based dashboards" },
+] as const;
+
+const SECTIONS = [
+  {
+    id: "overview",
+    label: "Overview",
+    heading: "Overview",
+    body: [
+      "A complex enterprise SaaS experience involving multiple users, workflows, business rules, and operational constraints.",
+      "I set the design direction for Bhanzu's in-house lifecycle tooling — IVR routing, the CLM ticket workspace, batch allocation, and role-based dashboards — so the operational flow stayed coherent across every role.",
+    ],
+  },
+] as const;
+
+const Notice = (
+  <CaseNotice>
+    This case study is shared confidentially. Every visual is an original schematic with placeholder data: no
+    customer names, account figures, or confidential details appear. Please don&rsquo;t redistribute.
+  </CaseNotice>
+);
+
 export default function ClmCaseStudy() {
   return (
-    <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
-      />
-      <style dangerouslySetInnerHTML={{ __html: vmwareCaseStyles }} />
-      <div className="vmw" id="main">
-        <div className="shellc" dangerouslySetInnerHTML={{ __html: clmCaseBody }} />
-      </div>
-      <VmwareToc />
-    </>
+    <CaseLayout
+      breadcrumbTitle="Bhanzu"
+      logo={{ src: "/hero/bhanzu-v2.svg", w: 40, h: 40 }}
+      title="Customer Lifecycle Management SaaS Web Tool"
+      heroVideo="/projects/clm.mp4"
+      notice={Notice}
+      meta={META}
+      sections={SECTIONS}
+    />
   );
 }
