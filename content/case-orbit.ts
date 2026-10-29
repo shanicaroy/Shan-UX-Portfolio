@@ -302,13 +302,54 @@ export const orbitCaseStyles = `.orbit{
 /* kill any leftover doc chrome if present */
 .orbit .cs-topbar{display:none!important}
 .orbit .cs-hero .uxp-text-style-title-gradient,.orbit .cs-hero .gt-css{background:none!important;-webkit-text-fill-color:#1a1a1d!important;color:#1a1a1d!important}
+
+/* ============================================================
+   NARRATIVE LAYER -> case-study template typography.
+   Shanica's writing (breadcrumb, nav, prose, headings, captions,
+   metadata) is aligned to the locked template. The design-system
+   SPECIMENS (.spec/.o-*/.cmp demos, type/color/contrast tables and
+   the .uxp-text-* type specimens) are intentionally left untouched.
+   ============================================================ */
+/* fonts are written as literal stacks (custom props don't resolve in this injected sheet) */
+/* breadcrumb — matches the locked template */
+.orbit .cs-bc{ display:flex; align-items:center; gap:7px; white-space:nowrap; margin-bottom:26px; font-family:Inter, "Helvetica Neue", Arial, sans-serif; }
+.orbit .cs-bc-link{ display:inline-flex; align-items:center; gap:7px; color:#a2a2a2; text-decoration:none; font-size:16px; }
+.orbit .cs-bc-link:hover{ color:#7a5ab2; }
+.orbit .cs-bc-arrow{ width:19px; height:19px; flex:none; }
+.orbit .cs-bc-sep{ color:#cccccc; font-size:16px; }
+.orbit .cs-bc-current{ color:#202124; font-weight:500; font-size:16px; }
+@media(max-width:960px){ .orbit .cs-bc{ display:inline-flex; margin:0 16px 0 0; } }
+/* left section nav — template nav typography */
+.orbit .toc .cs-toc__g{ font-family:Inter, "Helvetica Neue", Arial, sans-serif; font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#969696; margin:22px 0 8px; padding-left:0; }
+.orbit .toc .cs-toc__g:first-child{ margin-top:0; }
+.orbit .toc a{ font-family:Inter, "Helvetica Neue", Arial, sans-serif; font-weight:500; font-size:16px; line-height:1.3; color:#acacac; padding:5px 0; border-left:0; margin-left:0; padding-left:0; }
+.orbit .toc a:hover{ color:#7a5ab2; }
+.orbit .toc a.active{ color:#7a5ab2; border-color:transparent; font-weight:500; }
+.orbit .secnav summary{ font-family:Inter, "Helvetica Neue", Arial, sans-serif; }
+/* metadata facts — template label/value */
+.orbit .cs-facts dt{ font-family:Inter, "Helvetica Neue", Arial, sans-serif; font-weight:600; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:#969696; }
+.orbit .cs-facts dd{ font-family:Roboto, "Helvetica Neue", Arial, sans-serif; font-size:17px; line-height:1.45; color:#4f4f4f; }
+/* part label + hero kicker */
+.orbit .cs-part__label, .orbit .cs-hero__kicker{ font-family:Inter, "Helvetica Neue", Arial, sans-serif; font-weight:600; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#969696; }
+/* narrative headings -> Georgia. Tag selectors, specimens excluded. */
+.orbit main h1:not(.spec *):not(.o-modal *):not(.cmp *){ font-family:Georgia, "Gelasio", "Times New Roman", serif!important; font-weight:400!important; font-size:44px!important; line-height:1.15!important; letter-spacing:-0.5px!important; color:#42444d!important; }
+.orbit main h2:not(.spec *):not(.o-modal *){ font-family:Georgia, "Gelasio", "Times New Roman", serif!important; font-weight:400!important; font-size:30px!important; line-height:1.2!important; letter-spacing:-0.3px!important; color:#42444d!important; }
+.orbit main h3:not(.spec *):not(.o-modal *){ font-family:Georgia, "Gelasio", "Times New Roman", serif!important; font-weight:400!important; font-size:22px!important; line-height:1.3!important; letter-spacing:-0.2px!important; color:#42444d!important; }
+.orbit main h4:not(.spec *):not(.o-modal *):not(.cmp *){ font-family:Inter, "Helvetica Neue", Arial, sans-serif!important; font-weight:600!important; font-size:15px!important; color:#42444d!important; }
+/* narrative prose -> Times (template body). */
+.orbit .cs-hero__thesis{ font-family:"Times New Roman", "Tinos", Times, serif; font-size:20px; line-height:1.55; color:#464646; }
+.orbit .cs-lede{ font-family:"Times New Roman", "Tinos", Times, serif; font-size:20px; line-height:1.6; color:#464646; }
+.orbit .cs-prose, .orbit .cs-prose p, .orbit .cs-note p, .orbit .cs-part > p{ font-family:"Times New Roman", "Tinos", Times, serif; font-size:18px; line-height:1.6; color:#464646; }
+/* narrative table captions (the .cs-* tables, not .o-table specimens) */
+.orbit .cs-table caption{ font-family:Inter, "Helvetica Neue", Arial, sans-serif; color:#969696; }
+/* narrative inline links use the template accent */
+.orbit .cs-prose a, .orbit .cs-note a, .orbit .cs-lede a, .orbit .cs-hero__thesis a{ color:#7a5ab2; }
 `;
 
 export const orbitCaseBody = `<div class="progress" aria-hidden="true"></div>
 <div class="shellc">
   <aside>
-    <a class="backlink" href="/#work">&larr; Selected Work</a>
-    <div class="kicker">Case Study</div>
+    <nav class="cs-bc" aria-label="Breadcrumb"><a class="cs-bc-link" href="/#work"><svg class="cs-bc-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 19l-7-7 7-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Work</a><span class="cs-bc-sep" aria-hidden="true">/</span><span class="cs-bc-current">Orbit</span></nav>
     <details class="secnav" open>
       <summary>Sections</summary>
       <nav class="toc" aria-label="Case study sections"><p class="cs-toc__g">Why Orbit exists</p><ul><li><a href="#problem">The gradient problem</a></li><li><a href="#threshold">When to systematize</a></li><li><a href="#scope">Scope of the library</a></li><li><a href="#where">Architecture</a></li></ul><p class="cs-toc__g">Foundations</p><ul><li><a href="#f-tokens">Tokens</a></li><li><a href="#f-a11y">Accessibility</a></li><li><a href="#f-color">Color</a></li><li><a href="#f-type">Typography</a></li><li><a href="#f-space">Spacing</a></li><li><a href="#f-layout">Layout and direction</a></li><li><a href="#f-shape">Shape</a></li><li><a href="#f-elevation">Elevation and layers</a></li><li><a href="#f-motion">Motion</a></li><li><a href="#f-icons">Icons</a></li><li><a href="#f-writing">Writing</a></li></ul><p class="cs-toc__g">Components</p><ul><li><a href="#c-button">Button</a></li><li><a href="#c-link">Link</a></li><li><a href="#c-menu">Menu</a></li><li><a href="#c-tabs">Tabs</a></li><li><a href="#c-side-nav">Side nav</a></li><li><a href="#c-pagination">Pagination</a></li><li><a href="#c-language-switcher">Language switcher</a></li><li><a href="#c-text-field">Text field</a></li><li><a href="#c-select">Select</a></li><li><a href="#c-checkbox">Checkbox</a></li><li><a href="#c-radio-group">Radio group</a></li><li><a href="#c-switch">Switch</a></li><li><a href="#c-segmented-control">Segmented control</a></li><li><a href="#c-search">Search</a></li><li><a href="#c-banner">Banner</a></li><li><a href="#c-toast">Toast</a></li><li><a href="#c-badge">Badge</a></li><li><a href="#c-tooltip">Tooltip</a></li><li><a href="#c-card">Card</a></li><li><a href="#c-accordion">Accordion</a></li><li><a href="#c-modal">Modal</a></li><li><a href="#c-data-table">Data table</a></li></ul><p class="cs-toc__g">Governance</p><ul><li><a href="#gov-roles">Roles</a></li><li><a href="#gov-flow">Contribution process</a></li><li><a href="#gov-gates">Contribution criteria</a></li><li><a href="#gov-lifecycle">Component lifecycle</a></li><li><a href="#waitlist">Component backlog</a></li><li><a href="#gov-measure">Adoption metrics</a></li></ul><p class="cs-toc__g">Adoption and impact</p><ul><li><a href="#adoption">Adoption</a></li><li><a href="#changed">Impact</a></li><li><a href="#learned">Learnings</a></li><li><a href="#next">Roadmap</a></li></ul></nav>
