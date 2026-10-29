@@ -9,59 +9,44 @@ import { caseStudyCss } from "@/content/case-study-styles";
 /**
  * Bhanzu CLM case study.
  *
- * This page REUSES the shared case-study template verbatim: it injects the exact
- * same frozen stylesheet (`caseStudyCss`) and the same `CaseRail`, and renders
- * the same DOM shell (`.cs > .cs-page > .cs-breadcrumb + CaseRail + .cs-content`),
- * so layout, fonts, spacing, the sticky breadcrumb, the sticky section nav and
- * its scroll behaviour, and the mobile rules are identical to every other case
- * study. The shared template files are NOT touched.
- *
- * The new content types this write-up needs (styled tables, full-width
- * clickable diagrams, numbered image placeholders and highlighted TODO notes)
- * are added through ONE extra, additive, page-local stylesheet (`clmExtrasCss`)
- * of new `.cs-*` classes that no other page uses, plus the block renderers
- * below. Copy is transcribed verbatim from the source document.
+ * Reuses the shared case-study template verbatim: the same frozen stylesheet
+ * (`caseStudyCss`), the same `CaseRail`, the same DOM shell and the original
+ * horizontal meta row. Layout, fonts, spacing, sticky breadcrumb, sticky nav
+ * and mobile rules are the template's; only the content and the content-level
+ * layout (tables, diagrams, placeholders, paired and half-width media) live
+ * here, through one additive page-local stylesheet (`clmExtrasCss`). Copy is
+ * transcribed verbatim from the source file. The shared template files are not
+ * touched.
  */
 
 // ---------------------------------------------------------------------------
 // Content model
 // ---------------------------------------------------------------------------
 
-type TableData = { head?: string[]; rows: string[][]; wide?: boolean };
+type TableData = { head?: string[]; rows: string[][] };
+type MediaItem = { n: number; name: string; desc: string; src?: string; alt?: string };
 type Block =
   | { t: "p"; text: string }
   | { t: "h3"; text: string }
   | { t: "ul"; items: string[] }
   | ({ t: "table" } & TableData)
-  | { t: "figure"; src?: string; file: string; alt: string; n: number }
+  | { t: "figure"; src: string; alt: string }
   | { t: "ph"; n: number; name: string; desc: string }
-  | { t: "todo"; text: string };
+  | { t: "pair"; items: [MediaItem, MediaItem] }
+  | { t: "halfText"; item: MediaItem; text: string };
 type Section = { id: string; label: string; heading: string; blocks: Block[] };
 
-// The overview area (cover, metadata table, highlights) sits above the sections,
-// in the template's hero/overview region.
-const COVER = {
-  n: 1,
-  name: "clm-img-01-cover-ticket-details",
-  desc: "Cover, the ticket details page",
-};
+// Overview area (above the sections): the cover, then the original horizontal
+// meta row filled from the file's "Project details" line.
+const COVER = { n: 1, name: "clm-img-01-cover-ticket-details", desc: "Cover, the ticket details page" };
 
-const OVERVIEW_TABLE: TableData = {
-  rows: [
-    ["Role", "Design Lead and sprint lead"],
-    ["Company", "Bhanzu (EdTech)"],
-    ["Timeline", "Mar - Dec 2022 (9 months)"],
-    [
-      "Team",
-      "3 designers I led, 20 to 25 engineers (front end, back end, full stack), 2 product managers, support operations and operations staff",
-    ],
-    ["Platform", "Web, internal tool"],
-    [
-      "Scope",
-      "IVR-based routing, CLM ticket workspace, root and child tickets, status flows, role-based dashboards, access states",
-    ],
-  ],
-};
+const META: { label: string; value: string }[] = [
+  { label: "Role", value: "Design Lead" },
+  { label: "Company", value: "Bhanzu, EdTech" },
+  { label: "Timeline", value: "Mar - Dec 2022" },
+  { label: "Team", value: "3 designers, 20 to 25 engineers, 2 product managers" },
+  { label: "Platform", value: "Web, internal tool" },
+];
 
 const SECTIONS: Section[] = [
   {
@@ -71,7 +56,7 @@ const SECTIONS: Section[] = [
     blocks: [
       {
         t: "p",
-        text: "I led the design of CLM (Customer Lifecycle Management), the in-house support platform that replaced Zendesk at Bhanzu. CLM gives every paying student one Customer Lifecycle Manager, recognises callers through the IVR, and routes each ticket to the right person before anyone answers. The platform handled around 500 to 600 tickets a day. Every paying student got one point of contact, and every ticket got a category, an owner and an SLA.",
+        text: "I led the design of CLM (Customer Lifecycle Management), the in-house support platform that replaced Zendesk at Bhanzu. CLM gives every paying student one Customer Lifecycle Manager, recognises callers through the IVR, and routes each ticket to the right person before anyone answers. The platform handled around 500 to 600 tickets a day. Every paying student got one point of contact, and every ticket got a category, an owner and an SLA. The scope covered IVR-based routing, the ticket workspace, root and child tickets, status flows, role-based dashboards and access states.",
       },
       { t: "h3", text: "My contribution" },
       {
@@ -105,7 +90,6 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "Support handled around 500 to 600 tickets a day (approximate). A separate floor of around 20 to 25 operations agents handled them, and all of them were to move onto CLM.",
       },
-      { t: "ph", n: 2, name: "clm-img-02-zendesk-queue", desc: "The Excel sheets or Zendesk queue the team worked from, if you have one" },
       { t: "h3", text: "Problems with the existing setup" },
       {
         t: "ul",
@@ -159,7 +143,7 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "Across all four functions, the picture was the same. Queries were handled in Zendesk alongside personal notes and several Excel sheets. Tickets had no category, there was no time limit for resolving a query, and nothing alerted the team lead when tickets stayed unresolved.",
       },
-      { t: "ph", n: 3, name: "clm-img-03-ops-exec-calls-gallery", desc: "Screenshots from the calls with the operations executives, as a small gallery. Caption: who each call was with, and one thing it changed in the design." },
+      { t: "ph", n: 2, name: "clm-img-02-ops-calls-gallery", desc: "Screenshots from the calls with the operations executives and the operations team lead. Caption: who each call was with." },
       { t: "h3", text: "Communication channels" },
       {
         t: "p",
@@ -184,7 +168,6 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "The CLMs and agents needed two things urgently. First, to see the tickets assigned to them as soon as they logged in. Second, to see what was urgent: the SLA time left, and how many tickets were breached, pending, on track and due to close that day.",
       },
-      { t: "ph", n: 4, name: "clm-img-04-team-lead-session", desc: "Screenshot from the session with the operations team lead" },
       { t: "h3", text: "Market scan" },
       {
         t: "p",
@@ -210,7 +193,6 @@ const SECTIONS: Section[] = [
       },
       {
         t: "table",
-        wide: true,
         head: ["Today, in Zendesk", "What CLM needed to do"],
         rows: [
           ["Any agent picked up any call", "Route each existing student to their own CLM"],
@@ -223,7 +205,6 @@ const SECTIONS: Section[] = [
           ["Many queries needed another team to resolve", "Let the CLM pass work to other teams without losing ownership"],
         ],
       },
-      { t: "ph", n: 5, name: "clm-img-05-workflow-mapping", desc: "Your workflow mapping or notes from the research, if you have them" },
     ],
   },
   {
@@ -273,7 +254,6 @@ const SECTIONS: Section[] = [
       },
       {
         t: "table",
-        wide: true,
         head: ["Open question at the start", "How I resolved it"],
         rows: [
           ["What does a CLM actually do all day?", "Mapped it with the operations team. Every task a CLM does starts and ends with a ticket, so the platform is built around the ticket"],
@@ -283,7 +263,18 @@ const SECTIONS: Section[] = [
           ["How does the team lead stay in control?", "A team leader view of the team's tickets and load"],
         ],
       },
-      { t: "ph", n: 6, name: "clm-img-06-whiteboard-brainstorm", desc: "Whiteboard or brainstorm from the early sessions, if you have one" },
+      { t: "h3", text: "How a call reaches the right person" },
+      {
+        t: "p",
+        text: "The routing flow answered the second question. The system identifies the caller through the IVR and sends the ticket to the student's CLM or to the support or inquiry team before an agent answers.",
+      },
+      { t: "figure", src: "/clm-diagrams/02-routing-flow.webp", alt: "IVR routing flow: the call is routed before anyone picks up" },
+      { t: "h3", text: "When a CLM needs another team" },
+      {
+        t: "p",
+        text: "When a query needs another team, the CLM does not hand the student over. The ticket stays with the CLM as the root ticket, and the CLM creates child tickets for the teams that can resolve each part. The student keeps one point of contact throughout.",
+      },
+      { t: "figure", src: "/clm-diagrams/03-root-and-child-tickets.webp", alt: "Root and child tickets: the CLM owns the root ticket while other teams work child tickets" },
     ],
   },
   {
@@ -292,26 +283,27 @@ const SECTIONS: Section[] = [
     heading: "How I led the project",
     blocks: [
       { t: "p", text: "I ran the project in sprints and led a cross-functional team of designers, engineers, product managers, support operations and operations staff." },
-      { t: "figure", n: 7, src: "/clm-images/sprint-1-team.webp", file: "clm-images/sprint-1-team.webp", alt: "The project team at UX Design Sprint 1.0" },
+      { t: "figure", src: "/clm-images/sprint-1-team.webp", alt: "Sprint 1, with designers, engineers, product managers and operations staff in the room" },
       {
-        t: "table",
-        wide: true,
-        head: ["Phase", "What happened", "My part"],
-        rows: [
-          ["Discovery", "Calls with every operations executive and the operations team lead", "Planned and ran the sessions; mapped processes, channels and pain points"],
-          ["Structure and core flows (Sprint 1)", "Wireframes, routing and the ticket workspace", "Designed the wireframes, structure and core flows myself"],
-          ["Dashboards and SLA visibility", "Role-based dashboards, SLA cards, status flows", "Designed the SLA cards and filtering"],
-          ["Build and version 1 scope", "Engineering build, scope decisions with PMs and engineers", "Agreed the version 1 scope; moved the ticket journey to its own page"],
+        t: "p",
+        text: "The work ran in sprints over nine months. Discovery came first: I planned and ran the calls with every operations executive and the operations team lead, and mapped their processes, channels and pain points. In Sprint 1, I designed the wireframes, the structure and the core flows myself, including routing and the ticket workspace.",
+      },
+      {
+        t: "p",
+        text: "The next phase covered the role-based dashboards, the SLA cards and the status flows, where I designed the SLA cards and the filtering. The last phase was the engineering build. I agreed the version 1 scope with the product managers and engineers, and moved the ticket journey to its own page.",
+      },
+      {
+        t: "pair",
+        items: [
+          { n: 3, name: "clm-img-03-sprint-1", desc: "Sprint 1" },
+          { n: 4, name: "clm-img-04-sprint-3", desc: "Sprint 3" },
         ],
       },
-      { t: "p", text: "The work ran in sprints over nine months." },
-      { t: "ph", n: 7, name: "clm-img-07-sprint1-board", desc: "Sprint 1 board with the screens I designed. Caption: what these screens set up for the rest of the build." },
       { t: "h3", text: "How the work was split" },
       {
         t: "p",
         text: "The team brainstormed together, then I designed the wireframes, the structure and the core flows myself. That includes the CLM ticket workspace, where the ticket lands after routing. I assigned work across the three designers and decided what would be prototyped and how. The designers built the prototypes.",
       },
-      { t: "ph", n: 8, name: "clm-img-08-ticket-details-wireframes", desc: "My wireframes of the ticket details page" },
       { t: "h3", text: "Operations in the sprints" },
       {
         t: "p",
@@ -322,7 +314,6 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "With 20 to 25 engineers and two product managers on the project, scope had to be agreed, not handed over. The clearest example was the ticket journey. I proposed showing it in expandable rows on the dashboard. The product managers and engineers pushed back on the complexity for version 1, and we agreed to give it its own ticket details page and plan the expandable rows for version 2 (decision 8).",
       },
-      { t: "ph", n: 9, name: "clm-img-09-sprint-review", desc: "The team, or operations staff, in a sprint review. Caption: which sprint, and what was being decided." },
     ],
   },
   {
@@ -333,7 +324,6 @@ const SECTIONS: Section[] = [
       { t: "p", text: "The design had to work within the support operation, the data that existed, and what engineering could build in the first release." },
       {
         t: "table",
-        wide: true,
         head: ["Constraint", "Type", "What it meant for the design"],
         rows: [
           ["The version 1 front end had to stay simple", "Engineering", "The ticket journey moved from expandable dashboard rows to its own ticket details page; expandable rows went to version 2"],
@@ -341,6 +331,7 @@ const SECTIONS: Section[] = [
           ["Caller recognition depended on the IVR", "Engineering", "The routing decision is made when the ticket is created"],
           ["Student data spanned personal details, course, batch, session, refund, PTM and assessment", "Data", "Collapsible sections on the ticket page"],
           ["Different roles could see different data", "Engineering", "Access rules per role, and a designed state for blocked access"],
+          ["No design system at the time", "Design", "The screens were built on a purchased UI component library, so designers and engineers worked from one shared set of components"],
         ],
       },
     ],
@@ -354,7 +345,7 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "CLM is not a set of screens for one user. It connects a caller, a routing system, a new role, several operations teams and their leads. I designed it as one ticket model that every role works from, with access rules deciding what each role can see and do. That kept every role looking at the same ticket, instead of separate tools drifting out of sync.",
       },
-      { t: "figure", n: 1, src: "/clm-diagrams/01-system-view.webp", file: "clm-diagrams/01-system-view.png", alt: "System view: every role works from the same tickets" },
+      { t: "figure", src: "/clm-diagrams/01-system-view.webp", alt: "System view: every role works from the same tickets" },
     ],
   },
   {
@@ -364,34 +355,11 @@ const SECTIONS: Section[] = [
     blocks: [
       {
         t: "p",
-        text: "The core flow is the routing decision. The system identifies the caller through the IVR and sends the ticket to the student's CLM or to the support or inquiry team before an agent answers.",
+        text: "The CLM's core user flow is the ticket journey. From the moment a ticket is assigned to the moment it closes, every step happens on the ticket page.",
       },
-      { t: "figure", n: 2, src: "/clm-diagrams/02-routing-flow.webp", file: "clm-diagrams/02-routing-flow.png", alt: "IVR routing flow: the call is routed before anyone picks up" },
-      { t: "h3", text: "Root and child tickets" },
-      {
-        t: "p",
-        text: "When a query needs another team, the CLM does not hand the student over. The ticket stays with the CLM as the root ticket, and the CLM creates child tickets for the teams that can resolve each part. The student keeps one point of contact throughout.",
-      },
-      { t: "figure", n: 3, src: "/clm-diagrams/03-root-and-child-tickets.webp", file: "clm-diagrams/03-root-and-child-tickets.png", alt: "Root and child tickets: the CLM owns the root ticket while other teams work child tickets" },
-      { t: "h3", text: "Information architecture" },
-      { t: "p", text: "The platform has a home for each role, with every CLM ticket opening into one ticket details page." },
-      { t: "figure", n: 4, src: "/clm-diagrams/04-information-architecture.webp", file: "clm-diagrams/04-information-architecture.png", alt: "CLM information architecture, the full sitemap across roles" },
-      {
-        t: "p",
-        text: "The key structural call was decision 1: the CLM's work lives inside the ticket, not across tabs. The dashboard lists the tickets assigned to the CLM, and each ticket ID opens a page that holds everything about that ticket.",
-      },
-      { t: "figure", n: 5, src: "/clm-diagrams/05-navigation-explored-vs-chosen.webp", file: "clm-diagrams/05-navigation-explored-vs-chosen.png", alt: "Navigation explored and chosen: the CLM's work lives inside the ticket, not across tabs" },
-      { t: "h3", text: "A CLM's ticket, from assignment to close" },
-      {
-        t: "p",
-        text: "This is the CLM's core user flow. From the moment a ticket is assigned to the moment it closes, every step happens on the ticket page.",
-      },
-      { t: "figure", n: 6, src: "/clm-diagrams/06-clm-user-flow.webp", file: "clm-diagrams/06-clm-user-flow.png", alt: "User flow: a CLM's ticket, from assignment to close" },
+      { t: "figure", src: "/clm-diagrams/06-clm-user-flow.webp", alt: "User flow: a CLM's ticket, from assignment to close" },
       { t: "h3", text: "Entry points" },
-      {
-        t: "p",
-        text: "The IVR call is the main entry point. Other teams receive work as child tickets created by a CLM.",
-      },
+      { t: "p", text: "The IVR call is the main entry point. Other teams receive work as child tickets created by a CLM." },
       { t: "h3", text: "Ticket lifecycle" },
       {
         t: "table",
@@ -421,12 +389,11 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "So I made the ticket the centre of the platform. Each ticket ID opens a page that holds everything about it: the root and child tickets, the conversation before and after, the logs and the student's details. A CLM goes from picking up a live ticket to closing it without leaving that page.",
       },
-      { t: "ph", n: 10, name: "clm-img-10-leftnav-vs-ticket-page", desc: "The early left-navigation exploration next to the final ticket page" },
+      { t: "figure", src: "/clm-diagrams/05-navigation-explored-vs-chosen.webp", alt: "Navigation explored and chosen: the CLM's work lives inside the ticket, not across tabs" },
       { t: "h3", text: "2. Show the essentials first, keep the rest one click away" },
       { t: "p", text: "I split the customer record into three levels by how often an agent needed it on a call." },
       {
         t: "table",
-        wide: true,
         head: ["Level", "What sits there", "Why"],
         rows: [
           ["Visible on open", "Ticket ID, lead ID, primary contact, SLA, source, short description", "Needed on every call"],
@@ -463,7 +430,6 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "My first version used small filter icons in every column header of the ticket table. I replaced them with SLA cards at the top of the dashboard. Each card shows a count, breaching tickets turn red, and clicking a card filters the table to those tickets. Urgent work became visible at a glance and one click away, instead of sitting behind small icons.",
       },
-      { t: "ph", n: 11, name: "clm-img-11-column-filters-vs-sla-cards", desc: "The early version with column filters next to the final SLA cards" },
       { t: "h3", text: "8. The ticket journey on the home dashboard (moved to version 2)" },
       {
         t: "p",
@@ -473,6 +439,18 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "The product managers felt it added complexity, and engineering pushed back because it made the version 1 front end harder to build. We agreed to move it to version 2. For version 1, the ticket journey moved to its own page. Clicking a ticket ID opens the ticket details page, with the ticket details, student details, ticket comms, ticket timeline and the assignee's details in one place.",
       },
+    ],
+  },
+  {
+    id: "information-architecture",
+    label: "Information architecture",
+    heading: "Information architecture",
+    blocks: [
+      {
+        t: "p",
+        text: "The final structure gives each role its own home, and every CLM ticket opens into one ticket details page. It follows from decision 1: the CLM's work lives inside the ticket, not across tabs.",
+      },
+      { t: "figure", src: "/clm-diagrams/04-information-architecture.webp", alt: "CLM information architecture, the full sitemap across roles" },
     ],
   },
   {
@@ -486,16 +464,25 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "Clicking a ticket ID opens the ticket details page. I designed this page myself, from wireframe to final layout. The ticket header carries the essentials, the collapsible sections hold the student and batch details, and the communication log sits on the right.",
       },
-      { t: "ph", n: 12, name: "clm-img-12-ticket-details-full", desc: "The full ticket details page, header and collapsed sections" },
-      { t: "ph", n: 13, name: "clm-img-13-student-personal-info-expanded", desc: "Student Personal Info expanded" },
-      { t: "ph", n: 14, name: "clm-img-14-communication-log", desc: "The communication log with the WhatsApp thread and a call recording" },
-      { t: "ph", n: 15, name: "clm-img-15-ticket-timeline", desc: "Ticket Timeline showing a root ticket and its child tickets" },
-      { t: "h3", text: "Status flows" },
-      { t: "ph", n: 16, name: "clm-img-16-change-status-flow", desc: "The Change Status flow, with one status opened" },
+      { t: "ph", n: 5, name: "clm-img-05-ticket-details-full", desc: "The full ticket details page, header and collapsed sections" },
+      {
+        t: "pair",
+        items: [
+          { n: 6, name: "clm-img-06-student-personal-info", desc: "Student Personal Info expanded" },
+          { n: 7, name: "clm-img-07-communication-log", desc: "The communication log with the WhatsApp thread and a call recording" },
+        ],
+      },
+      { t: "h3", text: "Status flows and ticket history" },
+      {
+        t: "pair",
+        items: [
+          { n: 8, name: "clm-img-08-change-status-flow", desc: "The Change Status flow, with one status opened" },
+          { n: 9, name: "clm-img-09-ticket-timeline", desc: "Ticket Timeline showing a root ticket and its child tickets" },
+        ],
+      },
       { t: "h3", text: "Role-based dashboards" },
       {
         t: "table",
-        wide: true,
         head: ["Role", "What they see", "What they can do"],
         rows: [
           ["CLM", "Their assigned tickets, how many are breaching the SLA, and other tickets assigned to other people or teams", "Work tickets, change status, create child tickets for other teams"],
@@ -512,11 +499,20 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "The dashboard also has an Other Tickets view. Because the IVR routes every call into one system, a CLM can see tickets assigned to other people or teams, such as the refunds team, and know where a student's issue has gone.",
       },
-      { t: "ph", n: 17, name: "clm-img-17-clm-dashboard", desc: "CLM dashboard with the SLA cards and the Other Tickets view" },
-      { t: "ph", n: 18, name: "clm-img-18-team-leader-dashboard", desc: "Team leader dashboard with My Team" },
-      { t: "ph", n: 19, name: "clm-img-19-leadership-overview", desc: "Leadership overview" },
+      { t: "ph", n: 10, name: "clm-img-10-clm-dashboard", desc: "CLM dashboard with the SLA cards and the Other Tickets view" },
+      {
+        t: "pair",
+        items: [
+          { n: 11, name: "clm-img-11-team-leader-dashboard", desc: "Team leader dashboard with My Team" },
+          { n: 12, name: "clm-img-12-leadership-overview", desc: "Leadership overview" },
+        ],
+      },
       { t: "h3", text: "Access states" },
-      { t: "ph", n: 20, name: "clm-img-20-403-state", desc: "The 403 state for a user without access to a page" },
+      {
+        t: "halfText",
+        item: { n: 13, name: "clm-img-13-403-state", desc: "The 403 state for a user without access to a page" },
+        text: "Each role sees only what it needs. When a user opens a page outside their role, they see a designed blocked-access state instead of a dead end.",
+      },
     ],
   },
   {
@@ -548,7 +544,6 @@ const SECTIONS: Section[] = [
       { t: "p", text: "CLM changed how Bhanzu's support worked, from who answers a call to how a team lead sees what is breaching." },
       {
         t: "table",
-        wide: true,
         head: ["Area", "Before, on Zendesk", "After, on CLM"],
         rows: [
           ["Ownership", "Any agent picked up any call", "Every paying student has one CLM"],
@@ -588,9 +583,8 @@ const SECTIONS: Section[] = [
 // Rendering
 // ---------------------------------------------------------------------------
 
-// Highlight any [square-bracketed] note inline as a visible TODO mark, so every
-// note to the user is findable in prose, list items and table cells. Copy is
-// otherwise rendered verbatim.
+// Render any [square-bracketed] note inline as a visible mark (none remain in
+// the current copy, kept as a safeguard). Copy is otherwise verbatim.
 function renderInline(text: string) {
   const parts = text.split(/(\[[^\]]*\])/g);
   return parts.map((p, i) =>
@@ -604,9 +598,9 @@ function renderInline(text: string) {
   );
 }
 
-function Table({ head, rows, wide }: TableData) {
+function Table({ head, rows }: TableData) {
   return (
-    <div className={`cs-tablewrap${wide ? " wide" : ""}`}>
+    <div className="cs-tablewrap">
       <table className="cs-table">
         {head ? (
           <thead>
@@ -661,6 +655,42 @@ export default function ClmCaseStudy() {
     };
   }, [lightbox, close]);
 
+  // A clickable, keyboard-accessible figure (a div, not a <button>, so it does
+  // not size to the image's intrinsic width). Scales to its container, aspect
+  // kept, never cropped.
+  const figure = (key: string | number, src: string, alt: string, caption?: string) => {
+    const open = () => setLightbox({ src, alt });
+    return (
+      <figure key={key} className="cs-fig">
+        <div
+          className="cs-fig-btn"
+          role="button"
+          tabIndex={0}
+          onClick={open}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              open();
+            }
+          }}
+          aria-label={`Open full size: ${alt}`}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt} />
+          <span className="cs-fig-zoom" aria-hidden>
+            Click to enlarge
+          </span>
+        </div>
+        {caption ? <figcaption>{caption}</figcaption> : <figcaption>{alt}</figcaption>}
+      </figure>
+    );
+  };
+
+  // One media slot: a real image (figure) when a src is supplied, otherwise a
+  // numbered placeholder. Used on its own and inside pairs / half-width rows.
+  const mediaItem = (it: MediaItem, key: string | number) =>
+    it.src ? figure(key, it.src, it.alt ?? it.desc, it.desc) : <Placeholder key={key} n={it.n} name={it.name} desc={it.desc} />;
+
   const renderBlock = (b: Block, key: number) => {
     switch (b.t) {
       case "p":
@@ -684,55 +714,25 @@ export default function ClmCaseStudy() {
           </ul>
         );
       case "table":
-        return <Table key={key} head={b.head} rows={b.rows} wide={b.wide} />;
+        return <Table key={key} head={b.head} rows={b.rows} />;
       case "ph":
         return <Placeholder key={key} n={b.n} name={b.name} desc={b.desc} />;
-      case "todo":
+      case "figure":
+        return figure(key, b.src, b.alt);
+      case "pair":
         return (
-          <div key={key} className="cs-todo">
-            <span className="cs-todo-tag">TODO</span>
-            <span className="cs-todo-text">{b.text}</span>
+          <div key={key} className="cs-pair">
+            {mediaItem(b.items[0], 0)}
+            {mediaItem(b.items[1], 1)}
           </div>
         );
-      case "figure": {
-        const num = String(b.n).padStart(2, "0");
-        if (!b.src) {
-          return (
-            <figure key={key} className="cs-fig cs-fig-missing" aria-label={`Diagram ${num} pending: ${b.alt}`}>
-              <div className="cs-fig-missing-tag">Diagram {num} pending</div>
-              <div className="cs-fig-missing-desc">{b.alt}</div>
-              <div className="cs-fig-missing-file">{b.file} was not provided</div>
-            </figure>
-          );
-        }
-        const open = () => setLightbox({ src: b.src as string, alt: b.alt });
+      case "halfText":
         return (
-          <figure key={key} className="cs-fig">
-            {/* Shrinkable block (not a <button>, which would size to the image's
-                intrinsic width and widen the column); keyboard-accessible. */}
-            <div
-              className="cs-fig-btn"
-              role="button"
-              tabIndex={0}
-              onClick={open}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  open();
-                }
-              }}
-              aria-label={`Open full size: ${b.alt}`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={b.src} alt={b.alt} />
-              <span className="cs-fig-zoom" aria-hidden>
-                Click to enlarge
-              </span>
-            </div>
-            <figcaption>{b.alt}</figcaption>
-          </figure>
+          <div key={key} className="cs-halftext">
+            {mediaItem(b.item, 0)}
+            <div className="cs-halftext-body">{renderInline(b.text)}</div>
+          </div>
         );
-      }
       default:
         return null;
     }
@@ -764,12 +764,19 @@ export default function ClmCaseStudy() {
             <h1 className="cs-h1">Building Bhanzu&apos;s in-house customer support platform</h1>
             <p className="cs-subtitle">Customer Lifecycle Management (CLM), Bhanzu</p>
 
-            {/* Overview area: cover, the overview table, and the highlights */}
+            {/* Cover, then the original horizontal meta row */}
             <Placeholder n={COVER.n} name={COVER.name} desc={COVER.desc} />
 
             <hr className="cs-div cs-div-hero" />
 
-            <Table rows={OVERVIEW_TABLE.rows} />
+            <div className="cs-meta">
+              {META.map((m) => (
+                <div key={m.label} className="cs-meta-item">
+                  <div className="cs-meta-label">{m.label}</div>
+                  <div className="cs-meta-value">{m.value}</div>
+                </div>
+              ))}
+            </div>
 
             <hr className="cs-div cs-div-meta" />
 
@@ -804,16 +811,14 @@ export default function ClmCaseStudy() {
 
 // ---------------------------------------------------------------------------
 // Page-local additive styles. New `.cs-*` classes only; nothing here overrides
-// a shared template rule or affects any other case study. Font stacks are
-// written literally (the template's own variables resolve on this page because
-// the same `.cs` root is used, but figures/tables/placeholders live inside it).
+// a shared template rule or affects any other case study. Every content element
+// is capped at the body text column (var(--col)) and never wider.
 // ---------------------------------------------------------------------------
 
 const clmExtrasCss = `
 .cs-subtitle{ margin:12px 0 0; font-family:var(--inter); font-weight:400; font-size:18px; line-height:1.5; color:#8c8c8c; max-width:var(--col); }
 
-/* ---- tables ---- */
-/* every table shares the body text column; it never exceeds --col */
+/* ---- tables (share the body text column) ---- */
 .cs-tablewrap{ margin-top:24px; width:100%; max-width:var(--col); overflow-x:auto; }
 .cs-table{ width:100%; border-collapse:collapse; font-family:var(--inter); }
 .cs-table th{ text-align:left; vertical-align:top; padding:12px 18px 12px 0; font-weight:600; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:#969696; border-bottom:1.5px solid var(--divider); }
@@ -821,7 +826,6 @@ const clmExtrasCss = `
 .cs-table td:last-child, .cs-table th:last-child{ padding-right:0; }
 .cs-table tbody tr:last-child td{ border-bottom:0; }
 .cs-table td strong, .cs-table td b{ font-weight:600; }
-/* first column reads as the row's label */
 .cs-table td:first-child{ font-weight:600; color:#42444d; }
 
 /* ---- body lists ---- */
@@ -831,9 +835,7 @@ const clmExtrasCss = `
 .cs-ul li + li{ margin-top:8px; }
 .cs-ul strong, .cs-ul b{ font-weight:600; }
 
-/* ---- figures / diagrams ---- */
-/* figures share the body text column; images scale down to fit it, aspect
-   kept, never cropped */
+/* ---- figures / diagrams (capped at the body column; scale down, aspect kept) ---- */
 .cs-fig{ margin:28px 0 0; width:100%; max-width:var(--col); }
 .cs-fig-btn{ display:block; width:100%; max-width:100%; min-width:0; padding:0; border:1px solid var(--divider); border-radius:8px; background:#fff; cursor:zoom-in; overflow:hidden; position:relative; }
 .cs-fig-btn:hover{ border-color:#cdbdea; }
@@ -843,21 +845,24 @@ const clmExtrasCss = `
 .cs-fig-btn:hover .cs-fig-zoom, .cs-fig-btn:focus-visible .cs-fig-zoom{ opacity:1; }
 .cs-fig figcaption{ margin-top:10px; font-family:var(--inter); font-size:13px; line-height:1.45; color:#8c8c8c; }
 
-.cs-fig-missing{ border:1.5px dashed #d8b4b4; border-radius:8px; background:#fdf6f6; padding:28px; }
-.cs-fig-missing-tag{ font-family:var(--inter); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#b5584f; }
-.cs-fig-missing-desc{ margin-top:8px; font-family:var(--inter); font-size:16px; color:#5f5f5f; }
-.cs-fig-missing-file{ margin-top:6px; font-family:var(--roboto); font-size:13px; color:#9a9a9a; }
-
-/* ---- image placeholders ---- */
+/* ---- image placeholders (full column) ---- */
 .cs-ph{ margin:28px 0 0; width:100%; max-width:var(--col); min-height:200px; border:1.5px dashed #cfcfcf; border-radius:8px; background:#fafafa; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:8px; padding:36px 28px; }
 .cs-ph-num{ font-family:var(--inter); font-weight:600; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); }
 .cs-ph-desc{ font-family:var(--inter); font-size:16px; line-height:1.5; color:#5f5f5f; max-width:560px; }
 .cs-ph-name{ font-family:var(--roboto); font-size:12.5px; color:#a6a6a6; background:#f0f0f0; border-radius:4px; padding:3px 9px; }
 
-/* ---- TODO notes to the user ---- */
-.cs-todo{ margin-top:20px; max-width:var(--col); display:flex; gap:12px; align-items:flex-start; background:#fff7d6; border:1px solid #f0d675; border-left:3px solid #e0a800; border-radius:6px; padding:12px 16px; }
-.cs-todo-tag{ flex:none; font-family:var(--inter); font-weight:700; font-size:11px; letter-spacing:0.08em; color:#8a6d00; background:#ffe99a; border-radius:4px; padding:3px 7px; margin-top:1px; }
-.cs-todo-text{ font-family:var(--inter); font-size:15px; line-height:1.55; color:#6b5600; }
+/* ---- paired media: two equal items side by side inside the body column; stack on mobile ---- */
+.cs-pair{ margin:28px 0 0; max-width:var(--col); display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:stretch; }
+.cs-pair .cs-ph, .cs-pair .cs-fig{ margin:0; max-width:none; }
+.cs-pair .cs-ph{ min-height:150px; padding:28px 18px; }
+
+/* ---- half-width media with the text beside it; stack on mobile ---- */
+.cs-halftext{ margin:28px 0 0; max-width:var(--col); display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; }
+.cs-halftext .cs-ph, .cs-halftext .cs-fig{ margin:0; max-width:none; }
+.cs-halftext .cs-ph{ min-height:180px; }
+.cs-halftext-body{ font-family:var(--body); font-size:16px; line-height:1.33; color:#464646; }
+
+/* ---- inline note highlight (kept for any bracketed note) ---- */
 .cs-todo-in{ background:#ffe99a; color:#6b5600; border-radius:3px; padding:0 4px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
 
 @media (max-width:767px){
@@ -865,6 +870,8 @@ const clmExtrasCss = `
   .cs-table td{ font-size:15px; }
   .cs-ul{ font-size:16px; }
   .cs-ph{ min-height:160px; padding:28px 20px; }
+  .cs-pair{ grid-template-columns:1fr; }
+  .cs-halftext{ grid-template-columns:1fr; }
 }
 
 /* ---- lightbox ---- */
