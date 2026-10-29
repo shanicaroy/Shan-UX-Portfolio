@@ -14,6 +14,7 @@ export const caseStudyCss = `
   --times: "Times New Roman", "Tinos", Times, serif;
   --inter: Inter, "Helvetica Neue", Arial, sans-serif;
   --roboto: Roboto, "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
   --divider: #e4e4e4;
   --accent: #7a5ab2;
   --col: 760px;   /* the one body column every element shares: text, metadata, dividers, hero, stats */
@@ -78,9 +79,10 @@ export const caseStudyCss = `
 .cs-section{ scroll-margin-top:88px; }
 .cs-section + .cs-section{ margin-top:48px; }
 .cs-h2{ margin:0; font-family:var(--georgia); font-weight:400; font-size:30px; line-height:1.2; letter-spacing:-0.3px; color:#42444d; outline:none; }
-.cs-body{ margin-top:16px; font-family:var(--times); font-size:18px; line-height:1.6; color:#464646; max-width:var(--col); }
+.cs-body{ margin-top:16px; font-family:var(--body); font-size:16px; line-height:1.33; letter-spacing:normal; color:#464646; max-width:var(--col); }
 .cs-body p{ margin:0; }
-.cs-body p + p{ margin-top:18px; }
+.cs-body p + p{ margin-top:11px; }
+.cs-body strong, .cs-body b{ font-weight:600; }
 .cs-h3{ margin:28px 0 8px; font-family:var(--georgia); font-weight:400; font-size:22px; line-height:1.3; letter-spacing:-0.2px; color:#42444d; }
 
 .cs-stats{ margin-top:48px; display:grid; grid-template-columns:repeat(4, 1fr); gap:28px; max-width:var(--col); }

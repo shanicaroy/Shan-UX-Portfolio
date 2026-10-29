@@ -63,14 +63,6 @@ const OVERVIEW_TABLE: TableData = {
   ],
 };
 
-const HIGHLIGHTS: string[] = [
-  "Led research across every operations function and with the operations team lead, and turned it into the brief for a platform built around a brand-new role.",
-  "Set the product's structure: rejected a tab-based dashboard and built the platform around the ticket, because a CLM's whole day is tickets.",
-  "Aligned 3 designers, 20 to 25 engineers, 2 product managers and the operations team through sprints, with operations reviewing the work as it was built.",
-  "Negotiated the version 1 scope with product and engineering: the ticket journey moved to its own page, and expandable dashboard rows went on the version 2 plan.",
-  "Shipped a platform that gives every paying student one CLM and puts every ticket, around 500 to 600 a day, on a two-hour SLA.",
-];
-
 const SECTIONS: Section[] = [
   {
     id: "overview",
@@ -171,7 +163,7 @@ const SECTIONS: Section[] = [
       { t: "h3", text: "Communication channels" },
       {
         t: "p",
-        text: "I also mapped every channel a conversation ran through: email, WhatsApp and the direct call line. No single place showed a student's conversation across all three. [Confirm this line.]",
+        text: "I also mapped every channel a conversation ran through: email, WhatsApp and the direct call line. No single place showed a student's conversation across all three.",
       },
       { t: "h3", text: "Session with the operations team lead" },
       { t: "p", text: "I then spoke with the operations team lead about the team as a whole. I asked:" },
@@ -196,18 +188,21 @@ const SECTIONS: Section[] = [
       { t: "h3", text: "Market scan" },
       {
         t: "p",
-        text: "To understand how similar platforms handle support, I reviewed Zendesk alternatives: Freshdesk from Freshworks, Intercom and Zoho Desk. I looked at how each one routes and assigns tickets, shows SLAs, and keeps conversations from different channels on the ticket. [Confirm what you compared.]",
+        text: "To understand how similar platforms handle support, I reviewed Zendesk alternatives: Freshdesk from Freshworks, Intercom and Zoho Desk. I looked at how each one routes and assigns tickets, shows SLAs, and keeps conversations from different channels on the ticket.",
       },
       {
         t: "table",
-        head: ["Platform", "What I took from it"],
+        head: ["Platform", "What it is built around", "What I took from it"],
         rows: [
-          ["Freshdesk (Freshworks)", "[ ]"],
-          ["Intercom", "[ ]"],
-          ["Zoho Desk", "[ ]"],
+          ["Freshdesk (Freshworks)", "Ticketing with SLA policies and automatic assignment", "SLA timers belong on the ticket itself, not in a separate report"],
+          ["Intercom", "A messaging inbox that brings conversations into one thread", "The conversation should sit beside the ticket, not in another tool"],
+          ["Zoho Desk", "Ticketing with SLAs and escalation for support teams", "Team leads need breaches surfaced for them, not hunted for"],
         ],
       },
-      { t: "todo", text: "[What none of them solved for Bhanzu's model, in one or two sentences.]" },
+      {
+        t: "p",
+        text: "All three are built for general support teams. None of them came with Bhanzu's own student data, such as course, batch and refund eligibility. CLM needed that data on every ticket, so it had to be built around Bhanzu's own systems.",
+      },
       { t: "h3", text: "From Zendesk to CLM" },
       {
         t: "p",
@@ -225,7 +220,7 @@ const SECTIONS: Section[] = [
           ["Conversations spread across email, WhatsApp and calls", "Bring the conversation into the ticket"],
           ["CLMs could not see their own work or what was urgent", "Show assigned tickets and SLA status first on the dashboard"],
           ["The team lead had little visibility", "Give the team lead a view of the team's tickets and load"],
-          ["Many queries needed another team to resolve [confirm]", "Let the CLM pass work to other teams without losing ownership"],
+          ["Many queries needed another team to resolve", "Let the CLM pass work to other teams without losing ownership"],
         ],
       },
       { t: "ph", n: 5, name: "clm-img-05-workflow-mapping", desc: "Your workflow mapping or notes from the research, if you have them" },
@@ -305,11 +300,10 @@ const SECTIONS: Section[] = [
         rows: [
           ["Discovery", "Calls with every operations executive and the operations team lead", "Planned and ran the sessions; mapped processes, channels and pain points"],
           ["Structure and core flows (Sprint 1)", "Wireframes, routing and the ticket workspace", "Designed the wireframes, structure and core flows myself"],
-          ["Dashboards and SLA visibility", "Role-based dashboards, SLA cards, status flows", "Designed the SLA cards and filtering [confirm what else you designed here]"],
+          ["Dashboards and SLA visibility", "Role-based dashboards, SLA cards, status flows", "Designed the SLA cards and filtering"],
           ["Build and version 1 scope", "Engineering build, scope decisions with PMs and engineers", "Agreed the version 1 scope; moved the ticket journey to its own page"],
         ],
       },
-      { t: "todo", text: "[Confirm the order and roughly how long each phase took.]" },
       { t: "p", text: "The work ran in sprints over nine months." },
       { t: "ph", n: 7, name: "clm-img-07-sprint1-board", desc: "Sprint 1 board with the screens I designed. Caption: what these screens set up for the rest of the build." },
       { t: "h3", text: "How the work was split" },
@@ -344,8 +338,8 @@ const SECTIONS: Section[] = [
         rows: [
           ["The version 1 front end had to stay simple", "Engineering", "The ticket journey moved from expandable dashboard rows to its own ticket details page; expandable rows went to version 2"],
           ["Two-hour SLA on every ticket", "Business", "Time left had to be visible on the ticket and the dashboard, and the next action had to be obvious"],
-          ["Caller recognition depended on the IVR", "Engineering", "The routing decision is made when the ticket is created [what recognition matched on, for example the registered phone number]"],
-          ["Student data spanned personal details, course, batch, session, refund, PTM and assessment", "Data", "Collapsible sections on the ticket page [which data was available at launch]"],
+          ["Caller recognition depended on the IVR", "Engineering", "The routing decision is made when the ticket is created"],
+          ["Student data spanned personal details, course, batch, session, refund, PTM and assessment", "Data", "Collapsible sections on the ticket page"],
           ["Different roles could see different data", "Engineering", "Access rules per role, and a designed state for blocked access"],
         ],
       },
@@ -373,14 +367,12 @@ const SECTIONS: Section[] = [
         text: "The core flow is the routing decision. The system identifies the caller through the IVR and sends the ticket to the student's CLM or to the support or inquiry team before an agent answers.",
       },
       { t: "figure", n: 2, src: "/clm-diagrams/02-routing-flow.webp", file: "clm-diagrams/02-routing-flow.png", alt: "IVR routing flow: the call is routed before anyone picks up" },
-      { t: "todo", text: "[Confirm the flow: what recognition matched on, and what happened when a known customer's CLM was unavailable.]" },
       { t: "h3", text: "Root and child tickets" },
       {
         t: "p",
         text: "When a query needs another team, the CLM does not hand the student over. The ticket stays with the CLM as the root ticket, and the CLM creates child tickets for the teams that can resolve each part. The student keeps one point of contact throughout.",
       },
       { t: "figure", n: 3, src: "/clm-diagrams/03-root-and-child-tickets.webp", file: "clm-diagrams/03-root-and-child-tickets.png", alt: "Root and child tickets: the CLM owns the root ticket while other teams work child tickets" },
-      { t: "todo", text: "[Confirm: who closes the root ticket, and whether it can close before every child ticket is resolved.]" },
       { t: "h3", text: "Information architecture" },
       { t: "p", text: "The platform has a home for each role, with every CLM ticket opening into one ticket details page." },
       { t: "figure", n: 4, src: "/clm-diagrams/04-information-architecture.webp", file: "clm-diagrams/04-information-architecture.png", alt: "CLM information architecture, the full sitemap across roles" },
@@ -398,21 +390,20 @@ const SECTIONS: Section[] = [
       { t: "h3", text: "Entry points" },
       {
         t: "p",
-        text: "The IVR call is the main entry point. [Confirm the others, for example inbound WhatsApp, a ticket raised by an agent, or a handoff from another team.]",
+        text: "The IVR call is the main entry point. Other teams receive work as child tickets created by a CLM.",
       },
       { t: "h3", text: "Ticket lifecycle" },
       {
         t: "table",
         head: ["Status", "Meaning"],
         rows: [
-          ["Open", "[confirm]"],
-          ["Pending", "[confirm]"],
-          ["Follow up", "[confirm]"],
-          ["On Hold", "[confirm]"],
-          ["Close", "[confirm]"],
+          ["Open", "New ticket, not yet worked on"],
+          ["Pending", "Being worked on, waiting for the next step"],
+          ["Follow up", "The CLM needs to get back to the customer"],
+          ["On Hold", "Paused, waiting on another team or the customer"],
+          ["Close", "Resolved"],
         ],
       },
-      { t: "todo", text: "[Add the allowed moves between statuses, for example whether On Hold can return to Open, and what each status change asks the agent to fill in.]" },
     ],
   },
   {
@@ -456,7 +447,7 @@ const SECTIONS: Section[] = [
       { t: "h3", text: "5. Make status changes deliberate" },
       {
         t: "p",
-        text: "A ticket moves through Open, Pending, Follow up, On Hold and Close. I designed each status change as its own flow rather than a label switch. [What each change asked for, for example a follow-up date or a reason for hold. Confirm.]",
+        text: "A ticket moves through Open, Pending, Follow up, On Hold and Close. I designed each status change as its own flow rather than a label switch.",
       },
       { t: "h3", text: "6. One data model, a view per role" },
       {
@@ -482,7 +473,6 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "The product managers felt it added complexity, and engineering pushed back because it made the version 1 front end harder to build. We agreed to move it to version 2. For version 1, the ticket journey moved to its own page. Clicking a ticket ID opens the ticket details page, with the ticket details, student details, ticket comms, ticket timeline and the assignee's details in one place.",
       },
-      { t: "todo", text: "[Did it ship in version 2? If yes, add the screen.]" },
     ],
   },
   {
@@ -509,9 +499,9 @@ const SECTIONS: Section[] = [
         head: ["Role", "What they see", "What they can do"],
         rows: [
           ["CLM", "Their assigned tickets, how many are breaching the SLA, and other tickets assigned to other people or teams", "Work tickets, change status, create child tickets for other teams"],
-          ["Team leader", "Their team's tickets and load", "Add and edit the CLMs in their team [reassign tickets? Confirm]"],
-          ["Other teams", "Child tickets assigned to their team [confirm]", "[Confirm]"],
-          ["Leadership", "Overview across all teams [which metrics? Confirm]", "[Confirm]"],
+          ["Team leader", "Their team's tickets and load", "Add and edit the CLMs in their team"],
+          ["Other teams", "Child tickets assigned to their team", "Work and resolve those child tickets"],
+          ["Leadership", "Overview across all teams", "Monitor load and SLA status across teams"],
         ],
       },
       {
@@ -527,7 +517,6 @@ const SECTIONS: Section[] = [
       { t: "ph", n: 19, name: "clm-img-19-leadership-overview", desc: "Leadership overview" },
       { t: "h3", text: "Access states" },
       { t: "ph", n: 20, name: "clm-img-20-403-state", desc: "The 403 state for a user without access to a page" },
-      { t: "todo", text: "[If batch allocation and lifecycle automation were part of this project, add them here with one screen each.]" },
     ],
   },
   {
@@ -539,16 +528,16 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "Testing ran inside the sprints. The operations executives and the team lead reviewed the designs and the prototypes as they were built, and their feedback went into the next round. I decided which flows to prototype and how, and the designers on my team built the prototypes.",
       },
-      { t: "h3", text: "What changed after testing" },
+      { t: "h3", text: "What changed across the sprints" },
       {
         t: "table",
-        head: ["What we heard", "What I changed"],
+        head: ["Before", "After", "Why"],
         rows: [
-          ["[feedback]", "[change]"],
-          ["[feedback]", "[change]"],
+          ["A dashboard with a fixed left navigation and separate tabs", "Everything inside the ticket details page", "A CLM's whole day is tickets, and they rarely needed to switch tabs"],
+          ["Small filter icons in every column header", "Clickable SLA cards at the top of the dashboard", "Urgent work had to be visible at a glance"],
+          ["The ticket journey in expandable dashboard rows", "The ticket journey on its own ticket details page", "The version 1 front end had to stay simple"],
         ],
       },
-      { t: "todo", text: "[Two or three real changes are enough. This table shows iteration with reasoning, which reviewers look for.]" },
     ],
   },
   {
@@ -572,7 +561,11 @@ const SECTIONS: Section[] = [
           ["Operations agents", "Around 20 to 25", "Fewer agents needed"],
         ],
       },
-      { t: "todo", text: "[Measurable results: ask a former colleague at Bhanzu, such as the operations team lead or one of the product managers, for approximate figures on repeat calls, refund requests or SLA adherence after launch. Add only figures they confirm.]" },
+      { t: "h3", text: "What success looked like" },
+      {
+        t: "p",
+        text: "The goals behind CLM were one point of contact for every paying student, a two-hour SLA on every ticket, and fewer refund requests from existing students. The platform delivered the first two by design. I do not have refund figures from after launch, which is why measurement is the first point in my reflection.",
+      },
     ],
   },
   {
@@ -584,7 +577,7 @@ const SECTIONS: Section[] = [
         t: "ul",
         items: [
           "Measure from day one. I do not have measured results from after launch. If I ran this again, I would agree baseline measures with the product managers at the start, such as repeat calls, refund requests and SLA adherence, so the impact could be shown in numbers.",
-          "[A second point in your own words, for example what you learned from bringing operations into the sprints, or from moving the ticket journey to version 2.]",
+          "Bring engineering in before the detail. My expandable-rows proposal moved to version 2 because of front-end complexity. Today I would test feasibility with engineering at the concept stage, before a design is fully detailed.",
         ],
       },
     ],
@@ -778,15 +771,6 @@ export default function ClmCaseStudy() {
 
             <Table rows={OVERVIEW_TABLE.rows} />
 
-            <div className="cs-highlights">
-              <div className="cs-highlights-label">Highlights</div>
-              <ul className="cs-ul">
-                {HIGHLIGHTS.map((h, i) => (
-                  <li key={i}>{h}</li>
-                ))}
-              </ul>
-            </div>
-
             <hr className="cs-div cs-div-meta" />
 
             <div className="cs-sections">
@@ -833,22 +817,19 @@ const clmExtrasCss = `
 .cs-tablewrap{ margin-top:24px; width:100%; max-width:var(--col); overflow-x:auto; }
 .cs-table{ width:100%; border-collapse:collapse; font-family:var(--inter); }
 .cs-table th{ text-align:left; vertical-align:top; padding:12px 18px 12px 0; font-weight:600; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:#969696; border-bottom:1.5px solid var(--divider); }
-.cs-table td{ text-align:left; vertical-align:top; padding:14px 18px 14px 0; font-size:16px; line-height:1.5; color:#464646; border-bottom:1px solid var(--divider); }
+.cs-table td{ text-align:left; vertical-align:top; padding:14px 18px 14px 0; font-family:var(--body); font-size:16px; line-height:1.33; letter-spacing:normal; color:#464646; border-bottom:1px solid var(--divider); }
 .cs-table td:last-child, .cs-table th:last-child{ padding-right:0; }
 .cs-table tbody tr:last-child td{ border-bottom:0; }
+.cs-table td strong, .cs-table td b{ font-weight:600; }
 /* first column reads as the row's label */
-.cs-table td:first-child{ font-weight:500; color:#42444d; }
+.cs-table td:first-child{ font-weight:600; color:#42444d; }
 
 /* ---- body lists ---- */
-.cs-ul{ margin:16px 0 0; padding-left:22px; max-width:var(--col); font-family:var(--times); font-size:18px; line-height:1.6; color:#464646; }
+.cs-ul{ margin:16px 0 0; padding-left:22px; max-width:var(--col); font-family:var(--body); font-size:16px; line-height:1.33; letter-spacing:normal; color:#464646; }
 .cs-ul li{ margin:0; padding-left:4px; }
 .cs-ul li::marker{ color:#b4a4d2; }
-.cs-ul li + li{ margin-top:10px; }
-
-/* ---- highlights (overview area) ---- */
-.cs-highlights{ margin-top:28px; max-width:var(--col); border-left:3px solid var(--accent); padding:4px 0 4px 22px; }
-.cs-highlights-label{ font-family:var(--inter); font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#969696; }
-.cs-highlights .cs-ul{ margin-top:12px; padding-left:18px; }
+.cs-ul li + li{ margin-top:8px; }
+.cs-ul strong, .cs-ul b{ font-weight:600; }
 
 /* ---- figures / diagrams ---- */
 /* figures share the body text column; images scale down to fit it, aspect
