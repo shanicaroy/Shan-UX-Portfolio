@@ -19,8 +19,7 @@ const u = (px: number) => `calc(${px} * var(--u))`;
 
 export const caseStudyCss = `
 .cs{
-  --fit: 0.67;   /* overall on-screen size of the case study; lower = smaller */
-  --u: calc(min(100vw / 1728, 1px) * var(--fit));
+  --u: calc(100vw / 2580);   /* reference width 2580; no cap — the canvas fills the window */
   --georgia: Georgia, "Gelasio", "Times New Roman", serif;
   --times: "Times New Roman", "Tinos", Times, serif;
   --inter: Inter, "Helvetica Neue", Arial, sans-serif;
@@ -32,7 +31,7 @@ export const caseStudyCss = `
 .cs *{ box-sizing:border-box; }
 
 /* ---------- the 1728 canvas, scaled by --u ---------- */
-.cs-canvas{ width:${u(1728)}; max-width:100%; margin-inline:auto; position:relative; }
+.cs-canvas{ width:100%; margin-inline:auto; position:relative; }
 .cs-grid{ display:grid; grid-template-columns:${u(234)} ${u(1058)}; column-gap:${u(32)}; padding-left:${u(103)}; }
 
 /* ---------- left rail (sticky) ---------- */
