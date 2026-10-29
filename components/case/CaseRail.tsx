@@ -8,34 +8,34 @@ import "@fontsource/tinos/400.css";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
 
 export type RailSection = { id: string; label: string };
 
 /**
- * Sticky left rail: breadcrumb + section nav, with scroll-spy. The active-item
- * logic is the old case-template approach (the Orbit/VMware `CaseToc`
- * scroll-spy) adapted to frame 2699:4272's rules: the active section is the one
- * whose heading most recently crossed the 191px line (scaled; the sticky top
- * bar's bottom below 1024), the last section wins at the bottom of the page, a
- * click sets the active item immediately and locks out the spy so it never
- * flickers through the sections scrolled past, and focus lands on the heading.
+ * Sticky section nav with scroll-spy. The active section is the one whose
+ * heading most recently crossed the line just below the sticky bars; the last
+ * section wins at the bottom of the page; a click sets the active item
+ * immediately and locks the spy so it never flickers through the sections
+ * scrolled past; focus lands on the heading. Breadcrumb lives in CaseStudy now.
  */
-export default function CaseRail({ breadcrumb, sections }: { breadcrumb: string; sections: readonly RailSection[] }) {
+export default function CaseRail({ sections }: { sections: readonly RailSection[] }) {
   const [active, setActive] = useState(sections[0]?.id ?? "");
   const navRef = useRef<HTMLElement>(null);
   const lock = useRef(false);
   const didInit = useRef(false);
 
-  // The scaled 225 content-top line on web (>=768px); the sticky top bar's
-  // height below 768px, where the layout is the responsive phone version.
+  // The line just below the sticky breadcrumb bar (web) or below the stacked
+  // breadcrumb + section bars (phones). No viewport scaling — fixed px.
   const anchorLine = useCallback(() => {
-    if (typeof window === "undefined") return 225;
+    if (typeof window === "undefined") return 88;
+    const bc = document.querySelector<HTMLElement>(".cs-breadcrumb");
+    const bcH = bc ? bc.getBoundingClientRect().height : 56;
     if (window.innerWidth < 768) {
       const bar = document.querySelector<HTMLElement>(".cs-rail");
-      return bar ? bar.getBoundingClientRect().height + 8 : 96;
+      const barH = bar ? bar.getBoundingClientRect().height : 44;
+      return bcH + barH + 8;
     }
-    return 225 * Math.min(1, window.innerWidth / 1728);
+    return bcH + 24;
   }, []);
 
   const computeActive = useCallback(() => {
@@ -136,37 +136,22 @@ export default function CaseRail({ breadcrumb, sections }: { breadcrumb: string;
   const single = sections.length < 2;
 
   return (
-    <aside className="cs-rail">
-      <nav className="cs-breadcrumb" aria-label="Breadcrumb">
-        <Link href="/#work" className="cs-bc-link">
-          <span className="cs-bc-arrow" aria-hidden>
-            &larr;
-          </span>
-          Work
-        </Link>
-        <span className="cs-bc-sep" aria-hidden>
-          /
-        </span>
-        <span className="cs-bc-current">{breadcrumb}</span>
-      </nav>
-
-      <nav ref={navRef} className={`cs-nav${single ? " single" : ""}`} aria-label="Case study sections">
-        <ul>
-          {sections.map((s) => (
-            <li key={s.id}>
-              <a
-                href={`#${s.id}`}
-                data-id={s.id}
-                aria-current={active === s.id ? "true" : undefined}
-                className={active === s.id ? "active" : ""}
-                onClick={(e) => onClick(e, s.id)}
-              >
-                {s.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </aside>
+    <nav ref={navRef} className={`cs-rail${single ? " single" : ""}`} aria-label="Case study sections">
+      <ul>
+        {sections.map((s) => (
+          <li key={s.id}>
+            <a
+              href={`#${s.id}`}
+              data-id={s.id}
+              aria-current={active === s.id ? "true" : undefined}
+              className={active === s.id ? "active" : ""}
+              onClick={(e) => onClick(e, s.id)}
+            >
+              {s.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

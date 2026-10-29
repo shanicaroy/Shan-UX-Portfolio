@@ -1,15 +1,17 @@
 import type { CSSProperties } from "react";
+import Link from "next/link";
 import Footer from "@/components/Footer";
 import CaseRail from "@/components/case/CaseRail";
 import { caseStudyCss } from "@/content/case-study-styles";
 
 /**
- * Shared case-study template, a 1:1 port of Figma frame 2699:4272. One layout
- * for every case study: the left rail (breadcrumb + sticky section nav) is built
- * from the section list; NDA pages pass a `notice`; stats render only when a
- * project supplies figures. All geometry/type lives in `caseStudyCss` (scoped
- * `.cs`), which is exact at >=1728 and scales responsively below. Copy is the
- * project's own; nothing here is invented.
+ * Shared case-study template: a normal, centered, responsive page (no viewport
+ * scaling). A 1400px container holds a full-width sticky breadcrumb, a sticky
+ * left section-nav rail (CaseRail, built from the section list), and the main
+ * content column; below 768px it collapses to one column with a sticky
+ * breadcrumb + horizontal section bar. NDA pages pass a `notice` and list only
+ * Overview; stats render only when a project supplies figures. Type sizes are
+ * fixed px in `caseStudyCss` (scoped `.cs`). Copy is the project's own.
  */
 
 export type CaseBlock = { k: "p" | "h3"; text: string };
@@ -51,11 +53,23 @@ export default function CaseStudy({ breadcrumb, logo, title, hero, notice, meta,
     <>
       <style dangerouslySetInnerHTML={{ __html: caseStudyCss }} />
       <main className="cs" id="main">
-        <div className="cs-canvas">
-          <div className="cs-grid">
-            <CaseRail breadcrumb={breadcrumb} sections={railSections} />
+        <div className="cs-page">
+          <nav className="cs-breadcrumb" aria-label="Breadcrumb">
+            <Link href="/#work" className="cs-bc-link">
+              <span className="cs-bc-arrow" aria-hidden>
+                &larr;
+              </span>
+              Work
+            </Link>
+            <span className="cs-bc-sep" aria-hidden>
+              /
+            </span>
+            <span className="cs-bc-current">{breadcrumb}</span>
+          </nav>
 
-            <div className="cs-content">
+          <CaseRail sections={railSections} />
+
+          <div className="cs-content">
               {logo ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -146,8 +160,6 @@ export default function CaseStudy({ breadcrumb, logo, title, hero, notice, meta,
               </div>
             </div>
           </div>
-        </div>
-
         <div className="cs-footerwrap">
           <Footer />
         </div>
