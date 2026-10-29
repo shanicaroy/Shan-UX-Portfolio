@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Footer from "@/components/Footer";
 import CaseRail from "@/components/case/CaseRail";
 import { caseStudyCss } from "@/content/case-study-styles";
@@ -27,9 +28,6 @@ export type CaseStudyProps = {
   stats?: readonly CaseStat[];
 };
 
-const fluid = (px: number) =>
-  `clamp(${Math.round(px * 0.59)}px, ${((px / 1728) * 100).toFixed(4)}vw, ${px}px)`;
-
 // Group a section's blocks so consecutive paragraphs share one <div.cs-body>
 // (for the paragraph-to-paragraph spacing) and each h3 stands on its own.
 function groupBlocks(blocks: readonly CaseBlock[]) {
@@ -53,7 +51,7 @@ export default function CaseStudy({ breadcrumb, logo, title, hero, notice, meta,
     <>
       <style dangerouslySetInnerHTML={{ __html: caseStudyCss }} />
       <main className="cs" id="main">
-        <div className="cs-wrap">
+        <div className="cs-canvas">
           <div className="cs-grid">
             <CaseRail breadcrumb={breadcrumb} sections={railSections} />
 
@@ -66,7 +64,7 @@ export default function CaseStudy({ breadcrumb, logo, title, hero, notice, meta,
                   alt={breadcrumb}
                   width={logo.w}
                   height={logo.h}
-                  style={{ width: fluid(logo.w) }}
+                  style={{ "--logo-w": String(logo.w) } as CSSProperties}
                 />
               ) : null}
 

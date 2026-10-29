@@ -27,14 +27,15 @@ export default function CaseRail({ breadcrumb, sections }: { breadcrumb: string;
   const lock = useRef(false);
   const didInit = useRef(false);
 
-  // The scaled 191 line on desktop; the sticky bar's height below 1024.
+  // The scaled 225 content-top line on web (>=768px); the sticky top bar's
+  // height below 768px, where the layout is the responsive phone version.
   const anchorLine = useCallback(() => {
-    if (typeof window === "undefined") return 191;
-    if (window.innerWidth < 1024) {
+    if (typeof window === "undefined") return 225;
+    if (window.innerWidth < 768) {
       const bar = document.querySelector<HTMLElement>(".cs-rail");
       return bar ? bar.getBoundingClientRect().height + 8 : 96;
     }
-    return 191 * Math.min(1, window.innerWidth / 1728);
+    return 225 * Math.min(1, window.innerWidth / 1728);
   }, []);
 
   const computeActive = useCallback(() => {
@@ -114,16 +115,22 @@ export default function CaseRail({ breadcrumb, sections }: { breadcrumb: string;
     }
     const heading = el.querySelector<HTMLElement>(".cs-h2") ?? el;
     heading.setAttribute("tabindex", "-1");
-    const settle = () => {
-      heading.focus({ preventScroll: true });
+    window.setTimeout(() => heading.focus({ preventScroll: true }), reduce ? 0 : 450);
+
+    // Keep the clicked section active until the visitor scrolls again — so the
+    // spy never flickers through the sections passed on the way, and a
+    // near-bottom section that can't reach the line stays the active one.
+    const scrollKeys = new Set(["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " ", "Spacebar"]);
+    const release = (ev: Event) => {
+      if (ev.type === "keydown" && !scrollKeys.has((ev as KeyboardEvent).key)) return;
       lock.current = false;
+      window.removeEventListener("wheel", release);
+      window.removeEventListener("touchstart", release);
+      window.removeEventListener("keydown", release);
     };
-    if (reduce) {
-      settle();
-    } else {
-      // Release the spy once the smooth scroll has settled.
-      window.setTimeout(settle, 650);
-    }
+    window.addEventListener("wheel", release, { passive: true });
+    window.addEventListener("touchstart", release, { passive: true });
+    window.addEventListener("keydown", release);
   };
 
   const single = sections.length < 2;
