@@ -297,6 +297,7 @@ const SECTIONS: Section[] = [
     heading: "How I led the project",
     blocks: [
       { t: "p", text: "I ran the project in sprints and led a cross-functional team of designers, engineers, product managers, support operations and operations staff." },
+      { t: "figure", n: 7, src: "/clm-images/sprint-1-team.webp", file: "clm-images/sprint-1-team.webp", alt: "The project team at UX Design Sprint 1.0" },
       {
         t: "table",
         wide: true,
@@ -393,7 +394,7 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "This is the CLM's core user flow. From the moment a ticket is assigned to the moment it closes, every step happens on the ticket page.",
       },
-      { t: "figure", n: 6, file: "clm-diagrams/06-clm-user-flow.png", alt: "User flow: a CLM's ticket, from assignment to close" },
+      { t: "figure", n: 6, src: "/clm-diagrams/06-clm-user-flow.webp", file: "clm-diagrams/06-clm-user-flow.png", alt: "User flow: a CLM's ticket, from assignment to close" },
       { t: "h3", text: "Entry points" },
       {
         t: "p",
