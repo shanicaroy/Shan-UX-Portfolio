@@ -56,9 +56,10 @@ export default function CaseStudy({ breadcrumb, logo, title, hero, notice, meta,
         <div className="cs-page">
           <nav className="cs-breadcrumb" aria-label="Breadcrumb">
             <Link href="/#work" className="cs-bc-link">
-              <span className="cs-bc-arrow" aria-hidden>
-                &larr;
-              </span>
+              <svg className="cs-bc-arrow" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path d="M19 12H5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M12 19l-7-7 7-7" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
               Work
             </Link>
             <span className="cs-bc-sep" aria-hidden>

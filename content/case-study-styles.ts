@@ -34,9 +34,9 @@ export const caseStudyCss = `
   display:flex; align-items:center; gap:8px; white-space:nowrap;
   padding:14px 0 16px; font-family:var(--inter);
 }
-.cs-bc-link{ display:inline-flex; align-items:center; gap:8px; color:#a2a2a2; text-decoration:none; font-size:16px; }
+.cs-bc-link{ display:inline-flex; align-items:center; gap:7px; color:#a2a2a2; text-decoration:none; font-size:16px; }
 .cs-bc-link:hover{ color:var(--accent); }
-.cs-bc-arrow{ font-size:20px; line-height:1; }
+.cs-bc-arrow{ width:19px; height:19px; flex:none; display:block; margin-top:1px; }
 .cs-bc-sep{ color:#cccccc; font-size:16px; }
 .cs-bc-current{ color:#202124; font-weight:500; font-size:16px; }
 
@@ -93,7 +93,7 @@ export const caseStudyCss = `
 @media (max-width:767px){
   .cs-page{ grid-template-columns:1fr; grid-template-areas:"bc" "nav" "main"; column-gap:0; padding:0 24px; }
   .cs-breadcrumb{ padding:12px 0; margin:0 -24px; padding-left:24px; padding-right:24px; border-bottom:1px solid var(--divider); }
-  .cs-bc-link{ font-size:15px; } .cs-bc-arrow{ font-size:19px; } .cs-bc-sep,.cs-bc-current{ font-size:15px; }
+  .cs-bc-link{ font-size:15px; } .cs-bc-arrow{ width:18px; height:18px; } .cs-bc-sep,.cs-bc-current{ font-size:15px; }
   .cs-rail{ position:sticky; top:49px; z-index:19; max-height:none; overflow:visible; background:#fff; margin:0 -24px; padding:8px 24px; border-bottom:1px solid var(--divider); }
   .cs-rail ul{ flex-direction:row; gap:18px; overflow-x:auto; white-space:nowrap; }
   .cs-rail a{ font-size:15px; }
