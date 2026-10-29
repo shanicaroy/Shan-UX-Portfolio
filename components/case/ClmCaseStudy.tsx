@@ -712,15 +712,30 @@ export default function ClmCaseStudy() {
             </figure>
           );
         }
+        const open = () => setLightbox({ src: b.src as string, alt: b.alt });
         return (
           <figure key={key} className="cs-fig">
-            <button type="button" className="cs-fig-btn" onClick={() => setLightbox({ src: b.src as string, alt: b.alt })} aria-label={`Open full size: ${b.alt}`}>
+            {/* Shrinkable block (not a <button>, which would size to the image's
+                intrinsic width and widen the column); keyboard-accessible. */}
+            <div
+              className="cs-fig-btn"
+              role="button"
+              tabIndex={0}
+              onClick={open}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  open();
+                }
+              }}
+              aria-label={`Open full size: ${b.alt}`}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={b.src} alt={b.alt} />
               <span className="cs-fig-zoom" aria-hidden>
                 Click to enlarge
               </span>
-            </button>
+            </div>
             <figcaption>{b.alt}</figcaption>
           </figure>
         );
@@ -813,12 +828,9 @@ export default function ClmCaseStudy() {
 const clmExtrasCss = `
 .cs-subtitle{ margin:12px 0 0; font-family:var(--inter); font-weight:400; font-size:18px; line-height:1.5; color:#8c8c8c; max-width:var(--col); }
 
-/* figures sit full content width; placeholders and figures can exceed the text column */
-.cs-content{ --fig: 100%; }
-
 /* ---- tables ---- */
-.cs-tablewrap{ margin-top:24px; max-width:var(--col); overflow-x:auto; }
-.cs-tablewrap.wide{ max-width:100%; }
+/* every table shares the body text column; it never exceeds --col */
+.cs-tablewrap{ margin-top:24px; width:100%; max-width:var(--col); overflow-x:auto; }
 .cs-table{ width:100%; border-collapse:collapse; font-family:var(--inter); }
 .cs-table th{ text-align:left; vertical-align:top; padding:12px 18px 12px 0; font-weight:600; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:#969696; border-bottom:1.5px solid var(--divider); }
 .cs-table td{ text-align:left; vertical-align:top; padding:14px 18px 14px 0; font-size:16px; line-height:1.5; color:#464646; border-bottom:1px solid var(--divider); }
@@ -826,10 +838,6 @@ const clmExtrasCss = `
 .cs-table tbody tr:last-child td{ border-bottom:0; }
 /* first column reads as the row's label */
 .cs-table td:first-child{ font-weight:500; color:#42444d; }
-.cs-table.wide td, .cs-table.wide th{ padding-right:28px; }
-/* wide (3-column) tables keep readable columns and scroll inside their wrapper
-   rather than widening the shared content column */
-.cs-tablewrap.wide .cs-table{ min-width:560px; }
 
 /* ---- body lists ---- */
 .cs-ul{ margin:16px 0 0; padding-left:22px; max-width:var(--col); font-family:var(--times); font-size:18px; line-height:1.6; color:#464646; }
@@ -843,11 +851,13 @@ const clmExtrasCss = `
 .cs-highlights .cs-ul{ margin-top:12px; padding-left:18px; }
 
 /* ---- figures / diagrams ---- */
-.cs-fig{ margin:28px 0 0; width:100%; }
-.cs-fig-btn{ display:block; width:100%; padding:0; border:1px solid var(--divider); border-radius:8px; background:#fff; cursor:zoom-in; overflow:hidden; position:relative; }
+/* figures share the body text column; images scale down to fit it, aspect
+   kept, never cropped */
+.cs-fig{ margin:28px 0 0; width:100%; max-width:var(--col); }
+.cs-fig-btn{ display:block; width:100%; max-width:100%; min-width:0; padding:0; border:1px solid var(--divider); border-radius:8px; background:#fff; cursor:zoom-in; overflow:hidden; position:relative; }
 .cs-fig-btn:hover{ border-color:#cdbdea; }
 .cs-fig-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
-.cs-fig-btn img{ display:block; width:100%; height:auto; }
+.cs-fig-btn img{ display:block; width:100%; max-width:100%; height:auto; }
 .cs-fig-zoom{ position:absolute; right:12px; bottom:12px; font-family:var(--inter); font-size:12px; font-weight:500; color:#5b5b5b; background:rgba(255,255,255,0.92); border:1px solid var(--divider); border-radius:999px; padding:5px 11px; opacity:0; transition:opacity .15s; pointer-events:none; }
 .cs-fig-btn:hover .cs-fig-zoom, .cs-fig-btn:focus-visible .cs-fig-zoom{ opacity:1; }
 .cs-fig figcaption{ margin-top:10px; font-family:var(--inter); font-size:13px; line-height:1.45; color:#8c8c8c; }
@@ -858,7 +868,7 @@ const clmExtrasCss = `
 .cs-fig-missing-file{ margin-top:6px; font-family:var(--roboto); font-size:13px; color:#9a9a9a; }
 
 /* ---- image placeholders ---- */
-.cs-ph{ margin:28px 0 0; width:100%; min-height:200px; border:1.5px dashed #cfcfcf; border-radius:8px; background:#fafafa; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:8px; padding:36px 28px; }
+.cs-ph{ margin:28px 0 0; width:100%; max-width:var(--col); min-height:200px; border:1.5px dashed #cfcfcf; border-radius:8px; background:#fafafa; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:8px; padding:36px 28px; }
 .cs-ph-num{ font-family:var(--inter); font-weight:600; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); }
 .cs-ph-desc{ font-family:var(--inter); font-size:16px; line-height:1.5; color:#5f5f5f; max-width:560px; }
 .cs-ph-name{ font-family:var(--roboto); font-size:12.5px; color:#a6a6a6; background:#f0f0f0; border-radius:4px; padding:3px 9px; }
@@ -870,11 +880,6 @@ const clmExtrasCss = `
 .cs-todo-in{ background:#ffe99a; color:#6b5600; border-radius:3px; padding:0 4px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
 
 @media (max-width:767px){
-  /* let the single mobile column shrink below its content's intrinsic width, so
-     a wide table scrolls inside its own wrapper instead of forcing the whole
-     page (H1, dividers, placeholders) wider than the viewport. Page-local; the
-     shared stylesheet is untouched. */
-  .cs-page{ grid-template-columns:minmax(0,1fr); }
   .cs-subtitle{ font-size:16px; }
   .cs-table td{ font-size:15px; }
   .cs-ul{ font-size:16px; }
