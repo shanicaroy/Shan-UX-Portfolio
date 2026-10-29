@@ -295,8 +295,8 @@ const SECTIONS: Section[] = [
       {
         t: "pair",
         items: [
-          { n: 3, name: "clm-img-03-sprint-1", desc: "Sprint 1" },
-          { n: 4, name: "clm-img-04-sprint-3", desc: "Sprint 3" },
+          { n: 3, name: "clm-img-03-sprint-1", desc: "Sprint 1", src: "/clm-images/sprint-1.webp", alt: "Sprint 1" },
+          { n: 4, name: "clm-img-04-sprint-3", desc: "Sprint 3", src: "/clm-images/sprint-3.webp", alt: "Sprint 3" },
         ],
       },
       { t: "h3", text: "How the work was split" },
@@ -855,6 +855,9 @@ const clmExtrasCss = `
 .cs-pair{ margin:28px 0 0; max-width:var(--col); display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:stretch; }
 .cs-pair .cs-ph, .cs-pair .cs-fig{ margin:0; max-width:none; }
 .cs-pair .cs-ph{ min-height:150px; padding:28px 18px; }
+/* real images keep their natural height (equal width, never cropped);
+   placeholders stretch to equal height */
+.cs-pair .cs-fig{ align-self:start; }
 
 /* ---- half-width media with the text beside it; stack on mobile ---- */
 .cs-halftext{ margin:28px 0 0; max-width:var(--col); display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; }
