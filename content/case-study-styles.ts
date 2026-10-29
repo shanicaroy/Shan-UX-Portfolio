@@ -16,6 +16,7 @@ export const caseStudyCss = `
   --roboto: Roboto, "Helvetica Neue", Arial, sans-serif;
   --divider: #e4e4e4;
   --accent: #7a5ab2;
+  --col: 760px;   /* the one body column every element shares: text, metadata, dividers, hero, stats */
   background:#fff; color:#202124;
 }
 .cs *{ box-sizing:border-box; }
@@ -54,21 +55,21 @@ export const caseStudyCss = `
 /* content column */
 .cs-content{ grid-area:main; min-width:0; padding-top:6px; }
 .cs-logo{ display:block; width:calc(var(--logo-w) * 1px); height:auto; }
-.cs-h1{ margin:28px 0 0; font-family:var(--georgia); font-weight:400; font-size:44px; line-height:1.15; letter-spacing:-0.5px; color:#42444d; }
-.cs-hero{ margin-top:28px; width:100%; height:auto; display:block; }
+.cs-h1{ margin:28px 0 0; font-family:var(--georgia); font-weight:400; font-size:44px; line-height:1.15; letter-spacing:-0.5px; color:#42444d; max-width:var(--col); }
+.cs-hero{ margin-top:28px; width:100%; max-width:var(--col); height:auto; display:block; }
 
 .cs-notice{ margin-top:40px; }
 .cs-notice-head{ display:flex; align-items:center; gap:8px; }
 .cs-notice-icon{ width:26px; height:26px; flex:none; display:block; }
 .cs-notice-title{ font-family:var(--inter); font-weight:500; font-size:22px; line-height:1.3; color:#464646; }
-.cs-notice-body{ margin:14px 0 0; font-family:var(--inter); font-weight:400; font-size:16px; line-height:1.55; color:#8c8c8c; max-width:760px; }
+.cs-notice-body{ margin:14px 0 0; font-family:var(--inter); font-weight:400; font-size:16px; line-height:1.55; color:#8c8c8c; max-width:var(--col); }
 
-.cs-div{ height:1px; background:var(--divider); border:0; width:100%; }
+.cs-div{ height:1px; background:var(--divider); border:0; width:100%; max-width:var(--col); }
 .cs-div-hero{ margin-top:40px; }
 .cs-div-notice{ margin-top:28px; }
 .cs-div-meta{ margin-top:32px; }
 
-.cs-meta{ margin-top:32px; display:flex; flex-wrap:wrap; column-gap:56px; row-gap:24px; align-items:flex-start; }
+.cs-meta{ margin-top:32px; display:flex; flex-wrap:wrap; column-gap:56px; row-gap:24px; align-items:flex-start; max-width:var(--col); }
 .cs-meta-label{ font-family:var(--inter); font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:#969696; }
 .cs-meta-value{ margin-top:8px; font-family:var(--roboto); font-weight:400; font-size:17px; line-height:1.4; color:#4f4f4f; }
 .cs-meta-item.scope .cs-meta-value{ max-width:320px; }
@@ -77,12 +78,12 @@ export const caseStudyCss = `
 .cs-section{ scroll-margin-top:88px; }
 .cs-section + .cs-section{ margin-top:48px; }
 .cs-h2{ margin:0; font-family:var(--georgia); font-weight:400; font-size:30px; line-height:1.2; letter-spacing:-0.3px; color:#42444d; outline:none; }
-.cs-body{ margin-top:16px; font-family:var(--times); font-size:18px; line-height:1.6; color:#464646; max-width:760px; }
+.cs-body{ margin-top:16px; font-family:var(--times); font-size:18px; line-height:1.6; color:#464646; max-width:var(--col); }
 .cs-body p{ margin:0; }
 .cs-body p + p{ margin-top:18px; }
 .cs-h3{ margin:28px 0 8px; font-family:var(--georgia); font-weight:400; font-size:22px; line-height:1.3; letter-spacing:-0.2px; color:#42444d; }
 
-.cs-stats{ margin-top:48px; display:grid; grid-template-columns:repeat(4, 1fr); gap:28px; max-width:900px; }
+.cs-stats{ margin-top:48px; display:grid; grid-template-columns:repeat(4, 1fr); gap:28px; max-width:var(--col); }
 .cs-stat-n{ font-family:var(--georgia); font-weight:400; font-size:48px; line-height:1.1; color:#353535; }
 .cs-stat-c{ margin-top:8px; font-family:var(--roboto); font-weight:400; font-size:14px; line-height:1.35; color:#939393; }
 
