@@ -19,7 +19,8 @@ const u = (px: number) => `calc(${px} * var(--u))`;
 
 export const caseStudyCss = `
 .cs{
-  --u: min(100vw / 1728, 1px);
+  --fit: 0.67;   /* overall on-screen size of the case study; lower = smaller */
+  --u: calc(min(100vw / 1728, 1px) * var(--fit));
   --georgia: Georgia, "Gelasio", "Times New Roman", serif;
   --times: "Times New Roman", "Tinos", Times, serif;
   --inter: Inter, "Helvetica Neue", Arial, sans-serif;
