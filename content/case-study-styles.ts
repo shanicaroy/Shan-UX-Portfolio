@@ -32,7 +32,7 @@ export const caseStudyCss = `
 
 /* ---------- the 1728 canvas, scaled by --u ---------- */
 .cs-canvas{ width:${u(1728)}; max-width:100%; margin-inline:auto; position:relative; }
-.cs-grid{ display:grid; grid-template-columns:${u(234)} ${u(1060)}; column-gap:${u(32)}; padding-left:${u(103)}; }
+.cs-grid{ display:grid; grid-template-columns:${u(234)} ${u(1058)}; column-gap:${u(32)}; padding-left:${u(103)}; }
 
 /* ---------- left rail (sticky) ---------- */
 .cs-rail{ position:sticky; top:0; align-self:start; padding-top:${u(65)}; }
@@ -82,7 +82,7 @@ export const caseStudyCss = `
 .cs-body p + p{ margin-top:${u(31)}; }
 .cs-h3{ margin:${u(34)} 0 ${u(12)}; font-family:var(--georgia); font-weight:400; font-size:${u(34)}; line-height:1.2; letter-spacing:${u(-0.68)}; color:#42444d; }   /* NOT IN FRAME — proposed H3 */
 
-.cs-stats{ margin-top:${u(52)}; display:grid; grid-template-columns:repeat(4, ${u(246)}); gap:${u(31)}; }
+.cs-stats{ margin-top:${u(52)}; display:grid; grid-template-columns:repeat(4, 1fr); gap:${u(31)}; }
 .cs-stat-n{ font-family:var(--georgia); font-weight:400; font-size:${u(64.5)}; letter-spacing:${u(3.2)}; line-height:1.1; color:#353535; }
 .cs-stat-c{ margin-top:${u(9)}; font-family:var(--roboto); font-weight:400; font-size:${u(16)}; line-height:${u(19)}; color:#939393; width:${u(223)}; max-width:100%; }
 
