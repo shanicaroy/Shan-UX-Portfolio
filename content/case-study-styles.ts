@@ -24,7 +24,7 @@ export const caseStudyCss = `
 
 /* centered page container + two-column grid (breadcrumb spans both) */
 .cs-page{
-  max-width:1400px; margin-inline:auto; padding:28px 64px 0;
+  max-width:1400px; margin-inline:auto; padding:4px 64px 0;
   display:grid; grid-template-columns:200px minmax(0,1fr); column-gap:80px;
   grid-template-areas:"bc bc" "nav main";
 }
@@ -43,7 +43,7 @@ export const caseStudyCss = `
 
 /* section nav rail — sticky, below the breadcrumb bar */
 .cs-rail{
-  grid-area:nav; position:sticky; top:62px; align-self:start;
+  grid-area:nav; position:sticky; top:62px; align-self:start; margin-top:94px;
   max-height:calc(100vh - 84px); overflow-y:auto; overflow-x:hidden; scrollbar-width:none; padding-top:6px;
 }
 .cs-rail::-webkit-scrollbar{ width:0; height:0; }
@@ -54,7 +54,7 @@ export const caseStudyCss = `
 .cs-rail a:focus-visible{ outline:2px solid var(--accent); outline-offset:4px; border-radius:2px; }
 
 /* content column */
-.cs-content{ grid-area:main; min-width:0; padding-top:6px; }
+.cs-content{ grid-area:main; min-width:0; padding-top:30px; }
 .cs-logo{ display:block; width:calc(var(--logo-w) * 1px); height:auto; }
 .cs-h1{ margin:28px 0 0; font-family:var(--georgia); font-weight:400; font-size:44px; line-height:1.15; letter-spacing:-0.5px; color:#42444d; max-width:var(--col); }
 .cs-hero{ margin-top:28px; width:100%; max-width:var(--col); height:auto; display:block; border-radius:0; }

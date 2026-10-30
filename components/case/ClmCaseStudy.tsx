@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import CaseRail from "@/components/case/CaseRail";
@@ -768,6 +768,16 @@ export default function ClmCaseStudy() {
           <CaseRail sections={railSections} />
 
           <div className="cs-content">
+            {/* Project logo, same component/size/position as the other case studies */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="cs-logo"
+              src="/hero/bhanzu-v2.svg"
+              alt="Bhanzu CLM"
+              width={40}
+              height={40}
+              style={{ "--logo-w": "40" } as CSSProperties}
+            />
             <h1 className="cs-h1">Bhanzu CLM</h1>
             <p className="cs-subtitle">Customer Lifecycle Management (CLM), Bhanzu</p>
 
