@@ -24,7 +24,7 @@ export const caseStudyCss = `
 
 /* centered page container + two-column grid (breadcrumb spans both) */
 .cs-page{
-  max-width:1400px; margin-inline:auto; padding:4px 64px 0;
+  max-width:1400px; margin-inline:auto; padding:31px 64px 0;
   display:grid; grid-template-columns:200px minmax(0,1fr); column-gap:80px;
   grid-template-areas:"bc bc" "nav main";
 }
@@ -33,9 +33,10 @@ export const caseStudyCss = `
 .cs-breadcrumb{
   grid-area:bc; position:sticky; top:0; z-index:20; background:#fff;
   display:flex; align-items:center; gap:8px; white-space:nowrap;
-  padding:14px 0 16px; font-family:var(--inter);
+  padding:0; font-family:var(--inter);
 }
-.cs-bc-link{ display:inline-flex; align-items:center; gap:7px; color:#a2a2a2; text-decoration:none; font-size:16px; }
+/* arrow hangs to the left so "Work" lines up with the left-nav text (x~84) */
+.cs-bc-link{ display:inline-flex; align-items:center; gap:7px; margin-left:-26px; color:#a2a2a2; text-decoration:none; font-size:16px; }
 .cs-bc-link:hover{ color:var(--accent); }
 .cs-bc-arrow{ width:19px; height:19px; flex:none; display:block; margin-top:1px; }
 .cs-bc-sep{ color:#cccccc; font-size:16px; }
@@ -54,9 +55,12 @@ export const caseStudyCss = `
 .cs-rail a:focus-visible{ outline:2px solid var(--accent); outline-offset:4px; border-radius:2px; }
 
 /* content column */
-.cs-content{ grid-area:main; min-width:0; padding-top:30px; }
-.cs-logo{ display:block; width:calc(var(--logo-w) * 1px); height:auto; }
-.cs-h1{ margin:28px 0 0; font-family:var(--georgia); font-weight:400; font-size:44px; line-height:1.15; letter-spacing:-0.5px; color:#42444d; max-width:var(--col); }
+.cs-content{ grid-area:main; min-width:0; padding-top:101px; }
+/* logo: 26px tall, left-aligned with the title; its negative top margin and
+   matching bottom margin net to zero flow, so it floats ~6px above the title
+   without moving the title, subtitle, cover or meta row */
+.cs-logo{ display:block; height:26px; width:auto; margin:-32px 0 6px 0; }
+.cs-h1{ margin:0; font-family:var(--georgia); font-weight:400; font-size:44px; line-height:1.15; letter-spacing:-0.5px; color:#42444d; max-width:var(--col); }
 .cs-hero{ margin-top:28px; width:100%; max-width:var(--col); height:auto; display:block; border-radius:0; }
 /* flat, square corners on all case-study media (images, diagrams, video) */
 .cs img, .cs video{ border-radius:0; }
@@ -97,12 +101,13 @@ export const caseStudyCss = `
 @media (max-width:767px){
   .cs-page{ grid-template-columns:1fr; grid-template-areas:"bc" "nav" "main"; column-gap:0; padding:0 24px; }
   .cs-breadcrumb{ padding:12px 0; margin:0 -24px; padding-left:24px; padding-right:24px; border-bottom:1px solid var(--divider); }
-  .cs-bc-link{ font-size:15px; } .cs-bc-arrow{ width:18px; height:18px; } .cs-bc-sep,.cs-bc-current{ font-size:15px; }
+  .cs-bc-link{ font-size:15px; margin-left:0; } .cs-bc-arrow{ width:18px; height:18px; } .cs-bc-sep,.cs-bc-current{ font-size:15px; }
   .cs-rail{ position:sticky; top:49px; z-index:19; max-height:none; overflow:visible; background:#fff; margin:0 -24px; padding:8px 24px; border-bottom:1px solid var(--divider); }
   .cs-rail ul{ flex-direction:row; gap:18px; overflow-x:auto; white-space:nowrap; }
   .cs-rail a{ font-size:13px; }
   .cs-rail.single{ display:none; }
   .cs-content{ padding-top:20px; }
+  .cs-logo{ margin:0 0 10px 0; }
   .cs-h1{ font-size:30px; line-height:1.18; margin-top:20px; }
   .cs-notice-title{ font-size:20px; } .cs-notice-icon{ width:22px; height:22px; }
   .cs-meta{ column-gap:24px; row-gap:20px; } .cs-meta-item{ width:calc(50% - 12px); }

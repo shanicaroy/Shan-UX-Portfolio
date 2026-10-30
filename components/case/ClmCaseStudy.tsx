@@ -774,9 +774,9 @@ export default function ClmCaseStudy() {
               className="cs-logo"
               src="/hero/bhanzu-v2.svg"
               alt="Bhanzu CLM"
-              width={40}
-              height={40}
-              style={{ "--logo-w": "40" } as CSSProperties}
+              width={26}
+              height={26}
+              style={{ "--logo-w": "26" } as CSSProperties}
             />
             <h1 className="cs-h1">Bhanzu CLM</h1>
             <p className="cs-subtitle">Customer Lifecycle Management (CLM), Bhanzu</p>
