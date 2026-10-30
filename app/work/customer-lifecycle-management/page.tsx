@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ClmCaseStudy from "@/components/case/ClmCaseStudy";
 
 export const metadata: Metadata = {
-  title: "Building Bhanzu's in-house customer support platform (CLM)",
+  title: "Bhanzu CLM",
   description:
     "Leading the design of Bhanzu's in-house support platform (CLM): IVR-based routing, the CLM ticket workspace, root and child tickets, status flows, role-based dashboards and access states.",
 };

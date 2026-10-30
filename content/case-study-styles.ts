@@ -14,7 +14,7 @@ export const caseStudyCss = `
   --times: "Times New Roman", "Tinos", Times, serif;
   --inter: Inter, "Helvetica Neue", Arial, sans-serif;
   --roboto: Roboto, "Helvetica Neue", Arial, sans-serif;
-  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --body: Georgia, "Times New Roman", serif;
   --divider: #e4e4e4;
   --accent: #7a5ab2;
   --col: 760px;   /* the one body column every element shares: text, metadata, dividers, hero, stats */
@@ -48,7 +48,7 @@ export const caseStudyCss = `
 }
 .cs-rail::-webkit-scrollbar{ width:0; height:0; }
 .cs-rail ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px; }
-.cs-rail a{ display:block; font-family:var(--inter); font-weight:500; font-size:16px; line-height:1.35; color:#acacac; text-decoration:none; transition:color .15s; }
+.cs-rail a{ display:block; font-family:var(--inter); font-weight:500; font-size:14px; line-height:1.35; color:#acacac; text-decoration:none; transition:color .15s; }
 .cs-rail a:hover{ color:var(--accent); }
 .cs-rail a.active{ color:var(--accent); }
 .cs-rail a:focus-visible{ outline:2px solid var(--accent); outline-offset:4px; border-radius:2px; }
@@ -57,7 +57,9 @@ export const caseStudyCss = `
 .cs-content{ grid-area:main; min-width:0; padding-top:6px; }
 .cs-logo{ display:block; width:calc(var(--logo-w) * 1px); height:auto; }
 .cs-h1{ margin:28px 0 0; font-family:var(--georgia); font-weight:400; font-size:44px; line-height:1.15; letter-spacing:-0.5px; color:#42444d; max-width:var(--col); }
-.cs-hero{ margin-top:28px; width:100%; max-width:var(--col); height:auto; display:block; }
+.cs-hero{ margin-top:28px; width:100%; max-width:var(--col); height:auto; display:block; border-radius:0; }
+/* flat, square corners on all case-study media (images, diagrams, video) */
+.cs img, .cs video{ border-radius:0; }
 
 .cs-notice{ margin-top:40px; }
 .cs-notice-head{ display:flex; align-items:center; gap:8px; }
@@ -98,7 +100,7 @@ export const caseStudyCss = `
   .cs-bc-link{ font-size:15px; } .cs-bc-arrow{ width:18px; height:18px; } .cs-bc-sep,.cs-bc-current{ font-size:15px; }
   .cs-rail{ position:sticky; top:49px; z-index:19; max-height:none; overflow:visible; background:#fff; margin:0 -24px; padding:8px 24px; border-bottom:1px solid var(--divider); }
   .cs-rail ul{ flex-direction:row; gap:18px; overflow-x:auto; white-space:nowrap; }
-  .cs-rail a{ font-size:15px; }
+  .cs-rail a{ font-size:13px; }
   .cs-rail.single{ display:none; }
   .cs-content{ padding-top:20px; }
   .cs-h1{ font-size:30px; line-height:1.18; margin-top:20px; }

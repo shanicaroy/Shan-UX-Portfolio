@@ -29,6 +29,7 @@ type Block =
   | { t: "p"; text: string }
   | { t: "h3"; text: string }
   | { t: "ul"; items: string[] }
+  | { t: "ol"; items: string[] }
   | ({ t: "table" } & TableData)
   | { t: "figure"; src: string; alt: string }
   | { t: "ph"; n: number; name: string; desc: string }
@@ -38,14 +39,12 @@ type Section = { id: string; label: string; heading: string; blocks: Block[] };
 
 // Overview area (above the sections): the cover, then the original horizontal
 // meta row filled from the file's "Project details" line.
-const COVER = { n: 1, name: "clm-img-01-cover-ticket-details", desc: "Cover, the ticket details page" };
-
-const META: { label: string; value: string }[] = [
+const META: { label: string; value: string; scope?: boolean }[] = [
   { label: "Role", value: "Design Lead" },
-  { label: "Company", value: "Bhanzu, EdTech" },
   { label: "Timeline", value: "Mar - Dec 2022" },
-  { label: "Team", value: "3 designers, 20 to 25 engineers, 2 product managers" },
-  { label: "Platform", value: "Web, internal tool" },
+  { label: "Product", value: "Web, internal tool" },
+  { label: "Scope", value: "IVR-based routing, CLM ticket workspace, root and child tickets, status flows, role-based dashboards, access states", scope: true },
+  { label: "Team", value: "3 designers, 20 to 25 engineers, 2 product managers", scope: true },
 ];
 
 const SECTIONS: Section[] = [
@@ -131,7 +130,7 @@ const SECTIONS: Section[] = [
       },
       { t: "p", text: "With each executive, I walked through their work step by step:" },
       {
-        t: "ul",
+        t: "ol",
         items: [
           "How does a query reach you?",
           "How do you solve it in Zendesk, from start to finish?",
@@ -152,7 +151,7 @@ const SECTIONS: Section[] = [
       { t: "h3", text: "Session with the operations team lead" },
       { t: "p", text: "I then spoke with the operations team lead about the team as a whole. I asked:" },
       {
-        t: "ul",
+        t: "ol",
         items: [
           "What challenges does the team face most often?",
           "Which queries come in most?",
@@ -713,6 +712,14 @@ export default function ClmCaseStudy() {
             ))}
           </ul>
         );
+      case "ol":
+        return (
+          <ol key={key} className="cs-ol">
+            {b.items.map((it, i) => (
+              <li key={i}>{renderInline(it)}</li>
+            ))}
+          </ol>
+        );
       case "table":
         return <Table key={key} head={b.head} rows={b.rows} />;
       case "ph":
@@ -761,17 +768,17 @@ export default function ClmCaseStudy() {
           <CaseRail sections={railSections} />
 
           <div className="cs-content">
-            <h1 className="cs-h1">Building Bhanzu&apos;s in-house customer support platform</h1>
+            <h1 className="cs-h1">Bhanzu CLM</h1>
             <p className="cs-subtitle">Customer Lifecycle Management (CLM), Bhanzu</p>
 
-            {/* Cover, then the original horizontal meta row */}
-            <Placeholder n={COVER.n} name={COVER.name} desc={COVER.desc} />
+            {/* Cover (the same asset as the Work listing), then the original horizontal meta row */}
+            <video className="cs-hero" src="/projects/clm.mp4" autoPlay muted loop playsInline aria-hidden />
 
             <hr className="cs-div cs-div-hero" />
 
             <div className="cs-meta">
               {META.map((m) => (
-                <div key={m.label} className="cs-meta-item">
+                <div key={m.label} className={`cs-meta-item${m.scope ? " scope" : ""}`}>
                   <div className="cs-meta-label">{m.label}</div>
                   <div className="cs-meta-value">{m.value}</div>
                 </div>
@@ -829,15 +836,18 @@ const clmExtrasCss = `
 .cs-table td:first-child{ font-weight:600; color:#42444d; }
 
 /* ---- body lists ---- */
-.cs-ul{ margin:16px 0 0; padding-left:22px; max-width:var(--col); font-family:var(--body); font-size:16px; line-height:1.33; letter-spacing:normal; color:#464646; }
-.cs-ul li{ margin:0; padding-left:4px; }
+/* lists share the body column's left edge: markers/numbers sit at the edge */
+.cs-ul, .cs-ol{ margin:16px 0 0; padding-left:0; max-width:var(--col); font-family:var(--body); font-size:16px; line-height:1.33; letter-spacing:normal; color:#464646; list-style-position:inside; }
+.cs-ul{ list-style-type:disc; }
+.cs-ol{ list-style-type:decimal; }
+.cs-ul li, .cs-ol li{ margin:0; padding-left:0; }
 .cs-ul li::marker{ color:#b4a4d2; }
-.cs-ul li + li{ margin-top:8px; }
-.cs-ul strong, .cs-ul b{ font-weight:600; }
+.cs-ul li + li, .cs-ol li + li{ margin-top:8px; }
+.cs-ul strong, .cs-ul b, .cs-ol strong, .cs-ol b{ font-weight:600; }
 
 /* ---- figures / diagrams (capped at the body column; scale down, aspect kept) ---- */
 .cs-fig{ margin:28px 0 0; width:100%; max-width:var(--col); }
-.cs-fig-btn{ display:block; width:100%; max-width:100%; min-width:0; padding:0; border:1px solid var(--divider); border-radius:8px; background:#fff; cursor:zoom-in; overflow:hidden; position:relative; }
+.cs-fig-btn{ display:block; width:100%; max-width:100%; min-width:0; padding:0; border:1px solid var(--divider); border-radius:0; background:#fff; cursor:zoom-in; overflow:hidden; position:relative; }
 .cs-fig-btn:hover{ border-color:#cdbdea; }
 .cs-fig-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
 .cs-fig-btn img{ display:block; width:100%; max-width:100%; height:auto; }
@@ -846,10 +856,10 @@ const clmExtrasCss = `
 .cs-fig figcaption{ margin-top:10px; font-family:var(--inter); font-size:13px; line-height:1.45; color:#8c8c8c; }
 
 /* ---- image placeholders (full column) ---- */
-.cs-ph{ margin:28px 0 0; width:100%; max-width:var(--col); min-height:200px; border:1.5px dashed #cfcfcf; border-radius:8px; background:#fafafa; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:8px; padding:36px 28px; }
+.cs-ph{ margin:28px 0 0; width:100%; max-width:var(--col); min-height:200px; border:1.5px dashed #cfcfcf; border-radius:0; background:#fafafa; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:8px; padding:36px 28px; }
 .cs-ph-num{ font-family:var(--inter); font-weight:600; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); }
 .cs-ph-desc{ font-family:var(--inter); font-size:16px; line-height:1.5; color:#5f5f5f; max-width:560px; }
-.cs-ph-name{ font-family:var(--roboto); font-size:12.5px; color:#a6a6a6; background:#f0f0f0; border-radius:4px; padding:3px 9px; }
+.cs-ph-name{ font-family:var(--roboto); font-size:12.5px; color:#a6a6a6; background:#f0f0f0; border-radius:0; padding:3px 9px; }
 
 /* ---- paired media: two equal items side by side inside the body column; stack on mobile ---- */
 .cs-pair{ margin:28px 0 0; max-width:var(--col); display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:stretch; }
@@ -879,7 +889,7 @@ const clmExtrasCss = `
 
 /* ---- lightbox ---- */
 .cs-lightbox{ position:fixed; inset:0; z-index:100; background:rgba(20,20,22,0.82); display:flex; align-items:center; justify-content:center; padding:32px; }
-.cs-lightbox img{ max-width:min(1400px, 95vw); max-height:92vh; width:auto; height:auto; border-radius:8px; box-shadow:0 20px 60px rgba(0,0,0,0.4); background:#fff; cursor:default; }
+.cs-lightbox img{ max-width:min(1400px, 95vw); max-height:92vh; width:auto; height:auto; border-radius:0; box-shadow:0 20px 60px rgba(0,0,0,0.4); background:#fff; cursor:default; }
 .cs-lightbox-close{ position:fixed; top:18px; right:22px; width:40px; height:40px; border:0; border-radius:999px; background:rgba(255,255,255,0.14); color:#fff; font-size:26px; line-height:1; cursor:pointer; }
 .cs-lightbox-close:hover{ background:rgba(255,255,255,0.26); }
 .cs-lightbox-close:focus-visible{ outline:2px solid #fff; outline-offset:2px; }
