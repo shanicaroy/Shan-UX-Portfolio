@@ -528,8 +528,8 @@ const SECTIONS: Section[] = [
       {
         t: "figpair",
         items: [
-          { pendingName: "clm-screens/08-batch-details.png", alt: "Batch details with a Reallocate Batch action and current and previous batches", caption: "Batch details and reallocation" },
-          { pendingName: "clm-screens/09-create-session.png", alt: "Create a Session form with the trainer's calendar for the chosen date", caption: "Creating a session against the trainer's calendar" },
+          { src: "/clm-screens/08-batch-details.webp", full: "/clm-screens/08-batch-details-full.png", alt: "Batch details with a Reallocate Batch action and current and previous batches", caption: "Batch details and reallocation" },
+          { src: "/clm-screens/09-create-session.webp", full: "/clm-screens/09-create-session-full.png", alt: "Create a Session form with the trainer's calendar for the chosen date", caption: "Creating a session against the trainer's calendar" },
         ],
       },
       { t: "h3", text: "Role-based dashboards" },
