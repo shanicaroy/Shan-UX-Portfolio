@@ -37,6 +37,8 @@ export type Project = {
   cta: string;
   image: string;
   video?: string;
+  /** Poster frame for `video`, shown while the cover video loads. */
+  poster?: string;
   photo?: string;
   aspect: "16/9" | "3/2" | "4/3" | "1/1";
   /**
@@ -125,7 +127,8 @@ export const projects: Project[] = [
     size: "medium",
     cta: "Read case study",
     image: "/projects/project-03.jpg",
-    video: "/projects/virtubox-kiosk.mp4",
+    video: "/projects/virtubox-cover.mp4",
+    poster: "/projects/virtubox-cover.jpg",
     aspect: "4/3",
   },
   {

@@ -14,7 +14,12 @@ export const caseStudyCss = `
   --times: "Times New Roman", "Tinos", Times, serif;
   --inter: Inter, "Helvetica Neue", Arial, sans-serif;
   --roboto: Roboto, "Helvetica Neue", Arial, sans-serif;
-  --body: Georgia, "Times New Roman", serif;
+  --body-georgia: Georgia, "Times New Roman", serif;
+  --body-inter: 'Inter', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  /* Body-text font token, used by paragraphs, list items and table text.
+     Switch this to var(--body-inter) to roll Inter out to every case study
+     in one change. (CLM already overrides it to Inter page-locally.) */
+  --body: var(--body-georgia);
   --divider: #e4e4e4;
   --accent: #7a5ab2;
   --col: 760px;   /* the one body column every element shares: text, metadata, dividers, hero, stats */
@@ -56,10 +61,10 @@ export const caseStudyCss = `
 
 /* content column */
 .cs-content{ grid-area:main; min-width:0; padding-top:101px; }
-/* logo: 26px tall, left-aligned with the title; its negative top margin and
-   matching bottom margin net to zero flow, so it floats ~6px above the title
+/* logo: 24px tall, left-aligned with the title; its negative top margin and
+   matching bottom margin net to zero flow, so it floats ~14px above the title
    without moving the title, subtitle, cover or meta row */
-.cs-logo{ display:block; height:26px; width:auto; margin:-32px 0 6px 0; }
+.cs-logo{ display:block; height:24px; width:auto; margin:-38px 0 14px 0; }
 .cs-h1{ margin:0; font-family:var(--georgia); font-weight:400; font-size:44px; line-height:1.15; letter-spacing:-0.5px; color:#42444d; max-width:var(--col); }
 .cs-hero{ margin-top:28px; width:100%; max-width:var(--col); height:auto; display:block; border-radius:0; }
 /* flat, square corners on all case-study media (images, diagrams, video) */

@@ -114,6 +114,7 @@ function WorkCard({
         {project.video ? (
           <AutoVideo
             src={project.video}
+            poster={project.poster}
             ariaLabel={`${project.title}, case study cover`}
             className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.015]"
           />

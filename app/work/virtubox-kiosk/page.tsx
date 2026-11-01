@@ -34,7 +34,7 @@ export default function VirtuboxCaseStudy() {
       breadcrumb="VirtuBox"
       logo={{ src: "/hero/virtubox-v2.svg", w: 40, h: 40 }}
       title="VirtuBox Kiosk Design"
-      hero={{ src: "/projects/virtubox-kiosk.mp4", kind: "video" }}
+      hero={{ src: "/projects/virtubox-cover.mp4", kind: "video" }}
       meta={META}
       sections={SECTIONS}
     />

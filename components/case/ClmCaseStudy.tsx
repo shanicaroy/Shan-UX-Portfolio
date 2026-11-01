@@ -817,7 +817,7 @@ export default function ClmCaseStudy() {
             <span className="cs-bc-sep" aria-hidden>
               /
             </span>
-            <span className="cs-bc-current">Bhanzu CLM</span>
+            <span className="cs-bc-current">Bhanzu</span>
           </nav>
 
           <CaseRail sections={railSections} />
@@ -828,13 +828,13 @@ export default function ClmCaseStudy() {
             <img
               className="cs-logo"
               src="/hero/bhanzu-v2.svg"
-              alt="Bhanzu CLM"
-              width={26}
-              height={26}
-              style={{ "--logo-w": "26" } as CSSProperties}
+              alt="Bhanzu Customer Lifecycle Management Tool"
+              width={24}
+              height={24}
+              style={{ "--logo-w": "24" } as CSSProperties}
             />
-            <h1 className="cs-h1">Bhanzu CLM</h1>
-            <p className="cs-subtitle">Customer Lifecycle Management (CLM), Bhanzu</p>
+            <h1 className="cs-h1">Bhanzu Customer Lifecycle Management Tool</h1>
+            <p className="cs-subtitle">An enterprise internal platform for support ticketing, IVR routing and SLA tracking</p>
 
             {/* Cover (the same asset as the Work listing), then the original horizontal meta row */}
             <video className="cs-hero" src="/projects/clm.mp4" autoPlay muted loop playsInline aria-hidden />
@@ -888,6 +888,11 @@ export default function ClmCaseStudy() {
 // ---------------------------------------------------------------------------
 
 const clmExtrasCss = `
+/* CLM-only: body text (paragraphs, list items, table text) uses Inter via the
+   template's --body token. Roll it out to other case studies by switching the
+   template default (--body) to var(--body-inter). */
+.cs{ --body: var(--body-inter); }
+
 .cs-subtitle{ margin:12px 0 0; font-family:var(--inter); font-weight:400; font-size:18px; line-height:1.5; color:#8c8c8c; max-width:var(--col); }
 
 /* ---- tables (share the body text column) ---- */

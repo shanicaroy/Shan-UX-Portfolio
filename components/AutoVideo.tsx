@@ -12,10 +12,12 @@ export default function AutoVideo({
   src,
   className,
   ariaLabel,
+  poster,
 }: {
   src: string;
   className?: string;
   ariaLabel?: string;
+  poster?: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
 
@@ -41,6 +43,7 @@ export default function AutoVideo({
     <video
       ref={ref}
       src={src}
+      poster={poster}
       autoPlay
       muted
       loop
