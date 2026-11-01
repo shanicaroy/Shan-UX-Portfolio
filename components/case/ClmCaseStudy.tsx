@@ -24,17 +24,18 @@ import { caseStudyCss } from "@/content/case-study-styles";
 // ---------------------------------------------------------------------------
 
 type TableData = { head?: string[]; rows: string[][] };
-type MediaItem = { n: number; name: string; desc: string; src?: string; alt?: string };
+// A figure is a real image (src = display webp, full = full-res original for the
+// lightbox) or a pending slot (no src; pendingName names the awaited file).
+type Figure = { src?: string; full?: string; alt: string; caption?: string; pendingName?: string };
 type Block =
   | { t: "p"; text: string }
   | { t: "h3"; text: string }
   | { t: "ul"; items: string[] }
   | { t: "ol"; items: string[] }
   | ({ t: "table" } & TableData)
-  | { t: "figure"; src: string; alt: string }
-  | { t: "ph"; n: number; name: string; desc: string }
-  | { t: "pair"; items: [MediaItem, MediaItem] }
-  | { t: "halfText"; item: MediaItem; text: string };
+  | ({ t: "figure" } & Figure)
+  | { t: "figpair"; items: [Figure, Figure] }
+  | { t: "ph"; n: number; name: string; desc: string };
 type Section = { id: string; label: string; heading: string; blocks: Block[] };
 
 // Overview area (above the sections): the cover, then the original horizontal
@@ -43,7 +44,7 @@ const META: { label: string; value: string; scope?: boolean }[] = [
   { label: "Role", value: "Design Lead" },
   { label: "Timeline", value: "Mar - Dec 2022" },
   { label: "Product", value: "Web, internal tool" },
-  { label: "Scope", value: "IVR-based routing, CLM ticket workspace, root and child tickets, status flows, role-based dashboards, access states", scope: true },
+  { label: "Scope", value: "IVR-based routing, CLM ticket workspace, root and child tickets, status flows, batch and session tools, role-based dashboards, access states", scope: true },
   { label: "Team", value: "3 designers, 20 to 25 engineers, 2 product managers", scope: true },
 ];
 
@@ -55,7 +56,7 @@ const SECTIONS: Section[] = [
     blocks: [
       {
         t: "p",
-        text: "I led the design of CLM (Customer Lifecycle Management), the in-house support platform that replaced Zendesk at Bhanzu. CLM gives every paying student one Customer Lifecycle Manager, recognises callers through the IVR, and routes each ticket to the right person before anyone answers. The platform handled around 500 to 600 tickets a day. Every paying student got one point of contact, and every ticket got a category, an owner and an SLA. The scope covered IVR-based routing, the ticket workspace, root and child tickets, status flows, role-based dashboards and access states.",
+        text: "I led the design of CLM (Customer Lifecycle Management), the in-house support platform that replaced Zendesk at Bhanzu. CLM gives every paying student one Customer Lifecycle Manager, recognises callers through the IVR, and routes each ticket to the right person before anyone answers. The platform handled around 500 to 600 tickets a day. Every paying student got one point of contact, and every ticket got a category, an owner and an SLA. The scope covered IVR-based routing, the ticket workspace, root and child tickets, status flows, batch and session tools, role-based dashboards and access states.",
       },
       { t: "h3", text: "My contribution" },
       {
@@ -258,7 +259,7 @@ const SECTIONS: Section[] = [
           ["What does a CLM actually do all day?", "Mapped it with the operations team. Every task a CLM does starts and ends with a ticket, so the platform is built around the ticket"],
           ["How does a ticket reach the right person?", "The IVR recognises the caller, and the ticket is categorised and routed when it is created"],
           ["What happens when a CLM cannot resolve a query alone?", "The CLM keeps the root ticket and creates child tickets for the teams that can resolve each part"],
-          ["What counts as urgent?", "A two-hour SLA on every ticket, with breached, pending and on-track counts on the dashboard"],
+          ["What counts as urgent?", "A two-hour SLA on every ticket, with breached, due-soon and delayed counts on the dashboard"],
           ["How does the team lead stay in control?", "A team leader view of the team's tickets and load"],
         ],
       },
@@ -292,10 +293,10 @@ const SECTIONS: Section[] = [
         text: "The next phase covered the role-based dashboards, the SLA cards and the status flows, where I designed the SLA cards and the filtering. The last phase was the engineering build. I agreed the version 1 scope with the product managers and engineers, and moved the ticket journey to its own page.",
       },
       {
-        t: "pair",
+        t: "figpair",
         items: [
-          { n: 3, name: "clm-img-03-sprint-1", desc: "Sprint 1", src: "/clm-images/sprint-1.webp", alt: "Sprint 1" },
-          { n: 4, name: "clm-img-04-sprint-3", desc: "Sprint 3", src: "/clm-images/sprint-3.webp", alt: "Sprint 3" },
+          { src: "/clm-images/sprint-1.webp", alt: "Sprint 1", caption: "Sprint 1" },
+          { src: "/clm-images/sprint-3.webp", alt: "Sprint 3", caption: "Sprint 3" },
         ],
       },
       { t: "h3", text: "How the work was split" },
@@ -367,8 +368,8 @@ const SECTIONS: Section[] = [
           ["Open", "New ticket, not yet worked on"],
           ["Pending", "Being worked on, waiting for the next step"],
           ["Follow up", "The CLM needs to get back to the customer"],
-          ["On Hold", "Paused, waiting on another team or the customer"],
-          ["Close", "Resolved"],
+          ["Paused", "Paused until a resume date the CLM sets"],
+          ["Closed", "Closed through the Close Ticket tab, with a disposition and a closing comment"],
         ],
       },
     ],
@@ -413,7 +414,7 @@ const SECTIONS: Section[] = [
       { t: "h3", text: "5. Make status changes deliberate" },
       {
         t: "p",
-        text: "A ticket moves through Open, Pending, Follow up, On Hold and Close. I designed each status change as its own flow rather than a label switch.",
+        text: "A ticket moves through Open, Pending, Follow up and Paused, and is closed separately with a disposition and a closing comment. I designed each status change as its own flow rather than a label switch. Pausing, for example, asks for a resume date and a description.",
       },
       { t: "h3", text: "6. One data model, a view per role" },
       {
@@ -427,7 +428,7 @@ const SECTIONS: Section[] = [
       },
       {
         t: "p",
-        text: "My first version used small filter icons in every column header of the ticket table. I replaced them with SLA cards at the top of the dashboard. Each card shows a count, breaching tickets turn red, and clicking a card filters the table to those tickets. Urgent work became visible at a glance and one click away, instead of sitting behind small icons.",
+        text: "My first version used small filter icons in every column header of the ticket table. I replaced them with four SLA cards at the top of the dashboard: Breached, Due in 2 hrs, Due in 24 hrs and Delayed by 72 hrs. Each card shows a count, breached tickets show in red, and clicking a card filters the table to those tickets. Urgent work became visible at a glance and one click away, instead of sitting behind small icons.",
       },
       { t: "h3", text: "8. The ticket journey on the home dashboard (moved to version 2)" },
       {
@@ -457,26 +458,77 @@ const SECTIONS: Section[] = [
     label: "Final design",
     heading: "Final design",
     blocks: [
-      { t: "p", text: "The shipped platform has four parts: the ticket workspace, the status flows, the role-based dashboards and the access states." },
-      { t: "h3", text: "Ticket workspace" },
+      { t: "p", text: "The shipped platform follows the CLM's day: the dashboard, the ticket details page, the status flows, and the batch and session tools that sit inside the ticket." },
+      { t: "h3", text: "The CLM dashboard" },
       {
         t: "p",
-        text: "Clicking a ticket ID opens the ticket details page. I designed this page myself, from wireframe to final layout. The ticket header carries the essentials, the collapsible sections hold the student and batch details, and the communication log sits on the right.",
+        text: "The dashboard opens on the CLM's own tickets. Four SLA cards sit at the top: Breached, Due in 2 hrs, Due in 24 hrs and Delayed by 72 hrs. Breached shows in red, and clicking a card filters the table. Tabs split the work into My Tickets, Other Teams Tickets, Closed and Paused, and root and child tickets sit in the same list.",
       },
-      { t: "ph", n: 5, name: "clm-img-05-ticket-details-full", desc: "The full ticket details page, header and collapsed sections" },
       {
-        t: "pair",
-        items: [
-          { n: 6, name: "clm-img-06-student-personal-info", desc: "Student Personal Info expanded" },
-          { n: 7, name: "clm-img-07-communication-log", desc: "The communication log with the WhatsApp thread and a call recording" },
-        ],
+        t: "figure",
+        src: "/clm-screens/01-clm-dashboard-annotated.webp",
+        full: "/clm-screens/01-clm-dashboard-annotated-full.png",
+        alt: "Annotated CLM dashboard with ticket tabs, SLA cards and root and child tickets in one table",
+        caption: "The CLM dashboard, annotated",
+      },
+      { t: "h3", text: "The ticket details page" },
+      {
+        t: "p",
+        text: "Clicking a ticket ID opens the ticket details page. I designed this page myself, from wireframe to final layout. The header carries the essentials, the action tabs sit above the student record, and the conversation sits on the right.",
+      },
+      {
+        t: "figure",
+        src: "/clm-screens/02-ticket-page-annotated.webp",
+        full: "/clm-screens/02-ticket-page-annotated-full.png",
+        alt: "Annotated ticket details page with header, action tabs, collapsible sections and the communication rail",
+        caption: "Anatomy of the ticket details page",
+      },
+      {
+        t: "p",
+        text: "Behind the collapsed sections is the full record a CLM might need on a call: refunds, support history, parent-teacher meetings and assessments, each opened only when the query is about it.",
+      },
+      {
+        t: "figure",
+        src: "/clm-screens/03-customer-record-grid.webp",
+        full: "/clm-screens/03-customer-record-grid-full.webp",
+        alt: "Four expanded sections of the student record: refund details, support ticket history, PTM details and assessment details",
+        caption: "Four of the nine sections, expanded",
       },
       { t: "h3", text: "Status flows and ticket history" },
       {
-        t: "pair",
+        t: "p",
+        text: "A ticket moves between Open, Pending, Follow up and Paused. Each change is its own small flow: pausing a ticket asks for a resume date and a description, so a paused ticket always has a date to come back to. Closing is separate, through the Close Ticket tab, with a disposition and a closing comment. Every change is recorded in the activity log, and the ticket timeline shows the root ticket and its child tickets.",
+      },
+      {
+        t: "figure",
+        src: "/clm-screens/04-status-paused.webp",
+        full: "/clm-screens/04-status-paused-full.png",
+        alt: "Change Status set to Paused, with a resume date and a follow-up interval in days, weeks or months",
+        caption: "Pausing a ticket asks for a resume date",
+      },
+      {
+        t: "figpair",
         items: [
-          { n: 8, name: "clm-img-08-change-status-flow", desc: "The Change Status flow, with one status opened" },
-          { n: 9, name: "clm-img-09-ticket-timeline", desc: "Ticket Timeline showing a root ticket and its child tickets" },
+          { pendingName: "clm-screens/05-activity-log.png", alt: "Activity log showing a status change from Pending to Open", caption: "Activity log" },
+          { pendingName: "clm-screens/06-ticket-timeline.png", alt: "Ticket timeline showing a root ticket card", caption: "Ticket timeline" },
+        ],
+      },
+      { t: "h3", text: "Batches and sessions inside the ticket" },
+      {
+        t: "p",
+        text: "Batch allocation was one of the functions that sat with its own operations executive, worked across Zendesk and Excel. On CLM, a student's batch is allocated or reallocated from the Batch Details section, and catch-up sessions are created against the trainer's calendar from Session Details, without leaving the ticket.",
+      },
+      {
+        t: "figure",
+        pendingName: "clm-screens/07-allocate-batch-annotated.png",
+        alt: "Annotated Allocate Batch view with batches grouped by time slot, strength and capacity, and batch history",
+        caption: "Allocating a batch from the ticket, annotated",
+      },
+      {
+        t: "figpair",
+        items: [
+          { pendingName: "clm-screens/08-batch-details.png", alt: "Batch details with a Reallocate Batch action and current and previous batches", caption: "Batch details and reallocation" },
+          { pendingName: "clm-screens/09-create-session.png", alt: "Create a Session form with the trainer's calendar for the chosen date", caption: "Creating a session against the trainer's calendar" },
         ],
       },
       { t: "h3", text: "Role-based dashboards" },
@@ -484,7 +536,7 @@ const SECTIONS: Section[] = [
         t: "table",
         head: ["Role", "What they see", "What they can do"],
         rows: [
-          ["CLM", "Their assigned tickets, how many are breaching the SLA, and other tickets assigned to other people or teams", "Work tickets, change status, create child tickets for other teams"],
+          ["CLM", "Their assigned tickets, SLA cards, and tickets assigned to other teams", "Work tickets, change status, close tickets, create new tickets"],
           ["Team leader", "Their team's tickets and load", "Add and edit the CLMs in their team"],
           ["Other teams", "Child tickets assigned to their team", "Work and resolve those child tickets"],
           ["Leadership", "Overview across all teams", "Monitor load and SLA status across teams"],
@@ -492,24 +544,6 @@ const SECTIONS: Section[] = [
       },
       {
         t: "p",
-        text: "The CLM dashboard opens on the tickets assigned to that CLM. SLA cards at the top show how many are breached, pending and on track. Breaching tickets turn red, and clicking a card filters the table to those tickets.",
-      },
-      {
-        t: "p",
-        text: "The dashboard also has an Other Tickets view. Because the IVR routes every call into one system, a CLM can see tickets assigned to other people or teams, such as the refunds team, and know where a student's issue has gone.",
-      },
-      { t: "ph", n: 10, name: "clm-img-10-clm-dashboard", desc: "CLM dashboard with the SLA cards and the Other Tickets view" },
-      {
-        t: "pair",
-        items: [
-          { n: 11, name: "clm-img-11-team-leader-dashboard", desc: "Team leader dashboard with My Team" },
-          { n: 12, name: "clm-img-12-leadership-overview", desc: "Leadership overview" },
-        ],
-      },
-      { t: "h3", text: "Access states" },
-      {
-        t: "halfText",
-        item: { n: 13, name: "clm-img-13-403-state", desc: "The 403 state for a user without access to a page" },
         text: "Each role sees only what it needs. When a user opens a page outside their role, they see a designed blocked-access state instead of a dead end.",
       },
     ],
@@ -654,11 +688,23 @@ export default function ClmCaseStudy() {
     };
   }, [lightbox, close]);
 
-  // A clickable, keyboard-accessible figure (a div, not a <button>, so it does
-  // not size to the image's intrinsic width). Scales to its container, aspect
-  // kept, never cropped.
-  const figure = (key: string | number, src: string, alt: string, caption?: string) => {
-    const open = () => setLightbox({ src, alt });
+  // A figure: a real image (clickable, opens the full-res original in the
+  // lightbox) or a pending slot. A div (not a <button>) so it never sizes to the
+  // image's intrinsic width. Below-hero images lazy-load. No radius, no shadow.
+  const renderFigure = (fig: Figure, key: string | number) => {
+    if (!fig.src) {
+      return (
+        <figure key={key} className="cs-fig cs-fig-pending" aria-label={`Screen pending: ${fig.alt}`}>
+          <div className="cs-fig-pending-box">
+            <div className="cs-fig-pending-tag">Screen pending</div>
+            <div className="cs-fig-pending-name">{fig.pendingName}</div>
+          </div>
+          {fig.caption ? <figcaption>{fig.caption}</figcaption> : null}
+        </figure>
+      );
+    }
+    const full = fig.full ?? fig.src;
+    const open = () => setLightbox({ src: full, alt: fig.alt });
     return (
       <figure key={key} className="cs-fig">
         <div
@@ -672,23 +718,18 @@ export default function ClmCaseStudy() {
               open();
             }
           }}
-          aria-label={`Open full size: ${alt}`}
+          aria-label={`Open full size: ${fig.alt}`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={alt} />
+          <img src={fig.src} alt={fig.alt} loading="lazy" decoding="async" />
           <span className="cs-fig-zoom" aria-hidden>
             Click to enlarge
           </span>
         </div>
-        {caption ? <figcaption>{caption}</figcaption> : <figcaption>{alt}</figcaption>}
+        <figcaption>{fig.caption ?? fig.alt}</figcaption>
       </figure>
     );
   };
-
-  // One media slot: a real image (figure) when a src is supplied, otherwise a
-  // numbered placeholder. Used on its own and inside pairs / half-width rows.
-  const mediaItem = (it: MediaItem, key: string | number) =>
-    it.src ? figure(key, it.src, it.alt ?? it.desc, it.desc) : <Placeholder key={key} n={it.n} name={it.name} desc={it.desc} />;
 
   const renderBlock = (b: Block, key: number) => {
     switch (b.t) {
@@ -725,19 +766,12 @@ export default function ClmCaseStudy() {
       case "ph":
         return <Placeholder key={key} n={b.n} name={b.name} desc={b.desc} />;
       case "figure":
-        return figure(key, b.src, b.alt);
-      case "pair":
+        return renderFigure(b, key);
+      case "figpair":
         return (
           <div key={key} className="cs-pair">
-            {mediaItem(b.items[0], 0)}
-            {mediaItem(b.items[1], 1)}
-          </div>
-        );
-      case "halfText":
-        return (
-          <div key={key} className="cs-halftext">
-            {mediaItem(b.item, 0)}
-            <div className="cs-halftext-body">{renderInline(b.text)}</div>
+            {renderFigure(b.items[0], 0)}
+            {renderFigure(b.items[1], 1)}
           </div>
         );
       default:
@@ -865,6 +899,11 @@ const clmExtrasCss = `
 .cs-fig-btn:hover .cs-fig-zoom, .cs-fig-btn:focus-visible .cs-fig-zoom{ opacity:1; }
 .cs-fig figcaption{ margin-top:10px; font-family:var(--inter); font-size:13px; line-height:1.45; color:#8c8c8c; }
 
+/* pending screen slot (awaiting the real image) */
+.cs-fig-pending .cs-fig-pending-box{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; min-height:220px; border:1.5px dashed #d8b4b4; background:#fdf6f6; padding:32px 24px; text-align:center; }
+.cs-fig-pending-tag{ font-family:var(--inter); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#b5584f; }
+.cs-fig-pending-name{ font-family:var(--roboto); font-size:13px; color:#9a9a9a; word-break:break-all; }
+
 /* ---- image placeholders (full column) ---- */
 .cs-ph{ margin:28px 0 0; width:100%; max-width:var(--col); min-height:200px; border:1.5px dashed #cfcfcf; border-radius:0; background:#fafafa; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:8px; padding:36px 28px; }
 .cs-ph-num{ font-family:var(--inter); font-weight:600; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); }
@@ -899,7 +938,7 @@ const clmExtrasCss = `
 
 /* ---- lightbox ---- */
 .cs-lightbox{ position:fixed; inset:0; z-index:100; background:rgba(20,20,22,0.82); display:flex; align-items:center; justify-content:center; padding:32px; }
-.cs-lightbox img{ max-width:min(1400px, 95vw); max-height:92vh; width:auto; height:auto; border-radius:0; box-shadow:0 20px 60px rgba(0,0,0,0.4); background:#fff; cursor:default; }
+.cs-lightbox img{ max-width:min(1400px, 95vw); max-height:92vh; width:auto; height:auto; border-radius:0; background:#fff; cursor:default; }
 .cs-lightbox-close{ position:fixed; top:18px; right:22px; width:40px; height:40px; border:0; border-radius:999px; background:rgba(255,255,255,0.14); color:#fff; font-size:26px; line-height:1; cursor:pointer; }
 .cs-lightbox-close:hover{ background:rgba(255,255,255,0.26); }
 .cs-lightbox-close:focus-visible{ outline:2px solid #fff; outline-offset:2px; }
