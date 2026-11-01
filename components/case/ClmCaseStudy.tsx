@@ -509,8 +509,8 @@ const SECTIONS: Section[] = [
       {
         t: "figpair",
         items: [
-          { pendingName: "clm-screens/05-activity-log.png", alt: "Activity log showing a status change from Pending to Open", caption: "Activity log" },
-          { pendingName: "clm-screens/06-ticket-timeline.png", alt: "Ticket timeline showing a root ticket card", caption: "Ticket timeline" },
+          { src: "/clm-screens/05-activity-log.webp", full: "/clm-screens/05-activity-log-full.png", alt: "Activity log showing a status change from Pending to Open", caption: "Activity log" },
+          { src: "/clm-screens/06-ticket-timeline.webp", full: "/clm-screens/06-ticket-timeline-full.png", alt: "Ticket timeline showing a root ticket card", caption: "Ticket timeline" },
         ],
       },
       { t: "h3", text: "Batches and sessions inside the ticket" },
@@ -520,7 +520,8 @@ const SECTIONS: Section[] = [
       },
       {
         t: "figure",
-        pendingName: "clm-screens/07-allocate-batch-annotated.png",
+        src: "/clm-screens/07-allocate-batch-annotated.webp",
+        full: "/clm-screens/07-allocate-batch-annotated-full.webp",
         alt: "Annotated Allocate Batch view with batches grouped by time slot, strength and capacity, and batch history",
         caption: "Allocating a batch from the ticket, annotated",
       },
