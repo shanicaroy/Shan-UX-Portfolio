@@ -35,6 +35,7 @@ type Block =
   | ({ t: "table" } & TableData)
   | ({ t: "figure" } & Figure)
   | { t: "figpair"; items: [Figure, Figure] }
+  | { t: "figtext"; fig: Figure; text: string }
   | { t: "ph"; n: number; name: string; desc: string };
 type Section = { id: string; label: string; heading: string; blocks: Block[] };
 
@@ -526,6 +527,17 @@ const SECTIONS: Section[] = [
         caption: "Allocating a batch from the ticket, annotated",
       },
       {
+        t: "figtext",
+        fig: {
+          // Asset 10-batch-allocated-modal.png not yet received; renders as a
+          // pending slot until it arrives, then gets src (display webp) + full.
+          alt: "Batch Allocated Successfully confirmation telling the CLM how many catch-up sessions to schedule",
+          caption: "Allocation leads straight into catch-up sessions",
+          pendingName: "clm-screens/10-batch-allocated-modal.png",
+        },
+        text: "Allocation does not end at the batch. When a student joins a batch that is already running, the confirmation tells the CLM how many catch-up sessions the student needs and leads straight into scheduling them.",
+      },
+      {
         t: "figpair",
         items: [
           { src: "/clm-screens/08-batch-details.webp", full: "/clm-screens/08-batch-details-full.png", alt: "Batch details with a Reallocate Batch action and current and previous batches", caption: "Batch details and reallocation" },
@@ -775,6 +787,15 @@ export default function ClmCaseStudy() {
             {renderFigure(b.items[1], 1)}
           </div>
         );
+      case "figtext":
+        return (
+          <div key={key} className="cs-halftext">
+            {renderFigure(b.fig, "fig")}
+            <div className="cs-halftext-body">
+              <p>{renderInline(b.text)}</p>
+            </div>
+          </div>
+        );
       default:
         return null;
     }
@@ -919,11 +940,13 @@ const clmExtrasCss = `
    placeholders stretch to equal height */
 .cs-pair .cs-fig{ align-self:start; }
 
-/* ---- half-width media with the text beside it; stack on mobile ---- */
-.cs-halftext{ margin:28px 0 0; max-width:var(--col); display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; }
+/* ---- half-width media with the text beside it, tops aligned; stack on mobile ---- */
+.cs-halftext{ margin:28px 0 0; max-width:var(--col); display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; }
 .cs-halftext .cs-ph, .cs-halftext .cs-fig{ margin:0; max-width:none; }
 .cs-halftext .cs-ph{ min-height:180px; }
 .cs-halftext-body{ font-family:var(--body); font-size:16px; line-height:1.33; color:#464646; }
+.cs-halftext-body p{ margin:0; }
+.cs-halftext-body p + p{ margin-top:11px; }
 
 /* ---- inline note highlight (kept for any bracketed note) ---- */
 .cs-todo-in{ background:#ffe99a; color:#6b5600; border-radius:3px; padding:0 4px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
