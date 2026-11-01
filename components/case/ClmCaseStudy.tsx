@@ -529,11 +529,10 @@ const SECTIONS: Section[] = [
       {
         t: "figtext",
         fig: {
-          // Asset 10-batch-allocated-modal.png not yet received; renders as a
-          // pending slot until it arrives, then gets src (display webp) + full.
+          src: "/clm-screens/10-batch-allocated-modal.webp",
+          full: "/clm-screens/10-batch-allocated-modal-full.png",
           alt: "Batch Allocated Successfully confirmation telling the CLM how many catch-up sessions to schedule",
           caption: "Allocation leads straight into catch-up sessions",
-          pendingName: "clm-screens/10-batch-allocated-modal.png",
         },
         text: "Allocation does not end at the batch. When a student joins a batch that is already running, the confirmation tells the CLM how many catch-up sessions the student needs and leads straight into scheduling them.",
       },
