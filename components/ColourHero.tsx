@@ -114,7 +114,7 @@ const RESUME = "https://drive.google.com/file/d/1zGPlamzV_6P_B7D8OPNq-CXjuq-McGt
 
 const HTML = `
 <div class="scaleWrap"><div class="frame">
-<nav class="navlinks anim d0" aria-label="Main"><a href="/" class="worklink active" aria-current="page">WORK</a><a href="/ai-lab">APPLIED AI</a><a href="/about">ABOUT</a><a href="/writing">WRITING</a></nav>
+<nav class="navlinks anim d0" aria-label="Main"><a href="/" class="worklink active" aria-current="page">WORK</a><!-- hidden for launch; re-enable later: <a href="/ai-lab">APPLIED AI</a> --><a href="/about">ABOUT</a><!-- hidden for launch; re-enable later: <a href="/writing">WRITING</a> --></nav>
 <a class="resume anim d0" href="${RESUME}" target="_blank" rel="noopener noreferrer">Resume</a>
 <div class="band" aria-hidden="true"><canvas id="bandCanvas" width="1728" height="200"></canvas></div>
 <div class="hero">

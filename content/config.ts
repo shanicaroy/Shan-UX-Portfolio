@@ -59,9 +59,10 @@ export const siteConfig = {
 
 export const navigation = [
   { label: "Work", href: "/" },
-  { label: "Applied AI", href: "/ai-lab" },
+  // Temporarily hidden for launch; re-enable when ready to publish.
+  // { label: "Applied AI", href: "/ai-lab" },
   { label: "About", href: "/about" },
-  { label: "Writing", href: "/writing" },
+  // { label: "Writing", href: "/writing" },
 ] as const;
 
 export const socialLinks = [

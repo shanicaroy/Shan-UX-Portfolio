@@ -6,9 +6,10 @@ import { useEffect, useRef, useState } from "react";
 const RESUME = "https://drive.google.com/file/d/1zGPlamzV_6P_B7D8OPNq-CXjuq-McGtJ/view";
 const LINKS = [
   { label: "WORK", href: "/" },
-  { label: "APPLIED AI", href: "/ai-lab" },
+  // Temporarily hidden for launch; re-enable when ready to publish.
+  // { label: "APPLIED AI", href: "/ai-lab" },
   { label: "ABOUT", href: "/about" },
-  { label: "WRITING", href: "/writing" },
+  // { label: "WRITING", href: "/writing" },
 ];
 
 // Exact Figma value at the 1728 design width, scaling down proportionally.
