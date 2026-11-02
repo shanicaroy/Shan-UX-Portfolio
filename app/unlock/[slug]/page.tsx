@@ -11,9 +11,9 @@ import CaseBreadcrumb from "@/components/case/CaseBreadcrumb";
  * correct password the form routes to /work/<slug>. The gate stays client-side,
  * exactly as before; this only changes the presentation from a dialog to a page.
  */
-// Bhanzu (CLM) and Orbit are open; everything else is gated behind this page.
-// Keep this in sync with OPEN_SLUGS in components/SelectedWork.tsx.
-const OPEN_SLUGS = ["customer-lifecycle-management", "orbit-design-system"];
+// Bhanzu (CLM), Orbit, Dell and VirtuBox are open; everything else is gated
+// behind this page. Keep this in sync with OPEN_SLUGS in components/SelectedWork.tsx.
+const OPEN_SLUGS = ["customer-lifecycle-management", "orbit-design-system", "dell-portal-redesign", "virtubox-kiosk"];
 
 export function generateStaticParams() {
   return projects.filter((p) => !OPEN_SLUGS.includes(p.slug)).map((p) => ({ slug: p.slug }));

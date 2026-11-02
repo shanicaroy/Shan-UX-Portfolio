@@ -43,10 +43,10 @@ const CARD: Record<
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
 
-// The only two case studies that open without a password. Every other card
-// routes to its /unlock/<slug> password page. Keep this in sync with the
-// unlock route's generateStaticParams.
-const OPEN_SLUGS = ["customer-lifecycle-management", "orbit-design-system"];
+// Case studies that open without a password. Every other card routes to its
+// /unlock/<slug> password page. Keep this in sync with the unlock route's
+// generateStaticParams.
+const OPEN_SLUGS = ["customer-lifecycle-management", "orbit-design-system", "dell-portal-redesign", "virtubox-kiosk"];
 
 // Exact px at the 1728 design width, scaling proportionally with the viewport
 // both below and above it (so the grid tracks the full-bleed hero on wide
