@@ -36,7 +36,7 @@ const CARD: Record<
   "virtubox-kiosk": { meta: "VirtuBox Infotech - 2020", title: "VirtuBox Kiosk UI/UX Design - Service Experience", titlePx: 25.644, coverGap: 7.89 },
   "orbit-design-system": { meta: "UXPective - 2025", title: "Orbit Design System - WCAG 2.1 AA Standard", titlePx: 25.644, coverGap: 7.89, href: "/work/orbit-design-system" },
   "case-check": { meta: "UXPective - 2026", title: "Applied AI Build : Case Check Tool", titlePx: 25.644, coverGap: 7.89 },
-  "dell-portal-redesign": { meta: "Dell Technologies - 2024", title: "Order & Inventory Logistics Suite", titlePx: 25.644, coverGap: 7.89, nda: true },
+  "dell-portal-redesign": { meta: "Dell Technologies - 2024", title: "Dell Inventory Pipeline Tool", titlePx: 25.644, coverGap: 7.89, nda: true },
   "ey-data-product-factory": { meta: "Ernst & Young - 2025", title: "Data Product Marketplace Revamp", titlePx: 25.644, coverGap: 7.89, nda: true },
   "fintrack": { meta: "Fintrack - 2021 (Freelance)", title: "Finance Management Mobile App", titlePx: 25.644, coverGap: 7.89 },
 };
