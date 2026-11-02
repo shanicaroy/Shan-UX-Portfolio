@@ -102,26 +102,32 @@ export const caseStudyCss = `
 
 .cs-footerwrap{ max-width:1400px; margin:96px auto 0; border-top:1px solid var(--divider); }
 
-/* ---------- phones (<768px): single column, sticky breadcrumb + section bar ---------- */
+/* ---------- phones (<768px): one plain scrollable column ----------
+   The section nav (the left rail, which used to become a top strip) is hidden
+   on mobile; only the breadcrumb stays. The page is a single min-width:0
+   column so nothing can force horizontal overflow, and type/spacing are tuned
+   down for small screens. Desktop (>=768px) is unaffected. */
 @media (max-width:767px){
-  .cs-page{ grid-template-columns:1fr; grid-template-areas:"bc" "nav" "main"; column-gap:0; padding:0 24px; }
-  .cs-breadcrumb{ padding:12px 0; margin:0 -24px; padding-left:24px; padding-right:24px; border-bottom:1px solid var(--divider); }
+  .cs-page{ grid-template-columns:minmax(0,1fr); grid-template-areas:"bc" "main"; column-gap:0; padding:0 20px; }
+  .cs-breadcrumb{ padding:12px 0; margin:0 -20px; padding-left:20px; padding-right:20px; border-bottom:1px solid var(--divider); }
   .cs-bc-link{ font-size:15px; margin-left:0; } .cs-bc-arrow{ width:18px; height:18px; } .cs-bc-sep,.cs-bc-current{ font-size:15px; }
-  .cs-rail{ position:sticky; top:49px; z-index:19; max-height:none; overflow:visible; background:#fff; margin:0 -24px; padding:8px 24px; border-bottom:1px solid var(--divider); }
-  .cs-rail ul{ flex-direction:row; gap:18px; overflow-x:auto; white-space:nowrap; }
-  .cs-rail a{ font-size:13px; }
-  .cs-rail.single{ display:none; }
-  .cs-content{ padding-top:20px; }
+  /* section nav removed on mobile — the case study is a normal scrollable page */
+  .cs-rail{ display:none; }
+  .cs-content{ padding-top:22px; min-width:0; }
   .cs-logo{ margin:0 0 10px 0; }
-  .cs-h1{ font-size:30px; line-height:1.18; margin-top:20px; }
+  .cs-h1{ font-size:27px; line-height:1.2; letter-spacing:-0.3px; margin-top:16px; }
+  .cs-hero{ margin-top:22px; }
+  .cs-notice{ margin-top:32px; }
   .cs-notice-title{ font-size:20px; } .cs-notice-icon{ width:22px; height:22px; }
   .cs-meta{ column-gap:24px; row-gap:20px; } .cs-meta-item{ width:calc(50% - 12px); }
-  .cs-section{ scroll-margin-top:104px; }
-  .cs-section + .cs-section{ margin-top:40px; }
-  .cs-h2{ font-size:26px; }
+  .cs-meta-value{ font-size:16px; }
+  .cs-section{ scroll-margin-top:60px; }
+  .cs-section + .cs-section{ margin-top:36px; }
+  .cs-h2{ font-size:24px; }
+  .cs-h3{ font-size:19px; margin-top:24px; }
   .cs-stats{ grid-template-columns:repeat(2, 1fr); gap:24px; row-gap:28px; }
-  .cs-stat-n{ font-size:40px; }
-  .cs-footerwrap{ margin-top:64px; }
+  .cs-stat-n{ font-size:38px; }
+  .cs-footerwrap{ margin-top:56px; }
 }
 @media (max-width:479px){
   .cs-meta-item{ width:100%; }
