@@ -52,10 +52,10 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "dell-portal-redesign",
-    title: "Dell Portal Redesign",
+    title: "Dell Inventory Pipeline Tool",
     positioning: "Enterprise product · Information architecture",
     description:
-      "Reframing a complex enterprise portal around clearer information architecture, workflows, and user decision-making.",
+      "Redesigning an internal Dell tool for setting up and validating inventory pipelines.",
     details: [
       { label: "Role", value: "Senior UX Designer" },
       { label: "Team", value: "[X]" },
