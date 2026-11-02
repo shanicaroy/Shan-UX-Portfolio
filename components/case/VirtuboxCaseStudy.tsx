@@ -235,7 +235,7 @@ const SECTIONS: Section[] = [
     label: "What shipped",
     heading: "What shipped",
     blocks: [
-      // Demo video (virtubox-demo.mp4) goes here once supplied.
+      { t: "video", src: `${IMG}/virtubox-demo.mp4`, poster: `${IMG}/virtubox-demo-poster.webp`, caption: "Walkthrough of the kiosk." },
       { t: "p", text: "Everything I designed shipped. I designed it in Adobe XD in 2020. In 2023, before I stopped using Adobe XD, I rebuilt the screens in Figma to keep them, without changing the design. The screens in this case study are that rebuild." },
       { t: "p", text: "Each problem from the interviews has a direct answer on the kiosk:" },
       {
@@ -257,7 +257,7 @@ const SECTIONS: Section[] = [
     heading: "At the airport",
     blocks: [
       { t: "p", text: "Years later, I came across VirtuBox Digital Guide kiosks at Kempegowda International Airport in Bengaluru. These are set up for travellers, with a shop finder, amenities and facilities, and boarding gates." },
-      // Single image (airport-digital-guide) + its caption go here once supplied.
+      { t: "figure", src: `${IMG}/airport-digital-guide.webp`, alt: "A VirtuBox Digital Guide kiosk at Kempegowda International Airport, with a shop finder, amenities and facilities, and boarding gates along the bottom of the screen", caption: "A VirtuBox Digital Guide kiosk at Kempegowda International Airport, Bengaluru." },
       {
         t: "figpair",
         items: [
