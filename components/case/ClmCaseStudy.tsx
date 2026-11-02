@@ -144,7 +144,13 @@ const SECTIONS: Section[] = [
         t: "p",
         text: "Across all four functions, the picture was the same. Queries were handled in Zendesk alongside personal notes and several Excel sheets. Tickets had no category, there was no time limit for resolving a query, and nothing alerted the team lead when tickets stayed unresolved.",
       },
-      { t: "ph", n: 2, name: "clm-img-02-ops-calls-gallery", desc: "Screenshots from the calls with the operations executives and the operations team lead. Caption: who each call was with." },
+      {
+        t: "figure",
+        src: "/clm-images/research-ops-call.webp",
+        full: "/clm-images/research-ops-call-full.webp",
+        alt: "Video call with the operations executive who handled batch allocation, walking through their Zendesk process",
+        caption: "Understanding batch allocation with the operations executive, step by step through their Zendesk process",
+      },
       { t: "h3", text: "Communication channels" },
       {
         t: "p",
