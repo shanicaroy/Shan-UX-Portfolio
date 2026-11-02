@@ -43,6 +43,11 @@ const CARD: Record<
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';
 const INTER = '"Inter", "Helvetica Neue", Arial, sans-serif';
 
+// The only two case studies that open without a password. Every other card
+// routes to its /unlock/<slug> password page. Keep this in sync with the
+// unlock route's generateStaticParams.
+const OPEN_SLUGS = ["customer-lifecycle-management", "orbit-design-system"];
+
 // Exact px at the 1728 design width, scaling proportionally with the viewport
 // both below and above it (so the grid tracks the full-bleed hero on wide
 // screens). The upper bound is effectively uncapped for any real display.
@@ -164,9 +169,11 @@ function WorkCard({
     </>
   );
 
-  // Password gating is removed for now: every card links straight to its case
-  // study (Orbit keeps its explicit href, the rest go to /work/<slug>).
-  const target = card?.href ?? `/work/${project.slug}`;
+  // Password gating: Bhanzu (CLM) and Orbit open straight to their case study;
+  // every other card goes to its dedicated /unlock/<slug> password page.
+  const target = OPEN_SLUGS.includes(project.slug)
+    ? card?.href ?? `/work/${project.slug}`
+    : `/unlock/${project.slug}`;
   return (
     <Link href={target} className="group block w-full text-left">
       {inner}
