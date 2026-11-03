@@ -32,16 +32,17 @@ const ITEMS: Item[] = [
       </svg>
     ),
   },
-  {
-    label: "Applied AI",
-    href: "/ai-lab",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={sw} strokeLinejoin="round" className="bnav-ico" aria-hidden>
-        <path d="M12 3c.4 3.6 1.9 5.1 5.5 5.5C13.9 8.9 12.4 10.4 12 14c-.4-3.6-1.9-5.1-5.5-5.5C10.1 8.1 11.6 6.6 12 3Z" />
-        <path d="M18 14.5c.2 1.5.8 2.1 2.3 2.3-1.5.2-2.1.8-2.3 2.3-.2-1.5-.8-2.1-2.3-2.3 1.5-.2 2.1-.8 2.3-2.3Z" />
-      </svg>
-    ),
-  },
+  // Temporarily hidden for launch; re-enable when ready to publish.
+  // {
+  //   label: "Applied AI",
+  //   href: "/ai-lab",
+  //   icon: (
+  //     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={sw} strokeLinejoin="round" className="bnav-ico" aria-hidden>
+  //       <path d="M12 3c.4 3.6 1.9 5.1 5.5 5.5C13.9 8.9 12.4 10.4 12 14c-.4-3.6-1.9-5.1-5.5-5.5C10.1 8.1 11.6 6.6 12 3Z" />
+  //       <path d="M18 14.5c.2 1.5.8 2.1 2.3 2.3-1.5.2-2.1.8-2.3 2.3-.2-1.5-.8-2.1-2.3-2.3 1.5-.2 2.1-.8 2.3-2.3Z" />
+  //     </svg>
+  //   ),
+  // },
   {
     label: "Resume",
     href: RESUME,
