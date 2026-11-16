@@ -12,20 +12,34 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.metaTitle,
-    template: `%s · ${siteConfig.name}`,
+    template: `%s - ${siteConfig.seo.titleSuffix}`,
   },
   description: siteConfig.metaDescription,
+  applicationName: `${siteConfig.name} UX Design Portfolio`,
+  keywords: [...siteConfig.seo.keywords],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  // The share image comes from app/opengraph-image.png and
+  // app/twitter-image.png (Next.js file conventions), so it is not listed here.
   openGraph: {
     type: "website",
+    locale: "en_US",
     title: siteConfig.metaTitle,
     description: siteConfig.metaDescription,
-    siteName: siteConfig.name,
+    siteName: `${siteConfig.name} UX Design Portfolio`,
     url: siteConfig.url,
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.metaTitle,
     description: siteConfig.metaDescription,
+    creator: "@ShanicaRoy",
   },
 };
 

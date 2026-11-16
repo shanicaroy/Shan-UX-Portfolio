@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import ClmCaseStudy from "@/components/case/ClmCaseStudy";
+import { pageMetadata } from "@/content/seo";
 
-export const metadata: Metadata = {
-  title: "Bhanzu CLM",
+export const metadata: Metadata = pageMetadata({
+  title: "Bhanzu CLM UX Case Study",
   description:
-    "Leading the design of Bhanzu's in-house support platform (CLM): IVR-based routing, the CLM ticket workspace, root and child tickets, status flows, role-based dashboards and access states.",
-};
+    "Shanica Roy's UX case study on leading the design of Bhanzu's support platform (CLM): IVR routing, the ticket workspace and role-based dashboards.",
+  path: "/work/customer-lifecycle-management",
+});
 
 /**
  * Customer Lifecycle Management (Bhanzu) — full, non-NDA case study.

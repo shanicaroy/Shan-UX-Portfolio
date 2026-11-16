@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import CaseStudy, { type CaseStudyProps } from "@/components/case/CaseStudy";
+import { pageMetadata } from "@/content/seo";
 
-export const metadata: Metadata = {
+// Password-gated: kept out of search results.
+export const metadata: Metadata = pageMetadata({
   title: "Data Product Marketplace Revamp (EY)",
   description:
     "Designing the EY platform experience for building, cataloguing, and operating reusable data products. An NDA case study shared as an approved overview.",
-};
+  path: "/work/ey-data-product-factory",
+  noindex: true,
+});
 
 /** EY (Ernst & Young) — NDA case study on the shared CaseStudy template (Overview only). */
 

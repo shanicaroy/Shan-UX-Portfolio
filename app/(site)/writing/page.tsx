@@ -3,11 +3,16 @@ import { beyondTheProduct } from "@/content/leadership";
 import { writing } from "@/content/writing";
 import Shell from "@/components/Shell";
 import Reveal from "@/components/Reveal";
+import { pageMetadata } from "@/content/seo";
 
-export const metadata: Metadata = {
+// Hidden from the nav for launch: kept out of search results until it is
+// re-enabled. Remove `noindex` and add "/writing" to INDEXED_PATHS then.
+export const metadata: Metadata = pageMetadata({
   title: "Writing",
   description: beyondTheProduct.support,
-};
+  path: "/writing",
+  noindex: true,
+});
 
 /** All writing lives here; the homepage shows the intro with a Read all link. */
 export default function WritingPage() {

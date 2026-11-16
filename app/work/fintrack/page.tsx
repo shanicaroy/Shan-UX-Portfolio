@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import CaseStudy, { type CaseStudyProps } from "@/components/case/CaseStudy";
+import { pageMetadata } from "@/content/seo";
 
-export const metadata: Metadata = {
+// Password-gated: kept out of search results.
+export const metadata: Metadata = pageMetadata({
   title: "Finance Management Mobile App (FinTrack)",
   description:
     "A personal finance management mobile app: tracking transactions, reports, and spending insights with a clear, trustworthy UX.",
-};
+  path: "/work/fintrack",
+  noindex: true,
+});
 
 /** FinTrack (non-NDA, freelance) — shared CaseStudy template. Still-image cover. */
 

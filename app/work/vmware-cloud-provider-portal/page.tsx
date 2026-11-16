@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import CaseStudy, { type CaseStudyProps } from "@/components/case/CaseStudy";
+import { pageMetadata } from "@/content/seo";
 
-export const metadata: Metadata = {
+// Locked NDA project: kept out of search results.
+export const metadata: Metadata = pageMetadata({
   title: "VCCP - Customer Connect Cloud Service Portal Revamp",
   description:
     "VMware Customer Connect Portal (VCCP), a Clarity-based cloud service platform revamp. An NDA case study shared as an approved overview.",
-};
+  path: "/work/vmware-cloud-provider-portal",
+  noindex: true,
+});
 
 /**
  * VMware (VCCP) — NDA case study on the shared CaseStudy template (a 1:1 port of

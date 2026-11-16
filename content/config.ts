@@ -9,10 +9,51 @@ export const siteConfig = {
   title: "UX & Product Design Leader",
   role: "UX Lead · Enterprise Product Design",
 
-  metaTitle: "Shanica Roy - UX & Product Design Leadership",
+  metaTitle: "Shanica Roy - UX Design Portfolio and Case Studies",
   metaDescription:
-    "Shanica Roy is a UX and Product Design Leader combining hands-on UX, product strategy, research, and design leadership across complex B2B, SaaS, and enterprise products.",
+    "The UX design portfolio of Shanica Roy, UX Design Lead. Product design case studies from enterprise and SaaS work with EY, Dell, VMware and Bhanzu.",
   url: "https://work.shanicaroy.com",
+
+  // SEO. Google ranks on visible text, titles and descriptions, so these
+  // phrases are also worked into page titles and descriptions. The keywords
+  // list feeds the <meta name="keywords"> tag, which Google ignores but some
+  // other search engines still read.
+  seo: {
+    // Short suffix appended to every inner page title, e.g.
+    // "Bhanzu CLM - Shanica Roy UX Portfolio".
+    titleSuffix: "Shanica Roy UX Portfolio",
+    keywords: [
+      "Shanica portfolio",
+      "Shanica Roy portfolio",
+      "Shanica Roy UX portfolio",
+      "Shanica Roy UX design portfolio",
+      "Shanica Roy design portfolio",
+      "Shanica Roy product design portfolio",
+      "Shanica Roy case studies",
+      "Shanica work",
+      "Shanica UX design",
+      "Shanica Roy UX Design",
+    ],
+    // Other names the site is known by; used in the structured data so
+    // Google connects these searches to the same site.
+    alternateNames: [
+      "Shanica Roy portfolio",
+      "Shanica Roy UX portfolio",
+      "Shanica Roy UX design portfolio",
+      "Shanica Roy product design portfolio",
+      "Shanica Roy case studies",
+    ],
+    jobTitle: "UX Design Lead",
+    knowsAbout: [
+      "UX design",
+      "Product design",
+      "Enterprise UX",
+      "SaaS product design",
+      "Design systems",
+      "UX research",
+      "Design leadership",
+    ],
+  },
 
   // Shanica's resume on Google Drive; opens in a new tab from the nav button
   // and the closing CTA.
