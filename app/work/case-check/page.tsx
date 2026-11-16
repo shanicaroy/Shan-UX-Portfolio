@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import CaseStudy, { type CaseStudyProps } from "@/components/case/CaseStudy";
+import { pageMetadata } from "@/content/seo";
 
-export const metadata: Metadata = {
+// Password-gated: kept out of search results.
+export const metadata: Metadata = pageMetadata({
   title: "Case Check",
   description:
     "Designing and building Case Check, a portfolio-review agent, from the reasoning skeleton to a live, evaluated product.",
-};
+  path: "/work/case-check",
+  noindex: true,
+});
 
 /**
  * Applied AI: Case Check (UXPective) — shared CaseStudy template, with its full

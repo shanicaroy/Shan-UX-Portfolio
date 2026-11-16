@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { siteConfig } from "@/content/config";
 import Reveal from "@/components/Reveal";
+import { pageMetadata } from "@/content/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
-  description: siteConfig.metaDescription,
-};
+  description:
+    "About Shanica Roy, UX Design Lead: UX design, product design and design leadership on enterprise and SaaS products with EY, Dell, VMware and Bhanzu.",
+  path: "/about",
+});
 
 const SERIF = '"Times New Roman", Times, Georgia, serif';
 const ROBOTO = '"Roboto", "Helvetica Neue", Arial, sans-serif';

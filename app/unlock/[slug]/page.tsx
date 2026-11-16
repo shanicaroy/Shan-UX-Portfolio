@@ -26,7 +26,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-  return { title: project ? `${project.title} (password protected)` : "Password protected" };
+  // Password pages never belong in search results.
+  return {
+    title: project ? `${project.title} (password protected)` : "Password protected",
+    robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
+  };
 }
 
 export default async function UnlockPage({ params }: { params: Promise<{ slug: string }> }) {

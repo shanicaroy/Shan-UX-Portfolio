@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import VirtuboxCaseStudy from "@/components/case/VirtuboxCaseStudy";
+import { pageMetadata } from "@/content/seo";
 
-export const metadata: Metadata = {
-  title: "VirtuBox Kiosk Design",
+export const metadata: Metadata = pageMetadata({
+  title: "VirtuBox Kiosk UX Case Study",
   description:
-    "Designing a self-service wayfinding kiosk for shopping malls: research, product priorities and the end-to-end experience, from brief to shipped product.",
-};
+    "Shanica Roy's UX case study on designing a self-service wayfinding kiosk for shopping malls, from research and product priorities to the shipped product.",
+  path: "/work/virtubox-kiosk",
+});
 
 /**
  * VirtuBox Kiosk — full, non-NDA case study on the shared case-study template

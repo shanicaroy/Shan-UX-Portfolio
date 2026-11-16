@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { orbitCaseStyles, orbitCaseBody } from "@/content/case-orbit";
 import CaseToc from "@/components/CaseToc";
+import { pageMetadata } from "@/content/seo";
 
-export const metadata: Metadata = {
-  title: "Orbit Design System",
+export const metadata: Metadata = pageMetadata({
+  title: "Orbit Design System Case Study",
   description:
-    "Standardizing UI through a design system: Orbit v1. Foundations, twelve components, and how it was adopted. A case study.",
-};
+    "Shanica Roy's design system case study on Orbit, the UXPective design system: its foundations, twelve components, and how it was adopted across a product.",
+  path: "/work/orbit-design-system",
+});
 
 /**
  * Standalone case-study document. Like the other case studies it lives outside
